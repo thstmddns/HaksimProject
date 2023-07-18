@@ -3,7 +3,7 @@
 
 <main>
 	<h1>수료생 게시판 목록</h1>
-	<div>
+	<div id="afterWriteBtn">
 		<a href="${pageContext.request.contextPath}/after/afterWrite"><button>글쓰기</button></a>
 	</div>
 

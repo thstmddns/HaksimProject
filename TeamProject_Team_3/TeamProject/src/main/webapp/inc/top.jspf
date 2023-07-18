@@ -31,7 +31,6 @@
 
 <div id="title">
 	<a href="/smhrd" class="title"><img src="/smhrd/img/1.png"></a>
-	
 </div>
 	
 	<nav>
@@ -41,6 +40,9 @@
 			<li><a href="/smhrd/#">커뮤니티 게시판</a></li>
 			<li><a href="/smhrd/#">맛집 공유 게시판</a></li>
 			<li><a href="/smhrd/after/afterList">수료생 게시판</a></li>
+			<c:if test="${logStatus != 'Y'}">
+				<li><a href="/smhrd/admin/adminList">관리자 페이지</a></li>
+			</c:if>
 		</ul>	
 	</nav>
 	
