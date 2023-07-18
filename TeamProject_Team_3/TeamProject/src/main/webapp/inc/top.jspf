@@ -22,13 +22,22 @@
 	<nav>
 		<ul>
 			<c:if test="${logStatus != 'Y'}">
+				<!-- 
+				
 				<li><a href="/home/register/login">로그인</a></li>	
 				<li><a href="/home/register/regForm">회원가입</a></li>
+				
+				 -->
 			</c:if>
 			
 			<c:if test="${logStatus == 'Y'}">
+				<!-- 
+				
 				<li><span style="color: #66CC99">${logName}</span></li>
 				<li><a href="/home/register/logout">로그아웃</a></li>	
+				
+				
+				 -->
 				<li><a href="/home/register/modify">회원정보수정</a></li>
 			</c:if>
 			

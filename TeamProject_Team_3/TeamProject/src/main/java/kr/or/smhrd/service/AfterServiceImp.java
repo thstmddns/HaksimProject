@@ -4,17 +4,20 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import kr.or.smhrd.dao.AfterDAO;
 import kr.or.smhrd.dto.AfterDTO;
 import kr.or.smhrd.dto.AfterFileDTO;
 
+@Service
 public class AfterServiceImp implements AfterService{
-	@Inject
+	@Autowired
 	AfterDAO dao;
 	
 	@Override
 	public List<AfterDTO> getAfterList() {
-		
 		return dao.getAfterList();
 	}
 
@@ -26,14 +29,12 @@ public class AfterServiceImp implements AfterService{
 	
 	@Override
 	public int afterFileInsert(List<AfterFileDTO> fileList) {
-		
 		return dao.afterFileInsert(fileList);
 	}
 
 	
 	@Override
-	public int afterEdit(AfterDTO dto) {
-		
+	public int afterEdit(AfterDTO dto) {	
 		return dao.afterEdit(dto);
 	}
 	
@@ -44,20 +45,17 @@ public class AfterServiceImp implements AfterService{
 	}
 
 	@Override
-	public int afterFileDelete(int no) {
-		
+	public int afterFileDelete(int no) {		
 		return dao.afterFileDelete(no);
 	}
 
 	@Override
-	public AfterDTO afterSelect(int no) {
-		
+	public AfterDTO afterSelect(int no) {	
 		return dao.afterSelect(no);
 	}
 
 	@Override
 	public List<AfterFileDTO> afterFileSelect(int no) {
-		
 		return dao.afterFileSelect(no);
 	}
 	
