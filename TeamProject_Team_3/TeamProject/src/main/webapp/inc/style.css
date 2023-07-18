@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+body, ul, li{
+	margin: 0;	
+	padding: 0px;	
+	list-style-type: none;
+}
+
+#title{
+	text-align: center;
+	background-image: url("/smhrd/img/");
+}
+
+.title{
+	font-size: 3em;
+	
+}
+
+.title:link, .title:visited, .title:hover{
+	text-decoration: none;
+	color:black;
+}
+
+/* 네비게이션 바 */
+nav a:link, nav a:visited, nav a:hover{
+	text-decoration: none;
+	color: #ffffff;
+}
+nav{
+	height: 40px;
+	background-color: #004d40;
+}
+nav > ul{
+	width: 1000px;
+	height:40px;
+	margin: 0 auto;
+}
+nav li{
+	float:left;
+	line-height: 40px;
+	padding: 0 50px;
+}
+
+/* 하단 */
+footer{
+	margin-top:10px;
+	background: #ddd;
+	text-align: center;
+	line-height: 60px;
+}

@@ -3,6 +3,6 @@
 
 <body>
 	<h1>연결중</h1>
-	<a href="#"><input type="button" value="연결"></a>
+	
 </body>
 

@@ -6,27 +6,46 @@
 <head>
 <meta charset="UTF-8">
 <title>Home</title>
-<link rel="stylesheet" href="/home/inc/style.css" type="text/css">
+<link rel="stylesheet" href="/smhrd/inc/style.css" type="text/css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<script>
-    // 시간 실시간 업데이트
-    function updateTime() {
-      var now = new Date();
-      var hours = now.getHours();
-      var minutes = now.getMinutes();
-      var timeString = hours + ":" + minutes;
-      document.getElementById("time").textContent = timeString;
-    }
-
-    setInterval(updateTime, 1000); // 1초마다 갱신
-</script>
 </head>
 
 <body>
 <header>
+
+<div id="title">
+	<a href="/smhrd" class="title">스마티</a>
 	
-	<!-- 타이틀 -->
-	<a class="title" href="/home/"><div class="logo" >스마트 인재 개발원</div></a>
+</div>
+	
+	<nav>
+		<ul>
+			<c:if test="${logStatus != 'Y'}">
+				<!-- 
+				
+				<li><a href="/home/register/login">로그인</a></li>	
+				<li><a href="/home/register/regForm">회원가입</a></li>
+				
+				 -->
+			</c:if>
+			
+			<c:if test="${logStatus == 'Y'}">
+				<!-- 
+				
+				<li><span style="color: #66CC99">${logName}</span></li>
+				<li><a href="/home/register/logout">로그아웃</a></li>	
+				
+				
+				 -->
+				<li><a href="/home/register/modify">회원정보수정</a></li>
+			</c:if>
+			
+			<li><a href="#">자료 공유 게시판</a></li>
+			<li><a href="#">커뮤니티 게시판</a></li>
+			<li><a href="#">맛집 공유 게시판</a></li>
+			<li><a href="/smhrd/after/afterList">후기 게시판</a></li>
+		</ul>	
+	</nav>
 	
 </header>

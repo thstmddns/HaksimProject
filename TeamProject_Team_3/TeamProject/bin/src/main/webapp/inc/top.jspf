@@ -1,0 +1,32 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Home</title>
+<link rel="stylesheet" href="/home/inc/style.css" type="text/css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    // 시간 실시간 업데이트
+    function updateTime() {
+      var now = new Date();
+      var hours = now.getHours();
+      var minutes = now.getMinutes();
+      var timeString = hours + ":" + minutes;
+      document.getElementById("time").textContent = timeString;
+    }
+
+    setInterval(updateTime, 1000); // 1초마다 갱신
+</script>
+</head>
+
+<body>
+<header>
+	
+	<!-- 타이틀 -->
+	<a class="title" href="/home/"><div class="logo" >스마트 인재 개발원</div></a>
+	
+</header>

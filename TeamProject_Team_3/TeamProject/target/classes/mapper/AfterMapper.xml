@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="kr.or.smhrd.dao.AfterDAO">
+	 <select id="getAfterList" resultType="kr.or.smhrd.dto.AfterDTO">
+		select grad_num, grad_title, mem_id, to_char(grad_wdate, 'MM-DD HH:MI') grad_wdate, grad_hit from grad order by grad_num desc
+	</select>
+	
+	<!--  <insert id="afterInsert" parameterType="kr.co.smhrd.dto.AfterDTO">
+		insert into data(grad_num, mem_id, grad_title, grad_content, grad_type, grad_wdate) 
+		values(grad_no_seq.nextval, #{mem_id}, #{grad_title}, #{grad_content}, ${grad_type}, sysdate)
+		<selectKey resultType="int" keyProperty="no" order="AFTER">
+			select boards_num_seq.currval from dual
+		</selectKey>
+	</insert>	 --> 
+</mapper>
