@@ -1,19 +1,37 @@
 @charset "UTF-8";
 
-body, ul, li{
+body{
 	margin: 0;	
 	padding: 0px;	
 	list-style-type: none;
 }
 
+.headLine{
+	background-color: #539bff;	
+	text-align: right;
+	height: 30px;
+	padding-top: 5px;
+	padding-right: 10px;
+}
+
+.headLine > a > input{
+	border-radius: 50px;
+	color: #539bff;
+	background-color: #ffffff;
+	border:1px solid #ffffff;
+}
+.headLine > a > input:hover{
+	background-color: #e7f9ff;
+	border:1px solid #e7f9ff;
+}
+
 #title{
 	text-align: center;
-	background-image: url("/smhrd/img/");
+	background-color: #ffffff;
 }
 
 .title{
 	font-size: 3em;
-	
 }
 
 .title:link, .title:visited, .title:hover{
@@ -27,18 +45,23 @@ nav a:link, nav a:visited, nav a:hover{
 	color: #ffffff;
 }
 nav{
+	padding-left: 20px;
 	height: 40px;
-	background-color: #004d40;
+	background-color: #539bff;
 }
 nav > ul{
-	width: 1000px;
-	height:40px;
 	margin: 0 auto;
+	list-style-type: none;
 }
 nav li{
 	float:left;
 	line-height: 40px;
 	padding: 0 50px;
+	list-style-type: none;
+}
+
+.container{
+	text-align: center;
 }
 
 /* 하단 */
@@ -48,3 +71,54 @@ footer{
 	text-align: center;
 	line-height: 60px;
 }
+
+main {
+	width:1000px;
+	margin: 0 auto;
+}
+
+.after_List {
+	padding: 0px;
+	overflow:auto;
+	list-style-type: none;
+}
+	
+.after_List > li{
+	 float:left;
+	 height:40px;
+	 line-height:40px;
+	 border-bottom:1px solid #ddd;
+	 width:10%;
+	 text-align:center;
+}
+
+.after_List > li:nth-child(6n+3) {
+	 width:50%;
+	 /*말줄임표시*/
+	 white-space:nowrap;  /*줄 바꾸지 않기*/
+	 overflow:hidden;   /*넘친값 숨기기*/
+	 text-overflow:ellipsis;   /* ... 표시하기 */
+}
+
+.search {
+	 text-align:center;
+	 height:40px;
+	 margin-top:10px;
+} 
+	
+.searchWord {
+	 width: 300px;
+     border-top: none;
+     border-left: none;
+     border-right: none;
+     border-bottom : 2px solid black;
+}
+
+.searchBtn {
+	width: 100px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom : 1px solid black;
+}
+

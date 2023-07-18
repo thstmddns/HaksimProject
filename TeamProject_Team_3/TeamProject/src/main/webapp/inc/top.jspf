@@ -14,37 +14,33 @@
 <body>
 <header>
 
+<div class="headLine">	
+	<!-- 로그아웃 상태 -->
+	<c:if test="${logStatus != 'Y'}">
+		<a href="/smhrd/#"><input type="button" value="로그인"></a>
+		<a href="/smhrd/#"><input type="button" value="회원가입"></a>
+	</c:if>
+	
+	<!-- 로그인 상태 -->
+	<c:if test="${logStatus == 'Y'}">
+		<span style="color: #66CC99">${logName}</span>
+		<a href="/smhrd/#"><input type="button" value="로그아웃"></a>	
+		<a href="/smhrd/#"><input type="button" value="회원정보수정"></a>
+	</c:if>
+</div>
+
 <div id="title">
-	<a href="/smhrd" class="title">스마티</a>
+	<a href="/smhrd" class="title"><img src="/smhrd/img/1.png"></a>
 	
 </div>
 	
 	<nav>
 		<ul>
-			<c:if test="${logStatus != 'Y'}">
-				<!-- 
-				
-				<li><a href="/home/register/login">로그인</a></li>	
-				<li><a href="/home/register/regForm">회원가입</a></li>
-				
-				 -->
-			</c:if>
-			
-			<c:if test="${logStatus == 'Y'}">
-				<!-- 
-				
-				<li><span style="color: #66CC99">${logName}</span></li>
-				<li><a href="/home/register/logout">로그아웃</a></li>	
-				
-				
-				 -->
-				<li><a href="/home/register/modify">회원정보수정</a></li>
-			</c:if>
-			
-			<li><a href="#">자료 공유 게시판</a></li>
-			<li><a href="#">커뮤니티 게시판</a></li>
-			<li><a href="#">맛집 공유 게시판</a></li>
-			<li><a href="/smhrd/after/afterList">후기 게시판</a></li>
+			<li><a href="/smhrd/#">공지 게시판</a></li>
+			<li><a href="/smhrd/#">자료 공유 게시판</a></li>
+			<li><a href="/smhrd/#">커뮤니티 게시판</a></li>
+			<li><a href="/smhrd/#">맛집 공유 게시판</a></li>
+			<li><a href="/smhrd/after/afterList">수료생 게시판</a></li>
 		</ul>	
 	</nav>
 	
