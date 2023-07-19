@@ -21,9 +21,7 @@ public interface AfterService {
 	
 	public int afterEdit(AfterDTO dto);
 	
-	public int afterDelete(int grad_num, String userid);
-	
-	public int afterFileDelete(int grad_num);
+	public int afterDelete(int grad_num);
 	
 	public List<AfterFileDTO> afterFileSelect(int grad_num);
 	

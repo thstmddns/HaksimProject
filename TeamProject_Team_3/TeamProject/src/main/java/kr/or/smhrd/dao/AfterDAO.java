@@ -24,10 +24,10 @@ public interface AfterDAO {
 		public int afterFileInsert(List<AfterFileDTO> fileList);
 		// 게시글 수정 
 		public int afterEdit(AfterDTO dto);
+		
 		// 글 삭제
-		public int afterDelete(int grad_num, String userid);
-		// 첨부파일목록 삭제
-		public int afterFileDelete(int grad_num);
+		public int afterDelete(int grad_num);
+		
 		
 		// 해당 글의 첨부파일 선택
 		public List<AfterFileDTO> afterFileSelect(int grad_num);

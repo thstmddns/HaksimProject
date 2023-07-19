@@ -102,5 +102,19 @@ public class AfterController {
 		return mav;
 	}
 	
+	// 게시글 삭제(로그인 없이)
+	@GetMapping("/afterDel")
+	public ModelAndView afterDel(int grad_num) {
+		int result = service.afterDelete(grad_num);
+		
+		ModelAndView mav = new ModelAndView();
+		if(result>0) {
+			mav.setViewName("redirect:afterList");
+		}else {
+			mav.addObject("grad_num", grad_num);
+			mav.setViewName("redirect:afterView");
+		}
+		return mav;
+	}
 	
 }

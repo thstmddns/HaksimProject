@@ -50,15 +50,9 @@ public class AfterServiceImpl implements AfterService {
 	}
 	
 	@Override
-	public int afterDelete(int grad_num, String userid) {
+	public int afterDelete(int grad_num) {
 		
-		return dao.afterDelete(grad_num, userid);
-	}
-
-	@Override
-	public int afterFileDelete(int grad_num) {
-		
-		return dao.afterFileDelete(grad_num);
+		return dao.afterDelete(grad_num);
 	}
 
 	@Override

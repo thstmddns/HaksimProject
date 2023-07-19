@@ -7,6 +7,14 @@
 	 }
 </style>
 
+<script>
+	function afterDelChk () {
+		// 확인(true), 취소(false)
+		if(confirm("글을 삭제하시겠습니까?")){
+			location.href = "/smhrd/after/afterDel?grad_num=${dto.grad_num}";
+		}
+	}
+</script>
 
 
 <main>
@@ -19,5 +27,8 @@
 		<li>제목 : ${dto.grad_title}</li>
 		<li><br>글내용<br/> ${dto.grad_content}</li>
 	</ul>	
-
+	
+	<div>
+		<a href="javascript:afterDelChk()">삭제</a>
+	</div>
 </main>
