@@ -37,6 +37,11 @@
 			$(this).parent().remove();
 		});
 	});
+	
+	$(function(){
+		$("#cateNum").val("${param.cate}").attr("selected","selected");
+	});
+	
 </script>
 
 <main>
@@ -44,6 +49,11 @@
 	<!-- 파일첨부가 있을 경우  form 태그에 enctype속성을 반드시 기술해야됨 -->
 	<form method="post" id="frm" action="/smhrd/after/afterWriteOk" enctype="multipart/form-data">
 	<ul class="dataWrite">
+		<select name="cate" id="cateNum">
+				<option value="1">멘토링</option>
+				<option value="2">채용공고</option>
+				<option value="3">기타</option>	
+		</select>
 		<li>제목</li>
 		<li><input type="text" name="subject" size=130px style="line-height:30px"/></li>
 		<li>글내용</li>

@@ -10,17 +10,26 @@ import org.springframework.stereotype.Service;
 import kr.or.smhrd.dao.AfterDAO;
 import kr.or.smhrd.dto.AfterDTO;
 import kr.or.smhrd.dto.AfterFileDTO;
+import kr.or.smhrd.dto.PagingDTO;
 
 @Service
-public class AfterServiceImp implements AfterService{
-	@Autowired
+public class AfterServiceImpl implements AfterService {
+	
+	@Inject
 	AfterDAO dao;
 	
 	@Override
-	public List<AfterDTO> getAfterList() {
-		return dao.getAfterList();
+	public List<AfterDTO> getAfterList(PagingDTO pDTO) {
+		
+		return dao.getAfterList(pDTO);
 	}
 
+	@Override
+	public int totalRecord(PagingDTO pDTO) {
+		
+		return dao.totalRecord(pDTO);
+	}
+	
 	@Override
 	public int afterInsert(AfterDTO dto) {
 		
@@ -29,38 +38,40 @@ public class AfterServiceImp implements AfterService{
 	
 	@Override
 	public int afterFileInsert(List<AfterFileDTO> fileList) {
+		
 		return dao.afterFileInsert(fileList);
 	}
 
 	
 	@Override
-	public int afterEdit(AfterDTO dto) {	
+	public int afterEdit(AfterDTO dto) {
+		
 		return dao.afterEdit(dto);
 	}
 	
 	@Override
-	public int afterDelete(int no, String userid) {
+	public int afterDelete(int grad_num) {
 		
-		return dao.afterDelete(no, userid);
+		return dao.afterDelete(grad_num);
 	}
 
 	@Override
-	public int afterFileDelete(int no) {		
-		return dao.afterFileDelete(no);
+	public AfterDTO afterSelect(int grad_num) {
+		
+		return dao.afterSelect(grad_num);
 	}
 
 	@Override
-	public AfterDTO afterSelect(int no) {	
-		return dao.afterSelect(no);
-	}
-
-	@Override
-	public List<AfterFileDTO> afterFileSelect(int no) {
-		return dao.afterFileSelect(no);
+	public List<AfterFileDTO> afterFileSelect(int grad_num) {
+		
+		return dao.afterFileSelect(grad_num);
 	}
 	
 	@Override
 	public void hitCount(int grad_num) {
 		dao.hitCount(grad_num);
 	}
+
+	
+	
 }

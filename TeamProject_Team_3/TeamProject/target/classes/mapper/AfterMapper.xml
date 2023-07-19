@@ -4,15 +4,46 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="kr.or.smhrd.dao.AfterDAO">
-	 <select id="getAfterList" resultType="kr.or.smhrd.dto.AfterDTO">
-		select grad_num, grad_title, mem_id, to_char(grad_wdate, 'MM-DD HH:MI') grad_wdate, grad_hit from grad order by grad_num desc
+	<select id="getAfterList" resultType="kr.or.smhrd.dto.AfterDTO">
+		select * from
+			(select * from
+				(select grad_num, grad_title, mem_id,
+				 to_char(grad_wdate, 'MM-DD HH:MI') grad_wdate , grad_hit
+				from grad
+				<!-- 검색어가 있을 때 -->
+				<if test="searchWord != null">
+					where ${searchKey} like '%${searchWord}%'
+				</if>
+				order by grad_num desc) 
+			where <![CDATA[ rownum<=${nowPage*onePageRecord} ]]> order by grad_num asc)
+		where <![CDATA[ rownum<=${lastPageRecord} ]]> order by grad_num desc
 	</select>
 	
-	<!--  <insert id="afterInsert" parameterType="kr.co.smhrd.dto.AfterDTO">
-		insert into data(grad_num, mem_id, grad_title, grad_content, grad_type, grad_wdate) 
+	<select id="totalRecord" resultType="int">
+		select count(grad_num) cnt from grad
+		
+		<if test="searchWord != null">
+			where ${searchKey} like '%${searchWord}%'    
+			<!-- #은 ''를 붙여주는 기능을 하고 $는 ''을 붙이지 x -->
+		</if>
+	</select>
+	
+	<insert id="afterInsert">
+		insert into grad(grad_num, mem_id, grad_title, grad_content, grad_type, grad_wdate) 
 		values(grad_no_seq.nextval, #{mem_id}, #{grad_title}, #{grad_content}, ${grad_type}, sysdate)
-		<selectKey resultType="int" keyProperty="no" order="AFTER">
-			select boards_num_seq.currval from dual
-		</selectKey>
-	</insert>	 --> 
+	</insert>	 
+	
+	<delete id="afterDelete">
+		delete from grad where grad_num=${param1}
+	</delete>
+	
+	<select id="afterSelect" resultType="kr.or.smhrd.dto.AfterDTO">
+		select grad_num, mem_id, grad_title, grad_content, grad_hit, grad_wdate
+		from grad where grad_num=${param1}
+	</select>
+	
+	<update id="hitCount">
+		update grad set grad_hit = grad_hit+1 where grad_num = ${param1}
+	</update>
+	
 </mapper>
