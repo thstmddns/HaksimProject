@@ -17,7 +17,7 @@ import kr.or.smhrd.service.ReportService;
 public class AdminBoardController {
 /* 
 	@Autowired 
-	MemberService mService; 
+	RegisterService mService; 
 */
 	
 	@Autowired

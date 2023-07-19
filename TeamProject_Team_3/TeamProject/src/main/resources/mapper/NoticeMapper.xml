@@ -3,6 +3,6 @@
   
 <mapper namespace="kr.or.smhrd.dao.NoticeDAO">
 	<select id="getNoticeList" resultType="kr.or.smhrd.dto.NoticeDTO">
-		SELECT notice_num, admin_num, mem_id, notice_title, notice_content,notice_wdate, notice_update FROM notice
+		SELECT notice_num, admin_num, mem_id, notice_title, notice_content, notice_wdate, notice_update FROM notice
 	</select>
 </mapper>
