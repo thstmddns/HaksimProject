@@ -14,5 +14,11 @@ public class RegisterServiceImpl implements RegisterService {
 	public int registerInsert(RegisterDTO dto) {
 		return dao.registerInsert(dto);
 	}
+	@Override
+	public int idCheck(String mem_id) {
+		int cnt = dao.idCheck(mem_id);
+		System.out.println("cnt: " + cnt);
+		return cnt;
+	}
 	
 }

@@ -1,10 +1,11 @@
 package kr.or.smhrd.service;
 
-import org.springframework.stereotype.Service;
 
 import kr.or.smhrd.dto.RegisterDTO;
 
-@Service
 public interface RegisterService {
+	//회원가입
 	public int registerInsert(RegisterDTO dto);
+	// 아이디 중복체크
+	public int idCheck(String mem_id);
 }
