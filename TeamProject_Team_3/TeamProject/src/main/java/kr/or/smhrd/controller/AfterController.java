@@ -17,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -59,10 +60,11 @@ public class AfterController {
 	
 	// 글쓰기 DB 기록
 	@PostMapping("/afterWriteOk")
-	public ResponseEntity<String> afterWriteOk(AfterDTO dto, HttpServletRequest request, @RequestParam("cate") String cate) {
+	public ResponseEntity<String> afterWriteOk(@ModelAttribute AfterDTO dto, HttpServletRequest request, @RequestParam("cate") String cate) {
 		
-		int grad_type = Integer.parseInt(cate);
-		dto.setGrad_type(grad_type);
+//		int grad_type = Integer.parseInt(cate);
+		System.out.println(cate);
+//		dto.setGrad_type(grad_type);
 		dto.setMem_id("king");
 		System.out.println(dto.toString());
 		//dto.setMem_id((String)request.getSession().getAttribute("logId"));

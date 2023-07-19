@@ -37,10 +37,7 @@
 			$(this).parent().remove();
 		});
 	});
-	
-	$(function(){
-		$("#cateNum").val("${param.cate}").attr("selected","selected");
-	});
+
 	
 </script>
 
@@ -49,7 +46,7 @@
 	<!-- 파일첨부가 있을 경우  form 태그에 enctype속성을 반드시 기술해야됨 -->
 	<form method="post" id="frm" action="/smhrd/after/afterWriteOk" enctype="multipart/form-data">
 	<ul class="dataWrite">
-		<select name="cate" id="cateNum">
+		<select name="grad_type" id="cateNum">
 				<option value="1">멘토링</option>
 				<option value="2">채용공고</option>
 				<option value="3">기타</option>	
