@@ -26,8 +26,8 @@
 				
 				<li><a href="/home/register/login">로그인</a></li>	
 				<li><a href="/home/register/regForm">회원가입</a></li>
-				
-				 -->
+				-->
+
 			</c:if>
 			
 			<c:if test="${logStatus == 'Y'}">
