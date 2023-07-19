@@ -32,7 +32,9 @@
 <div id="title">
 	<a href="/smhrd" class="title"><img src="/smhrd/img/로고.png" style="height: 200px;"></a>
 </div>
-	
+<div>
+
+</div>	
 	<nav>
 		<ul>
 			<li><a href="/smhrd/#">공지 게시판</a></li>

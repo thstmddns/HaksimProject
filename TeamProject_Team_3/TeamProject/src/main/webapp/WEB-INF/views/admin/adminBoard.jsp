@@ -6,38 +6,42 @@
 		display: flex;
 		flex-direction: row;
 		flex-wrap: nowrap;
+		height: 500px;
 	}
 	
 	#studentList{
+		text-align: center;
 		width:500px;
 		background-color: #ffffff;
-		border:1px solid #008CCE;
+		border:1px solid #00468C;
 	}
 	#reportList{
+		text-align: center;
 		width:500px;
 		margin-left: 10px;
 		background-color: #ffffff;
-		border:1px solid #008CCE;
-	}
-	#noticeList{
-		width:500px;
-		margin-left: 10px;
-		background-color: #ffffff;
-		border:1px solid #008CCE;
+		border:1px solid #00468C;
 	}
 	
-	table{
-		border: 1px solid #008CCE;
+	#noticeList{
 		text-align: center;
-		width: 450px;
+		width:500px;
+		margin-left: 10px;
+		background-color: #ffffff;
+		border:1px solid #00468C;
 	}
-	td{
-		border: 1px solid #008CCE;
+	
+	table, th, td{
+		border: 1px solid #00468C;
+		text-align: center;
+	}
+	table{
+		width: 450px;
 	}
 </style>
 
 <main>
-	<h1>관리자 페이지</h1>
+	<h1 align="center">관리자 페이지</h1>
 	<div id="adminList">
 		<div id="studentList">
 			<h3>학생 리스트</h3>
@@ -52,9 +56,11 @@
 					</tr>
 				</thead>
 				<tbody>
+					
 					<c:forEach var="mDTO" items="member">
 						
 					</c:forEach>
+				
 				</tbody>
 				
 			</table>
@@ -94,7 +100,7 @@
 			<table>
 				<thead>
 					<tr>
-						<td>공지번호</td>
+						<td>번호</td>
 						<td>작성자</td>
 						<td>제목</td>
 						<td>작성일</td>
