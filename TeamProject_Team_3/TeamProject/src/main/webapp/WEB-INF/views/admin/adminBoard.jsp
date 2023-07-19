@@ -2,122 +2,160 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <style>
+	ul,li{
+		margin: 0px;	
+		padding: 0px;	
+		list-style-type: none;
+	}
+	
+	div > div{
+		border:1px solid #00468C;
+		margin-bottom: 40px;
+		background-color: #bbddff;
+	}
+	h3{
+		text-align: center;
+		margin: 0px;
+	}
 	#adminList{
 		display: flex;
-		flex-direction: row;
-		flex-wrap: nowrap;
+		flex-direction: column;
+		flex-wrap: wrap;
 		height: 500px;
+		align-items: center;
+		padding:0px;
 	}
 	
 	#studentList{
+		width:800px;
 		text-align: center;
-		width:500px;
 		background-color: #ffffff;
 		border:1px solid #00468C;
+		overflow: auto;
+		margin-bottom: 20px;
 	}
+	#studentList > li{
+		float:left;
+		width: 15%;
+		border-bottom: 1px solid #00468C;	
+	}
+	#studentList > li:nth-child(6n+4) {
+		width: 25%;	
+		white-space: nowrap;	/* 줄 바꾸지 않기 */
+		overflow: hidden;	/* 넘치는 값 숨기기 */
+		text-overflow: ellipsis;	/* ... 표시 */
+	}
+	
 	#reportList{
+		width:800px;
 		text-align: center;
-		width:500px;
-		margin-left: 10px;
 		background-color: #ffffff;
 		border:1px solid #00468C;
+		overflow: auto;
+		margin-bottom: 20px;
 	}
+	#reportList > li{
+		float:left;
+		width: 15%;	
+		border-bottom: 1px solid #00468C;
+	}
+	#reportList > li:nth-child(4n+4) {
+		width: 55%;	
+		white-space: nowrap;	/* 줄 바꾸지 않기 */
+		overflow: hidden;	/* 넘치는 값 숨기기 */
+		text-overflow: ellipsis;	/* ... 표시 */
+	}
+	
 	
 	#noticeList{
+		width:800px;
 		text-align: center;
-		width:500px;
-		margin-left: 10px;
 		background-color: #ffffff;
 		border:1px solid #00468C;
+		overflow: auto;
+		margin-bottom: 20px;
 	}
-	
-	table, th, td{
-		border: 1px solid #00468C;
-		text-align: center;
+	#noticeList > li{
+		float:left;
+		width: 15%;	
+		border : 0px solid #00468C;
+		border-bottom: 1px solid #00468C;
 	}
-	table{
-		width: 450px;
+	#noticeList > li:nth-child(6n+5) {
+		width: 25%;	
+		white-space: nowrap;	/* 줄 바꾸지 않기 */
+		overflow: hidden;	/* 넘치는 값 숨기기 */
+		text-overflow: ellipsis;	/* ... 표시 */
 	}
 </style>
 
 <main>
 	<h1 align="center">관리자 페이지</h1>
 	<div id="adminList">
-		<div id="studentList">
+		<div>
 			<h3>학생 리스트</h3>
 			<form>
-			<table>
-				<thead>
-					<tr>
-						<td>아이디</td>
-						<td>이름</td>
-						<td>기수</td>
-						<td>인증여부</td>
-					</tr>
-				</thead>
-				<tbody>
-					
-					<c:forEach var="mDTO" items="member">
-						
-					</c:forEach>
+			<ul id="studentList">
+				<li>&nbsp;</li>
+				<li>아이디</li>
+				<li>이름</li>
+				<li>이메일</li>
+				<li>기수번호</li>
+				<li>기수인증</li>
+				<!-- 
+				<c:forEach var="mDTO" items="${member}">
+					<li><input type="checkbox"></li>
+					<li>${mDTO}</li>
+					<li>${mDTO}</li>
+					<li>${mDTO}</li>
+					<li>${mDTO}</li>
+					<li>${mDTO}</li>
+				</c:forEach>
 				
-				</tbody>
-				
-			</table>
+				 -->
+			</ul>
 			</form>
 		</div>
 		
-		<div id="reportList">
+		<div>
 			<h3>신고내역 리스트</h3>
 			<form>
-			<table>
-				<thead>
-					<tr>
-						<td>신고번호</td>
-						<td>작성자</td>
-						<td>신고내용</td>
-						<td>접수일</td>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="rDTO" items="${report}">
-						<tr>
-							<td>${rDTO.report_num}</td>
-							<td>${rDTO.mem_id }</td>
-							<td>${rDTO.report_content }</td>
-							<td>${rDTO.report_wdate }</td>
-						</tr>
-					</c:forEach>
-				</tbody>
+			<ul id="reportList">
+				<li>&nbsp;</li>
+				<li>번호</li>
+				<li>아이디</li>
+				<li>내용</li>
 				
-			</table>
+				<c:forEach var="rDTO" items="${report}">
+					<li><input type="checkbox"/></li>
+					<li>${rDTO.report_num}</li>
+					<li>${rDTO.mem_id}</li>
+					<li>${rDTO.report_content}</li>
+				</c:forEach>
+			</ul>
 			</form>
 		</div>
 		
-		<div id="noticeList">
+		<div>
 			<h3>공지사항 리스트</h3>
 			<form>
-			<table>
-				<thead>
-					<tr>
-						<td>번호</td>
-						<td>작성자</td>
-						<td>제목</td>
-						<td>작성일</td>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="nDTO" items="${notice}">
-						<tr>
-							<td>${nDTO.notice_num }</td>
-							<td>${nDTO.mem_id }</td>
-							<td>${nDTO.notice_title }</td>
-							<td>${nDTO.notice_wdate }</td>
-						</tr>
-					</c:forEach>
-				</tbody>
+			<ul id="noticeList">
+				<li>&nbsp;</li>
+				<li>번호</li>
+				<li>아이디</li>
+				<li>제목</li>
+				<li>내용</li>
+				<li>작성일</li>
 				
-			</table>
+				<c:forEach var="nDTO" items="${ notice}">
+					<li><input type="checkbox"></li>
+					<li>${nDTO.notice_num}</li>
+					<li>${nDTO.mem_id}</li>
+					<li>${nDTO.notice_title}</li>
+					<li>${nDTO.notice_content}</li>
+					<li>${nDTO.notice_wdate}</li>
+				</c:forEach>
+			</ul>
 			</form>	
 		</div>
 	</div>

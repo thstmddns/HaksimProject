@@ -44,24 +44,23 @@ body{
 }
 
 /* 네비게이션 바 */
-#nav{
-	text-align: center;
-}
 nav{
+	display:flex;
 	padding-left: 50px;
 	height: 40px;
 	background-color: #00468C;
-	text-align: center;
+	
+	align-content:center;
+	justify-content:center;
 }
 nav > ul{
 	margin: 0 auto;
 	list-style-type: none;
 }
 nav li{
-	
 	float:left;
 	line-height: 40px;
-	padding: 0 10px;
+	padding: 0 20px;
 	list-style-type: none;
 }
 
