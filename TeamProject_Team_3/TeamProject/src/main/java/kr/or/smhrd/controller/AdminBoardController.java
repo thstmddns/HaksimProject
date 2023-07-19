@@ -18,26 +18,35 @@ public class AdminBoardController {
 	@GetMapping("/adminList")
 	public ModelAndView boardList() {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("admin/adminList");
+		mav.setViewName("admin/adminBoard");
+		// 학생 리스트
+		
+		// 신고 내역 리스트
+		
+		// 공지사항 리스트
+		
 		return mav;
 	}
 	
-	// 신고 내역 리스트
-		
 	// 신고 게시글 상세 조회
-		
+	
+	
 	// 신고 게시글 삭제
-		
+	
+	
 	// 신고 댓글 상세 조회
-		
+	
+	
 	// 신고 댓글 삭제
-		
-	// 공지사항 리스트
-		
+
+	
 	// 공지사항 작성
-		
+	
+	
 	// 공지사항 수정
 		
+	
 	// 공시사항 삭제
+
 	
 }
