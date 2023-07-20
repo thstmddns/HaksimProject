@@ -32,7 +32,7 @@
 						var tag = "<li><div>";
 						tag += "<b>"+coment.mem_id+"</b>";
 						// 수정, 삭제
-						if(coment.userid=='${logId}') { // 'goguma'==goguma -> logId에 '' 붙여야함
+							 // 'goguma'==goguma -> logId에 '' 붙여야함
 							tag += "<input type='button' value='Edit'/>";
 							tag += "<input type='button' value='Del' title='"+coment.grad_review_num+"'/>";
 							tag += "<p>"+coment.grad_review_content+"<p></div>";  // 댓글 내용
@@ -40,18 +40,15 @@
 							// -- 수정폼
 							tag += "<div style='display:none'>";
 							tag += "<form>";
-							tag += "<textarea style='width:400px' name='coment'>";
+							tag += "<textarea style='width:400px' name='grad_review_content'>";
 							// 글 내용 수정, 댓글번호
 							tag += coment.grad_review_content;
 							tag += "</textarea>";
-							tag += "<input type='hidden' name='coment.grad_review_num' value='"+coment.grad_review_num+"'/>";
+							tag += "<input type='hidden' name='grad_review_num' value='"+coment.grad_review_num+"'/>";
 							tag += "<input type='button' value='수정하기'/>";
 							tag += "</form>";
 							tag += "</div>";
-						}else {
-							tag += "<p>"+coment.grad_review_content+"</p></div>";
-						}
-						tag += "</li>";
+							tag += "</li>";
 						
 						$("#afterReplyList").append(tag);
 				
@@ -63,6 +60,33 @@
 			});
 		}
 		afterReplyList();
+	});
+	
+	$(document).on('click','#afterReplyList input[value=Edit]',function(){
+		$(this).parent().css('display', 'none');
+		
+		$(this).parent().next().css('display', 'block');
+	});
+	
+	// 댓글 수정(DB)
+	$(document).on('click', '#afterReplyList input[value=수정하기]', function(){
+		var params = $(this).parent().serialize();  
+		
+		$.ajax({
+			url : '/smhrd/afterReply/replyEditOk',
+			data : params,
+			type : 'POST',
+			success:function(result){
+				if(result=='0'){
+					alert('댓글이 수정되지 않았습니다');
+				}else{
+					afterReplyAllList();
+				}
+			},
+			error:function(e){
+				console.log("댓글 수정 실패", e.responseText);
+			}
+		});
 	});
 </script>
 

@@ -15,7 +15,7 @@
 	</select>
 	
 	<update id="aReplyUpdate">
-		update grad_review set grad_review_content = #{grad_review_content} where grad_review_num=${grad_review_num}
+		update grad_review set grad_review_content = #{grad_review_content} where grad_review_num = ${grad_review_num}
 	</update>
 	
 	<delete id="aReplyDelete">
