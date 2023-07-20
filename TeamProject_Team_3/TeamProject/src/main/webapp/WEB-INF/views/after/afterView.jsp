@@ -26,13 +26,12 @@
 					grad_num:${dto.grad_num}   // 원글 글번호 보내기
 				},
 				success:function(replyResult) {
-					//$("#afterReplyList").html("");
+					$("#afterReplyList").html("");
 					console.log(replyResult);
 					$(replyResult).each(function(i, coment){
 						var tag = "<li><div>";
 						tag += "<b>"+coment.mem_id+"</b>";
-						// 수정, 삭제
-							 // 'goguma'==goguma -> logId에 '' 붙여야함
+						
 							tag += "<input type='button' value='Edit'/>";
 							tag += "<input type='button' value='Del' title='"+coment.grad_review_num+"'/>";
 							tag += "<p>"+coment.grad_review_content+"<p></div>";  // 댓글 내용
@@ -59,8 +58,6 @@
 				}
 			});
 		}
-		afterReplyList();
-	});
 	
 	$(document).on('click','#afterReplyList input[value=Edit]',function(){
 		$(this).parent().css('display', 'none');
@@ -80,7 +77,7 @@
 				if(result=='0'){
 					alert('댓글이 수정되지 않았습니다');
 				}else{
-					afterReplyAllList();
+					afterReplyList();
 				}
 			},
 			error:function(e){
@@ -88,6 +85,10 @@
 			}
 		});
 	});
+	
+		afterReplyList();
+	});
+	
 </script>
 
 <main>
