@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import kr.or.smhrd.dao.CommunityDAO;
 import kr.or.smhrd.dto.CommunityDTO;
+import kr.or.smhrd.dto.PagingDTO;
 
 @Service
 public class CommunityServiceImpl implements CommunityService {
@@ -15,8 +16,14 @@ public class CommunityServiceImpl implements CommunityService {
 	CommunityDAO dao;
 
 	@Override
-	public List<CommunityDTO> boardList() {
+	public List<CommunityDTO> boardList(PagingDTO pDTO) {
 		
-		return dao.boardList();
+		return dao.boardList(pDTO);
+	}
+
+	@Override
+	public int totalRecord(PagingDTO pDTO) {
+		
+		return dao.totalRecord(pDTO);
 	}
 }
