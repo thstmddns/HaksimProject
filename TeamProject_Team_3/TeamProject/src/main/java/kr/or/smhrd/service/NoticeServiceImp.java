@@ -7,16 +7,23 @@ import org.springframework.stereotype.Service;
 
 import kr.or.smhrd.dao.NoticeDAO;
 import kr.or.smhrd.dto.NoticeDTO;
+import kr.or.smhrd.dto.PagingDTO;
 
 @Service
 public class NoticeServiceImp implements NoticeService {
 	@Autowired
 	NoticeDAO dao;
-	
+
 	@Override
 	public List<NoticeDTO> getNoticeList() {
 		// TODO Auto-generated method stub
 		return dao.getNoticeList();
+	}
+
+	@Override
+	public NoticeDTO selectNotice(int no) {
+		// TODO Auto-generated method stub
+		return dao.selectNotice(no);
 	}
 
 	@Override
@@ -26,9 +33,9 @@ public class NoticeServiceImp implements NoticeService {
 	}
 
 	@Override
-	public int NoticeEditOk(NoticeDTO dto) {
+	public int NoticeEdit(NoticeDTO dto) {
 		// TODO Auto-generated method stub
-		return dao.NoticeEditOk(dto);
+		return dao.NoticeEdit(dto);
 	}
 
 	@Override
@@ -36,5 +43,18 @@ public class NoticeServiceImp implements NoticeService {
 		// TODO Auto-generated method stub
 		return dao.NoticeDel(no, id);
 	}
+
+	@Override
+	public void hitCount(int no) {
+		// TODO Auto-generated method stub
+		dao.hitCount(no);
+	}
+
+	@Override
+	public int totalRecord(PagingDTO pDTO) {
+		// TODO Auto-generated method stub
+		return dao.totalRecord(pDTO);
+	}
+	
 
 }

@@ -3,6 +3,41 @@
   
 <mapper namespace="kr.or.smhrd.dao.NoticeDAO">
 	<select id="getNoticeList" resultType="kr.or.smhrd.dto.NoticeDTO">
-		SELECT notice_num, admin_num, mem_id, notice_title, notice_content, to_char(notice_wdate,'MM-DD HH:MI') notice_wdate, notice_update FROM notice
+		SELECT notice_num, admin_num, mem_id, notice_title, notice_content, to_char(notice_wdate,'MM-DD HH:MI') notice_wdate, notice_update 
+		FROM notice
+		ORDER BY notice_num desc
 	</select>
+	
+	<select id="selectNotice" resultType="kr.or.smhrd.dto.NoticeDTO">
+		SELECT notice_num, mem_id, notice_title, notice_content, to_char(notice_wdate,'MM-DD HH:MI') notice_wdate, notice_update 
+		FROM notice
+		WHERE notice_num=${param1}	
+	</select>
+	<update id="hitCount">
+		UPDATE notice SET notice_hit = notice_hit+1 WHERE notice_num=${param1}
+	</update>
+	
+	<insert id="NoticeWriteOk" parameterType="kr.or.smhrd.dto.NoticeDTO">
+		INSERT INTO notice 
+		VALUES (notice_no_seq.nextval,${admin_num},#{mem_id},#{notice_title},#{notice_content}, sysdate, null,0);
+	</insert>
+	
+	<update id="NoticeEditOk">
+		UPDATE notice 
+		SET notice_totle=${notice_title}, notice_content=${notice_content}, notitce_update=sysdate 
+		WHERE notice_num=${notice_num} AND mem_id=#{mem_id}
+	</update>
+	
+	<delete id="NoticeDelOk">
+		DELETE FROM notice WHERE notice_num=${param1} AND mem_id=#{param3}
+	</delete>
+	
+	<select id="totalRecord" resultType="int">
+		select count(notice_num) cnt from notice
+		<if test="searchWord != null">
+			where ${searchKey} like '%${searchWord}%'
+		</if>
+	</select>
+	
+	
 </mapper>
