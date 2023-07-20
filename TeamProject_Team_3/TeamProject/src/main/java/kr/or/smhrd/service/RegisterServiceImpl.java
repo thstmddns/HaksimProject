@@ -20,5 +20,9 @@ public class RegisterServiceImpl implements RegisterService {
 		System.out.println("cnt: " + cnt);
 		return cnt;
 	}
+	@Override
+	public RegisterDTO loginOk(String mem_id, String mem_password) {
+		return dao.loginOk(mem_id, mem_password);
+	}
 	
 }

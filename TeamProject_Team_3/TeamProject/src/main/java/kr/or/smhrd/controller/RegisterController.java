@@ -1,5 +1,7 @@
 package kr.or.smhrd.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -50,5 +52,23 @@ public class RegisterController {
 	public int idCheck(@RequestParam("mem_id") String mem_id) {
 		int cnt = service.idCheck(mem_id);
 		return cnt;
+	}
+	
+	//·Î±×ÀÎ
+	@PostMapping("/loginOk")
+	public ModelAndView loginOk(String mem_id, String mem_password, HttpSession session) {
+		RegisterDTO dto = service.loginOk(mem_id, mem_password);
+		ModelAndView mav = new ModelAndView();
+		if(dto!=null) {
+			session.setAttribute("logId", dto.getMem_id());
+			session.setAttribute("logType", dto.getMem_type());
+			session.setAttribute("logCa", dto.getMem_ca());
+			session.setAttribute("logStatus", "Y");
+			 
+			 mav.setViewName("redirect:smhrd");
+		}else {
+			mav.setViewName("redirect:login");
+		}
+		return mav;
 	}
 }
