@@ -37,11 +37,23 @@
 </div>	
 	<nav>
 		<ul>
+<<<<<<< HEAD
 			<li><a href="/smhrd/notice/noticeList">공지 게시판</a></li>
 			<li><a href="/smhrd/#">자료 공유 게시판</a></li>
 			<li><a href="/smhrd/#">커뮤니티 게시판</a></li>
 			<li><a href="/smhrd/#">맛집 공유 게시판</a></li>
 			<li><a href="/smhrd/after/afterList">수료생 게시판</a></li>
+=======
+			<c:if test="${logStatus != 'Y'}">
+
+				
+				<li><a href="/home/register/login">로그인</a></li>	
+				<li><a href="/smhrd/register/regForm">회원가입</a></li>
+
+
+			</c:if>
+			
+>>>>>>> a5ceef1db85b52c0e587c99b4380b7ccf2fa5d55
 			<c:if test="${logStatus == 'Y'}">
 				<li><a href="/smhrd/admin/adminList">관리자 페이지</a></li>
 			</c:if>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.smhrd.dao.RegisterDAO">
+	<insert id="registerInsert">
+		insert into member(mem_id, mem_password, mem_type, mem_age, mem_email, mem_name, mem_wdate, mem_ca)
+		values (#{mem_id}, #{mem_password}, #{mem_type}, #{mem_age}, #{mem_email}, #{mem_name}, sysdate, #{mem_ca})
+	</insert>	
+	
+	<select id="loginOk" resultType="kr.or.smhrd.dto.RegisterDTO">
+		select mem_id, mem_name from member 
+		where mem_id = #{param1} and mem_password= #{param2}
+	</select>
+	<select id="idChk" resultType="int">
+		SELECT COUNT(*) FROM member
+		WHERE mem_id = #{mem_id}
+	</select>	
+	<!-- 아이디 중복 체크 -->
+	<select id="idCheck" parameterType="String" resultType="int">
+		SELECT COUNT(mem_id) FROM member WHERE mem_id= #{mem_id}
+	</select>
+</mapper>

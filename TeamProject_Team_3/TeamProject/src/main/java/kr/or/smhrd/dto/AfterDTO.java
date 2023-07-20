@@ -15,5 +15,5 @@ public class AfterDTO {
 	private String mem_id;
 	private int grad_hit;
 	private String grad_wdate;
-	private String grad_update; 
+	private String grad_update;
 }
