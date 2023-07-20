@@ -189,6 +189,7 @@
 	</ul>	
 	
 	<div>
+		<a href="/smhrd/after/afterEdit?grad_num=${dto.grad_num}">수정</a>
 		<a href="javascript:afterDelChk()">삭제</a>
 	</div>
 	

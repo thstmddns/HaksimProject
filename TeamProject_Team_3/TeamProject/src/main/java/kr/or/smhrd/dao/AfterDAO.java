@@ -22,6 +22,7 @@ public interface AfterDAO {
 		public int afterInsert(AfterDTO dto);
 		//파일명 등록
 		public int afterFileInsert(List<AfterFileDTO> fileList);
+		
 		// 게시글 수정 
 		public int afterEdit(AfterDTO dto);
 		

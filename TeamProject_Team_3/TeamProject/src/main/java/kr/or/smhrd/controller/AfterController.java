@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -119,4 +120,30 @@ public class AfterController {
 		return mav;
 	}
 	
+	//  게시글 수정 폼
+		@GetMapping("/afterEdit")
+		public ModelAndView afterEdit(int grad_num) {
+			ModelAndView mav = new ModelAndView();
+			
+			mav.addObject("dto", service.afterSelect(grad_num));
+			
+			mav.setViewName("after/afterEdit");
+			return mav;
+		}
+		
+		// 글 수정하기
+		@PostMapping("/afterEditOk")  
+		public ModelAndView afterEditOk(AfterDTO dto, HttpSession session, HttpServletRequest request) {
+			
+			ModelAndView mav = new ModelAndView();
+			try {
+				int result = service.afterEdit(dto);
+				
+				mav.setViewName("redirect:afterView/"+dto.getGrad_num());
+			}catch(Exception e){
+				e.printStackTrace();
+				mav.setViewName("redirect:afterEdit?grad_num="+dto.getGrad_num());
+			}
+			return mav;
+		}
 }
