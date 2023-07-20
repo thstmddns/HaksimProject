@@ -54,7 +54,14 @@ public class RegisterController {
 		return cnt;
 	}
 	
-	//로그인
+	// 로그인
+	@GetMapping("/login")
+	public String login() {
+		System.out.println(1);
+	   return "register/login";
+	}
+
+	// 로그인 확인
 	@PostMapping("/loginOk")
 	public ModelAndView loginOk(String mem_id, String mem_password, HttpSession session) {
 		RegisterDTO dto = service.loginOk(mem_id, mem_password);
@@ -65,10 +72,19 @@ public class RegisterController {
 			session.setAttribute("logCa", dto.getMem_ca());
 			session.setAttribute("logStatus", "Y");
 			 
-			 mav.setViewName("redirect:smhrd");
+			 mav.setViewName("redirect:/");
 		}else {
 			mav.setViewName("redirect:login");
 		}
 		return mav;
 	}
+	@GetMapping("/logout")
+	public ModelAndView logout(HttpSession session) {
+		session.invalidate();
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:/");
+		return mav;
+	}
+	
+	
 }

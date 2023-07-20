@@ -17,16 +17,16 @@
 <div class="headLine">	
 	<!-- 로그아웃 상태 -->
 	<c:if test="${logStatus != 'Y'}">
-		<a href="/smhrd/#"><input type="button" value="로그인"></a>
+		<a href="/smhrd/register/login"><input type="button" value="로그인"></a>
 		<a href="/smhrd/#"><input type="button" value="회원가입"></a>
 	</c:if>
 	
 	<!-- 로그인 상태 -->
 	<c:if test="${logStatus == 'Y'}">
 		<span style="color: #66CC99">${logName}</span>
-		<a href="/smhrd/#"><input type="button" value="로그아웃"></a>	
+		<a href="/smhrd/register/logout"><input type="button" value="로그아웃"></a>	
 		<a href="/smhrd/#"><input type="button" value="회원정보수정"></a>
-	</c:if>
+	</c:if> 
 </div>
 
 <div id="title">
@@ -47,7 +47,7 @@
 			<c:if test="${logStatus != 'Y'}">
 
 				
-				<li><a href="/home/register/login">로그인</a></li>	
+				<li><a href="/smhrd/register/login">로그인</a></li>	
 				<li><a href="/smhrd/register/regForm">회원가입</a></li>
 
 
