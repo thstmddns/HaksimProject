@@ -4,7 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.or.smhrd.dao.RegisterDAO">
 	<insert id="registerInsert">
-		insert into member_x(mem_id, mem_password, mem_type, mem_age, mem_email, mem_name, mem_wdate, mem_ca)
+		insert into member(mem_id, mem_password, mem_type, mem_age, mem_email, mem_name, mem_wdate, mem_ca)
 		values (#{mem_id}, #{mem_password}, #{mem_type}, #{mem_age}, #{mem_email}, #{mem_name}, sysdate, #{mem_ca})
 	</insert>	
 	
