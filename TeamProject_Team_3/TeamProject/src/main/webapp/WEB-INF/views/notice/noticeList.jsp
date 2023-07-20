@@ -23,12 +23,12 @@
 	 height:40px;
 	 line-height:40px;
 	 border-bottom:1px solid #ddd;
-	 width:10%;
+	 width:15%;
 	 text-align:center;
 }
 
-.noticeList > li:nth-child(5n+3) {
-	 width:60%;
+.noticeList > li:nth-child(5n+2) {
+	 width: 40%;
 	 /*말줄임표시*/
 	 white-space:nowrap;  /*줄 바꾸지 않기*/
 	 overflow:hidden;   /*넘친값 숨기기*/
@@ -89,16 +89,16 @@
 		<ul class="noticeList">
 			<li>no</li>
 			<li>제목</li>
-			<li>내용</li>
 			<li>글쓴이</li>
 			<li>등록일</li>
+			<li>조회수</li>
 			
 			<c:forEach var="notice" items="${notice}">
 				<li>${notice.notice_num}</li>
 				<li><a href="/smhrd/notice/noticeView/${notice.notice_num}">${notice.notice_title}</a></li>
-				<li>${notice.notice_content}</li>
 				<li>${notice.mem_id}</li>
 				<li>${notice.notice_wdate}</li>
+				<li>${notice.notice_hit }</li>
 			</c:forEach>
 		</ul>
 	</div>
@@ -119,7 +119,7 @@
 				<c:if test="${p <= pDTO.totalPage}">
 					<!-- 선택한 페이지 번호 표시 -->
 					<c:if test="${p == pDTO.nowPage }">		
-						<li style="background: #004d40; border-radius: 50%; width:25px; height:25px;">
+						<li style="background: #00468C; border-radius: 50%; width:25px; height:25px;">
 							<a style="color: white" href='/smhrd/notice/noticeList?nowPage=${p}<c:if test="${pDTO.searchWord!=null}">&searchKey=${pDTO.searchKey}&searchWord=${pDTO.searchWord}</c:if>'>${p}</a>
 						</li>
 					</c:if>
@@ -153,4 +153,5 @@
 			<input type="submit" value="Search" class="searchBtn"/>
 		</form>
 	</div>
+	
 </main>

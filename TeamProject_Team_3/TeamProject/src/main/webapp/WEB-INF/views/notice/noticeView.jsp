@@ -2,45 +2,46 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <style>
 ul,li{
-		margin: 0px;	
-		padding: 0px;	
-		list-style-type: none;
+	margin: 0px;	
+	padding: 0px;	
+	list-style-type: none;
 }
- .dataView li {
- 	margin-top:10px;
- }
+.NoticeView li {
+	margin-top:10px;
+}
 </style>
 <script>
-	/* function dataDel() {
+	function noticeDel() {
 		if(confirm("자료실 글을 삭제하시겠습니까?")) {
-			location.href = "/smhrd/data/dataDel?no=${dto.no}";
+			location.href = "/smhrd/notice/NoticeDel";
 		}
-	} */
+	} 
 </script>
 
 
 <main>
 	<h1>수료생 게시판 글 내용 보기</h1>
-	<ul class="dataView">
+	<ul class="NoticeView">
 		<li>번호 : ${notice.notice_num}</li>
 		<li>글쓴이 : ${notice.mem_id}</li>
-		<%-- <li>조회수 : ${dto.grad_hit}</li> --%>
+		<li>조회수 : ${notice.notice_hit}</li>
 		<li>등록일 : ${notice.notice_wdate}</li>
 		<li>제목 : ${notice.notice_title}</li>
 		<li><br>글내용<br/> ${notice.notice_content}</li>
-		<li><br/>첨부파일 : 
-			<%-- <c:forEach var="fDTO" items="${fileList}">
-				<a href="<%=request.getContextPath()%>/upload/${fDTO.filename}" download>${fDTO.filename}</a>
-			</c:forEach> --%>
-		</li>
+		
 	</ul>
-	<hr/>
-	<!-- 본인이 쓴 글일 때 수정/삭제 가능 -->
-	<c:if test="${logId == notice.mem_id}">
-		<div>
-			<a href="/smhrd/notice/noticeEdit/${notice.notice_num}">수정</a>
-			<a href="javascript:dataDel()">삭제</a>
-		</div>
-	</c:if>
+	
+	<!-- 작성자가 아닌 경우 글에 대한 수정, 삭제 권한 부여 x -->
+	<div align="right">
+		<a href='/smhrd/notice/noticeList'><button>목록</button></a>
+		<%-- <a href='/smhrd/notice/noticeList?nowPage=${pDTO.nowPage}<c:if test="${pDTO.searchWord!=null}">&searchKey=${pDTO.searchKey}&searchWord=${pDTO.searchWord}</c:if>'><button>목록</button></a> --%>
+		<!-- 작성자가 아닌 경우 글에 대한 수정, 삭제 권한 부여 o -->
+		<c:if test="${logId == dto.userid}">	
+				<a href='/smhrd/notice/noticeEdit?notice_num=${notice.notice_num}&nowPage=${pDTO.nowPage}<c:if test="${pDTO.searchWord!=null}">&searchKey=${pDTO.searchKey}&searchWord=${pDTO.searchWord}</c:if>'><button>수정</button></a>
+				<a href="javascript:noticeDel()"><button>삭제</button></a>
+		</c:if>
+	</div>
+	
+	
 
 </main>

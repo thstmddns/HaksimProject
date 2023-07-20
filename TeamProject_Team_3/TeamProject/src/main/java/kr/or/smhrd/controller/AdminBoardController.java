@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.or.smhrd.dto.NoticeDTO;
+import kr.or.smhrd.dto.PagingDTO;
 import kr.or.smhrd.dto.ReportDTO;
 import kr.or.smhrd.service.NoticeService;
 import kr.or.smhrd.service.ReportService;
@@ -28,7 +29,7 @@ public class AdminBoardController {
 	
 	// 관리자 페이지로 이동
 	@GetMapping("/adminList")
-	public ModelAndView boardList() {
+	public ModelAndView boardList(PagingDTO pDTO) {
 		ModelAndView mav = new ModelAndView();
 		
 		// 학생 리스트
@@ -38,7 +39,7 @@ public class AdminBoardController {
 		mav.addObject("report",rService.getReportList());
 		
 		// 공지사항 리스트
-		mav.addObject("notice",nService.getNoticeList());
+		mav.addObject("notice",nService.NoticeList(pDTO));
 		
 		mav.setViewName("admin/adminBoard");
 		

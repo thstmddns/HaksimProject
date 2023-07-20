@@ -15,33 +15,27 @@ public class NoticeServiceImp implements NoticeService {
 	NoticeDAO dao;
 
 	@Override
-	public List<NoticeDTO> getNoticeList() {
-		// TODO Auto-generated method stub
-		return dao.getNoticeList();
-	}
-
-	@Override
-	public NoticeDTO selectNotice(int no) {
-		// TODO Auto-generated method stub
-		return dao.selectNotice(no);
-	}
-
-	@Override
 	public int NoticeWriteOk(NoticeDTO dto) {
 		// TODO Auto-generated method stub
 		return dao.NoticeWriteOk(dto);
 	}
 
 	@Override
-	public int NoticeEdit(NoticeDTO dto) {
+	public List<NoticeDTO> NoticeList(PagingDTO pDTO) {
 		// TODO Auto-generated method stub
-		return dao.NoticeEdit(dto);
+		return dao.NoticeList(pDTO);
 	}
 
 	@Override
-	public int NoticeDel(int no, String id) {
+	public int totalRecord(PagingDTO pDTO) {
 		// TODO Auto-generated method stub
-		return dao.NoticeDel(no, id);
+		return dao.totalRecord(pDTO);
+	}
+
+	@Override
+	public NoticeDTO getNotice(int no) {
+		// TODO Auto-generated method stub
+		return dao.getNotice(no);
 	}
 
 	@Override
@@ -51,10 +45,15 @@ public class NoticeServiceImp implements NoticeService {
 	}
 
 	@Override
-	public int totalRecord(PagingDTO pDTO) {
+	public int NoticeEditOk(NoticeDTO dto) {
 		// TODO Auto-generated method stub
-		return dao.totalRecord(pDTO);
+		return dao.NoticeEditOk(dto);
 	}
-	
+
+	@Override
+	public int NoticeDel(int no, String id) {
+		// TODO Auto-generated method stub
+		return dao.NoticeDel(no, id);
+	}
 
 }

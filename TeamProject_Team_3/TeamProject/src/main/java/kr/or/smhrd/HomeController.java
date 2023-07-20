@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class HomeController {
-	// ∏ﬁ¿Œ
-	//@RequestMapping(value = "/", method = RequestMethod.GET)
+	
+	
 	@GetMapping("/")
 	public String home(Locale locale, Model model) {		
 		model.addAttribute("notice", model);

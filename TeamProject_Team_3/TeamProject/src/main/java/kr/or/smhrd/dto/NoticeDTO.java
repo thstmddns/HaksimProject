@@ -10,8 +10,6 @@ import lombok.NoArgsConstructor;
 public class NoticeDTO {
 	private int notice_num;
 	
-	private int admin_num;
-	
 	private String mem_id;
 	
 	private String notice_title;
@@ -21,4 +19,6 @@ public class NoticeDTO {
 	private String notice_wdate;
 	
 	private String notice_update;
+	
+	private int notice_hit;
 }
