@@ -23,10 +23,13 @@ public class AfterReplyController {
 	@PostMapping("/afterReply/replyWrite")
 	public String replyWrite(AfterReplyDTO dto, HttpSession session) {
 		// session 글쓴이 구하기
-		dto.setMem_id((String)session.getAttribute("logId"));
+		dto.setMem_id("King");
 		
+		System.out.println(dto.toString());
 		int result = service.aReplyInsert(dto);
-	
+		
+		System.out.println(dto.getMem_id());
+		
 		return result+""; 
 	}
 	

@@ -58,7 +58,39 @@
 				}
 			});
 		}
-<<<<<<< HEAD
+		
+		// 댓글 쓰기
+		$("#afterReplyFrm").submit(function() {
+			
+			event.preventDefault();  
+			
+			if($("#gradComent").val() == "") {
+				alert("댓글을 입력하세요");
+				return false;
+			}
+			
+			var params = $("#afterReplyFrm").serialize();
+			console.log('params', params);
+			
+			$.ajax({
+				url: '/smhrd/afterReply/replyWrite',
+				data: params,
+				type: 'POST',
+				success:function(result) {
+					console.log(result);
+					
+					$("#gradComent").val("");
+					
+					afterReplyList();
+					
+				},
+				error:function(e){
+					console.log(e.responseText);
+				} 
+			});
+				
+		});
+		
 		
 		//댓글 수정폼
 		$(document).on('click','#afterReplyList input[value=Edit]',function(){
@@ -112,7 +144,6 @@
 				}
 			});
 		});
-=======
 	
 	$(document).on('click','#afterReplyList input[value=Edit]',function(){
 		$(this).parent().css('display', 'none');
@@ -140,8 +171,7 @@
 			}
 		});
 	});
-	
->>>>>>> 0fabbebdaf23774de7005b81dc7806c7ce389c02
+
 		afterReplyList();
 	});
 	
@@ -165,11 +195,10 @@
 		<!-- 댓글 달기 -->
 	<div id="afterReply">
 			<form method="post" id="afterReplyFrm">
-				<input type="hidden" name="gradNum" value="${dto.grad_num }">  
-				<textarea name="gradComent" id="gradComent"></textarea>
+				<input type="hidden" name="grad_num" value="${dto.grad_num }">  
+				<textarea name="grad_review_content" id="gradComent"></textarea>
 				<input type="submit" value="댓글 등록하기">
 			</form>
-			<!-- 액션태그 생략하면 기본이 자신 페이지로 이동 -->
 		<hr/>
 		<ul id="afterReplyList">
 			

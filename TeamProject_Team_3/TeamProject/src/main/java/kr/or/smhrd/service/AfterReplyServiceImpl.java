@@ -13,7 +13,7 @@ import kr.or.smhrd.dto.AfterReplyDTO;
 public class AfterReplyServiceImpl implements AfterReplyService {
 	@Inject
 	AfterReplyDAO dao;
-
+	
 	@Override
 	public int aReplyInsert(AfterReplyDTO dto) {
 		
