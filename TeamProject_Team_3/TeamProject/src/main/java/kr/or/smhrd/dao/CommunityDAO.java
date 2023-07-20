@@ -3,6 +3,7 @@ package kr.or.smhrd.dao;
 import java.util.List;
 
 import kr.or.smhrd.dto.CommunityDTO;
+import kr.or.smhrd.dto.PagingDTO;
 
 public interface CommunityDAO {
 	
@@ -10,10 +11,10 @@ public interface CommunityDAO {
 	//public int boardWriteOk(CommunityDTO dto); 
 	
 	// 글 목록 선택 
-	public List<CommunityDTO> boardList();
+	public List<CommunityDTO> boardList(PagingDTO pDTO);
 	
 	// 총 레코드 수
-	//public int totalRecord(PagingDTO pDTO);
+	public int totalRecord(PagingDTO pDTO);
 	
 	// 한개의 레코드 선택
 	//public CommunityDTO getBoard(int no);

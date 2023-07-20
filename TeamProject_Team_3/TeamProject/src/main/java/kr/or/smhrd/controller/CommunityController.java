@@ -22,17 +22,17 @@ public class CommunityController {
 	
 	// 게시판으로 이동
 	@GetMapping("/communityList")
-	public ModelAndView communityList() {	
+	public ModelAndView communityList(PagingDTO pDTO) {	
 
 		// 1. 총 레코드 수 설정
-		//pDTO.setTotalRecord(service.totalRecord(pDTO));
+		pDTO.setTotalRecord(service.totalRecord(pDTO));
 		
 		// 2. DB data
-		List <CommunityDTO> list = service.boardList();
+		List <CommunityDTO> list = service.boardList(pDTO);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", list);		
-		//mav.addObject("pDTO", pDTO);
+		mav.addObject("pDTO", pDTO);
 		mav.setViewName("community/communityList");
 		
 		return mav;

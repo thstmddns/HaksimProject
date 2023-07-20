@@ -2,8 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kr.or.smhrd.dao.CommunityDAO">
-	<select id="boardList" resultType="kr.or.smhrd.dto.CommunityDTO">
-		SELECT com_num, com_title, mem_id, com_hit, to_char(com_wdate,'MM-DD HH:MI') com_wdate FROM community 
-	</select>
+		<select id="boardList" resultType="kr.or.smhrd.dto.CommunityDTO">		
+		SELECT * FROM
+		(SELECT * FROM 
+		(SELECT com_num, com_title, mem_id, com_hit, to_char(com_wdate,'MM-DD HH:MI') com_wdate FROM community 
+		<if test="searchWord != null">
+			where ${searchKey} like '%${searchWord}%'
+		</if>		
+		ORDER BY com_num desc) 
+		WHERE <![CDATA[rownum<=${nowPage*onePageRecord}]]> order by com_num asc) 
+		WHERE <![CDATA[rownum<=${lastPageRecord}]]> order by com_num desc
+		</select>
+	
+		<select id="totalRecord" resultType="int">
+		select count(com_num) cnt from community
+		<if test="searchWord != null">
+			where ${searchKey} like '%${searchWord}%'
+		</if>
+		</select>
 	
 </mapper>
