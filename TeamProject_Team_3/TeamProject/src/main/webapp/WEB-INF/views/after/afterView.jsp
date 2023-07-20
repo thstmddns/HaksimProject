@@ -181,6 +181,15 @@
 	<h1>수료생 게시판 글 내용 보기</h1>
 	<ul class="afterView">
 		<li>번호 : ${dto.grad_num}</li>
+		<c:if test="${dto.grad_type==1}">
+			<li>멘토링</li>	
+		</c:if>
+		<c:if test="${dto.grad_type==2}">
+			<li>채용 공고</li>
+		</c:if>
+		<c:if test="${dto.grad_type==3}">
+			<li>기타</li>
+		</c:if>	
 		<li>글쓴이 : ${dto.mem_id}</li>
 		<li>조회수 : ${dto.grad_hit}</li>
 		<li>등록일 : ${dto.grad_wdate}</li>

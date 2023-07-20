@@ -59,37 +59,24 @@ public class AfterController {
 		return mav;
 	}
 	
-	// 글쓰기 DB 기록
-	@PostMapping("/afterWriteOk")
-	public ResponseEntity<String> afterWriteOk(@ModelAttribute AfterDTO dto, HttpServletRequest request, @RequestParam("cate") String cate) {
-		
-//		int grad_type = Integer.parseInt(cate);
-		System.out.println(cate);
-//		dto.setGrad_type(grad_type);
-		dto.setMem_id("king");
-		System.out.println(dto.toString());
-		//dto.setMem_id((String)request.getSession().getAttribute("logId"));
-		
-		int result = 0;
-		try {
-			result = service.afterInsert(dto);
-		} catch (Exception e) {
-			System.out.println("게시글 등록 예외 발생" + e.getMessage());
-		}
+	// 글 등록 DB기록
+		@PostMapping("/afterWriteOk")
+		public ModelAndView afterWriteOk(HttpServletRequest request, AfterDTO dto) {
+			
+			dto.setMem_id("King");
+			
+			ModelAndView mav = new ModelAndView();
+			try {
 				
-		String tag = "<script>";
-		if(result>0) {
-			tag += "location.href='/smhrd/after/afterList';";
-		}else { 
-			tag += "alert('게시글 등록이 실패하였습니다.');";
-			tag += "history.back();";
-		}
-			tag += "</script>";
-				
-			HttpHeaders headers = new HttpHeaders();
-			headers.setContentType(new MediaType("text", "html", Charset.forName("UTF-8")));
-			return new ResponseEntity<String>(tag, headers, HttpStatus.OK);
-		}		
+				int result = service.afterInsert(dto);
+				System.out.println(dto.toString());
+				mav.setViewName("redirect:afterList");
+			}catch(Exception e) {
+				e.printStackTrace();
+				mav.setViewName("after/afterResult");
+			}
+			return mav;
+		}	
 	
 	// 게시글 세부 보기
 	@GetMapping("/afterView/{grad_num}")

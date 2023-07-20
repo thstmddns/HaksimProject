@@ -28,9 +28,12 @@
 		</if>
 	</select>
 	
-	<insert id="afterInsert">
+	<insert id="afterInsert" parameterType="kr.or.smhrd.dto.AfterDTO">
 		insert into grad(grad_num, mem_id, grad_title, grad_content, grad_type, grad_wdate) 
 		values(grad_no_seq.nextval, #{mem_id}, #{grad_title}, #{grad_content}, ${grad_type}, sysdate)
+		<selectKey resultType="int" keyProperty="grad_num" order="AFTER">
+			select grad_no_seq.currval from dual
+		</selectKey>
 	</insert>	 
 	
 	<delete id="afterDelete">
@@ -38,7 +41,7 @@
 	</delete>
 	
 	<select id="afterSelect" resultType="kr.or.smhrd.dto.AfterDTO">
-		select grad_num, mem_id, grad_title, grad_content, grad_hit, grad_wdate
+		select grad_num, mem_id, grad_title, grad_content, grad_hit, grad_wdate, grad_type
 		from grad where grad_num=${param1}
 	</select>
 	
