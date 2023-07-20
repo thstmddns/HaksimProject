@@ -58,6 +58,7 @@
 				}
 			});
 		}
+<<<<<<< HEAD
 		
 		//댓글 수정폼
 		$(document).on('click','#afterReplyList input[value=Edit]',function(){
@@ -111,6 +112,36 @@
 				}
 			});
 		});
+=======
+	
+	$(document).on('click','#afterReplyList input[value=Edit]',function(){
+		$(this).parent().css('display', 'none');
+		
+		$(this).parent().next().css('display', 'block');
+	});
+	
+	// 댓글 수정(DB)
+	$(document).on('click', '#afterReplyList input[value=수정하기]', function(){
+		var params = $(this).parent().serialize();  
+		
+		$.ajax({
+			url : '/smhrd/afterReply/replyEditOk',
+			data : params,
+			type : 'POST',
+			success:function(result){
+				if(result=='0'){
+					alert('댓글이 수정되지 않았습니다');
+				}else{
+					afterReplyList();
+				}
+			},
+			error:function(e){
+				console.log("댓글 수정 실패", e.responseText);
+			}
+		});
+	});
+	
+>>>>>>> 0fabbebdaf23774de7005b81dc7806c7ce389c02
 		afterReplyList();
 	});
 	
