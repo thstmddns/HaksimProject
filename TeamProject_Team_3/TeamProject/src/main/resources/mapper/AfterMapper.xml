@@ -26,15 +26,15 @@
 			where ${searchKey} like '%${searchWord}%'    
 			<!-- #은 ''를 붙여주는 기능을 하고 $는 ''을 붙이지 x -->
 		</if>
-	</select>
-	
+	</select>	
 	<insert id="afterInsert" parameterType="kr.or.smhrd.dto.AfterDTO">
 		insert into grad(grad_num, mem_id, grad_title, grad_content, grad_type, grad_wdate) 
+
 		values(grad_no_seq.nextval, #{mem_id}, #{grad_title}, #{grad_content}, ${grad_type}, sysdate)
 		<selectKey resultType="int" keyProperty="grad_num" order="AFTER">
 			select grad_no_seq.currval from dual
 		</selectKey>
-	</insert>	 
+	</insert>
 	
 	<delete id="afterDelete">
 		delete from grad where grad_num=${param1}

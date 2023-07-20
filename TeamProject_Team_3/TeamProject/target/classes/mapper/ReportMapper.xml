@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="kr.or.smhrd.dao.ReportDAO">
+	<select id="getReportList" resultType="kr.or.smhrd.dto.ReportDTO">
+		SELECT report_num, mem_id, report_content, report_wdate FROM report_board
+	</select>
+</mapper>
