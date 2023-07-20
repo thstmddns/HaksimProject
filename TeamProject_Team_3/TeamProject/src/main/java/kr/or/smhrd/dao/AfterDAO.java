@@ -20,8 +20,7 @@ public interface AfterDAO {
 		
 		// 수료생 글 등록
 		public int afterInsert(AfterDTO dto);
-		//파일명 등록
-		public int afterFileInsert(List<AfterFileDTO> fileList);
+		
 		
 		// 게시글 수정 
 		public int afterEdit(AfterDTO dto);
@@ -30,6 +29,4 @@ public interface AfterDAO {
 		public int afterDelete(int grad_num);
 		
 		
-		// 해당 글의 첨부파일 선택
-		public List<AfterFileDTO> afterFileSelect(int grad_num);
 }

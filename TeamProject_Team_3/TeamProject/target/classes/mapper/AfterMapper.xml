@@ -53,4 +53,6 @@
 		update grad set grad_title=#{grad_title}, grad_content=#{grad_content} 
 		where grad_num=${grad_num}
 	</update>
+	
+	
 </mapper>

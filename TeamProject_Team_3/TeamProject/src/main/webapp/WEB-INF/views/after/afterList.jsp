@@ -58,6 +58,10 @@
 <main>
 	<h1>수료생 게시판 목록</h1>
 	<div>
+		<input type='checkbox' name='grad_type' value='1' onclick='getCheckboxValue()'/> 멘토링
+		<input type='checkbox' name='grad_type' value='2' onclick='getCheckboxValue()'/> 채용공고
+		<input type='checkbox' name='grad_type' value='3' onclick='getCheckboxValue()'/> 기타
+		</br>
 		<a href="${pageContext.request.contextPath}/after/afterWrite"><button>글쓰기</button></a>
 	</div>
 	<div>총 레코드 수 : ${pDTO.totalRecord}개</div>
