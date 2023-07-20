@@ -40,6 +40,13 @@
 	
 	<form method="post" action="/smhrd/register/registerOk">
 		<ul>
+			<select name="mem_type" id="mem_type">
+				<option value="0">미인증</option>
+				<option value="1">학생</option>
+				<option value="2">수료생</option>
+				<option value="3">선생님</option>	
+				<option value="4">관리자</option>	
+			</select>
 			<li>아이디 : <input type="text" name="mem_id" id="mem_id" oninput="checkId()"/></li>
 			<span class="id_ok">사용 가능한 아이디 입니다</span>
 			<span class="id_already">누군가 이 아이디를 사용하고 있어요.</span>
