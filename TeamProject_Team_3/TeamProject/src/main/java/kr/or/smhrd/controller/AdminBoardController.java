@@ -32,15 +32,13 @@ public class AdminBoardController {
 		ModelAndView mav = new ModelAndView();
 		
 		// 학생 리스트
-		/* mav.addObject("member", ); */
+		/* mav.addObject("member", mService.getMemberList()); */
 		
 		// 신고 내역 리스트
 		mav.addObject("report",rService.getReportList());
-		System.out.println(rService.getReportList());
 		
 		// 공지사항 리스트
 		mav.addObject("notice",nService.getNoticeList());
-		System.out.println(nService.getNoticeList());
 		
 		mav.setViewName("admin/adminBoard");
 		

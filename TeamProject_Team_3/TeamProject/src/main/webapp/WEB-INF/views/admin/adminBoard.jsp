@@ -13,9 +13,11 @@
 		margin-bottom: 40px;
 		background-color: #bbddff;
 	}
-	h3{
+	
+	h2{
 		text-align: center;
-		margin: 0px;
+		margin: 10px;
+		color: #ffffff;
 	}
 	#adminList{
 		display: flex;
@@ -32,7 +34,7 @@
 		background-color: #ffffff;
 		border:1px solid #00468C;
 		overflow: auto;
-		margin-bottom: 20px;
+		margin-bottom: 5px;
 	}
 	#studentList > li{
 		float:left;
@@ -52,7 +54,7 @@
 		background-color: #ffffff;
 		border:1px solid #00468C;
 		overflow: auto;
-		margin-bottom: 20px;
+		margin-bottom: 5px;
 	}
 	#reportList > li{
 		float:left;
@@ -73,7 +75,7 @@
 		background-color: #ffffff;
 		border:1px solid #00468C;
 		overflow: auto;
-		margin-bottom: 20px;
+		margin-bottom: 5px;
 	}
 	#noticeList > li{
 		float:left;
@@ -93,7 +95,7 @@
 	<h1 align="center">관리자 페이지</h1>
 	<div id="adminList">
 		<div>
-			<h3>학생 리스트</h3>
+			<h2>학생 리스트</h2>
 			<form>
 			<ul id="studentList">
 				<li>&nbsp;</li>
@@ -118,7 +120,7 @@
 		</div>
 		
 		<div>
-			<h3>신고내역 리스트</h3>
+			<h2>신고내역 리스트</h2>
 			<form>
 			<ul id="reportList">
 				<li>&nbsp;</li>
@@ -137,7 +139,7 @@
 		</div>
 		
 		<div>
-			<h3>공지사항 리스트</h3>
+			<h2>공지사항 리스트</h2>
 			<form>
 			<ul id="noticeList">
 				<li>&nbsp;</li>
@@ -156,6 +158,9 @@
 					<li>${nDTO.notice_wdate}</li>
 				</c:forEach>
 			</ul>
+			<div align="right" style="margin: 5px;">
+				<a href="/smhrd/notice/noticeList"><input type="button" value="이동"></a>
+			</div>
 			</form>	
 		</div>
 	</div>
