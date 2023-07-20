@@ -22,11 +22,11 @@
 	<nav>
 		<ul>
 			<c:if test="${logStatus != 'Y'}">
-				<!-- 
+
 				
 				<li><a href="/home/register/login">로그인</a></li>	
-				<li><a href="/home/register/regForm">회원가입</a></li>
-				-->
+				<li><a href="/smhrd/register/regForm">회원가입</a></li>
+
 
 			</c:if>
 			

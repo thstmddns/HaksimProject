@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.or.smhrd.dao.CommunityDAO">
+	<select id="boardList" resultType="kr.or.smhrd.dto.CommunityDTO">
+		SELECT com_num, com_title, mem_id, com_hit, to_char(com_wdate,'MM-DD HH:MI') com_wdate FROM community 
+	</select>
+	
+</mapper>

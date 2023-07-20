@@ -12,4 +12,12 @@
 		select mem_id, mem_name from member 
 		where mem_id = #{param1} and mem_password= #{param2}
 	</select>
+	<select id="idChk" resultType="int">
+		SELECT COUNT(*) FROM member
+		WHERE mem_id = #{mem_id}
+	</select>	
+	<!-- 아이디 중복 체크 -->
+	<select id="idCheck" parameterType="String" resultType="int">
+		SELECT COUNT(mem_id) FROM member WHERE mem_id= #{mem_id}
+	</select>
 </mapper>
