@@ -1,19 +1,41 @@
 @charset "UTF-8";
 
-body, ul, li{
+/* 전체 */
+body{
 	margin: 0;	
 	padding: 0px;	
 	list-style-type: none;
 }
 
+/* 로그인, 회원가입 버튼 */
+.headLine{
+	background-color: #00468C;	
+	text-align: right;
+	height: 30px;
+	padding-top: 5px;
+	padding-right: 10px;
+}
+
+.headLine > a > input{
+	border-radius: 50px;
+	color: #00468C;
+	background-color: #ffffff;
+	border:1px solid #ffffff;
+}
+.headLine > a > input:hover{
+	color: #ffffff;
+	background-color: #bbddff;
+	border:1px solid #bbddff;
+}
+
+/* 로고 */
 #title{
 	text-align: center;
-	background-image: url("/smhrd/img/");
+	background-color: #ffffff;
 }
 
 .title{
 	font-size: 3em;
-	
 }
 
 .title:link, .title:visited, .title:hover{
@@ -22,29 +44,46 @@ body, ul, li{
 }
 
 /* 네비게이션 바 */
-nav a:link, nav a:visited, nav a:hover{
-	text-decoration: none;
-	color: #ffffff;
-}
 nav{
+	display:flex;
+	padding-left: 50px;
 	height: 40px;
-	background-color: #004d40;
+	background-color: #00468C;
+	
+	align-content:center;
+	justify-content:center;
 }
 nav > ul{
-	width: 1000px;
-	height:40px;
 	margin: 0 auto;
+	list-style-type: none;
 }
 nav li{
 	float:left;
 	line-height: 40px;
-	padding: 0 50px;
+	padding: 0 20px;
+	list-style-type: none;
+}
+
+nav a:link, nav a:visited, nav a:hover{
+	text-decoration: none;
+	color: #ffffff;
+}
+
+/* 메인 */
+.container{
+	text-align: center;
+}
+
+main {
+	margin-left:100px;
+	margin-right:100px;
 }
 
 /* 하단 */
 footer{
 	margin-top:10px;
-	background: #ddd;
+	background-color: #00468C;
 	text-align: center;
 	line-height: 60px;
+	color: #ffffff;
 }

@@ -17,8 +17,8 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		// -> O: 원래 매핑 주소로 이동
 		// -> X: 로그인 폼으로 매핑되도록 매핑주소 변경
 		HttpSession session = request.getSession();
-		String userid=(String) session.getAttribute("logId");
-		String logStatus = (String) session.getAttribute("logStatus");
+		String userid = (String)session.getAttribute("logId");
+		String logStatus = (String)session.getAttribute("logStatus");
 		
 		if(userid == null || logStatus == null || userid.equals("") || !logStatus.equals("Y")) {
 			// 로그인 안된 경우

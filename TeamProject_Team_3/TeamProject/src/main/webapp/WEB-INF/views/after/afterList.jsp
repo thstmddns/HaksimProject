@@ -44,14 +44,14 @@
         border-left: none;
         border-right: none;
         border-bottom : 2px solid black;
-	 }
-	 .searchBtn {
-	 	width: 100px;
+    }
+    .searchBtn {
+       width: 100px;
         border-top: none;
         border-left: none;
         border-right: none;
         border-bottom : 1px solid black;
-	 }
+    }
 
 </style>
 <script>
