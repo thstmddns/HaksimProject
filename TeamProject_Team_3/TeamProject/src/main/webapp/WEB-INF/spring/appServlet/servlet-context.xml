@@ -24,7 +24,7 @@
 	</beans:bean>
 	
 	<!-- 메일 -->
-	<beans:bean id="maliSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	<beans:bean class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<beans:property name="host" value="smtp.naver.com"></beans:property>
 		<beans:property name="port" value="587"></beans:property>
 		<beans:property name="username" value="smshrd@naver.com"></beans:property>
@@ -32,10 +32,10 @@
 		<beans:property name="defaultEncoding" value="UTF-8"></beans:property>
 		<beans:property name="javaMailProperties">
 			<beans:props>
+				<beans:prop key="mail.debug">true</beans:prop>
 				<beans:prop key="mail.tranport.protocol">smtp</beans:prop>
 				<beans:prop key="mail.smtp.auth">true</beans:prop>
 				<beans:prop key="mail.smtp.starttls.enable">true</beans:prop>
-				<beans:prop key="mail.debug">true</beans:prop>
 			</beans:props>
 		</beans:property>
 	</beans:bean>

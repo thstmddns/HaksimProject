@@ -30,5 +30,6 @@ public class RegisterServiceImpl implements RegisterService {
 	public RegisterDTO passwordSearch(RegisterDTO dto) {
 		return dao.passwordSearch(dto);
 	}
+
 	
 }
