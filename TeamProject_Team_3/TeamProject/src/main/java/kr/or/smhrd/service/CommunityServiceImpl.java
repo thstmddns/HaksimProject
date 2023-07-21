@@ -26,4 +26,15 @@ public class CommunityServiceImpl implements CommunityService {
 		
 		return dao.totalRecord(pDTO);
 	}
+	// 상세보기
+	@Override
+	public CommunityDTO getBoard(int com_num) {
+		return dao.getBoard(com_num);
+	}
+	//조회수
+	@Override
+	public void hitCount(int com_num) {
+		dao.hitCount(com_num);
+		
+	}
 }
