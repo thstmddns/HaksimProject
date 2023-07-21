@@ -40,8 +40,8 @@ public class AfterController {
 	
 	// 후기 글 목록
 	@GetMapping("/afterList")
-	public ModelAndView afterList(PagingDTO pDTO) {
-		
+	public ModelAndView afterList(PagingDTO pDTO, @ModelAttribute("grad_type") int grad_type) {
+		pDTO.setGrad_type(grad_type);
 		pDTO.setTotalRecord(service.totalRecord(pDTO));
 		List<AfterDTO> list = service.getAfterList(pDTO);
 		
@@ -133,4 +133,6 @@ public class AfterController {
 			}
 			return mav;
 		}
+		
+		
 }
