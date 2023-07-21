@@ -95,7 +95,7 @@
 			
 			<c:forEach var="notice" items="${notice}">
 				<li>${notice.notice_num}</li>
-				<li><a href="/smhrd/notice/noticeView/${notice.notice_num}">${notice.notice_title}</a></li>
+				<li><a href="/smhrd/notice/noticeView?no=${notice.notice_num}">${notice.notice_title}</a></li>
 				<li>${notice.mem_id}</li>
 				<li>${notice.notice_wdate}</li>
 				<li>${notice.notice_hit }</li>

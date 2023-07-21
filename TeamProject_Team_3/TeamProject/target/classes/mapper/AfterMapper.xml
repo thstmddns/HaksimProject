@@ -4,25 +4,20 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="kr.or.smhrd.dao.AfterDAO">
-<<<<<<< HEAD
-	 <select id="getAfterList" resultType="kr.or.smhrd.dto.AfterDTO">
-		select grad_num, grad_title, mem_id, grad_content,to_char(grad_wdate, 'MM-DD HH:MI') grad_wdate, grad_hit from grad order by grad_num desc
-	</select>
-	
-	<!--  
-	<insert id="afterInsert" parameterType="kr.co.smhrd.dto.AfterDTO">
-		insert into data(grad_num, mem_id, grad_title, grad_content, grad_type, grad_wdate) 
-=======
 	<select id="getAfterList" resultType="kr.or.smhrd.dto.AfterDTO">
 		select * from
 			(select * from
-				(select grad_num, grad_title, mem_id,
+				(select grad_num, grad_title, mem_id, grad_type,
 				 to_char(grad_wdate, 'MM-DD HH:MI') grad_wdate , grad_hit
 				from grad
+				where 1=1 
 				<!-- 검색어가 있을 때 -->
 				<if test="searchWord != null">
-					where ${searchKey} like '%${searchWord}%'
+					and ${searchKey} like '%${searchWord}%'
 				</if>
+				<if test="grad_type != 0">
+					and grad_type = ${grad_type}
+				</if>				
 				order by grad_num desc) 
 			where <![CDATA[ rownum<=${nowPage*onePageRecord} ]]> order by grad_num asc)
 		where <![CDATA[ rownum<=${lastPageRecord} ]]> order by grad_num desc
@@ -30,24 +25,25 @@
 	
 	<select id="totalRecord" resultType="int">
 		select count(grad_num) cnt from grad
-		
+		where 1=1
 		<if test="searchWord != null">
-			where ${searchKey} like '%${searchWord}%'    
+			and ${searchKey} like '%${searchWord}%'    
 			<!-- #은 ''를 붙여주는 기능을 하고 $는 ''을 붙이지 x -->
 		</if>
+
+		<if test="grad_type != 0">
+			and grad_type = ${grad_type}
+		</if>				
 	</select>
 	
 	<insert id="afterInsert" parameterType="kr.or.smhrd.dto.AfterDTO">
 		insert into grad(grad_num, mem_id, grad_title, grad_content, grad_type, grad_wdate) 
->>>>>>> a5ceef1db85b52c0e587c99b4380b7ccf2fa5d55
+
 		values(grad_no_seq.nextval, #{mem_id}, #{grad_title}, #{grad_content}, ${grad_type}, sysdate)
 		<selectKey resultType="int" keyProperty="grad_num" order="AFTER">
 			select grad_no_seq.currval from dual
 		</selectKey>
-	</insert>	 
-<<<<<<< HEAD
-	--> 
-=======
+	</insert>
 	
 	<delete id="afterDelete">
 		delete from grad where grad_num=${param1}
@@ -66,5 +62,6 @@
 		update grad set grad_title=#{grad_title}, grad_content=#{grad_content} 
 		where grad_num=${grad_num}
 	</update>
->>>>>>> a5ceef1db85b52c0e587c99b4380b7ccf2fa5d55
+	
+	
 </mapper>
