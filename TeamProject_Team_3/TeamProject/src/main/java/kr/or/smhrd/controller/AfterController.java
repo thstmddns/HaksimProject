@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.or.smhrd.dto.AfterDTO;
 import kr.or.smhrd.dto.AfterFileDTO;
@@ -35,102 +36,108 @@ import kr.or.smhrd.service.AfterService;
 @Controller
 @RequestMapping("/after")
 public class AfterController {
-	@Autowired
-	AfterService service;
-	
-	// ÈÄ±â ±Û ¸ñ·Ï
-	@GetMapping("/afterList")
-	public ModelAndView afterList(PagingDTO pDTO) {
-		
-		pDTO.setTotalRecord(service.totalRecord(pDTO));
-		List<AfterDTO> list = service.getAfterList(pDTO);
-		
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("list", list);
-		mav.addObject("pDTO", pDTO);
-		mav.setViewName("after/afterList");
-		return mav;
-	}
-	
-	@GetMapping("/afterWrite")
-	public ModelAndView afterWrite() {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("after/afterWrite");
-		return mav;
-	}
-	
-	// ±Û µî·Ï DB±â·Ï
-		@PostMapping("/afterWriteOk")
-		public ModelAndView afterWriteOk(HttpServletRequest request, AfterDTO dto) {
-			
-			dto.setMem_id("King");
-			
-			ModelAndView mav = new ModelAndView();
-			try {
-				
-				int result = service.afterInsert(dto);
-				System.out.println(dto.toString());
-				mav.setViewName("redirect:afterList");
-			}catch(Exception e) {
-				e.printStackTrace();
-				mav.setViewName("after/afterResult");
-			}
-			return mav;
-		}	
-	
-	// °Ô½Ã±Û ¼¼ºÎ º¸±â
-	@GetMapping("/afterView/{grad_num}")
-	public ModelAndView afterView(@PathVariable("grad_num") int grad_num) {
-		
-		ModelAndView mav = new ModelAndView();
-		
-		service.hitCount(grad_num);
-		
-		mav.addObject("dto", service.afterSelect(grad_num));
-		
-		mav.setViewName("after/afterView");
-		return mav;
-	}
-	
-	// °Ô½Ã±Û »èÁ¦(·Î±×ÀÎ ¾øÀÌ)
-	@GetMapping("/afterDel")
-	public ModelAndView afterDel(int grad_num) {
-		int result = service.afterDelete(grad_num);
-		
-		ModelAndView mav = new ModelAndView();
-		if(result>0) {
-			mav.setViewName("redirect:afterList");
-		}else {
-			mav.addObject("grad_num", grad_num);
-			mav.setViewName("redirect:afterView");
-		}
-		return mav;
-	}
-	
-	//  °Ô½Ã±Û ¼öÁ¤ Æû
-		@GetMapping("/afterEdit")
-		public ModelAndView afterEdit(int grad_num) {
-			ModelAndView mav = new ModelAndView();
-			
-			mav.addObject("dto", service.afterSelect(grad_num));
-			
-			mav.setViewName("after/afterEdit");
-			return mav;
-		}
-		
-		// ±Û ¼öÁ¤ÇÏ±â
-		@PostMapping("/afterEditOk")  
-		public ModelAndView afterEditOk(AfterDTO dto, HttpSession session, HttpServletRequest request) {
-			
-			ModelAndView mav = new ModelAndView();
-			try {
-				int result = service.afterEdit(dto);
-				
-				mav.setViewName("redirect:afterView/"+dto.getGrad_num());
-			}catch(Exception e){
-				e.printStackTrace();
-				mav.setViewName("redirect:afterEdit?grad_num="+dto.getGrad_num());
-			}
-			return mav;
-		}
+   @Autowired
+   AfterService service;
+   
+   // ìˆ˜ë£Œìƒ ê²Œì‹œê¸€ ëª©ë¡ ì¡°íšŒ
+   @GetMapping("/afterList")
+   public ModelAndView afterList(PagingDTO pDTO, @ModelAttribute("grad_type") Integer grad_type) {
+      if(grad_type == null) {
+         grad_type = 0;
+      }
+      pDTO.setGrad_type(grad_type);
+      pDTO.setTotalRecord(service.totalRecord(pDTO));
+      List<AfterDTO> list = service.getAfterList(pDTO);
+      
+      ModelAndView mav = new ModelAndView();
+      mav.addObject("list", list);
+      mav.addObject("pDTO", pDTO);
+      mav.setViewName("after/afterList");
+      return mav;
+   }
+   
+   @GetMapping("/afterWrite")
+   public ModelAndView afterWrite() {
+      ModelAndView mav = new ModelAndView();
+      mav.setViewName("after/afterWrite");
+      return mav;
+   }
+   
+   // ìˆ˜ë£Œìƒ ê²Œì‹œê¸€ ë“±ë¡
+      @PostMapping("/afterWriteOk")
+      public ModelAndView afterWriteOk(HttpServletRequest request, AfterDTO dto, RedirectAttributes rttr) {
+         
+         dto.setMem_id("King");
+         
+         ModelAndView mav = new ModelAndView();
+         try {
+            rttr.addAttribute("grad_type",dto.getGrad_type());
+            int result = service.afterInsert(dto);
+            System.out.println(dto.toString());
+            mav.setViewName("redirect:afterList");
+         }catch(Exception e) {
+            e.printStackTrace();
+            mav.setViewName("after/afterResult");
+         }
+         return mav;
+      }   
+   
+   // ìˆ˜ë£Œìƒ ê²Œì‹œê¸€ ìƒì„¸ ë³´ê¸°
+   @GetMapping("/afterView/{grad_num}")
+   public ModelAndView afterView(@PathVariable("grad_num") int grad_num) {
+      
+      ModelAndView mav = new ModelAndView();
+      
+      service.hitCount(grad_num);
+      
+      mav.addObject("dto", service.afterSelect(grad_num));
+      
+      mav.setViewName("after/afterView");
+      return mav;
+   }
+   
+   // ìˆ˜ë£Œìƒ ê²Œì‹œê¸€ ì‚­ì œ
+   @GetMapping("/afterDel")
+   public ModelAndView afterDel(int grad_num, PagingDTO dto, RedirectAttributes rttr) {
+      int result = service.afterDelete(grad_num);
+      rttr.addAttribute("grad_type",dto.getGrad_type());
+      
+      ModelAndView mav = new ModelAndView();
+      if(result>0) {
+         mav.setViewName("redirect:afterList");
+      }else {
+         mav.addObject("grad_num", grad_num);
+         mav.setViewName("redirect:afterView");
+      }
+      return mav;
+   }
+   
+   //  ìˆ˜ë£Œìƒ ê²Œì‹œê¸€ ìˆ˜ì •í¼
+      @GetMapping("/afterEdit")
+      public ModelAndView afterEdit(int grad_num) {
+         ModelAndView mav = new ModelAndView();
+         
+         mav.addObject("dto", service.afterSelect(grad_num));
+         
+         mav.setViewName("after/afterEdit");
+         return mav;
+      }
+      
+      // ìˆ˜ë£Œìƒ ê²Œì‹œê¸€ ìˆ˜ì •
+      @PostMapping("/afterEditOk")  
+      public ModelAndView afterEditOk(AfterDTO dto, HttpSession session, HttpServletRequest request) {
+         
+         ModelAndView mav = new ModelAndView();
+         try {
+            int result = service.afterEdit(dto);
+            
+            mav.setViewName("redirect:afterView/"+dto.getGrad_num());
+         }catch(Exception e){
+            e.printStackTrace();
+            mav.setViewName("redirect:afterEdit?grad_num="+dto.getGrad_num());
+         }
+         return mav;
+      }
+      
+      
 }
