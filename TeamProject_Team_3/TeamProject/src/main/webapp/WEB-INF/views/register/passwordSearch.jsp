@@ -1,17 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 	$(function(){
-		$("input[value=비밀번호찾기]").click(function(){
+		$("#pw_submit").click(function(){
+			console.log(1)
+			console.log(JSON.stringify({
+				mem_name:$("#mem_name").val(),
+				mem_id:$("#mem_id").val(),
+				mem_email:$("#mem_email").val()
+			}));
 			$.ajax({
 				url : '/smhrd/register/passwordSearchOk',
-				data:{
+				headers: {
+					"Content-Type":"application/json",
+					"X-HTTP-Method-Override":"POST"
+				},
+				data:JSON.stringify({
 					mem_name:$("#mem_name").val(),
 					mem_id:$("#mem_id").val(),
-					email:$("#mem_email").val()
-				},
+					mem_email:$("#mem_email").val()
+				}),
 				type:"post",
 				success:function(result){
 					if(result=='Y'){
@@ -29,13 +39,10 @@
 </script>
 <main>
 	<h1>비밀번호 찾기</h1>
-	<form id="passwordSearchFrm">
 	<ul>
-		<li>이름 : <input type="text" name="mem_name" /></li>
-		<li>아이디 : <input type="text" name="mem_id" /></li>
-		<li>이메일 : <input type="text" name="mem_email" placeholder="예)sm7@smhrd.or.kr" /></li>
-		<li>이름 : <input type="button" value="비밀번호찾기" /></li>
-		
+		<li>이름 : <input type="text" name="mem_name" id="mem_name"/></li>
+		<li>아이디 : <input type="text" name="mem_id" id="mem_id"/></li>
+		<li>이메일 : <input type="text" name="mem_email" placeholder="예)sm7@smhrd.or.kr" id="mem_email"/></li>
+		<li><input type="button" value="비밀번호찾기" id="pw_submit"/></li>		
 	</ul>
-	</form>
 </main>

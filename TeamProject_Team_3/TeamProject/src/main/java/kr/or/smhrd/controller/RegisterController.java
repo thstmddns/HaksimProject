@@ -9,6 +9,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -62,7 +63,6 @@ public class RegisterController {
 	// 로그인
 	@GetMapping("/login")
 	public String login() {
-		System.out.println(1);
 	   return "register/login";
 	}
 
@@ -91,16 +91,16 @@ public class RegisterController {
 		return mav;
 	}
 	
-	//아이디 찾기 (폼)
+	//비밀번호 찾기 (폼)
 	@GetMapping("/passwordSearch")
 	public String passwordSearchForm() {
 		return "register/passwordSearch";
 	}
 	
-	// 아이디 찾기
+	// 비밀번호 찾기
 	@PostMapping("/passwordSearchOk")
 	@ResponseBody
-	public String passwordSearchOk(RegisterDTO dto) {
+	public String passwordSearchOk(@RequestBody RegisterDTO dto) {
 		//이름, 연락처가 일치하는 아이디와 이메일을 구한다. 
 		RegisterDTO resultDTO = service.passwordSearch(dto);
 		String resultTxt = "N";
@@ -115,11 +115,15 @@ public class RegisterController {
 		  
 		MimeMessage message = mailSender.createMimeMessage();
 		MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
-		messageHelper.setFrom("thstmddns@naver.com");
-		messageHelper.setTo("thstmddns@naver.com");
+		messageHelper.setFrom("smshrd@naver.com");
+		messageHelper.setTo("smshrd@naver.com");
 		messageHelper.setSubject(subject);
-		messageHelper.setText("text/html; charset=UTF-8",content);
+		messageHelper.setText("text/html; charset=UTF-8", content);
+		
+		mailSender.send(message);
+		
 		resultTxt = "Y";
+		System.out.println(resultTxt);
 	}catch(Exception e) {
 		e.printStackTrace();  
 	} 

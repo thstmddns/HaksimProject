@@ -22,6 +22,7 @@
 	
 	<!-- 비밀번호 찾기 -->
  	<select id="passwordSearch" resultType="kr.or.smhrd.dto.RegisterDTO">
-		select mem_id, mem_name, mem_email from member where mem_id = #{mem_id} and mem_name=#{mem_name} and mem_email=#{mem_email}
+		select mem_id, mem_name, mem_email, mem_password
+		from member where mem_id = #{mem_id} and mem_name=#{mem_name} and mem_email=#{mem_email}
 	</select>
 </mapper>
