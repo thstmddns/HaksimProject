@@ -42,7 +42,7 @@
 			</c:if>
 			
 			<li><a href="#">자료 공유 게시판</a></li>
-			<li><a href="#">커뮤니티 게시판</a></li>
+			<li><a href="/smhrd/community/communityList">커뮤니티 게시판</a></li>
 			<li><a href="#">맛집 공유 게시판</a></li>
 			<li><a href="/smhrd/after/afterList">후기 게시판</a></li>
 		</ul>	
