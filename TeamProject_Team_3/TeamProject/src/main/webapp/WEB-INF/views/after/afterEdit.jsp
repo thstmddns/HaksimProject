@@ -19,30 +19,7 @@
 	}
 	
 </style>
-<script>
-	
-	$(function(){
-		 
-		$(document).on('click','#frm input[value="+"]',function(){
-			
-			var tag = "<div><input type='file' name='filename'/><input type='button' value='+' /></div>";
-			$("#filelist").append(tag);
-			
-			$(this).val('-');
-		});
-		
-		$(document).on('click','#frm input[value="-"]',function(){
-			$(this).parent().remove();
-		});
-		
-		$("#filelist b").click(function() {
-			$(this).parent().css("display", "none");    
-			
-			$(this).parent().next().attr("name", "delFile");
-		
-		});
-	});
-</script>
+
 
 <main>
 	<h1>수료생 글 수정</h1>

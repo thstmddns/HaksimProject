@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.or.smhrd.dto.AfterDTO;
 import kr.or.smhrd.dto.AfterFileDTO;
@@ -40,7 +41,10 @@ public class AfterController {
 	
 	// 후기 글 목록
 	@GetMapping("/afterList")
-	public ModelAndView afterList(PagingDTO pDTO, @ModelAttribute("grad_type") int grad_type) {
+	public ModelAndView afterList(PagingDTO pDTO, @ModelAttribute("grad_type") Integer grad_type) {
+		if(grad_type == null) {
+			grad_type = 0;
+		}
 		pDTO.setGrad_type(grad_type);
 		pDTO.setTotalRecord(service.totalRecord(pDTO));
 		List<AfterDTO> list = service.getAfterList(pDTO);
@@ -61,13 +65,13 @@ public class AfterController {
 	
 	// 글 등록 DB기록
 		@PostMapping("/afterWriteOk")
-		public ModelAndView afterWriteOk(HttpServletRequest request, AfterDTO dto) {
+		public ModelAndView afterWriteOk(HttpServletRequest request, AfterDTO dto, RedirectAttributes rttr) {
 			
 			dto.setMem_id("King");
 			
 			ModelAndView mav = new ModelAndView();
 			try {
-				
+				rttr.addAttribute("grad_type",dto.getGrad_type());
 				int result = service.afterInsert(dto);
 				System.out.println(dto.toString());
 				mav.setViewName("redirect:afterList");
@@ -94,8 +98,9 @@ public class AfterController {
 	
 	// 게시글 삭제(로그인 없이)
 	@GetMapping("/afterDel")
-	public ModelAndView afterDel(int grad_num) {
+	public ModelAndView afterDel(int grad_num, PagingDTO dto, RedirectAttributes rttr) {
 		int result = service.afterDelete(grad_num);
+		rttr.addAttribute("grad_type",dto.getGrad_type());
 		
 		ModelAndView mav = new ModelAndView();
 		if(result>0) {
