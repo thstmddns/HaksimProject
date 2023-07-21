@@ -37,4 +37,11 @@ public class CommunityServiceImpl implements CommunityService {
 		dao.hitCount(com_num);
 		
 	}
+
+	@Override
+	public int boardDel(int com_num) {
+		return dao.boardDel(com_num);
+	}
+
 }
+

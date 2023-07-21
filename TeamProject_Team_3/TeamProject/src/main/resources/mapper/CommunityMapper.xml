@@ -26,6 +26,10 @@
 		WHERE com_num=${param1}
 		</select>
 		
+		<delete id="boardDel">
+		delete from community where com_num=${param1}
+		</delete>
+		
 		<update id="hitCount">
 		UPDATE community SET com_hit = com_hit+1 WHERE com_num=${param1}
 		</update>

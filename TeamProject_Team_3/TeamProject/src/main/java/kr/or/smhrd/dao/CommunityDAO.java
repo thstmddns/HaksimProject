@@ -30,6 +30,6 @@ public interface CommunityDAO {
 	//public int boardEditOk(CommunityDTO dto);
 	
 	
-	// 글 삭제
-	//public int boardDel(int no, String id);
+	//글 삭제
+	public int boardDel(int com_num);
 }
