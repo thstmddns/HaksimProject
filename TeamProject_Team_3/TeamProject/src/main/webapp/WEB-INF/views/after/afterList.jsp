@@ -130,14 +130,14 @@
 			
 			<!-- 맨 앞 페이지 -->
 			<c:if test="${pDTO.nowPage>1}">
-				<li><a href="/smhrd/after/afterList">front</a></li>
+				<li><a href="/smhrd/after/afterList?grad_type=${pDTO.grad_type}">front</a></li>
 			</c:if>
 			<!-- 이전 페이지 -->
 			<c:if test="${pDTO.nowPage==1}">
 			<li>prev</li>
 			</c:if>
 			<c:if test="${pDTO.nowPage>1}">
-			<li><a href='/smhrd/after/afterList?nowPage=${pDTO.nowPage-1}<c:if test="${pDTO.searchWord!=null}">&searchKey=${pDTO.searchKey}&searchWord=${pDTO.searchWord}</c:if>'>prev</a></li>
+			<li><a href='/smhrd/after/afterList?grad_type=${pDTO.grad_type}&nowPage=${pDTO.nowPage-1}<c:if test="${pDTO.searchWord!=null}">&searchKey=${pDTO.searchKey}&searchWord=${pDTO.searchWord}</c:if>'>prev</a></li>
 			</c:if>
 			
 			<!-- 페이지 번호 -->
@@ -146,10 +146,10 @@
 			<c:forEach var="p" begin="${pDTO.startPageNum}" end="${pDTO.startPageNum+pDTO.onePageNumCount-1}" step="1">
 				<c:if test="${p<=pDTO.totalPage}">
 					<c:if test="${p==pDTO.nowPage}">
-						<li style="background:#FFDCE1"><a href='/smhrd/after/afterList?nowPage=${p}<c:if test="${pDTO.searchWord!=null}">&searchKey=${pDTO.searchKey}&searchWord=${pDTO.searchWord}</c:if>'>${p}</a></li>
+						<li style="background:#FFDCE1"><a href='/smhrd/after/afterList?grad_type=${pDTO.grad_type}&nowPage=${p}<c:if test="${pDTO.searchWord!=null}">&searchKey=${pDTO.searchKey}&searchWord=${pDTO.searchWord}</c:if>'>${p}</a></li>
 					</c:if>
 					<c:if test="${p!=pDTO.nowPage}">
-						<li><a href='/smhrd/after/afterList?nowPage=${p}<c:if test="${pDTO.searchWord!=null}">&searchKey=${pDTO.searchKey}&searchWord=${pDTO.searchWord}</c:if>'>${p}</a></li>
+						<li><a href='/smhrd/after/afterList?grad_type=${pDTO.grad_type}&nowPage=${p}<c:if test="${pDTO.searchWord!=null}">&searchKey=${pDTO.searchKey}&searchWord=${pDTO.searchWord}</c:if>'>${p}</a></li>
 					</c:if>
 				</c:if>	
 			</c:forEach>
@@ -159,10 +159,10 @@
 				<li>next</li>
 			</c:if>
 			<c:if test="${pDTO.totalPage>pDTO.nowPage}">
-				<li><a href='/smhrd/after/afterList?nowPage=${pDTO.nowPage+1}<c:if test="${pDTO.searchWord!=null}">&searchKey=${pDTO.searchKey}&searchWord=${pDTO.searchWord}</c:if>'>next</a></li>
+				<li><a href='/smhrd/after/afterList?grad_type=${pDTO.grad_type}&nowPage=${pDTO.nowPage+1}<c:if test="${pDTO.searchWord!=null}">&searchKey=${pDTO.searchKey}&searchWord=${pDTO.searchWord}</c:if>'>next</a></li>
 			</c:if>
 			<c:if test="${pDTO.totalPage>pDTO.nowPage}">
-				<li><a href="/smhrd/after/afterList?nowPage=${pDTO.totalPage}">back</a></li>
+				<li><a href="/smhrd/after/afterList?grad_type=${pDTO.grad_type}&nowPage=${pDTO.totalPage}">back</a></li>
 			</c:if>
 			
 		</ul>
@@ -177,6 +177,7 @@
 				<option value="grad_content">글내용</option>
 				<option value="mem_id">글쓴이</option>	
 			</select>
+			<input type="hidden" name="grad_type" id="grad_type" class="grad_type" value="${pDTO.grad_type}"/>
 			<input type="text" name="searchWord" id="searchWord" class="searchWord"/>
 			<input type="submit" value="Search" class="searchBtn"/>
 		</form>

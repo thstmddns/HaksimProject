@@ -15,7 +15,7 @@ public class PagingDTO {
 	private String searchKey;			// 검색 분류 (제목, 내용, 작성자)
 	private String searchWord;			// 검색 단어
 	
-	private int grad_type =0;			// 현재 페이지
+	private int grad_type = 0;			// 현재 페이지
 	
 	public int getNowPage() {
 		return nowPage;

@@ -10,12 +10,13 @@
 				(select grad_num, grad_title, mem_id, grad_type,
 				 to_char(grad_wdate, 'MM-DD HH:MI') grad_wdate , grad_hit
 				from grad
+				where 1=1 
 				<!-- 검색어가 있을 때 -->
 				<if test="searchWord != null">
-					where ${searchKey} like '%${searchWord}%'
+					and ${searchKey} like '%${searchWord}%'
 				</if>
 				<if test="grad_type != 0">
-					where grad_type = ${grad_type}
+					and grad_type = ${grad_type}
 				</if>				
 				order by grad_num desc) 
 			where <![CDATA[ rownum<=${nowPage*onePageRecord} ]]> order by grad_num asc)
@@ -24,13 +25,14 @@
 	
 	<select id="totalRecord" resultType="int">
 		select count(grad_num) cnt from grad
-		
+		where 1=1
 		<if test="searchWord != null">
-			where ${searchKey} like '%${searchWord}%'    
+			and ${searchKey} like '%${searchWord}%'    
 			<!-- #은 ''를 붙여주는 기능을 하고 $는 ''을 붙이지 x -->
 		</if>
+
 		<if test="grad_type != 0">
-			where grad_type = ${grad_type}
+			and grad_type = ${grad_type}
 		</if>				
 	</select>
 	
