@@ -36,12 +36,6 @@ public class AfterServiceImpl implements AfterService {
 		return dao.afterInsert(dto);
 	}
 	
-	@Override
-	public int afterFileInsert(List<AfterFileDTO> fileList) {
-		
-		return dao.afterFileInsert(fileList);
-	}
-
 	
 	@Override
 	public int afterEdit(AfterDTO dto) {
@@ -62,16 +56,10 @@ public class AfterServiceImpl implements AfterService {
 	}
 
 	@Override
-	public List<AfterFileDTO> afterFileSelect(int grad_num) {
-		
-		return dao.afterFileSelect(grad_num);
-	}
-	
-	@Override
 	public void hitCount(int grad_num) {
 		dao.hitCount(grad_num);
 	}
 
-	
+
 	
 }

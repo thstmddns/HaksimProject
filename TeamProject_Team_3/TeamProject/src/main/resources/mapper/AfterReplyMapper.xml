@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.or.smhrd.dao.AfterReplyDAO">
+	
 	<insert id="aReplyInsert">
 		insert into grad_review(grad_review_num, grad_num, grad_review_content, mem_id) 
 		values(gradreview_no_seq.nextval, ${grad_num}, #{grad_review_content}, #{mem_id})

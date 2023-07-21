@@ -58,7 +58,39 @@
 				}
 			});
 		}
-<<<<<<< HEAD
+		
+		// 댓글 쓰기
+		$("#afterReplyFrm").submit(function() {
+			
+			event.preventDefault();  
+			
+			if($("#gradComent").val() == "") {
+				alert("댓글을 입력하세요");
+				return false;
+			}
+			
+			var params = $("#afterReplyFrm").serialize();
+			console.log('params', params);
+			
+			$.ajax({
+				url: '/smhrd/afterReply/replyWrite',
+				data: params,
+				type: 'POST',
+				success:function(result) {
+					console.log(result);
+					
+					$("#gradComent").val("");
+					
+					afterReplyList();
+					
+				},
+				error:function(e){
+					console.log(e.responseText);
+				} 
+			});
+				
+		});
+		
 		
 		//댓글 수정폼
 		$(document).on('click','#afterReplyList input[value=Edit]',function(){
@@ -112,7 +144,6 @@
 				}
 			});
 		});
-=======
 	
 	$(document).on('click','#afterReplyList input[value=Edit]',function(){
 		$(this).parent().css('display', 'none');
@@ -140,8 +171,7 @@
 			}
 		});
 	});
-	
->>>>>>> 0fabbebdaf23774de7005b81dc7806c7ce389c02
+
 		afterReplyList();
 	});
 	
@@ -151,6 +181,15 @@
 	<h1>수료생 게시판 글 내용 보기</h1>
 	<ul class="afterView">
 		<li>번호 : ${dto.grad_num}</li>
+		<c:if test="${dto.grad_type==1}">
+			<li>멘토링</li>	
+		</c:if>
+		<c:if test="${dto.grad_type==2}">
+			<li>채용 공고</li>
+		</c:if>
+		<c:if test="${dto.grad_type==3}">
+			<li>기타</li>
+		</c:if>	
 		<li>글쓴이 : ${dto.mem_id}</li>
 		<li>조회수 : ${dto.grad_hit}</li>
 		<li>등록일 : ${dto.grad_wdate}</li>
@@ -159,17 +198,17 @@
 	</ul>	
 	
 	<div>
+		<a href="/smhrd/after/afterEdit?grad_num=${dto.grad_num}">수정</a>
 		<a href="javascript:afterDelChk()">삭제</a>
 	</div>
 	
 		<!-- 댓글 달기 -->
 	<div id="afterReply">
 			<form method="post" id="afterReplyFrm">
-				<input type="hidden" name="gradNum" value="${dto.grad_num }">  
-				<textarea name="gradComent" id="gradComent"></textarea>
+				<input type="hidden" name="grad_num" value="${dto.grad_num }">  
+				<textarea name="grad_review_content" id="gradComent"></textarea>
 				<input type="submit" value="댓글 등록하기">
 			</form>
-			<!-- 액션태그 생략하면 기본이 자신 페이지로 이동 -->
 		<hr/>
 		<ul id="afterReplyList">
 			

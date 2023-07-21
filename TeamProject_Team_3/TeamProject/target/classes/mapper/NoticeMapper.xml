@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="kr.or.smhrd.dao.NoticeDAO">
+	<insert id="NoticeWriteOk">
+		INSERT INTO notice(notice_num, mem_id, notice_title, notice_content, notice_wdate, notice_hit)
+		VALUES(NOTICE_NO_SEQ.NEXTVAL, #{mem_id}, #{notice_title}, #{notice_content}, sysdate, 0)
+	</insert>
+	
+	<select id="NoticeList" resultType="kr.or.smhrd.dto.NoticeDTO">		
+		SELECT * FROM
+		(SELECT * FROM 
+		(SELECT notice_num, notice_title,notice_content, mem_id, notice_hit, to_char(notice_wdate,'MM-DD HH:MI') notice_wdate 
+		FROM notice 
+		<if test="searchWord != null">
+			where ${searchKey} like '%${searchWord}%'
+		</if>		
+		ORDER BY notice_num desc) 
+		WHERE <![CDATA[rownum<=${nowPage*onePageRecord}]]> order by notice_num asc) 
+		WHERE <![CDATA[rownum<=${lastPageRecord}]]> order by notice_num desc
+	</select>
+	
+	<select id="totalRecord" resultType="int">
+		select count(notice_num) cnt from notice
+		<if test="searchWord != null">
+			where ${searchKey} like '%${searchWord}%'
+		</if>
+	</select>
+	
+	<select id="getNotice" resultType="kr.or.smhrd.dto.NoticeDTO">
+		SELECT notice_num, mem_id, notice_title, notice_content, notice_wdate, notice_hit 
+		FROM notice
+		WHERE notice_num=${notice_num}
+	</select>
+	
+	<update id="hitCount">
+		UPDATE notice SET notice_hit=notice_hit+1 WHERE notice_num=${param1}
+	</update>
+	
+	<update id="NoticeEditOk">
+		UPDATE notice SET notice_title=#{notice_title}, notice_content=#{notice_content} 
+		WHERE notice_num=${notice_num} AND mem_id=#{mem_id}
+	</update>
+	
+	<delete id="NoticeDel">
+		DELETE FROM notice WHERE notice_num=${notice_num} AND mem_id=#{mem_id}
+	</delete>
+	
+	
+</mapper>
