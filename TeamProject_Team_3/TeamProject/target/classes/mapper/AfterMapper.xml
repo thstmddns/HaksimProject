@@ -7,13 +7,17 @@
 	<select id="getAfterList" resultType="kr.or.smhrd.dto.AfterDTO">
 		select * from
 			(select * from
-				(select grad_num, grad_title, mem_id,
+				(select grad_num, grad_title, mem_id, grad_type,
 				 to_char(grad_wdate, 'MM-DD HH:MI') grad_wdate , grad_hit
 				from grad
+				where 1=1 
 				<!-- 검색어가 있을 때 -->
 				<if test="searchWord != null">
-					where ${searchKey} like '%${searchWord}%'
+					and ${searchKey} like '%${searchWord}%'
 				</if>
+				<if test="grad_type != 0">
+					and grad_type = ${grad_type}
+				</if>				
 				order by grad_num desc) 
 			where <![CDATA[ rownum<=${nowPage*onePageRecord} ]]> order by grad_num asc)
 		where <![CDATA[ rownum<=${lastPageRecord} ]]> order by grad_num desc
@@ -21,12 +25,17 @@
 	
 	<select id="totalRecord" resultType="int">
 		select count(grad_num) cnt from grad
-		
+		where 1=1
 		<if test="searchWord != null">
-			where ${searchKey} like '%${searchWord}%'    
+			and ${searchKey} like '%${searchWord}%'    
 			<!-- #은 ''를 붙여주는 기능을 하고 $는 ''을 붙이지 x -->
 		</if>
-	</select>	
+
+		<if test="grad_type != 0">
+			and grad_type = ${grad_type}
+		</if>				
+	</select>
+	
 	<insert id="afterInsert" parameterType="kr.or.smhrd.dto.AfterDTO">
 		insert into grad(grad_num, mem_id, grad_title, grad_content, grad_type, grad_wdate) 
 
@@ -53,4 +62,6 @@
 		update grad set grad_title=#{grad_title}, grad_content=#{grad_content} 
 		where grad_num=${grad_num}
 	</update>
+	
+	
 </mapper>

@@ -27,13 +27,13 @@ public class RegisterController {
 	@Autowired
 	JavaMailSenderImpl mailSender;
 	
-	//È¸¿ø°¡ÀÔ
+	//íšŒì›ê°€ì…
 	@GetMapping("/regForm")
 	public String regForm() {
 		return "register/regForm";
 	}
 	
-	// È¸¿ø°¡ÀÔ Ã¼Å©
+	// íšŒì›ê°€ì… ì²´í¬
 	@PostMapping("/registerOk")
 	public ModelAndView registerOk(RegisterDTO dto) {
 		System.out.println(dto.toString());
@@ -41,7 +41,7 @@ public class RegisterController {
 		try {
 			result = service.registerInsert(dto);
 		}catch(Exception e) {
-			System.out.println("È¸¿ø°¡ÀÔ ½ÇÆĞ....");		
+			System.out.println("íšŒì›ê°€ì… ì‹¤íŒ¨....");		
 		}
 		ModelAndView mav = new ModelAndView();
 		if(result > 0) {
@@ -52,7 +52,7 @@ public class RegisterController {
 	return mav;
 	}
 	
-	//¾ÆÀÌµğ Áßº¹Ã¼Å©
+	//ì•„ì´ë”” ì¤‘ë³µì²´í¬
 	@PostMapping("/idCheck")
 	@ResponseBody
 	public int idCheck(@RequestParam("mem_id") String mem_id) {
@@ -60,13 +60,13 @@ public class RegisterController {
 		return cnt;
 	}
 	
-	// ·Î±×ÀÎ
+	// ë¡œê·¸ì¸
 	@GetMapping("/login")
 	public String login() {
 	   return "register/login";
 	}
 
-	// ·Î±×ÀÎ È®ÀÎ
+	// ë¡œê·¸ì¸ í™•ì¸
 	@PostMapping("/loginOk")
 	public ModelAndView loginOk(String mem_id, String mem_password, HttpSession session) {
 		RegisterDTO dto = service.loginOk(mem_id, mem_password);
@@ -91,26 +91,26 @@ public class RegisterController {
 		return mav;
 	}
 	
-	//ºñ¹Ğ¹øÈ£ Ã£±â (Æû)
+	//ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸° (í¼)
 	@GetMapping("/passwordSearch")
 	public String passwordSearchForm() {
 		return "register/passwordSearch";
 	}
 	
-	// ºñ¹Ğ¹øÈ£ Ã£±â
+	// ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°
 	@PostMapping("/passwordSearchOk")
 	@ResponseBody
 	public String passwordSearchOk(@RequestBody RegisterDTO dto) {
-		//ÀÌ¸§, ¿¬¶ôÃ³°¡ ÀÏÄ¡ÇÏ´Â ¾ÆÀÌµğ¿Í ÀÌ¸ŞÀÏÀ» ±¸ÇÑ´Ù. 
+		//ì´ë¦„, ì—°ë½ì²˜ê°€ ì¼ì¹˜í•˜ëŠ” ì•„ì´ë””ì™€ ì´ë©”ì¼ì„ êµ¬í•œë‹¤. 
 		RegisterDTO resultDTO = service.passwordSearch(dto);
 		String resultTxt = "N";
-		if(resultDTO!=null) { //ÀÏÄ¡ÇÏ´Â Á¤º¸°¡ ÀÖÀ»¶§
-	 //ÀÌ¸ŞÀÏ º¸³»±â 
+		if(resultDTO!=null) { //ì¼ì¹˜í•˜ëŠ” ì •ë³´ê°€ ìˆì„ë•Œ
+	 //ì´ë©”ì¼ ë³´ë‚´ê¸° 
 	try {   
-		String subject = "ºñ¹Ğ¹øÈ£ Ã£±â °á°ú";
+		String subject = "ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸° ê²°ê³¼";
 		String content = "<div style='background:pink; border:1px solid #ddd; padding:50px; text-align:center'>";
 		   
-		content += "°Ë»öÇÑ ºñ¹Ğ¹øÈ£´Â :"+ resultDTO.getMem_password();
+		content += "ê²€ìƒ‰í•œ ë¹„ë°€ë²ˆí˜¸ëŠ” :"+ resultDTO.getMem_password();
 		content += "</div>";
 		  
 		MimeMessage message = mailSender.createMimeMessage();
@@ -127,7 +127,7 @@ public class RegisterController {
 	}catch(Exception e) {
 		e.printStackTrace();  
 	} 
-	}else { //ÀÏÄ¡ÇÏ´Â Á¤º¸°¡ ¾øÀ»¶§
+	}else { //ì¼ì¹˜í•˜ëŠ” ì •ë³´ê°€ ì—†ì„ë•Œ
 		resultTxt = "N";
 	}    
 		return resultTxt;

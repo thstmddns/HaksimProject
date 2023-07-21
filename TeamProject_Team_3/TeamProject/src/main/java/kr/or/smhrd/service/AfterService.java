@@ -17,13 +17,8 @@ public interface AfterService {
 	
 	public int afterInsert(AfterDTO dto);
 	
-	public int afterFileInsert(List<AfterFileDTO> fileList);
-	
 	public int afterEdit(AfterDTO dto);
 	
 	public int afterDelete(int grad_num);
-	
-	public List<AfterFileDTO> afterFileSelect(int grad_num);
-	
-	
+
 }
