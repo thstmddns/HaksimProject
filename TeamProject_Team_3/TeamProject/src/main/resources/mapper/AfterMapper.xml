@@ -29,15 +29,11 @@
 			where ${searchKey} like '%${searchWord}%'    
 			<!-- #은 ''를 붙여주는 기능을 하고 $는 ''을 붙이지 x -->
 		</if>
-<<<<<<< HEAD
 		<if test="grad_type != 0">
 			where grad_type = ${grad_type}
 		</if>				
 	</select>
 	
-=======
-	</select>	
->>>>>>> d9fb599828b00d0034d167ab6cb3f2c36cf678db
 	<insert id="afterInsert" parameterType="kr.or.smhrd.dto.AfterDTO">
 		insert into grad(grad_num, mem_id, grad_title, grad_content, grad_type, grad_wdate) 
 
