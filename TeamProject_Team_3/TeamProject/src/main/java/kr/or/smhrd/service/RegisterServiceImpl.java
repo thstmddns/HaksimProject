@@ -8,8 +8,10 @@ import kr.or.smhrd.dao.RegisterDAO;
 import kr.or.smhrd.dto.RegisterDTO;
 @Service
 public class RegisterServiceImpl implements RegisterService {
+	
 	@Inject
 	RegisterDAO dao;
+	
 	@Override
 	public int registerInsert(RegisterDTO dto) {
 		return dao.registerInsert(dto);
@@ -23,6 +25,10 @@ public class RegisterServiceImpl implements RegisterService {
 	@Override
 	public RegisterDTO loginOk(String mem_id, String mem_password) {
 		return dao.loginOk(mem_id, mem_password);
+	}
+	@Override
+	public RegisterDTO passwordSearch(RegisterDTO dto) {
+		return dao.passwordSearch(dto);
 	}
 	
 }

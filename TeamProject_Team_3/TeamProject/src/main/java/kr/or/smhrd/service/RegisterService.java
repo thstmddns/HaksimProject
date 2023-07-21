@@ -10,4 +10,6 @@ public interface RegisterService {
 	public int idCheck(String mem_id);
 	// 로그인
 	public RegisterDTO loginOk(String mem_id, String mem_password);
+	// 아이디 찾기
+	public RegisterDTO passwordSearch(RegisterDTO dto);
 }

@@ -27,8 +27,8 @@
 	<beans:bean id="maliSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<beans:property name="host" value="smtp.naver.com"></beans:property>
 		<beans:property name="port" value="587"></beans:property>
-		<beans:property name="username" value="#"></beans:property>
-		<beans:property name="password" value="#"></beans:property>
+		<beans:property name="username" value="smshrd@naver.com"></beans:property>
+		<beans:property name="password" value="smhrdsmhrd01"></beans:property>
 		<beans:property name="defaultEncoding" value="UTF-8"></beans:property>
 		<beans:property name="javaMailProperties">
 			<beans:props>
