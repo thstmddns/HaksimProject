@@ -7,29 +7,24 @@ import kr.or.smhrd.dto.PagingDTO;
 
 public interface CommunityDAO {
 	
-	// ê¸€ ë“±ë¡
+	// ±Û µî·Ï
 	//public int boardWriteOk(CommunityDTO dto); 
 	
-	
-	// ê¸€ ëª©ë¡ ì„ íƒ 
+	// ±Û ¸ñ·Ï ¼±ÅÃ 
 	public List<CommunityDTO> boardList(PagingDTO pDTO);
 	
-	// ì´ ë ˆì½”ë“œ ìˆ˜
+	// ÃÑ ·¹ÄÚµå ¼ö
 	public int totalRecord(PagingDTO pDTO);
 	
+	// ÇÑ°³ÀÇ ·¹ÄÚµå ¼±ÅÃ
+	//public CommunityDTO getBoard(int no);
 	
+	// Á¶È¸¼ö Áõ°¡
+	//public void hitCount(int no);
 	
-	//í•œê°œì˜ ë ˆì½”ë“œ ì„ íƒ
-	public CommunityDTO getBoard(int com_num);
-	
-	// ì¡°íšŒìˆ˜ ì¦ê°€
-	public void hitCount(int com_num);
-	
-	
-	// ê¸€ìˆ˜ì •
+	// ±Û¼öÁ¤
 	//public int boardEditOk(CommunityDTO dto);
 	
-	
-	// ê¸€ ì‚­ì œ
+	// ±Û »èÁ¦
 	//public int boardDel(int no, String id);
 }

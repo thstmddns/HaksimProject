@@ -13,7 +13,7 @@
 		height: 40px; 
 		line-height: 40px; 
 		border-bottom: 1px solid #ddd; 
-		width: 15%;
+		width: 10%;
 		text_align:center;
 	}
 	
@@ -22,8 +22,8 @@
 		color: black;
 	}	
 	
-	.community_list > li:nth-child(5n+2) {
-		width: 40%;	
+	.community_list > li:nth-child(5n+3) {
+		width: 60%;	
 		white-space: nowrap;	/* 줄 바꾸지 않기 */
 		overflow: hidden;	/* 넘치는 값 숨기기 */
 		text-overflow: ellipsis;	/* ... 표시 */
@@ -37,7 +37,7 @@
 	
 	<div>
 		<a href="/smhrd/community/communityWrite"><button >글쓰기</button></a>
-		<span style="margin-left: 800px">총 게시글 수 : ${pDTO.totalRecord}</span>
+		
 	</div>
 	
 	<ul class="community_list">
@@ -51,9 +51,9 @@
 			var: 변수 
 			items: 데이터 
 		-->
-		<c:forEach var="dto" items="${list}">	
+		<c:forEach var="dto" items="${list}">		
 			<li>${dto.com_num}</li>
-			<li><a href="/smhrd/community/communityView/${dto.com_num}">${dto.com_title }</a></li>
+			<li>${dto.com_title }</li>
 			<li>${dto.mem_id }</li>
 			<li>${dto.com_wdate }</li>
 			<li>${dto.com_hit}</li>	
