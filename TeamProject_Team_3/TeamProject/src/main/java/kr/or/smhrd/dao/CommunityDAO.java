@@ -27,9 +27,10 @@ public interface CommunityDAO {
 	
 	
 	// 글수정
-	//public int boardEditOk(CommunityDTO dto);
+	public int communityEditOk(CommunityDTO dto);
 	
 	
 	//글 삭제
 	public int boardDel(int com_num);
+
 }
