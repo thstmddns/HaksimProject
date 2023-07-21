@@ -2,16 +2,17 @@ package kr.or.smhrd.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.or.smhrd.dto.BoardDTO;
 import kr.or.smhrd.dto.CommunityDTO;
 import kr.or.smhrd.dto.PagingDTO;
-import kr.or.smhrd.service.BoardService;
 import kr.or.smhrd.service.CommunityService;
 
 @RestController
@@ -20,11 +21,11 @@ public class CommunityController {
 	@Autowired
 	CommunityService service;
 	
-	// °Ô½ÃÆÇÀ¸·Î ÀÌµ¿
+	// ê²Œì‹œíŒìœ¼ë¡œ ì´ë™
 	@GetMapping("/communityList")
 	public ModelAndView communityList(PagingDTO pDTO) {	
 
-		// 1. ÃÑ ·¹ÄÚµå ¼ö ¼³Á¤
+		// 1. ì´ ë ˆì½”ë“œ ìˆ˜ ì„¤ì •
 		pDTO.setTotalRecord(service.totalRecord(pDTO));
 		
 		// 2. DB data
@@ -37,4 +38,36 @@ public class CommunityController {
 		
 		return mav;
 	}
-}	
+	// ê²Œì‹œê¸€ ì„¸ë¶€ ë³´ê¸°
+	   @GetMapping("/communityView/{com_num}")
+	   public ModelAndView afterView(@PathVariable("com_num") int com_num) {
+	      
+	      ModelAndView mav = new ModelAndView();
+	      
+	      service.hitCount(com_num);
+	      
+	      mav.addObject("dto", service.getBoard(com_num));
+	      
+	      mav.setViewName("community/communityView");
+	      return mav;
+	   }
+		// ê¸€ ì‚­ì œ
+		@GetMapping("/boardDel")
+		public ModelAndView boardDel(int com_num, HttpSession session) {
+			int result = service.boardDel(com_num);
+			
+			ModelAndView mav = new ModelAndView();
+			
+			if(result > 0) {
+				// ì‚­ì œ ì„±ê³µ
+				mav.setViewName("redirect:communityList");
+			}else {
+				// ì‚­ì œ ì‹¤íŒ¨
+				mav.addObject("",com_num);
+				mav.setViewName("redirect:communityView");
+				
+			}
+			
+			return mav;
+		}
+}
