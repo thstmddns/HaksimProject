@@ -147,6 +147,6 @@ public class RegisterController {
 			mav.setViewName("redirect:idSearchOk");
 		}
 		return mav;
+
 	}
-	
 }

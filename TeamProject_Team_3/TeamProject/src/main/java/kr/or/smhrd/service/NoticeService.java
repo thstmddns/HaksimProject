@@ -7,15 +7,16 @@ import kr.or.smhrd.dto.PagingDTO;
 import kr.or.smhrd.dto.ReportDTO;
 
 public interface NoticeService {
+
 	// 글 등록
 	public int NoticeWriteOk(NoticeDTO dto); 
 		
 	// 글 목록 조회 
 	public List<NoticeDTO> NoticeList(PagingDTO pDTO);
-		
+	
 	// 총 레코드 수
 	public int totalRecord(PagingDTO pDTO);
-		
+	
 	// 한개의 레코드 선택
 	public NoticeDTO getNotice(int no);
 		

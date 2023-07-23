@@ -27,10 +27,13 @@ function boardDelChk () {
       <li>등록일 : ${dto.com_wdate}</li>
       <li>조회수 : ${dto.com_hit}</li>
    </ul>
-   
+     
    	<div>
+   		<a href="/smhrd/community/communityEdit?com_num=${dto.com_num}">수정</a>
 		<a href="javascript:boardDelChk()">삭제</a>
 	</div>
+	
+	
  <%-- <!--  작성자가 아닌 경우 글에 대한 수정, 삭제 권한 부여 x -->
 
   <div align="right">

@@ -55,5 +55,5 @@ public class NoticeServiceImp implements NoticeService {
 		// TODO Auto-generated method stub
 		return dao.NoticeDel(no, id);
 	}
-
+	
 }

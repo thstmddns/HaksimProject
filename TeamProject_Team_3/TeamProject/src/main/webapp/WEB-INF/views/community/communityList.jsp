@@ -1,33 +1,57 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <style>
-	h1{
-		text-align: center;
+	.community_list {
+		overflow:auto;
+		list-style-type: none;
 	}
-	.community_list, .page>ul{
-		overflow: auto;
-	}
-
-	.community_list > li{
-		float: left;  
-		height: 40px; 
-		line-height: 40px; 
-		border-bottom: 1px solid #ddd; 
-		width: 15%;
-		text_align:center;
-	}
-	
-	a:link, a:visited, a:hover{
-		text-decoration: none;
-		color: black;
-	}	
-	
-	.community_list > li:nth-child(5n+2) {
-		width: 40%;	
-		white-space: nowrap;	/* 줄 바꾸지 않기 */
-		overflow: hidden;	/* 넘치는 값 숨기기 */
-		text-overflow: ellipsis;	/* ... 표시 */
-	}
+	.community_list>li{
+	 	float:left;
+	 	width:10%;
+	 	height:40px;
+	 	line-height:40px;
+	 	border-bottom:1px solid #ddd;
+	 	text-align:center;
+	 }
+	 .community_list>li:nth-child(5n+2) {
+	 	width:60%;
+	 	/*말줄임표시*/
+	 	white-space:nowrap;  /*줄 바꾸지 않기*/
+	 	overflow:hidden;   /*넘친값 숨기기*/
+	 	text-overflow:ellipsis;   /* ... 표시하기 */
+	 }
+	 .page>ul {
+	 	overflow:auto;
+	 	list-style-type: none;
+	 	display:flex;
+	 	justify-content:center;
+	 	margin-top:10px;
+	 }
+	 .page li {
+	 	float:left;
+	 	width:40px;
+	 	height:40px;
+	 	text-align:center;
+	 }
+	.search {
+	 	text-align:center;
+	 	height:40px;
+	 	margin-top:10px;
+	 } 
+	 .searchWord {
+	 	width: 300px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom : 2px solid black;
+    }
+    .searchBtn {
+       width: 100px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom : 1px solid black;
+    }
 
 
 </style>
@@ -60,7 +84,7 @@
 		</c:forEach>
 	</ul>
 	
-	<div class="page">
+			<div class="page">
 		<ul>
 			<!-- 가장 첫 페이지시 이전페이지 버튼 비활성화 -->	
 			<c:if test="${pDTO.nowPage==1 }">
@@ -68,8 +92,7 @@
 			</c:if>
 			<!-- 이전 페이지 -->
 			<c:if test="${pDTO.nowPage>1 }">
-				<li><a href='/smhrd/community/communityList?nowPage=${pDTO.nowPage-1 }
-				<c:if test="${pDTO.searchWord!=null}">&searchKey=${pDTO.searchKey}&searchWord=${pDTO.searchWord}</c:if>'>prev</a></li>
+				<li><a href='/smhrd/community/communityList?nowPage=${pDTO.nowPage-1 }<c:if test="${pDTO.searchWord!=null}">&searchKey=${pDTO.searchKey}&searchWord=${pDTO.searchWord}</c:if>'>prev</a></li>
 			</c:if>
 			
 			<!-- forEach : 변수, 시작, 끝, 증가값(생략가능) -->
@@ -99,17 +122,17 @@
 		</ul>
 	</div>
 	
-		<div class="search">
-			<form action="/smhrd/community/communityList">
-				<select name="searchKey">
-					<option value="com_title">제목</option>
-					<option value="com_content">글내용</option>
-					<option value="mem_id">글쓴이</option>
-				</select>
-				<input type="text" name="searchWord" id="searchWord"/>
-				<input type="submit" value="Search"/>
-			</form>
-		</div>	
-
+	<div class="search">
+		<form action="/smhrd/community/communityList">
+			<select name="searchKey">
+				<option value="com_title">제목</option>
+				<option value="com_content">글내용</option>
+				<option value="mem_id">글쓴이</option>
+			</select>
+			<input type="text" name="searchWord" id="searchWord"/>
+			<input type="submit" value="Search"/>
+		</form>
+	</div>
+	
 </main>
 	
