@@ -4,12 +4,14 @@ package kr.or.smhrd.service;
 import kr.or.smhrd.dto.RegisterDTO;
 
 public interface RegisterService {
-	//È¸¿ø°¡ÀÔ
+	// íšŒì›ê°€ì…
 	public int registerInsert(RegisterDTO dto);
-	// ¾ÆÀÌµğ Áßº¹Ã¼Å©
+	// ì•„ì´ë”” ì¤‘ë³µì²´í¬
 	public int idCheck(String mem_id);
-	// ·Î±×ÀÎ
+	// ë¡œê·¸ì¸
 	public RegisterDTO loginOk(String mem_id, String mem_password);
-	// ¾ÆÀÌµğ Ã£±â
+	// ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°
 	public RegisterDTO passwordSearch(RegisterDTO dto);
+	// ì•„ì´ë”” ì°¾ê¸°
+	public RegisterDTO idSearchOk(String mem_name, String mem_email);
 }

@@ -68,7 +68,7 @@ public class NoticeController {
 			
 			mav.setViewName("redirect:noticeList");
 		}catch (Exception e) {
-			System.out.println("¿¡·¯ ¹ß»ý >> "+e.getMessage());
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ >> "+e.getMessage());
 			mav.setViewName("notice/noticeWriteResult");
 		}
 			
@@ -76,11 +76,11 @@ public class NoticeController {
 			
 	}
 		
-		// ±Û ³»¿ë º¸±â
+		// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		@GetMapping("/noticeView/{notice_num}")
 		public ModelAndView boardView(@PathVariable("notice_num") int no) {
 			ModelAndView mav = new ModelAndView();
-			// Á¶È¸¼ö Áõ°¡
+			// ï¿½ï¿½È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			service.hitCount(no);
 			
 			mav.addObject("notice", service.getNotice(no));
@@ -90,7 +90,7 @@ public class NoticeController {
 			return mav;
 		}
 		
-		// ±Û¼öÁ¤À¸·Î ÀÌµ¿
+		// ï¿½Û¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
 		@GetMapping("/noticeEdit")
 		public ModelAndView boardEdit(int no, PagingDTO pDTO) {
 			NoticeDTO dto = service.getNotice(no);
@@ -118,16 +118,16 @@ public class NoticeController {
 			mav.addObject("searchWord", pDTO.getSearchWord());
 			
 			if(result > 0) {
-				// ¼öÁ¤ ¼º°ø -> ±Û³»¿ëÀ¸·Î
+				
 				mav.setViewName("redirect:noticeView");
 			}else {
-				// ¼öÁ¤ ½ÇÆÐ -> ¼öÁ¤ÆûÀ¸·Î
+				
 				mav.setViewName("redirect:noticeEdit");
 			}
 			return mav;
 		}
 		
-		// ±Û »èÁ¦
+		
 		@GetMapping("/noticeDel")
 		public ModelAndView boardDel(int no, HttpSession session) {
 			int result = 0;
@@ -137,10 +137,10 @@ public class NoticeController {
 			ModelAndView mav = new ModelAndView();
 			
 			if(result > 0) {
-				// »èÁ¦ ¼º°ø
+				
 				mav.setViewName("redirect:noticeList");
 			}else {
-				// »èÁ¦ ½ÇÆÐ
+				
 				mav.addObject("no",no);
 				mav.setViewName("redirect:noticeView");
 			}

@@ -105,8 +105,8 @@ public class RegisterController {
 		RegisterDTO resultDTO = service.passwordSearch(dto);
 		String resultTxt = "N";
 		if(resultDTO!=null) { //일치하는 정보가 있을때
-	 //이메일 보내기 
-	try {   
+		 //이메일 보내기 
+		try {   
 		String subject = "비밀번호 찾기 결과";
 		String content = "<div style='background:pink; border:1px solid #ddd; padding:50px; text-align:center'>";
 		   
@@ -132,4 +132,21 @@ public class RegisterController {
 	}    
 		return resultTxt;
 	}
+	//아이디 찾기
+	@GetMapping("/idSearch")
+	public String idSearchForm() {
+		return "register/idSearch";
+		}
+	@PostMapping("/idSearchOk")
+	public ModelAndView idSearchOk(String mem_name, String mem_email) {
+		RegisterDTO dto = service.idSearchOk(mem_name, mem_email);
+		ModelAndView mav = new ModelAndView();
+		if(dto!=null) {
+			mav.setViewName("redirect:/");
+		}else {
+			mav.setViewName("redirect:idSearchOk");
+		}
+		return mav;
+	}
+	
 }
