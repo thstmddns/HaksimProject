@@ -104,17 +104,15 @@
 				<li>이메일</li>
 				<li>기수번호</li>
 				<li>기수인증</li>
-				<!-- 
+				
 				<c:forEach var="mDTO" items="${member}">
 					<li><input type="checkbox"></li>
-					<li>${mDTO}</li>
-					<li>${mDTO}</li>
-					<li>${mDTO}</li>
-					<li>${mDTO}</li>
-					<li>${mDTO}</li>
+					<li>${mDTO.mem_id}</li>
+					<li>${mDTO.mem_name}</li>
+					<li>${mDTO.mem_email}</li>
+					<li>${mDTO.mem_type}</li>
+					<li>${mDTO.mem_ca}</li>
 				</c:forEach>
-				
-				 -->
 			</ul>
 			</form>
 		</div>

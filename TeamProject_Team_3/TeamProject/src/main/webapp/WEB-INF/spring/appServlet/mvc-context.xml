@@ -9,11 +9,11 @@
 	
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="#"/> <!-- 메인 페이지에서 공지 게시판 이동시 로그인 여부 확인 -->
-			<mvc:mapping path="#"/> <!-- 메인 페이지에서 자료공유 게시판 이동시 로그인 여부 확인 -->
-			<mvc:mapping path="#"/> <!-- 메인 페이지에서 커뮤니티 게시판 이동시 로그인 여부 확인 -->
-			<mvc:mapping path="#"/> <!-- 메인 페이지에서 맛집공유 게시판 이동시 로그인 여부 확인 -->
-			<mvc:mapping path="#"/> <!-- 메인 페이지에서 수료생 게시판 이동시 로그인 여부 확인 -->
+			<mvc:mapping path="/after/afterList"/> 
+			<mvc:mapping path="/community/communityList"/> 
+			<mvc:mapping path="/data/dataList"/> 
+			<mvc:mapping path="/notice/noticeList"/> 
+			 
 			
 			<bean class="kr.or.smhrd.LoginInterceptor"></bean>
 		</mvc:interceptor>
