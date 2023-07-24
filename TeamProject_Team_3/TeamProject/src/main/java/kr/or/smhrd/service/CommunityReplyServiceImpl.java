@@ -24,6 +24,11 @@ public class CommunityReplyServiceImpl implements CommunityReplyService {
 		return dao.replyDelete(com_num);
 	}
 
+	@Override
+	public int replyUpdate(CommunityReplyDTO dto) {
+		return dao.replyUpdate(dto);
+	}
+
 
 }
 

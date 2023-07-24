@@ -39,11 +39,11 @@ $(function(){
 						// -- 수정폼
 						tag += "<div style='display:none'>";
 						tag += "<form>";
-						tag += "<textarea style='width:400px' name='coment'>";
+						tag += "<textarea style='width:400px' name='com_review_content'>";
 						// 글 내용 수정, 댓글번호
 						tag += coment.com_review_content;
 						tag += "</textarea>";
-						tag += "<input type='hidden' name='coment.com_review_num' value='"+coment.com_review_num+"'/>";
+						tag += "<input type='hidden' name='com_review_num' value='"+coment.com_review_num+"'/>";
 						tag += "<input type='button' value='수정하기'/>";
 						tag += "</form>";
 						tag += "</div>";
@@ -83,8 +83,38 @@ $(function(){
 			}
 		});
 	});
-	communityReplyList();
+
+//댓글 수정폼
+$(document).on('click','#communityReplyList input[value=Edit]',function(){
+	$(this).parent().css('display', 'none');	
+	$(this).parent().next().css('display', 'block');
 });
+
+// 댓글 수정(DB)
+$(document).on('click', '#communityReplyList input[value=수정하기]', function(){
+	var params = $(this).parent().serialize();  
+	
+	$.ajax({
+		url : '/smhrd/communityReply/replyEditOk',
+		data : params,
+		type : 'POST',
+		success:function(result){
+			if(result=='0'){
+				alert('댓글이 수정되지 않았습니다');
+			}else{
+				communityReplyList();
+			}
+		},
+		error:function(e){
+			console.log("댓글 수정 실패", e.responseText);
+		}
+	});
+});
+
+communityReplyList();
+
+});
+
 </script>
 
 <main>
@@ -119,12 +149,8 @@ $(function(){
 				<textarea name="communityComent" id="communityComent"></textarea>
 				<input type="submit" value="댓글 등록하기">
 			</form>
-			<!-- 액션태그 생략하면 기본이 자신 페이지로 이동 -->
 		<hr/>
-		<ul id="communityReplyList">
-			
+		<ul id="communityReplyList">			
 		</ul>
-	</div>
-	
-	
+	</div>	
 </main>
