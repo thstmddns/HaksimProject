@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.smhrd.dao.CommunityReplyDAO">
+
+	<select id="replySelect" resultType="kr.or.smhrd.dto.CommunityReplyDTO">
+		select com_review_num, com_review_content, mem_id
+		FROM community_review WHERE com_num=${param1} 
+		ORDER BY com_review_num desc
+	</select>
+	<delete id="replyDelete">
+		delete from community_review where com_review_num = ${param1}
+	</delete>
+</mapper>
