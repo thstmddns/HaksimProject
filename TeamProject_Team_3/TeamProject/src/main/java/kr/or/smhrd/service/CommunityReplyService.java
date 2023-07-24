@@ -6,5 +6,6 @@ import kr.or.smhrd.dto.CommunityReplyDTO;
 
 public interface CommunityReplyService {
 	public List <CommunityReplyDTO> replySelect(int com_num);
+	public int replyDelete(int com_num);
 	
 }

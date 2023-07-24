@@ -20,6 +20,8 @@ public class CommunityReplyController {
 
 	return service.replySelect(com_num);
 	}
-  
-	 
+	 @GetMapping("/communityReply/replyDel")
+	  public String replyDel(int com_review_num) {
+	  return String.valueOf(service.replyDelete(com_review_num));
+	 } 
 }

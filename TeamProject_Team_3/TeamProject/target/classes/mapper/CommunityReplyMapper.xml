@@ -9,5 +9,7 @@
 		FROM community_review WHERE com_num=${param1} 
 		ORDER BY com_review_num desc
 	</select>
-
+	<delete id="replyDelete">
+		delete from community_review where com_review_num = ${param1}
+	</delete>
 </mapper>

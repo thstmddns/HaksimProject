@@ -19,6 +19,11 @@ public class CommunityReplyServiceImpl implements CommunityReplyService {
 		return dao.replySelect(com_num);
 	}
 
+	@Override
+	public int replyDelete(int com_num) {
+		return dao.replyDelete(com_num);
+	}
+
 
 }
 

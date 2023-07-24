@@ -58,6 +58,31 @@ $(function(){
 			}
 		});
 	}
+	
+	// 댓글 삭제
+	$(document).on('click', '#communityReplyList input[value=Del]', function() {
+		if (!confirm("댓글을 삭제하시겠습니까?")) {
+			return false;
+		}
+		var com_review_num = $(this).attr('title')
+		
+		$.ajax({
+			url : '/smhrd/communityReply/replyDel',
+			data : {
+				com_review_num : com_review_num
+			},
+			success:function(result) {
+				if(result=='0'){
+					alert('댓글이 삭제되지 않았습니다');
+				}else{
+					communityReplyList();
+				}
+			},
+			error:function(e) {
+				console.log("댓글 삭제 실패", e.responseText);
+			}
+		});
+	});
 	communityReplyList();
 });
 </script>

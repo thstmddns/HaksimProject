@@ -16,5 +16,5 @@ public interface CommunityReplyDAO {
 	//public int replyUpdate(ReplyDTO dto);
 	
 	// 리플 삭제 
-	//public int replyDelete(int com_num);
+	public int replyDelete(int com_num);
 }
