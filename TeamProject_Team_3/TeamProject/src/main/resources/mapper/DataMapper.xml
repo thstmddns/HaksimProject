@@ -40,15 +40,10 @@
 		delete from data_board where data_num=${param1}
 	</delete>
 	
-	<!-- 첨부파일목록 지우기 -->
-	<delete id="dataFileDelete">
-		delete from data_file
-		where no=${param1}
-	</delete>
-	<select id="getDataList" resultType="kr.or.smhrd.dto.DataDTO">
-		<!-- 쿼리문 작성 -->
-		select data_num, data_title, mem_id, data_hit,
-      	to_char(data_wdate,'MM-DD HH:MI') data_wdate
-      	from data order by no desc
-	</select>
+	<!--  -->
+	
+	<insert id="dReplyInsert">
+		insert into data_review(data_review_num, data_num, data_review_content, mem_id) 
+		values(datareview_no_seq.nextval, ${data_num}, #{data_review_content}, #{mem_id})
+	</insert>
 </mapper>

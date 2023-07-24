@@ -3,7 +3,7 @@ package kr.or.smhrd.dao;
 import java.util.List;
 
 import kr.or.smhrd.dto.DataDTO;
-import kr.or.smhrd.dto.DataFileDTO;
+import kr.or.smhrd.dto.DataReplyDTO;
 import kr.or.smhrd.dto.PagingDTO;
 
 public interface DataDAO {
@@ -27,12 +27,12 @@ public interface DataDAO {
 	
 	// 글 삭제
 	public int dataDelete(int data_num);
-	
-	// 첨부파일
-	public int dataFileDelete(int data_num);
-	
-	public List<DataFileDTO> dataFileSelect (int data_num);
 
-	public int dataFileInsert(List<DataFileDTO> fileList);
+	/////////////////////////////////////////////////
+
+	public int dReplyInsert(DataReplyDTO dto);
+	public int dReplySelect(int data_num);
+	public int dReplyUpdate(DataReplyDTO dto);
+	public int dReplyDelete(int data_review_num);
 	
 }
