@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
 
 <script>
 	function idSearch(){
@@ -17,11 +16,11 @@
 </script>
 <main>
 	<h1>아이디 찾기</h1>
-	<form method="post" action="/smhrd/register/idSearchOk" onsubmit="return idSearch()">
-	<ul>
-		<li>이름 : <input type="text" name="mem_name" /></li>
-		<li>이메일 : <input type="email" name="mem_email" placeholder="예)sm7@smhrd.or.kr" /></li>
-		<li> <input type="button" value="아이디찾기" /></li>
-	</ul>
+	<form method="post" action="/smhrd/register/idSearchResult" onsubmit="return idSearch()">
+		<ul>
+			<li>이름 : <input type="text" name="mem_name" /></li>
+			<li>이메일 : <input type="email" name="mem_email" placeholder="예)sm7@smhrd.or.kr" /></li>
+			<li> <input type="button" value="아이디찾기" /></li>
+		</ul>
 	</form>
 </main>

@@ -22,7 +22,7 @@
 			<li><input type="submit" value="로그인" /></li>
 			<li>
 			<!-- 이름과 연락처를 입력받아 DB에서 아이디, 이메일을 조회 후 아이디를 이메일로 보낸다. -->
-				<div><a href="/smhrd/register/idSearch">아이디 찾기</a>이메일로 보내기</div>
+				<div><a href="/smhrd/register/idSearchForm">아이디 찾기</a></div>
 				<div><a href="/smhrd/register/passwordSearch">비밀번호 찾기</a></div>
 				<div><a href="/smhrd/register/regForm">회원가입</a></div>
 			</li>			

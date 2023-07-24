@@ -133,13 +133,13 @@ public class RegisterController {
 		return resultTxt;
 	}
 	//아이디 찾기
-	@GetMapping("/idSearch")
+	@GetMapping("/idSearchForm")
 	public String idSearchForm() {
-		return "register/idSearch";
+		return "register/idSearchForm";
 		}
-	@PostMapping("/idSearchOk")
-	public ModelAndView idSearchOk(String mem_name, String mem_email) {
-		RegisterDTO dto = service.idSearchOk(mem_name, mem_email);
+	@PostMapping("/idSearchResult")
+	public ModelAndView idSearchResult(String mem_name, String mem_email) {
+		RegisterDTO dto = service.idSearchResult(mem_name, mem_email);
 		ModelAndView mav = new ModelAndView();
 		if(dto!=null) {
 			mav.setViewName("redirect:/");
