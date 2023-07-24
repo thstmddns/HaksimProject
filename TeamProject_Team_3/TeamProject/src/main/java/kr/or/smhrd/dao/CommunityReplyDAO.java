@@ -7,7 +7,7 @@ import kr.or.smhrd.dto.CommunityReplyDTO;
 public interface CommunityReplyDAO {
 	
 	//리플 삽입
-	//public int replyInsert(ReplyDTO dto);
+	public int replyInsert(CommunityReplyDTO dto);
 	
 	 // 리플 조회 
 	public List <CommunityReplyDTO> replySelect(int com_num);

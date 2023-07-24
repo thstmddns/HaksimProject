@@ -2,6 +2,8 @@ package kr.or.smhrd.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,7 +16,20 @@ import kr.or.smhrd.service.CommunityReplyService;
 public class CommunityReplyController {
 	@Autowired
 	CommunityReplyService service;
-
+	
+	@PostMapping("/communityReply/replyWrite")
+	public String replyWrite(CommunityReplyDTO dto, HttpSession session) {
+	      
+	      dto.setMem_id("Kim");
+	      
+	      System.out.println(dto.toString());
+	      int result = service.replyInsert(dto);
+	      
+	      System.out.println(dto.getMem_id());
+	      
+	      return result+""; 
+	   }
+	
 	// 댓글 목록
 	@GetMapping("/communityReply/replyList")
 	public List<CommunityReplyDTO> replyList(int com_num) {

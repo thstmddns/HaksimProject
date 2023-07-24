@@ -29,6 +29,11 @@ public class CommunityReplyServiceImpl implements CommunityReplyService {
 		return dao.replyUpdate(dto);
 	}
 
+	@Override
+	public int replyInsert(CommunityReplyDTO dto) {
+		return dao.replyInsert(dto);
+	}
+
 
 }
 
