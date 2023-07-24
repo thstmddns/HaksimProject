@@ -126,7 +126,7 @@
 					</c:if>
 					
 					<li>${mDTO.mem_ca}</li>
-					<li><a href="javascript:changeAuth()"><button>${mDTO.mem_auth}</button></a></li>
+					<li><button>${mDTO.mem_auth}</button></li>
 				</c:forEach>
 			</ul>
 			</form>

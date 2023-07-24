@@ -3,7 +3,7 @@ package kr.or.smhrd.dao;
 import java.util.List;
 
 import kr.or.smhrd.dto.AfterDTO;
-import kr.or.smhrd.dto.AfterFileDTO;
+import kr.or.smhrd.dto.DataFileDTO;
 import kr.or.smhrd.dto.PagingDTO;
 
 public interface AfterDAO {
