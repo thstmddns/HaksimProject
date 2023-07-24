@@ -140,8 +140,10 @@ communityReplyList();
    	</ul>
      
    	<div>
-   		<a href="/smhrd/community/communityEdit?com_num=${dto.com_num}">수정</a>
-		<a href="javascript:boardDelChk()">삭제</a>
+   		<c:if test="${logId == dto.mem_id }">>
+   			<a href="/smhrd/community/communityEdit?com_num=${dto.com_num}">수정</a>
+			<a href="javascript:boardDelChk()">삭제</a>
+   		</c:if>
 	</div>
 	<div id="communityReply">
 			<form method="post" id="communityReplyFrm">
