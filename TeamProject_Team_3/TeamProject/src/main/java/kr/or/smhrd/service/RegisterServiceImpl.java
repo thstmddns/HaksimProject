@@ -31,8 +31,8 @@ public class RegisterServiceImpl implements RegisterService {
 		return dao.passwordSearch(dto);
 	}
 	@Override
-	public RegisterDTO idSearchResult(String mem_name, String mem_email) {
-		return dao.idSearchResult(mem_name, mem_email);
+	public RegisterDTO idSearchResult(RegisterDTO dto) {
+		return dao.idSearchResult(dto);
 	}
 
 	

@@ -5,8 +5,8 @@
 <mapper namespace="kr.or.smhrd.dao.RegisterDAO">
 	<!-- 회원등록 -->
 	<insert id="registerInsert">
-		insert into member(mem_id, mem_password, mem_type, mem_age, mem_email, mem_name, mem_wdate, mem_ca)
-		values (#{mem_id}, #{mem_password}, #{mem_type}, #{mem_age}, #{mem_email}, #{mem_name}, sysdate, #{mem_ca})
+		insert into member(mem_id, mem_password, mem_type, mem_age, mem_email, mem_name, mem_wdate, mem_ca, mem_auth)
+		values (#{mem_id}, #{mem_password}, #{mem_type}, #{mem_age}, #{mem_email}, #{mem_name}, sysdate, #{mem_ca}, 0)
 	</insert>	
 	
 	<!-- 아이디 중복 체크 -->
@@ -28,6 +28,6 @@
 	<!-- 아이디 찾기 -->
 	<select id="idSearchResult" resultType="kr.or.smhrd.dto.RegisterDTO">
 		select mem_id, mem_name 
-		from member where mem_name=${mem_name} and mem_email=#{mem_email}
+		from member where mem_name=#{mem_name} and mem_email=#{mem_email}
 	</select>
 </mapper>

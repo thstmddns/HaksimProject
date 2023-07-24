@@ -13,5 +13,5 @@ public interface RegisterService {
 	// 비밀번호 찾기
 	public RegisterDTO passwordSearch(RegisterDTO dto);
 	// 아이디 찾기
-	public RegisterDTO idSearchResult(String mem_name, String mem_email);
+	public RegisterDTO idSearchResult(RegisterDTO dto);
 }

@@ -75,11 +75,12 @@ public class RegisterController {
 			session.setAttribute("logId", dto.getMem_id());
 			session.setAttribute("logType", dto.getMem_type());
 			session.setAttribute("logCa", dto.getMem_ca());
+			session.setAttribute("logAuth", dto.getMem_auth());
 			session.setAttribute("logStatus", "Y");
 			 
 			 mav.setViewName("redirect:/");
 		}else {
-			mav.setViewName("redirect:login");
+			mav.setViewName("register/loginResult");
 		}
 		return mav;
 	}
@@ -136,18 +137,20 @@ public class RegisterController {
 	//아이디 찾기
 	@GetMapping("/idSearchForm")
 	public String idSearchForm() {
+		System.out.println(1);
 		return "register/idSearchForm";
 		}
+	
 	@PostMapping("/idSearchResult")
-	public ModelAndView idSearchResult(String mem_name, String mem_email) {
-		RegisterDTO dto = service.idSearchResult(mem_name, mem_email);
+	public ModelAndView idSearchResult(RegisterDTO dto) { 
+		RegisterDTO resultDTO = service.idSearchResult(dto);
 		ModelAndView mav = new ModelAndView();
-		if(dto!=null) {
-			mav.setViewName("redirect:/");
+		mav.addObject("data", resultDTO);
+		if(resultDTO!=null) { //일치하는 정보가 있을때
+			mav.setViewName("register/idSearchResult");
 		}else {
-			mav.setViewName("redirect:idSearchOk");
+			mav.setViewName("register/idS");
 		}
 		return mav;
-
 	}
 }
