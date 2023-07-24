@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.or.smhrd.dao.DataDAO;
 import kr.or.smhrd.dto.DataDTO;
+import kr.or.smhrd.dto.DataFileDTO;
 import kr.or.smhrd.dto.DataReplyDTO;
 import kr.or.smhrd.dto.PagingDTO;
 
@@ -40,6 +41,30 @@ public class DataServiceImp implements DataService{
 	@Override
 	public int dataDelete(int data_num) {
 		return dao.dataDelete(data_num);
+	}
+
+	@Override
+	public int dataFileInsert(List<DataFileDTO> fileList) {
+		
+		return dao.dataFileInsert(fileList);
+	}
+
+	@Override
+	public int dataFileDelete(int data_num) {
+		
+		return dao.dataFileDelete(data_num);
+	}
+
+	@Override
+	public List<DataFileDTO> dataFileSelect(int data_num) {
+		
+		return dao.dataFileSelect(data_num);
+	}
+
+	@Override
+	public int dataInsert(DataDTO dto) {
+		
+		return dao.dataInsert(dto);
 	}
 
 	

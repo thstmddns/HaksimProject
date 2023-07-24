@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<style>
+	 .afterView li {
+	 	margin-top:10px;
+	 	list-style-type: none;
+	 }
+</style>
+
 <script>
 /* 글 삭제 */
 function dataDelChk () {
@@ -136,10 +143,16 @@ $(document).on('click', '#dataReplyList input[value=Del]', function() {
    <ul class="dataOpen">
       <li>번호 : ${dto.data_num}</li>
       <li>글쓴이 : ${dto.mem_id}</li>
+      <li>제목 : ${dto.data_title}</li>
       <li>조회수 : ${dto.data_hit}</li>
       <li>등록일 : ${dto.data_wdate}</li>
-      <li>제목 : ${dto.data_title}</li>
       <li><br>글내용<br/> ${dto.data_content}</li>
+      <li>첨부파일 : 
+				<c:forEach var="fDTO" items="${fileList}">
+            		<a href="<%=request.getContextPath()%>/upload/${fDTO.filename}" download>
+            		${fDTO.filename}</a>
+         		</c:forEach>
+		</li>
    </ul>   
    
    <div>
