@@ -7,26 +7,26 @@ import kr.or.smhrd.dto.AfterFileDTO;
 import kr.or.smhrd.dto.PagingDTO;
 
 public interface AfterDAO {
-		// ¼ö·á»ı ±Û ¸ñ·Ï
-		public List<AfterDTO> getAfterList(PagingDTO pDTO);
-		// ÃÑ ·¹ÄÚµå ¼ö
-		public int totalRecord(PagingDTO pDTO);
-		
-		
-		// ¼ö·á»ı ±Û ¼±ÅÃ(1°³)
-		public AfterDTO afterSelect(int grad_num);
-		// Á¶È¸¼ö Áõ°¡
-		public void hitCount(int grad_num);
-		
-		// ¼ö·á»ı ±Û µî·Ï
-		public int afterInsert(AfterDTO dto);
-		
-		
-		// °Ô½Ã±Û ¼öÁ¤ 
-		public int afterEdit(AfterDTO dto);
-		
-		// ±Û »èÁ¦
-		public int afterDelete(int grad_num);
-		
-		
+      // ê¸€ ëª©ë¡ ì„ íƒ(paging, search)
+      public List<AfterDTO> getAfterList(PagingDTO pDTO);
+      // ì´ ë ˆì½”ë“œ ìˆ˜
+      public int totalRecord(PagingDTO pDTO);
+      
+      
+      // 1ê°œì˜ ë ˆì½”ë“œ ì„ íƒ(ê²Œì‹œê¸€ ë‚´ìš© ë³´ê¸°)
+      public AfterDTO afterSelect(int grad_num);
+      // ì¡°íšŒìˆ˜ ì¦ê°€
+      public void hitCount(int grad_num);
+      
+      // ê¸€ ë“±ë¡
+      public int afterInsert(AfterDTO dto);
+      
+      
+      // ê²Œì‹œê¸€ ìˆ˜ì • 
+      public int afterEdit(AfterDTO dto);
+      
+      // ê²Œì‹œê¸€ ì‚­ì œ
+      public int afterDelete(int grad_num);
+      
+      
 }

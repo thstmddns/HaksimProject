@@ -102,10 +102,8 @@
   <!--                                                                      -->
   <!--   allowPartialPut     Should the server treat an HTTP PUT request    -->
   <!--                       with a Range header as a partial PUT? Note     -->
-  <!--                       that while RFC 7233 clarified that Range       -->
-  <!--                       headers only valid for GET requests, RFC 9110  -->
-  <!--                       (which obsoletes RFC 7233) now allows partial  -->
-  <!--                       puts. [true]                                   -->
+  <!--                       that RFC 7233 clarified that Range headers are -->
+  <!--                       only valid for GET requests. [true]            -->
 
     <servlet>
         <servlet-name>default</servlet-name>
@@ -187,8 +185,7 @@
   <!--                       arrays, to improve performance in some cases?  -->
   <!--                       [false]                                        -->
   <!--                                                                      -->
-  <!--   ieClassId           Deprecated. Will be removed in Tomcat 10.1     -->
-  <!--                       The class-id value to be sent to Internet      -->
+  <!--   ieClassId           The class-id value to be sent to Internet      -->
   <!--                       Explorer when using <jsp:plugin> tags.         -->
   <!--                       [clsid:8AD9C840-044E-11D1-B3E9-00805F499D93]   -->
   <!--                                                                      -->
@@ -358,7 +355,7 @@
   <!--                        the arguments to the OS. See the CGI How-To   -->
   <!--                        for more details. The default varies by       -->
   <!--                        platform.                                     -->
-  <!--                        Windows: [[\w\Q-.\\/:\E]+]            -->
+  <!--                        Windows: [[a-zA-Z0-9\Q-_.\\/:\E]+]            -->
   <!--                        Others:  [.*]                                 -->
   <!--                        Note that internally the CGI Servlet treats   -->
   <!--                        [.*] as a special case to improve performance -->
@@ -369,7 +366,7 @@
   <!--                        command line arguments must match else the    -->
   <!--                        request will be rejected. The default matches -->
   <!--                        the allowed values defined by RFC3875.        -->
-  <!--                        [[\w\Q%;/?:@&,$-.!~*'()\E]+]          -->
+  <!--                        [[a-zA-Z0-9\Q%;/?:@&,$-_.!~*'()\E]+]          -->
   <!--                                                                      -->
   <!--   enableCmdLineArguments                                             -->
   <!--                        Are command line parameters generated from    -->
@@ -2119,7 +2116,7 @@
     </mime-mapping>
     <mime-mapping>
         <extension>js</extension>
-        <mime-type>text/javascript</mime-type>
+        <mime-type>application/javascript</mime-type>
     </mime-mapping>
     <mime-mapping>
         <extension>jsf</extension>
