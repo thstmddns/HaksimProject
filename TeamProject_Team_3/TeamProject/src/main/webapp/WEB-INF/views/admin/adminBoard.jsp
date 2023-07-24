@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<script>
+	function changeAuth(){
+		location.href="/smhrd/admin/"
+	}
+</script>
+
 <style>
 	ul,li{
 		margin: 0px;	
@@ -106,7 +112,7 @@
 				<li>인증여부</li>
 				
 				<c:forEach var="mDTO" items="${member}">
-					<li>${mDTO.mem_id}</li>
+					<li><a href="/smhrd/admin/memberView?id=${mDTO.mem_id }">${mDTO.mem_id}</a></li>
 					<li>${mDTO.mem_name}</li>
 					<li>${mDTO.mem_email}</li>
 					<c:if test="${mDTO.mem_type == 0 }">
@@ -120,7 +126,7 @@
 					</c:if>
 					
 					<li>${mDTO.mem_ca}</li>
-					<li>${mDTO.mem_auth}</li>
+					<li><a href="javascript:changeAuth()"><button>${mDTO.mem_auth}</button></a></li>
 				</c:forEach>
 			</ul>
 			</form>

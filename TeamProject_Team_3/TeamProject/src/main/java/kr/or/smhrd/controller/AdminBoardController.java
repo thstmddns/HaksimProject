@@ -1,11 +1,16 @@
 package kr.or.smhrd.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 
 import kr.or.smhrd.dto.NoticeDTO;
 import kr.or.smhrd.dto.PagingDTO;
@@ -43,5 +48,12 @@ public class AdminBoardController {
 		return mav;
 	}
 
+	@GetMapping("/memberView")
+	public ModelAndView memberView(String mem_id ) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("member", mService.getMember(mem_id));
+		mav.setViewName("member/memberView");
+		return mav;
+	}
 	
 }

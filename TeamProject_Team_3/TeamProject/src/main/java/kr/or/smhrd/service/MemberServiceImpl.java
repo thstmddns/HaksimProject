@@ -18,4 +18,10 @@ public class MemberServiceImpl implements MemberService {
 		return dao.getMemberList();
 	}
 
+	@Override
+	public RegisterDTO getMember(String mem_id) {
+		// TODO Auto-generated method stub
+		return dao.getMember(mem_id);
+	}
+
 }

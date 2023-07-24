@@ -6,6 +6,9 @@ import kr.or.smhrd.dto.RegisterDTO;
 
 public interface MemberDAO {
 
-	List <RegisterDTO> getMemberList();
+	public List <RegisterDTO> getMemberList();
+
+	public RegisterDTO getMember(String mem_id);
+
 
 }
