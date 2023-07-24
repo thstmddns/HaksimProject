@@ -132,6 +132,7 @@ public class RegisterController {
 	}    
 		return resultTxt;
 	}
+	
 	//아이디 찾기
 	@GetMapping("/idSearchForm")
 	public String idSearchForm() {

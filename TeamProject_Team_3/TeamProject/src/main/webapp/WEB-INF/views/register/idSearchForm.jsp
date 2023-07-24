@@ -16,7 +16,7 @@
 </script>
 <main>
 	<h1>아이디 찾기</h1>
-	<form method="post" action="/smhrd/register/idSearchResult" onsubmit="return idSearch()">
+	<form method="post" action="/smhrd/register/idSearchResult" onsubmit="return idSearchResult()">
 		<ul>
 			<li>이름 : <input type="text" name="mem_name" /></li>
 			<li>이메일 : <input type="email" name="mem_email" placeholder="예)sm7@smhrd.or.kr" /></li>

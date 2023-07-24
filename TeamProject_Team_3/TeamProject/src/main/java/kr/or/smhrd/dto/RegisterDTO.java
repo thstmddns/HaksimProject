@@ -3,7 +3,7 @@ package kr.or.smhrd.dto;
 public class RegisterDTO {
 	private String mem_id;
 	private String mem_password;
-	private String mem_type;
+	private int mem_type;
 	private int mem_age;
 	private String mem_email;
 	private String mem_name;
@@ -22,10 +22,10 @@ public class RegisterDTO {
 	public void setMem_password(String mem_password) {
 		this.mem_password = mem_password;
 	}
-	public String getMem_type() {
+	public int getMem_type() {
 		return mem_type;
 	}
-	public void setMem_type(String mem_type) {
+	public void setMem_type(int mem_type) {
 		this.mem_type = mem_type;
 	}
 	public int getMem_age() {

@@ -26,7 +26,7 @@
 		from member where mem_id = #{mem_id} and mem_name=#{mem_name} and mem_email=#{mem_email}
 	</select>
 	<!-- 아이디 찾기 -->
-	<select id="IdSearchOk" resultType="kr.or.smhrd.dto.RegisterDTO">
+	<select id="idSearchResult" resultType="kr.or.smhrd.dto.RegisterDTO">
 		select mem_id, mem_name 
 		from member where mem_name=${mem_name} and mem_email=#{mem_email}
 	</select>
