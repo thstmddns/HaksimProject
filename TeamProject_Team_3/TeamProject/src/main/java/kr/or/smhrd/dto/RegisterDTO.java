@@ -71,5 +71,4 @@ public class RegisterDTO {
 	public void setMem_auth(int mem_auth) {
 		this.mem_auth = mem_auth;
 	}
-	
-}
+}	

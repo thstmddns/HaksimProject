@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.smhrd.dao.DataReplyDAO">
+	
+	<insert id="dReplyInsert">
+		insert into data_review(data_review_num, data_num, data_review_content, mem_id) 
+		values(data_review_no_seq.nextval, ${data_num}, #{data_review_content}, #{mem_id})
+	</insert>
+	
+	<select id="dReplySelect" resultType="kr.or.smhrd.dto.DataReplyDTO">
+	 	select data_review_num, data_review_content, mem_id 
+	 	from data_review where data_num = ${param1}
+	 	order by data_review_num desc
+	</select>
+	
+	<update id="dReplyUpdate">
+		update data_review set data_review_content = #{data_review_content} where data_review_num = ${data_review_num}
+	</update>
+	
+	<delete id="dReplyDelete">
+		delete from data_review where data_review_num = ${param1}
+	</delete>
+</mapper>
