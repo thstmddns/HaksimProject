@@ -29,7 +29,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.or.smhrd.dto.AfterDTO;
-import kr.or.smhrd.dto.AfterFileDTO;
+import kr.or.smhrd.dto.DataFileDTO;
 import kr.or.smhrd.dto.PagingDTO;
 import kr.or.smhrd.service.AfterService;
 
