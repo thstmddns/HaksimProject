@@ -12,7 +12,7 @@ public class CommunityDTO {
 	private String mem_id;
 	private String com_title;
 	private String com_content;
-	private String com_type;
+	private int com_type;
 	private int com_hit;
 	private String com_wdate;
 	private String com_update;
