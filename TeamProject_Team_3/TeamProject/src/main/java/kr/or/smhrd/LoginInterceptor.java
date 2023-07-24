@@ -15,11 +15,21 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		HttpSession session = request.getSession();
 		String userid = (String)session.getAttribute("logId");
 		String logStatus = (String)session.getAttribute("logStatus");
+		String logType = (String)session.getAttribute("logType");
+		int logAuth =  (Integer) session.getAttribute("logAuth");
 		
 		if(userid == null || logStatus == null || userid.equals("") || !logStatus.equals("Y")) {
 			response.sendRedirect("/smhrd/register/login");
 			return false;
 		}
+		
+		
+		if(logAuth!=1) {
+			response.sendRedirect("/smhrd");
+			return false;
+		}
+		
+		
 		return true;
 	}
 }

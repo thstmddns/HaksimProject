@@ -1,14 +1,16 @@
 package kr.or.smhrd.dao;
 
+import java.util.List;
+
 import kr.or.smhrd.dto.RegisterDTO;
 
 public interface RegisterDAO {
-	// È¸¿ø°¡ÀÔ
+	// È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public int registerInsert(RegisterDTO dto);
-	// ¾ÆÀÌµð Ã¼Å©
+	// ï¿½ï¿½ï¿½Ìµï¿½ Ã¼Å©
 	public int idCheck(String mem_id);
-	// ·Î±×ÀÎ
+	// ï¿½Î±ï¿½ï¿½ï¿½
 	public RegisterDTO loginOk(String mem_id, String mem_password);
-	//¾ÆÀÌµð Ã£±â
+	//ï¿½ï¿½ï¿½Ìµï¿½ Ã£ï¿½ï¿½
 	public RegisterDTO passwordSearch(RegisterDTO dto);
 }

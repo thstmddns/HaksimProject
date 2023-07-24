@@ -1,15 +1,17 @@
 package kr.or.smhrd.service;
 
 
+import java.util.List;
+
 import kr.or.smhrd.dto.RegisterDTO;
 
 public interface RegisterService {
-	//È¸¿ø°¡ÀÔ
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public int registerInsert(RegisterDTO dto);
-	// ¾ÆÀÌµð Áßº¹Ã¼Å©
+	// ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ßºï¿½Ã¼Å©
 	public int idCheck(String mem_id);
-	// ·Î±×ÀÎ
+	// ï¿½Î±ï¿½ï¿½ï¿½
 	public RegisterDTO loginOk(String mem_id, String mem_password);
-	// ¾ÆÀÌµð Ã£±â
+	// ï¿½ï¿½ï¿½Ìµï¿½ Ã£ï¿½ï¿½
 	public RegisterDTO passwordSearch(RegisterDTO dto);
 }

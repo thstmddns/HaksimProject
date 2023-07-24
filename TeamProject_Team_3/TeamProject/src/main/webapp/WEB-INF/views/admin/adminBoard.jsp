@@ -79,12 +79,12 @@
 	}
 	#noticeList > li{
 		float:left;
-		width: 15%;	
+		width: 20%;	
 		border : 0px solid #00468C;
 		border-bottom: 1px solid #00468C;
 	}
-	#noticeList > li:nth-child(6n+5) {
-		width: 25%;	
+	#noticeList > li:nth-child(4n+3) {
+		width: 40%;	
 		white-space: nowrap;	/* 줄 바꾸지 않기 */
 		overflow: hidden;	/* 넘치는 값 숨기기 */
 		text-overflow: ellipsis;	/* ... 표시 */
@@ -98,20 +98,29 @@
 			<h2>학생 리스트</h2>
 			<form>
 			<ul id="studentList">
-				<li>&nbsp;</li>
 				<li>아이디</li>
 				<li>이름</li>
 				<li>이메일</li>
+				<li>회원분류</li>
 				<li>기수번호</li>
-				<li>기수인증</li>
+				<li>인증여부</li>
 				
 				<c:forEach var="mDTO" items="${member}">
-					<li><input type="checkbox"></li>
 					<li>${mDTO.mem_id}</li>
 					<li>${mDTO.mem_name}</li>
 					<li>${mDTO.mem_email}</li>
-					<li>${mDTO.mem_type}</li>
+					<c:if test="${mDTO.mem_type == 0 }">
+						<li>미인증</li>
+					</c:if>
+					<c:if test="${mDTO.mem_type == 1 }">
+						<li>학생</li>
+					</c:if>
+					<c:if test="${mDTO.mem_type == 2 }">
+						<li>수료생</li>
+					</c:if>
+					
 					<li>${mDTO.mem_ca}</li>
+					<li>${mDTO.mem_auth}</li>
 				</c:forEach>
 			</ul>
 			</form>
@@ -121,16 +130,16 @@
 			<h2>신고내역 리스트</h2>
 			<form>
 			<ul id="reportList">
-				<li>&nbsp;</li>
 				<li>번호</li>
 				<li>아이디</li>
 				<li>내용</li>
+				<li>위치</li>
 				
 				<c:forEach var="rDTO" items="${report}">
-					<li><input type="checkbox"/></li>
 					<li>${rDTO.report_num}</li>
 					<li>${rDTO.mem_id}</li>
 					<li>${rDTO.report_content}</li>
+					<li><a href="${rDTO.report_url}">${rDTO.report_url}</a></li>
 				</c:forEach>
 			</ul>
 			</form>
@@ -140,19 +149,15 @@
 			<h2>공지사항 리스트</h2>
 			<form>
 			<ul id="noticeList">
-				<li>&nbsp;</li>
 				<li>번호</li>
 				<li>아이디</li>
 				<li>제목</li>
-				<li>내용</li>
 				<li>작성일</li>
 				
-				<c:forEach var="nDTO" items="${ notice}">
-					<li><input type="checkbox"></li>
+				<c:forEach var="nDTO" items="${notice}">
 					<li>${nDTO.notice_num}</li>
 					<li>${nDTO.mem_id}</li>
 					<li>${nDTO.notice_title}</li>
-					<li>${nDTO.notice_content}</li>
 					<li>${nDTO.notice_wdate}</li>
 				</c:forEach>
 			</ul>
