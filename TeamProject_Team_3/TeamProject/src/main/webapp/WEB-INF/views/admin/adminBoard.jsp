@@ -115,18 +115,17 @@
 					<li><a href="/smhrd/admin/memberView?id=${mDTO.mem_id }">${mDTO.mem_id}</a></li>
 					<li>${mDTO.mem_name}</li>
 					<li>${mDTO.mem_email}</li>
-					<c:if test="${mDTO.mem_type == 0 }">
+					<c:if test="${mDTO.mem_type == '0' }">
 						<li>미인증</li>
 					</c:if>
-					<c:if test="${mDTO.mem_type == 1 }">
+					<c:if test="${mDTO.mem_type == '1' }">
 						<li>학생</li>
 					</c:if>
-					<c:if test="${mDTO.mem_type == 2 }">
+					<c:if test="${mDTO.mem_type == '2' }">
 						<li>수료생</li>
 					</c:if>
-					
 					<li>${mDTO.mem_ca}</li>
-					<li><button>${mDTO.mem_auth}</button></li>
+					<li>${mDTO.mem_auth}</li>
 				</c:forEach>
 			</ul>
 			</form>

@@ -10,5 +10,7 @@ public interface MemberService {
 
 	public RegisterDTO getMember(String mem_id);
 
+	public int memberEditOk(RegisterDTO dto);
+
 
 }

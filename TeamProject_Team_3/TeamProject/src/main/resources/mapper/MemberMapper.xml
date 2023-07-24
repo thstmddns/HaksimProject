@@ -5,7 +5,7 @@
   
 <mapper namespace="kr.or.smhrd.dao.MemberDAO">
 	<select id="getMemberList" resultType="kr.or.smhrd.dto.RegisterDTO">
-		SELECT mem_id, mem_type, mem_age, mem_email, mem_name, mem_ca 
+		SELECT mem_id, mem_type, mem_age, mem_email, mem_name, mem_ca ,mem_auth
 		FROM member
 		WHERE mem_type &lt; 4
 	</select>
@@ -15,4 +15,10 @@
 		FROM member
 		WHERE mem_id=#{mem_id}
 	</select>
+	
+	<update id="memberEditOk">
+		UPDATE member 
+		SET mem_name=#{mem_name}, mem_type=${mem_type}, mem_age=#{mem_age}, mem_email=#{mem_email}, mem_ca=${mem_ca}, mem_auth=${mem_auth}
+		WHERE mem_id=#{mem_id}
+	</update>
 </mapper>

@@ -81,9 +81,11 @@
 
 <main>
 	<h1>공지 게시판</h1>
-	<div id="noticeWriteBtn">
-		<a href="${pageContext.request.contextPath}/notice/noticeWrite"><button>글쓰기</button></a>
-	</div>
+	<c:if test="${logType > 3}">
+		<div id="noticeWriteBtn">
+			<a href="${pageContext.request.contextPath}/notice/noticeWrite"><button>글쓰기</button></a>
+		</div>
+	</c:if>
 
 	<div>
 		<ul class="noticeList">
@@ -130,7 +132,6 @@
 					</c:if>					
 				</c:if>
 			</c:forEach>
-			
 			
 			<c:if test="${pDTO.nowPage >= pDTO.totalPage }">
 				<li>next</li>

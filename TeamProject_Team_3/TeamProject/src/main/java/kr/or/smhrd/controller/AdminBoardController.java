@@ -14,6 +14,7 @@ import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 
 import kr.or.smhrd.dto.NoticeDTO;
 import kr.or.smhrd.dto.PagingDTO;
+import kr.or.smhrd.dto.RegisterDTO;
 import kr.or.smhrd.dto.ReportDTO;
 import kr.or.smhrd.service.MemberService;
 import kr.or.smhrd.service.NoticeService;
@@ -49,11 +50,41 @@ public class AdminBoardController {
 	}
 
 	@GetMapping("/memberView")
-	public ModelAndView memberView(String mem_id ) {
+	public ModelAndView memberView(String id ) {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("member", mService.getMember(mem_id));
-		mav.setViewName("member/memberView");
+		
+		mav.addObject("member", mService.getMember(id));
+		
+		mav.setViewName("admin/memberView");
+		
 		return mav;
 	}
 	
+	@GetMapping("/memberEdit")
+	public ModelAndView memberEdit(String id) {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("dto", mService.getMember(id));		
+		
+		mav.setViewName("admin/memberEdit");
+		
+		return mav;
+	}
+	
+	@PostMapping("/memberEditOk")
+	public ModelAndView memberEditOk(RegisterDTO dto) {
+		int result = mService.memberEditOk(dto);
+
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("dto", dto);
+		
+		if(result > 0) {
+			mav.setViewName("redirect: memberView");			
+		}else {			
+			mav.setViewName("redirect: memberEdit");
+		}
+					
+		return mav;
+	}
 }
