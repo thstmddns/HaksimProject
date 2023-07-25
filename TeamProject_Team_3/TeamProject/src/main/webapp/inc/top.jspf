@@ -39,7 +39,7 @@
       <ul>
          <li><a href="/smhrd/notice/noticeList">공지 게시판</a></li>
          <li><a href="/smhrd/#">자료 공유 게시판</a></li>
-         <li><a href="/smhrd/community/communityList">커뮤니티 게시판</a></li>
+         <li><a href="/smhrd/community/communityList?com_type=0">커뮤니티 게시판</a></li>
          <li><a href="/smhrd/#">맛집 공유 게시판</a></li>
          <li><a href="/smhrd/after/afterList?grad_type=0">수료생 게시판</a></li>
          <c:if test="${logStatus == 'Y'}">

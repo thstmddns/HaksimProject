@@ -6,7 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,20 +21,19 @@ import kr.or.smhrd.dto.CommunityDTO;
 import kr.or.smhrd.dto.PagingDTO;
 import kr.or.smhrd.service.CommunityService;
 
-@RestController
+@Controller
 @RequestMapping("/community")
 public class CommunityController {
 	@Autowired
 	CommunityService service;
 	
-	// 게시판으로 이동
 	@GetMapping("/communityList")
-	public ModelAndView communityList(PagingDTO pDTO) {	
-
-		// 1. 총 레코드 수 설정
+	public ModelAndView communityList(PagingDTO pDTO, @ModelAttribute("com_type") Integer com_type) {	
+		if(com_type == null) {
+			com_type = 0;
+		}
+		pDTO.setCom_type(com_type);
 		pDTO.setTotalRecord(service.totalRecord(pDTO));
-		
-		// 2. DB data
 		List <CommunityDTO> list = service.boardList(pDTO);
 		
 		ModelAndView mav = new ModelAndView();
@@ -42,6 +43,7 @@ public class CommunityController {
 		
 		return mav;
 	}
+	
 	@GetMapping("/communityWrite")
 	   public ModelAndView communityWrite() {
 	      ModelAndView mav = new ModelAndView();
@@ -55,7 +57,7 @@ public class CommunityController {
        ModelAndView mav = new ModelAndView();
        try {
           mav.addObject("dto", service.boardWriteOk(dto));
-          mav.setViewName("redirect:communityList");
+          mav.setViewName("redirect:communityList?com_type=0");
        }catch(Exception e) {
           e.printStackTrace();
           mav.setViewName("community/communityResult");

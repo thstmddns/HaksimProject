@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <style>
 	.community_list {
 		overflow:auto;
@@ -52,14 +53,12 @@
         border-right: none;
         border-bottom : 1px solid black;
     }
-
-
 </style>
-	<script>
+
+<script>
 	$(function() {
-		
 		$('.comChk').click(function(){
-			typePageGo();
+			typePage();
 		});
 		
 		const searchParams = new URLSearchParams(location.search);
@@ -80,28 +79,29 @@
 				}
 			}
 		}
-	}); 
+	});
 	
-	function typePageGo(){
+	function typePage(){
 		var com_type = document.querySelector('input[name="comChk"]:checked').value;
-		console.log(grad_type);
-		location.href = 'http://localhost:8080/smhrd/communityList?com_type=' + com_type;
+		console.log(com_type);
+		location.href = 'http://localhost:8080/smhrd/community/communityList?com_type='+com_type;
 	}
 
 </script>
 <main>
-	<h1 align="center">커뮤니티 게시판</h1>	
+	<h1>커뮤니티 게시판</h1>	
 	<div>
 		<li>Category</li>
-		<input type='radio' name='comChk' class='cateChk' value='0' id='comChk0'/> 전체
-		<input type='radio' name='comChk' class='cateChk' value='1' id='comChk1'/> 고민
-		<input type='radio' name='comChk' class='cateChk' value='2' id='comChk2'/> 건의
-		<input type='radio' name='comChk' class='cateChk' value='3' id='comChk3'/> 소통
-		</br>
-		<a href="/smhrd/community/communityWrite"><button >글쓰기</button></a>
-		<span style="margin-left: 1000px">총 게시글 수 : ${pDTO.totalRecord}</span>
+		
+		<input type='radio' name='comChk' class='comChk' value='0' id='comChk0'/> 전체
+		<input type='radio' name='comChk' class='comChk' value='1' id='comChk1'/> 고민
+		<input type='radio' name='comChk' class='comChk' value='2' id='comChk2'/> 건의
+		<input type='radio' name='comChk' class='comChk' value='3' id='comChk3'/> 소통
+		
+		<br>
+		<a href="${pageContext.request.contextPath}/community/communityWrite"><button>글쓰기</button></a>
 	</div>
-	
+	<div>총 레코드 수 : ${pDTO.totalRecord}개</div>
 	<ul class="community_list">
 		<li>no</li>
 		<li>카테고리</li>
@@ -110,10 +110,6 @@
 		<li>등록일</li>
 		<li>조회수</li>
 		
-		<!-- 
-			var: 변수 
-			items: 데이터 
-		-->
 		<c:forEach var="dto" items="${list}">				
 			<li>${dto.com_num}</li>
 			
@@ -137,7 +133,7 @@
 		</c:forEach>
 	</ul>
 	
-			<div class="page">
+	<div class="page">
 		<ul>
 			<!-- 가장 첫 페이지시 이전페이지 버튼 비활성화 -->	
 			<c:if test="${pDTO.nowPage==1 }">
