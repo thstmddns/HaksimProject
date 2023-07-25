@@ -25,7 +25,7 @@
    <c:if test="${logStatus == 'Y'}">
       <span style="color: #66CC99">${logName}</span>
       <a href="/smhrd/register/logout"><input type="button" value="로그아웃"></a>   
-      <a href="/smhrd/#"><input type="button" value="회원정보수정"></a>
+      <a href="/smhrd/register/registerEdit"><input type="button" value="회원정보수정"></a>
    </c:if> 
 </div>
 

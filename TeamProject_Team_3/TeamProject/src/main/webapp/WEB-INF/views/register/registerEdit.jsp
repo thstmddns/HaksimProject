@@ -26,18 +26,18 @@
 	
 	<form method="post" id="frm" action="/smhrd/register/registerEditOk" enctype="multipart/form-data">
 	
-	<input type="hidden" name="mem_id" value="${dto.mem_id }">
+	<input type="hidden" name="mem_id" value="${mem_id.mem_id }">
 		<ul class="memberEdit">
 			<li>비밀번호</li>
-			<li><input type="text" name="mem_password" value="${dto.mem_passsword}" />${dto.mem_passsword}</li>
+			<li><input type="text" name="mem_password" value="${mem_id.mem_password}" /></li>
 			<li>멤버등급</li>
-			<li><input type="text" name="mem_type" value="${dto.mem_type}" />${dto.mem_type}</li>
+			<li><input type="text" name="mem_type" value="${mem_id.mem_type}" /></li>
 			<li>이메일</li>
-			<li><input type="text" name="mem_email" value="${dto.mem_eamil}" />${dto.mem_eamil}</li>
+			<li><input type="text" name="mem_email" value="${mem_id.mem_email}" /></li>
 			<li>이름</li>
-			<li><input type="text" name="mem_name" value="${dto.mem_name}" />${dto.mem_name}</li>
+			<li><input type="text" name="mem_name" value="${mem_id.mem_name}" /></li>
 			<li>멤버기수</li>
-			<li><input type="text" name="mem_type" value="${dto.mem_type}" />${dto.mem_type}</li>
+			<li><input type="text" name="mem_ca" value="${mem_id.mem_ca}" /></li>
 			<li><input type="submit" value="회원정보 수정"/></li>
 		</ul>
 	</form>

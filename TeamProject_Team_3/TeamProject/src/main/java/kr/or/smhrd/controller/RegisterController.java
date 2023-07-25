@@ -154,10 +154,13 @@ public class RegisterController {
 		}
 		return mav;
 	}
+	
 	@GetMapping("/registerEdit")
-	public ModelAndView registerEdit(String mem_id){
+	public ModelAndView registerEdit(HttpSession session){
+		RegisterDTO dto = service.registerSelect((String)session.getAttribute("logId"));
+		
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("mem_id", service.registerSelect(mem_id));
+		mav.addObject("mem_id", dto);
 		mav.setViewName("register/registerEdit");
 		return mav;
 	}
@@ -167,8 +170,12 @@ public class RegisterController {
 		ModelAndView mav = new ModelAndView();
 		try {
 			int result = service.memberEdit(dto);
-			mav.setViewName("redirect:")
-		}
-		
+			System.out.println(1);
+			mav.setViewName("redirect: /smhrd");
+		}catch(Exception e){
+			e.printStackTrace();
+			mav.setViewName("/smhrd");
+		}		
+		return mav;
 	}
 }
