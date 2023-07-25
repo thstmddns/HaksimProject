@@ -1,6 +1,7 @@
 package kr.or.smhrd.controller;
 
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -161,11 +162,13 @@ public class RegisterController {
 		return mav;
 	}
 	
-	@Postmpping('/registerEditOk')
-	pulic __ registerEditOk(RegisterDTO dto) {
-		RegisterDTO dto = service.memberEdit(dto);
+	@PostMapping("/registerEditOk")
+	public ModelAndView registerEditOk(RegisterDTO dto, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("data", dto);
+		try {
+			int result = service.memberEdit(dto);
+			mav.setViewName("redirect:")
+		}
 		
 	}
 }
