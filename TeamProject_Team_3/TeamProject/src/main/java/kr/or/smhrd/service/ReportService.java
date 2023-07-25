@@ -6,18 +6,20 @@ import kr.or.smhrd.dto.NoticeDTO;
 import kr.or.smhrd.dto.ReportDTO;
 
 public interface ReportService {
-	// ½Å°í ³»¿ª ¸®½ºÆ®
+	// ï¿½Å°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	public List<ReportDTO> getReportList();
 		
-	// ½Å°í °Ô½Ã±Û »ó¼¼ Á¶È¸
+	// ï¿½Å°ï¿½ ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ ï¿½ï¿½È¸
 	public ReportDTO ReportBoardView(int no);
 		
-	// ½Å°í °Ô½Ã±Û »èÁ¦
+	// ï¿½Å°ï¿½ ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public int ReportBoardDel(int no, String id);
 		
-	// ½Å°í ´ñ±Û »ó¼¼ Á¶È¸
+	// ï¿½Å°ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½È¸
 	public ReportDTO ReportReplyView();
 		
-	// ½Å°í ´ñ±Û »èÁ¦ 
+	// ï¿½Å°ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 	public int ReportReplyDel(int no, String id);
+
+	public int ReportDel(int no);
 }

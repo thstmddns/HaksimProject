@@ -43,4 +43,10 @@ public class ReportServiceImp implements ReportService {
 		return dao.ReportReplyDel(no, id);
 	}
 
+	@Override
+	public int ReportDel(int no) {
+		// TODO Auto-generated method stub
+		return dao.ReportDel(no);
+	}
+
 }

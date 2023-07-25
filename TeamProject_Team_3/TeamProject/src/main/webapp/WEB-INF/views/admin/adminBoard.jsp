@@ -2,8 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <script>
-	function changeAuth(){
-		location.href="/smhrd/admin/"
+	function ReportCheck(){
+		
 	}
 </script>
 
@@ -44,7 +44,8 @@
 	#studentList > li{
 		float:left;
 		width: 15%;
-		border-bottom: 1px solid #00468C;	
+		border-bottom: 1px solid #00468C;
+		line-height: 30px;
 	}
 	#studentList > li:nth-child(6n+4) {
 		width: 25%;	
@@ -66,16 +67,17 @@
 		float:left;
 		width: 15%;	
 		border-bottom: 1px solid #00468C;
+		line-height: 30px;
 	}
-	#reportList > li:nth-child(4n+3) {
-		width: 35%;	
+	#reportList > li:nth-child(5n+3) {
+		width: 30%;	
 		white-space: nowrap;	/* 줄 바꾸지 않기 */
 		overflow: hidden;	/* 넘치는 값 숨기기 */
 		text-overflow: ellipsis;	/* ... 표시 */
 	}
 	
-	#reportList > li:nth-child(4n+4) {
-		width: 35%;	
+	#reportList > li:nth-child(5n+4) {
+		width: 25%;	
 		white-space: nowrap;	/* 줄 바꾸지 않기 */
 		overflow: hidden;	/* 넘치는 값 숨기기 */
 		text-overflow: ellipsis;	/* ... 표시 */
@@ -95,6 +97,7 @@
 		width: 20%;	
 		border : 0px solid #00468C;
 		border-bottom: 1px solid #00468C;
+		line-height: 30px;
 	}
 	#noticeList > li:nth-child(4n+3) {
 		width: 40%;	
@@ -131,6 +134,12 @@
 					<c:if test="${mDTO.mem_type == '2' }">
 						<li>수료생</li>
 					</c:if>
+					<c:if test="${mDTO.mem_type == '3' }">
+						<li>선생님</li>
+					</c:if>
+					<c:if test="${mDTO.mem_type == '4' }">
+						<li>선생님</li>
+					</c:if>
 					<li>${mDTO.mem_ca}</li>
 					<li>${mDTO.mem_auth}</li>
 				</c:forEach>
@@ -146,12 +155,14 @@
 				<li>아이디</li>
 				<li>내용</li>
 				<li>위치</li>
+				<li>확인</li>
 				
 				<c:forEach var="rDTO" items="${report}">
 					<li>${rDTO.report_num}</li>
 					<li>${rDTO.mem_id}</li>
 					<li>${rDTO.report_content}</li>
 					<li><a href="${rDTO.report_url}">위치</a></li>
+					<li><a href="/smhrd/admin/reportDel?no=${rDTO.report_num}"><input type="button" value="확인"></a></li>
 				</c:forEach>
 			</ul>
 			</form>

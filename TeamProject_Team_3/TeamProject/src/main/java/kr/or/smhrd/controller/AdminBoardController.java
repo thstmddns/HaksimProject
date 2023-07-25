@@ -77,6 +77,7 @@ public class AdminBoardController {
 		
 		try {
 			int result = mService.memberEditOk(dto);
+			
 			mav.addObject("dto", dto);
 			
 			mav.setViewName("redirect: memberView?id="+dto.getMem_id());			
@@ -86,6 +87,23 @@ public class AdminBoardController {
 			mav.setViewName("redirect: memberEdit");			
 		}
 							
+		return mav;
+	}
+	
+	@GetMapping("/reportDel")
+	public ModelAndView reportDel(int no) {
+		ModelAndView mav = new ModelAndView();
+		
+		try {
+			int result = rService.ReportDel(no);
+			
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		mav.setViewName("redirect: adminList");
+		
 		return mav;
 	}
 }

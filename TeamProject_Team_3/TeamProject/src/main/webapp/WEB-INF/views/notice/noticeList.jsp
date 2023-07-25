@@ -81,7 +81,7 @@
 
 <main>
 	<h1>공지 게시판</h1>
-	<c:if test="${logType > 3}">
+	<c:if test="${logType >= 3}">
 		<div id="noticeWriteBtn">
 			<a href="${pageContext.request.contextPath}/notice/noticeWrite"><button>글쓰기</button></a>
 		</div>

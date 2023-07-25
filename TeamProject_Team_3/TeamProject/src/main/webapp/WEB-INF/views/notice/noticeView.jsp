@@ -32,8 +32,10 @@ ul,li{
 	<!-- 작성자가 아닌 경우 글에 대한 수정, 삭제 권한 부여 x -->
 	<div align="right">
 		<a href='/smhrd/notice/noticeList'><button>목록</button></a>
-		<c:if test="${logId == dto.mem_id}">	
+		<c:if test="${logId == dto.mem_id && logType >= 3}">	
 				<a href='/smhrd/notice/noticeEdit?no=${dto.notice_num}'><button>수정</button></a>
+		</c:if>
+		<c:if test="${logId == dto.mem_id || logType >= 3}">		
 				<a href="javascript:noticeDel()"><button>삭제</button></a>
 		</c:if>
 	</div>

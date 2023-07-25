@@ -7,4 +7,8 @@
 		FROM report_board
 		ORDER BY report_num DESC
 	</select>
+	
+	<delete id="ReportDel">
+		DELETE FROM report_board WHERE report_num=${param1}
+	</delete>
 </mapper>
