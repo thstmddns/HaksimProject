@@ -1,5 +1,7 @@
 package kr.or.smhrd.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -30,6 +32,7 @@ public class RegisterServiceImpl implements RegisterService {
 	public RegisterDTO passwordSearch(RegisterDTO dto) {
 		return dao.passwordSearch(dto);
 	}
+
 	@Override
 	public RegisterDTO idSearchResult(RegisterDTO dto) {
 		return dao.idSearchResult(dto);

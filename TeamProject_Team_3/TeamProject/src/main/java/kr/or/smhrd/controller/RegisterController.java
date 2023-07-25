@@ -78,7 +78,8 @@ public class RegisterController {
 			session.setAttribute("logCa", dto.getMem_ca());
 			session.setAttribute("logAuth", dto.getMem_auth());
 			session.setAttribute("logStatus", "Y");
-			 
+			session.setAttribute("logAuth", dto.getMem_auth());
+			
 			 mav.setViewName("redirect:/");
 		}else {
 			mav.setViewName("register/loginResult");

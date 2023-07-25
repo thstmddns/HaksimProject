@@ -1,25 +1,32 @@
 package kr.or.smhrd.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
+
 import kr.or.smhrd.dto.NoticeDTO;
 import kr.or.smhrd.dto.PagingDTO;
+import kr.or.smhrd.dto.RegisterDTO;
 import kr.or.smhrd.dto.ReportDTO;
+import kr.or.smhrd.service.MemberService;
 import kr.or.smhrd.service.NoticeService;
+import kr.or.smhrd.service.RegisterService;
 import kr.or.smhrd.service.ReportService;
 
 @RestController
 @RequestMapping("/admin")
 public class AdminBoardController {
-/* 
+
 	@Autowired 
-	RegisterService mService; 
-*/
+	MemberService mService; 
 	
 	@Autowired
 	ReportService rService;
@@ -27,44 +34,58 @@ public class AdminBoardController {
 	@Autowired
 	NoticeService nService;
 	
-	// 관리자 페이지로 이동
 	@GetMapping("/adminList")
 	public ModelAndView boardList(PagingDTO pDTO) {
 		ModelAndView mav = new ModelAndView();
 		
-		// 학생 리스트
-		/* mav.addObject("member", mService.getMemberList()); */
-		
-		// 신고 내역 리스트
+		mav.addObject("member", mService.getMemberList());
+
 		mav.addObject("report",rService.getReportList());
-		
-		// 공지사항 리스트
+
 		mav.addObject("notice",nService.NoticeList(pDTO));
 		
 		mav.setViewName("admin/adminBoard");
 		
 		return mav;
 	}
-	
-	// 신고 게시글 상세 조회
-	
-	
-	// 신고 게시글 삭제
-	
-	
-	// 신고 댓글 상세 조회
-	
-	
-	// 신고 댓글 삭제
 
-	
-	// 공지사항 작성
-	
-	
-	// 공지사항 수정
+	@GetMapping("/memberView")
+	public ModelAndView memberView(String id ) {
+		ModelAndView mav = new ModelAndView();
 		
+		mav.addObject("member", mService.getMember(id));
+		
+		mav.setViewName("admin/memberView");
+		
+		return mav;
+	}
 	
-	// 공시사항 삭제
-
+	@GetMapping("/memberEdit")
+	public ModelAndView memberEdit(String id) {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("dto", mService.getMember(id));		
+		
+		mav.setViewName("admin/memberEdit");
+		
+		return mav;
+	}
 	
+	@PostMapping("/memberEditOk")
+	public ModelAndView memberEditOk(RegisterDTO dto) {
+		ModelAndView mav = new ModelAndView();
+		
+		try {
+			int result = mService.memberEditOk(dto);
+			mav.addObject("dto", dto);
+			
+			mav.setViewName("redirect: memberView?id="+dto.getMem_id());			
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			mav.setViewName("redirect: memberEdit");			
+		}
+							
+		return mav;
+	}
 }

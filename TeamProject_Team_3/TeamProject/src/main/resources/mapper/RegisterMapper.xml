@@ -16,7 +16,7 @@
 	
 	<!-- 로그인 -->
 	<select id="loginOk" resultType="kr.or.smhrd.dto.RegisterDTO">
- 		select mem_id, mem_type, mem_ca from member
+ 		select mem_id, mem_type, mem_ca, mem_auth from member
 		where mem_id = #{param1} and mem_password= #{param2}
 	</select>
 	
