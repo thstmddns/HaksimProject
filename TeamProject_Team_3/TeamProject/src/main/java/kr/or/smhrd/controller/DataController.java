@@ -193,4 +193,122 @@ public class DataController {
 					f.delete();
 				} catch(Exception e) {}
 		}
+		// 글수정 이동
+		@GetMapping("/dataEdit")
+		public ModelAndView dataEdit(int data_num) {
+			 ModelAndView mav = new ModelAndView();
+			   // 현재글
+			   mav.addObject("dto", service.getBoard(data_num));
+			   // 첨부파일
+			   mav.addObject("fileList", service.dataFileSelect(data_num));
+			   // 뷰 페이지
+			   mav.setViewName("data/dataEdit");
+			   // dataEdit에서 dto, fDTO사용 가능해짐
+			   return mav;
+			}
+			
+		//자료실 글 수정하기
+		   @PostMapping("/dataEditOk") //no, subject, content, filename, delFile
+		   public ModelAndView dataEditOk(DataDTO dto, HttpSession session, HttpServletRequest request) {
+		      
+		      //1. 기존에 업로드된 파일목록 DB에서 가져오기
+		      List<DataFileDTO> orgFileList = service.dataFileSelect(dto.getData_num());
+		      
+		      //2. 저장위치
+		      String path = session.getServletContext().getRealPath("/upload");
+		      
+		      //3. 새로 추가한 파일 업로드하기-> MultipartHttpServletRequest(request객체)
+		      MultipartHttpServletRequest mr = (MultipartHttpServletRequest)request;
+		      
+		      //4. 업로드된 파일(MultipartFile)목록
+		      List<MultipartFile> fileList = mr.getFiles("filename");
+		      //새로 업로드한 파일명들
+		      List<DataFileDTO> newFileList = new ArrayList<DataFileDTO>();
+		      
+		      //5. 업로드된 파일이 있으면 업로드(rename)
+		      if(fileList != null) {
+		         for(int i=0;i<fileList.size(); i++) {
+		            MultipartFile mf = fileList.get(i);
+		            //파일명구하기
+		            String orgFileName = mf.getOriginalFilename();
+		            if(orgFileName != null && !orgFileName.equals("")){//파일명이 있으면
+		               File f = new File(path, orgFileName);
+		               if(f.exists()) {//같은 파일명을 가진 파일이 존재하면
+		                  //기존파일명과 중복검사
+		                  int p = orgFileName.lastIndexOf(".");
+		                  String fileNoExt = orgFileName.substring(0, p);
+		                  String ext = orgFileName.substring(p+1);
+		                  
+		                  for(int fileNum=1; ; fileNum++) {
+		                     String newFile = fileNoExt+" ("+fileNum+")."+ext;
+		                     f = new File(path, newFile);
+		                     if(!f.exists()) {
+		                        orgFileName = newFile;
+		                        break;
+		                     }//if
+		                  }//for
+		               }//if   
+		               //업로드
+		               try {
+		                  mf.transferTo(new File(path, orgFileName));
+		                  DataFileDTO fDTO = new DataFileDTO();
+		                  fDTO.setData_num(dto.getData_num());
+		                  fDTO.setFilename(orgFileName);
+		                  newFileList.add(fDTO);
+		               } catch (Exception e) {e.printStackTrace();}
+		            }//if
+		         }//for
+		      }//if
+		      //DB등록
+		      /*
+		       *    원래 DB파일     -> List<DataFileDTO> orgFileList
+		       *  새로 업로드된 파일 -> ListMDataFileDTO> newFileList
+		       *  삭제된파일       -> List<String> delFile
+		       */
+		      // orgFileList에 새로 업로드된 파일목록을 추가하기
+		      //orgFileList.addAll(newFileList);
+		      for(DataFileDTO newDTO:newFileList) {
+		         orgFileList.add(newDTO);
+		      }
+		      if(dto.getDelFile()!=null) {//삭제파일이 있으면
+		         for(int i=0;i<dto.getDelFile().size();i++) {
+		            String del = dto.getDelFile().get(i);
+		            for(int idx=0;idx<orgFileList.size();idx++) {
+		               DataFileDTO resetFile = orgFileList.get(idx);
+		               if(del.equals(resetFile.getFilename())) {//삭제할 파일명과 orgFileList에 있는 파일명이 같으면
+		               orgFileList.remove(idx);
+		               break;
+		               }//if
+		               }//for
+		         }//for
+		      }//if
+		      //----
+		      ModelAndView mav=new ModelAndView();
+		      try {
+		         //원 레코드 업데이트
+		         int result = service.dataUpdate(dto);
+		         //파일목록 ->삭제, 추가
+		         service.dataFileDelete(dto.getData_num());
+		         service.dataFileInsert(orgFileList);
+		         //삭제한 파일을 /upload폴더에서 제거
+		         if(dto.getDelFile()!=null) {
+		            for(String delFilename:dto.getDelFile()) {
+		               fileDelete(path, delFilename);
+		            }//for
+		         }//if
+		         //글내용보기로 이동
+		         mav.setViewName("redirect:dataOpen/"+dto.getData_num());
+		      } catch (Exception e) {
+		         e.printStackTrace();
+		         
+		         //새로업로드된 파일 삭제
+		         for(DataFileDTO fDTO: newFileList) {
+		            fileDelete(path, fDTO.getFilename());
+		        }
+		        //글내용수정
+		        mav.setViewName("redirect:dataEdit?data_num="+dto.getData_num());
+		      	}
+		      	return mav;
+			}
+
 }

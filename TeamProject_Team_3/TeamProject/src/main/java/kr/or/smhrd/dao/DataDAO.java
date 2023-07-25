@@ -24,7 +24,7 @@ public interface DataDAO {
 	public void hitCount(int data_num);
 	
 	// 글수정
-	public int dataEdit(DataDTO dto);
+	public int dataUpdate(DataDTO dto);
 	
 	// 글 삭제
 	public int dataDelete(int data_num);
@@ -32,10 +32,10 @@ public interface DataDAO {
 	// 파일명 등록
 		public int dataFileInsert(List<DataFileDTO> fileList);
 	// 첨부파일목록 삭제
-		public int dataFileDelete(int no);
+		public int dataFileDelete(int data_num);
 		// 해당글의 첨부파일 선택
-		public List<DataFileDTO> dataFileSelect (int no);
+		public List<DataFileDTO> dataFileSelect (int data_num);
 		// 글등록
-				public int dataInsert(DataDTO dto);	
-	
+		public int dataInsert(DataDTO dto);
+		
 }

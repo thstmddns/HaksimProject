@@ -67,5 +67,9 @@ public class DataServiceImp implements DataService{
 		return dao.dataInsert(dto);
 	}
 
+	@Override
+	public int dataUpdate(DataDTO dto) {
+		return dao.dataUpdate(dto);
+	}
 	
 }
