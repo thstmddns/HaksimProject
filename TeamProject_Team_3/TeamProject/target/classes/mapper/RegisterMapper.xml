@@ -30,4 +30,9 @@
 		select mem_id, mem_name 
 		from member where mem_name=#{mem_name} and mem_email=#{mem_email}
 	</select>
+	<!-- 회원정보 수정 -->
+	<select id="registerSelect" resultType="kr.or.smhrd.dto.RegisterDTO">
+		select mem_id, mem_password, mem_type, mem_age, mem_email, mem_name, mem_wdate, mem_ca, mem_auth
+		from member where mem_id = ${param1}
+	</select>
 </mapper>

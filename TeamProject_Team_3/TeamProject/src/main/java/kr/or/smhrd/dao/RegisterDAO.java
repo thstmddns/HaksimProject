@@ -13,4 +13,7 @@ public interface RegisterDAO {
 	public RegisterDTO passwordSearch(RegisterDTO dto);
 	// 아이디 찾기
 	public RegisterDTO idSearchResult(RegisterDTO dto);
+	// 회원정보 수정
+	public RegisterDTO registerSelect(String mem_id);
+	
 }

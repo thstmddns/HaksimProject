@@ -153,4 +153,19 @@ public class RegisterController {
 		}
 		return mav;
 	}
+	@GetMapping("/registerEdit")
+	public ModelAndView registerEdit(String mem_id){
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("mem_id", service.registerSelect(mem_id));
+		mav.setViewName("register/registerEdit");
+		return mav;
+	}
+	
+	@Postmpping('/registerEditOk')
+	pulic __ registerEditOk(RegisterDTO dto) {
+		RegisterDTO dto = service.memberEdit(dto);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("data", dto);
+		
+	}
 }

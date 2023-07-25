@@ -34,6 +34,10 @@ public class RegisterServiceImpl implements RegisterService {
 	public RegisterDTO idSearchResult(RegisterDTO dto) {
 		return dao.idSearchResult(dto);
 	}
+	@Override
+	public RegisterDTO registerSelect(String mem_id) {
+		return dao.registerSelect(mem_id);
+	}
 
 	
 }
