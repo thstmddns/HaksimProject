@@ -12,11 +12,7 @@
 			<mvc:mapping path="/notice/noticeList"/>
 			<mvc:mapping path="/data/dataList"/> 
 			<mvc:mapping path="/community/communityList"/> 
-			
 			<mvc:mapping path="/after/afterList"/> 
-			 
-			 
-			
 			<bean class="kr.or.smhrd.LoginInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>	

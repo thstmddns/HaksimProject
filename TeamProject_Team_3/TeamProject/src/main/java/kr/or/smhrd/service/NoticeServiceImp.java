@@ -51,9 +51,9 @@ public class NoticeServiceImp implements NoticeService {
 	}
 
 	@Override
-	public int NoticeDel(int no, String id) {
+	public int NoticeDel(int no) {
 		// TODO Auto-generated method stub
-		return dao.NoticeDel(no, id);
+		return dao.NoticeDel(no);
 	}
 	
 }

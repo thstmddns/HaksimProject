@@ -18,14 +18,16 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		if (userid == null || logStatus == null || userid.equals("") || !logStatus.equals("Y")) {
 			response.sendRedirect("/smhrd/register/login");
 			return false;
+		}else {
+			int logAuth = (Integer) session.getAttribute("logAuth");
+			
+			if(logAuth != 1) { 
+				response.sendRedirect("/smhrd"); 
+				return false; 
+			}			
+			return true;
 		}
 		
-		int logAuth = (Integer) session.getAttribute("logAuth");
-		if(logAuth != 1) { 
-			response.sendRedirect("/smhrd"); 
-			return false; 
-		}
 
-		return true;
 	}
 }
