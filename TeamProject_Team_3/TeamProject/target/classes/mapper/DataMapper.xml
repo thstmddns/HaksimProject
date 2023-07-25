@@ -45,7 +45,7 @@
 		select data_num, filename from data_file 
 		where data_num=${param1}
 	</select>
-	<update id="dataUpdate">
+	<update id="dataEditOk">
 		update data_board data_title =#{subject}, data_content=#{data_content}
 		where data_num=${data_num}
 	</update>
@@ -71,4 +71,9 @@
 			select data_no_seq.currval from dual
 		</selectKey>
 	</insert>
+	
+	<update id="dataUpdate">
+		update data_board set data_title=#{data_title}, data_content=#{data_content}
+		where data_num=${data_num}
+	</update>
 </mapper>

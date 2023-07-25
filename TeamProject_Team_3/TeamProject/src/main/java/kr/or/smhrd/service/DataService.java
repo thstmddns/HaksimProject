@@ -16,22 +16,15 @@ public interface DataService {
 	public int totalRecord(PagingDTO pDTO);
 	public void hitCount(int data_num);
 	public DataDTO getBoard(int data_num);
-	public int dataDelete(int data_num);
+	public int dataDelete(int data_num, String mem_id);
 	// 파일명 등록
 			public int dataFileInsert(List<DataFileDTO> fileList);
 	// 첨부파일목록 삭제
-			public int dataFileDelete(int no);
+			public int dataFileDelete(int data_num);
 	// 해당글의 첨부파일 선택
-			public List<DataFileDTO> dataFileSelect (int no);
+			public List<DataFileDTO> dataFileSelect (int data_num);
 	// 글등록
-			public int dataInsert(DataDTO dto);	
+			public int dataInsert(DataDTO dto);
+			public int dataUpdate(DataDTO dto);	
 }
-	
-	/*
-	 * // 글선택 public DataDTO dataSelect(int data_num); // 파일명 등록 public int
-	 * dataFileInsert(List<DataFileDTO> fileList); // 글수정 public int
-	 * dataUpdate(DataDTO dto); // 첨부파일목록 삭제 public int dataFileDelete(int
-	 * data_num); // 해당글의 첨부파일 선택 public List<DataFileDTO> dataFileSelect (int
-	 * data_num);
-	 */
 
