@@ -20,7 +20,7 @@ public class CommunityReplyController {
 	@PostMapping("/communityReply/replyWrite")
 	public String replyWrite(CommunityReplyDTO dto, HttpSession session) {
 	      
-	      dto.setMem_id("Kim");
+	      dto.setMem_id((String)session.getAttribute("logId"));
 	      
 	      System.out.println(dto.toString());
 	      int result = service.replyInsert(dto);

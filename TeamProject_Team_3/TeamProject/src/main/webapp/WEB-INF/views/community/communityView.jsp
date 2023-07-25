@@ -32,11 +32,10 @@ $(function(){
 					var tag = "<li><div>";
 					tag += "<b>"+coment.mem_id+"</b>";
 					
-						if(dto.mem_id == '${logId}'){
+					    if(coment.mem_id=='${logId}'){
 						tag += "<input type='button' value='Edit'/>";
 						tag += "<input type='button' value='Del' title='"+coment.com_review_num+"'/>";
-						tag += "<p>"+coment.com_review_content+"<p></div>";  // 댓글 내용 */ */
-						
+						tag += "<p>"+coment.com_review_content+"<p></div>";  // 댓글 내용 */ */						
 						// -- 수정폼
 						tag += "<div style='display:none'>";
 						tag += "<form>";
@@ -49,10 +48,11 @@ $(function(){
 						tag += "</form>";
 						tag += "</div>";
 						tag += "</li>";
-						}else{
-							tag += "<p>"+dto.coment+"</p></div>";
-						}
-						tag += "</li>";
+		                  }		                  
+					    else{
+		                     tag += "<p>" + coment.coment + "</p></div>";                  
+		                  }
+
 						$("#communityReplyList").append(tag); 			
 				});
 			},
