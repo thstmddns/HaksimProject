@@ -171,11 +171,10 @@ public class RegisterController {
 		ModelAndView mav = new ModelAndView();
 		try {
 			int result = service.memberEdit(dto);
-			System.out.println(1);
 			mav.setViewName("redirect: /smhrd");
 		}catch(Exception e){
 			e.printStackTrace();
-			mav.setViewName("/smhrd");
+			mav.setViewName("register/registerEditResult");
 		}		
 		return mav;
 	}

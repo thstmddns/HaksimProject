@@ -31,7 +31,7 @@
 	   <c:if test="${logType == '5'}"><span>관리자</span></c:if>   
 	   <span style="color: #66CC99">${logId} 님</span>      
 	   <a href="/smhrd/register/logout"><input type="button" value="로그아웃"></a>   
-	   <a href="/smhrd/#"><input type="button" value="회원정보수정"></a>
+	   <a href="/smhrd/register/registerEdit"><input type="button" value="회원정보수정"></a>
    </c:if> 
 </div>
 
