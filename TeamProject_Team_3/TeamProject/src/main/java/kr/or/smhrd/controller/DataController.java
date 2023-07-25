@@ -74,8 +74,8 @@ public class DataController {
 	   }
 	   
 	   @GetMapping("/dataDel")
-	   public ModelAndView dataDel (int data_num) {
-		   int result = service.dataDelete(data_num);
+	   public ModelAndView dataDel (int data_num, HttpSession session) {
+		   int result = service.dataDelete(data_num, (String)session.getAttribute("logId"));
 		   
 		   ModelAndView mav = new ModelAndView();
 		   if(result>0) {
@@ -90,13 +90,15 @@ public class DataController {
 	   //글등록 DB기록
 	   @PostMapping("/dataWriteOk")
 	   public ModelAndView dataWriteOk(HttpServletRequest request, DataDTO dto){
-	      // 파일을 업로드할 경로가 필요 /upload 실제주소. 절대 경로. Java io는 절대주소 필요 request.getSession()
+		   dto.setMem_id((String)request.getSession().getAttribute("logId"));
+		   
+		   // 파일을 업로드할 경로가 필요 /upload 실제주소. 절대 경로. Java io는 절대주소 필요 request.getSession()
 	      String path = request.getSession().getServletContext().getRealPath("/upload");
 	      System.out.println("path->"+path);
 	      
 	      // dto -> 제목, 글내용 있음, 그것은 DataDTO dto에
 	      //             no->시퀀스,     hit, writedate->defaut값
-	      dto.setMem_id("King");
+	     
 	      
 	      //--------파일 업로드 -----------------------------
 	      // 1. 파일 업로드를 위해서는 request객체를 multipartRequset객체로 형변환
@@ -173,7 +175,7 @@ public class DataController {
 	      		// 에러 발생 시 ->
 	      		
 	      		// 원글 지우기(dto.no)
-	      		service.dataDelete(dto.getData_num());
+	      		service.dataDelete(dto.getData_num(), dto.getMem_id());
 	      		// 파일명(DB) 지우기
 	      		service.dataFileDelete(dto.getData_num());
 	      		// 파일 삭제(upFileList)
@@ -212,6 +214,7 @@ public class DataController {
 		   public ModelAndView dataEditOk(DataDTO dto, HttpSession session, HttpServletRequest request) {
 		      
 		      //1. 기존에 업로드된 파일목록 DB에서 가져오기
+			  
 		      List<DataFileDTO> orgFileList = service.dataFileSelect(dto.getData_num());
 		      
 		      //2. 저장위치

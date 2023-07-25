@@ -16,7 +16,7 @@ public interface DataService {
 	public int totalRecord(PagingDTO pDTO);
 	public void hitCount(int data_num);
 	public DataDTO getBoard(int data_num);
-	public int dataDelete(int data_num);
+	public int dataDelete(int data_num, String mem_id);
 	// 파일명 등록
 			public int dataFileInsert(List<DataFileDTO> fileList);
 	// 첨부파일목록 삭제

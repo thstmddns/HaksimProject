@@ -21,4 +21,5 @@ public class DataDTO {
 	private String data_update;
 	
 	private List<String> delFile;
+	
 }

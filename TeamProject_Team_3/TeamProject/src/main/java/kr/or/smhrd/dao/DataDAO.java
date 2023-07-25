@@ -27,7 +27,7 @@ public interface DataDAO {
 	public int dataUpdate(DataDTO dto);
 	
 	// 글 삭제
-	public int dataDelete(int data_num);
+	public int dataDelete(int data_num, String mem_id);
 
 	// 파일명 등록
 		public int dataFileInsert(List<DataFileDTO> fileList);

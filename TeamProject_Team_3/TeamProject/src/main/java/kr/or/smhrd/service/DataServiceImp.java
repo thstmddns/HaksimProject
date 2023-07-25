@@ -38,10 +38,7 @@ public class DataServiceImp implements DataService{
 		return dao.getBoard(data_num);
 	}
 
-	@Override
-	public int dataDelete(int data_num) {
-		return dao.dataDelete(data_num);
-	}
+
 
 	@Override
 	public int dataFileInsert(List<DataFileDTO> fileList) {
@@ -70,6 +67,12 @@ public class DataServiceImp implements DataService{
 	@Override
 	public int dataUpdate(DataDTO dto) {
 		return dao.dataUpdate(dto);
+	}
+
+	@Override
+	public int dataDelete(int data_num, String mem_id) {
+		
+		return dao.dataDelete(data_num, mem_id);
 	}
 	
 }
