@@ -1,5 +1,7 @@
 package kr.or.smhrd.dao;
 
+import java.util.List;
+
 import kr.or.smhrd.dto.RegisterDTO;
 
 public interface RegisterDAO {
@@ -13,4 +15,9 @@ public interface RegisterDAO {
 	public RegisterDTO passwordSearch(RegisterDTO dto);
 	// 아이디 찾기
 	public RegisterDTO idSearchResult(RegisterDTO dto);
+	// 회원정보 조회
+	public RegisterDTO registerSelect(String mem_id);
+	// 회원정보 수정
+	public int memberEdit(RegisterDTO dto);
+	
 }

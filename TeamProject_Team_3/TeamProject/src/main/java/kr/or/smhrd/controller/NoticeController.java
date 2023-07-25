@@ -53,8 +53,8 @@ public class NoticeController {
 		}
 		
 		@PostMapping("/noticeWriteOk")
-		public ModelAndView boardWriteOk(NoticeDTO dto, HttpServletRequest req) {
-			dto.setMem_id("kim");
+		public ModelAndView boardWriteOk(NoticeDTO dto, HttpSession session) {
+			dto.setMem_id((String)session.getAttribute("logId"));
 			
 			ModelAndView mav = new ModelAndView();
 			
@@ -118,8 +118,8 @@ public class NoticeController {
 		// 글 삭제
 		@GetMapping("/noticeDel")
 		public ModelAndView boardDel(int no, HttpSession session) {
-//			int result = service.NoticeDel(no,(String)session.getAttribute("logId"));
-			int result = service.NoticeDel(no,"kim");
+			int result = service.NoticeDel(no);
+			
 			ModelAndView mav = new ModelAndView();
 			
 			if(result > 0) {

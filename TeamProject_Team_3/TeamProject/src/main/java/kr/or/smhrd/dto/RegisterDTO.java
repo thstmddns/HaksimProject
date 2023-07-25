@@ -72,3 +72,4 @@ public class RegisterDTO {
 		this.mem_auth = mem_auth;
 	}
 }	
+

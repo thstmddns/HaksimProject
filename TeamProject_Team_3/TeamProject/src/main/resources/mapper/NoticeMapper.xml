@@ -42,7 +42,7 @@
 	</update>
 	
 	<delete id="NoticeDel">
-		DELETE FROM notice WHERE notice_num=${param1} AND mem_id=#{param2}
+		DELETE FROM notice WHERE notice_num=${param1}
 	</delete>
 	
 	

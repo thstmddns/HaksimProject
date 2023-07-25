@@ -156,8 +156,10 @@ $(document).on('click', '#dataReplyList input[value=Del]', function() {
    </ul>   
    
    <div>
+   	<c:if test="${logId == dto.mem_id}">
       <a href="/smhrd/data/dataEdit?data_num=${dto.data_num }">수정</a>
       <a href="javascript:dataDelChk()">삭제</a>
+     </c:if>
    </div>
    
    <div id="dataReply">

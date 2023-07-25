@@ -3,6 +3,12 @@
   
 <mapper namespace="kr.or.smhrd.dao.ReportDAO">
 	<select id="getReportList" resultType="kr.or.smhrd.dto.ReportDTO">
-		SELECT report_num, mem_id, report_content, report_wdate FROM report_board
+		SELECT report_num, mem_id, report_content, report_wdate, report_url 
+		FROM report_board
+		ORDER BY report_num DESC
 	</select>
+	
+	<delete id="ReportDel">
+		DELETE FROM report_board WHERE report_num=${param1}
+	</delete>
 </mapper>

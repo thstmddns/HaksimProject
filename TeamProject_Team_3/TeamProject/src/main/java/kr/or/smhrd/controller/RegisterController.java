@@ -1,6 +1,7 @@
 package kr.or.smhrd.controller;
 
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,7 +78,8 @@ public class RegisterController {
 			session.setAttribute("logCa", dto.getMem_ca());
 			session.setAttribute("logAuth", dto.getMem_auth());
 			session.setAttribute("logStatus", "Y");
-			 
+			session.setAttribute("logAuth", dto.getMem_auth());
+			
 			 mav.setViewName("redirect:/");
 		}else {
 			mav.setViewName("register/loginResult");
@@ -151,6 +153,29 @@ public class RegisterController {
 		}else {
 			mav.setViewName("register/idS");
 		}
+		return mav;
+	}
+	
+	@GetMapping("/registerEdit")
+	public ModelAndView registerEdit(HttpSession session){
+		RegisterDTO dto = service.registerSelect((String)session.getAttribute("logId"));
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("mem_id", dto);
+		mav.setViewName("register/registerEdit");
+		return mav;
+	}
+	
+	@PostMapping("/registerEditOk")
+	public ModelAndView registerEditOk(RegisterDTO dto, HttpServletRequest request, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		try {
+			int result = service.memberEdit(dto);
+			mav.setViewName("redirect: /smhrd");
+		}catch(Exception e){
+			e.printStackTrace();
+			mav.setViewName("register/registerEditResult");
+		}		
 		return mav;
 	}
 }
