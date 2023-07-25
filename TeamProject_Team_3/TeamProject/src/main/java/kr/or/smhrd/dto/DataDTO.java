@@ -1,5 +1,7 @@
 package kr.or.smhrd.dto;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,4 +19,7 @@ public class DataDTO {
 	private int data_hit;
 	private String data_wdate;
 	private String data_update;
+	
+	private List<String> delFile;
+	
 }

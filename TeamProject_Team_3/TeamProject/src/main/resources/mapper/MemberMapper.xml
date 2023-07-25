@@ -7,7 +7,7 @@
 	<select id="getMemberList" resultType="kr.or.smhrd.dto.RegisterDTO">
 		SELECT mem_id, mem_type, mem_age, mem_email, mem_name, mem_ca ,mem_auth
 		FROM member
-		WHERE mem_type &lt; 5
+		WHERE mem_type &lt; 3
 	</select>
 	
 	<select id="getMember" resultType="kr.or.smhrd.dto.RegisterDTO">

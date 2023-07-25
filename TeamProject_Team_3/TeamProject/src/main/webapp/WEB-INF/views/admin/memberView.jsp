@@ -7,17 +7,13 @@
 	<ul>
 		<li>아이디 : ${member.mem_id }</li>
 		<li>이름 :  ${member.mem_name}</li>
-		
-		<c:if test="${member.mem_type == 0}">
-			<li>분류 : 미인증</li>
-		</c:if>
 		<c:if test="${member.mem_type == 1}">
 			<li>분류 : 학생</li>
 		</c:if>
 		<c:if test="${member.mem_type == 2}">
-			<li>분류 : 수료생</li>
+			<li>분류 : 선생님</li>
 		</c:if>
-		<c:if test="${member.mem_type >= 4}">
+		<c:if test="${member.mem_type == 3}">
 			<li>분류 : 관리자</li>
 		</c:if>
 		
