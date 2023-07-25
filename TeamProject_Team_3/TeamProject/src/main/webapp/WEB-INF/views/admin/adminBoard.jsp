@@ -29,7 +29,6 @@
 		display: flex;
 		flex-direction: column;
 		flex-wrap: wrap;
-		
 		align-items: center;
 		padding:0px;
 	}
@@ -49,6 +48,7 @@
 	}
 	#studentList > li:nth-child(6n+4) {
 		width: 25%;	
+		border-bottom: 1px solid #00468C;
 		white-space: nowrap;	/* 줄 바꾸지 않기 */
 		overflow: hidden;	/* 넘치는 값 숨기기 */
 		text-overflow: ellipsis;	/* ... 표시 */
@@ -67,8 +67,15 @@
 		width: 15%;	
 		border-bottom: 1px solid #00468C;
 	}
+	#reportList > li:nth-child(4n+3) {
+		width: 35%;	
+		white-space: nowrap;	/* 줄 바꾸지 않기 */
+		overflow: hidden;	/* 넘치는 값 숨기기 */
+		text-overflow: ellipsis;	/* ... 표시 */
+	}
+	
 	#reportList > li:nth-child(4n+4) {
-		width: 55%;	
+		width: 35%;	
 		white-space: nowrap;	/* 줄 바꾸지 않기 */
 		overflow: hidden;	/* 넘치는 값 숨기기 */
 		text-overflow: ellipsis;	/* ... 표시 */
@@ -144,7 +151,7 @@
 					<li>${rDTO.report_num}</li>
 					<li>${rDTO.mem_id}</li>
 					<li>${rDTO.report_content}</li>
-					<li><a href="${rDTO.report_url}">${rDTO.report_url}</a></li>
+					<li><a href="${rDTO.report_url}">위치</a></li>
 				</c:forEach>
 			</ul>
 			</form>
@@ -162,12 +169,12 @@
 				<c:forEach var="nDTO" items="${notice}">
 					<li>${nDTO.notice_num}</li>
 					<li>${nDTO.mem_id}</li>
-					<li>${nDTO.notice_title}</li>
+					<li><a href="/smhrd/notice/noticeView?no=${nDTO.notice_num }">${nDTO.notice_title}</a></li>
 					<li>${nDTO.notice_wdate}</li>
 				</c:forEach>
 			</ul>
 			<div align="right" style="margin: 5px;">
-				<a href="/smhrd/notice/noticeList"><input type="button" value="이동"></a>
+				<a href="/smhrd/notice/noticeList"><input type="button" value="게시판이동"></a>
 			</div>
 			</form>	
 		</div>
