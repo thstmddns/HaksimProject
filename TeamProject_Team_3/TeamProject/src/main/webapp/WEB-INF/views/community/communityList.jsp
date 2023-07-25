@@ -13,8 +13,8 @@
 	 	border-bottom:1px solid #ddd;
 	 	text-align:center;
 	 }
-	 .community_list>li:nth-child(5n+2) {
-	 	width:60%;
+	 .community_list>li:nth-child(6n+3) {
+	 	width:50%;
 	 	/*말줄임표시*/
 	 	white-space:nowrap;  /*줄 바꾸지 않기*/
 	 	overflow:hidden;   /*넘친값 숨기기*/
@@ -55,17 +55,56 @@
 
 
 </style>
+	<script>
+	$(function() {
+		
+		$('.comChk').click(function(){
+			typePageGo();
+		});
+		
+		const searchParams = new URLSearchParams(location.search);
 
-<main>
-	<h1 align="center">커뮤니티 게시판</h1>
+		for(const param of searchParams){
+			var key = param[0];
+			var val = param[1];
+			
+			if(key = 'com_type'){
+				if(val == 0){
+					$('#comChk0').prop("checked", true);
+				} else if(val == 1){
+					$('#comChk1').prop("checked", true);
+				} else if(val == 2){
+					$('#comChk2').prop("checked", true);
+				} else if(val == 3){
+					$('#comChk3').prop("checked", true);
+				}
+			}
+		}
+	}); 
 	
+	function typePageGo(){
+		var com_type = document.querySelector('input[name="comChk"]:checked').value;
+		console.log(grad_type);
+		location.href = 'http://localhost:8080/smhrd/communityList?com_type=' + com_type;
+	}
+
+</script>
+<main>
+	<h1 align="center">커뮤니티 게시판</h1>	
 	<div>
+		<li>Category</li>
+		<input type='radio' name='comChk' class='cateChk' value='0' id='comChk0'/> 전체
+		<input type='radio' name='comChk' class='cateChk' value='1' id='comChk1'/> 고민
+		<input type='radio' name='comChk' class='cateChk' value='2' id='comChk2'/> 건의
+		<input type='radio' name='comChk' class='cateChk' value='3' id='comChk3'/> 소통
+		</br>
 		<a href="/smhrd/community/communityWrite"><button >글쓰기</button></a>
-		<span style="margin-left: 800px">총 게시글 수 : ${pDTO.totalRecord}</span>
+		<span style="margin-left: 1000px">총 게시글 수 : ${pDTO.totalRecord}</span>
 	</div>
 	
 	<ul class="community_list">
 		<li>no</li>
+		<li>카테고리</li>
 		<li>제목</li>
 		<li>글쓴이</li>
 		<li>등록일</li>
@@ -75,11 +114,25 @@
 			var: 변수 
 			items: 데이터 
 		-->
-		<c:forEach var="dto" items="${list}">	
+		<c:forEach var="dto" items="${list}">				
 			<li>${dto.com_num}</li>
+			
+			<c:if test="${dto.com_type == 1}">
+				<li>고민</li>
+			</c:if>
+			<c:if test="${dto.com_type == 2}">
+				<li>건의</li>
+			</c:if>
+			<c:if test="${dto.com_type == 3}">
+				<li>소통</li>
+			</c:if>	
+			
 			<li><a href="/smhrd/community/communityView/${dto.com_num}">${dto.com_title }</a></li>
+			
 			<li>${dto.mem_id }</li>
+			
 			<li>${dto.com_wdate }</li>
+			
 			<li>${dto.com_hit}</li>	
 		</c:forEach>
 	</ul>
@@ -129,6 +182,7 @@
 				<option value="com_content">글내용</option>
 				<option value="mem_id">글쓴이</option>
 			</select>
+			<input type="hidden" name="com_type" id="com_type" class="com_type" value="${pDTO.com_type}"/>
 			<input type="text" name="searchWord" id="searchWord"/>
 			<input type="submit" value="Search"/>
 		</form>

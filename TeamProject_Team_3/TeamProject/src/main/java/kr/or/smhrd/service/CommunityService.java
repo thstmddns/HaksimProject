@@ -12,4 +12,5 @@ public interface CommunityService {
 	public void hitCount(int com_num);
 	public int boardDel(int com_num);
 	public int communityEditOk(CommunityDTO dto);
+	public int boardWriteOk(CommunityDTO dto);
 }

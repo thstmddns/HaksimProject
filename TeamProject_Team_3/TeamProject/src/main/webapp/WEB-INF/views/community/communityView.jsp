@@ -163,14 +163,12 @@ communityReplyList();
 		</c:if>
 		<c:if test="${dto.com_type==3}">
 			<li>소통 게시판</li>
-		</c:if>
-				
-      <li>글번호 : ${dto.com_num}</li>
-      <li>제목 : ${dto.com_title}</li>
+		</c:if>				
       <li>글쓴이 : ${dto.mem_id}</li>
-      <li><br>글내용<br/> ${dto.com_content}</li>
-      <li>등록일 : ${dto.com_wdate}</li>
       <li>조회수 : ${dto.com_hit}</li>
+      <li>등록일 : ${dto.com_wdate}</li>
+      <li>제목 : ${dto.com_title}</li>
+      <li><br>글내용<br/> ${dto.com_content}</li>
    	</ul>
      
    	<div>

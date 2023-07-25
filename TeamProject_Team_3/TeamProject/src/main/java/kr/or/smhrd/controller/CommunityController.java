@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kr.or.smhrd.dto.AfterDTO;
 import kr.or.smhrd.dto.CommunityDTO;
 import kr.or.smhrd.dto.PagingDTO;
 import kr.or.smhrd.service.CommunityService;
@@ -40,6 +42,26 @@ public class CommunityController {
 		
 		return mav;
 	}
+	@GetMapping("/communityWrite")
+	   public ModelAndView communityWrite() {
+	      ModelAndView mav = new ModelAndView();
+	      mav.setViewName("community/communityWrite");
+	      return mav;
+	   }
+	// 수료생 게시글 등록
+    @PostMapping("/communityWriteOk")
+    public ModelAndView boardWriteOk(CommunityDTO dto, HttpSession session) {
+       dto.setMem_id((String)session.getAttribute("logId"));   
+       ModelAndView mav = new ModelAndView();
+       try {
+          mav.addObject("dto", service.boardWriteOk(dto));
+          mav.setViewName("redirect:communityList");
+       }catch(Exception e) {
+          e.printStackTrace();
+          mav.setViewName("community/communityResult");
+       }
+       return mav;
+    }   
 	// 게시글 세부 보기
 	   @GetMapping("/communityView/{com_num}")
 	   public ModelAndView afterView(@PathVariable("com_num") int com_num) {
