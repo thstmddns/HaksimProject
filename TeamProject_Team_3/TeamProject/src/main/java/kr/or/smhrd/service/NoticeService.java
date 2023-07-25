@@ -8,24 +8,24 @@ import kr.or.smhrd.dto.ReportDTO;
 
 public interface NoticeService {
 
-	// ±Û µî·Ï
+	// ï¿½ï¿½ ï¿½ï¿½ï¿½
 	public int NoticeWriteOk(NoticeDTO dto); 
 		
-	// ±Û ¸ñ·Ï Á¶È¸ 
+	// ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ 
 	public List<NoticeDTO> NoticeList(PagingDTO pDTO);
 	
-	// ÃÑ ·¹ÄÚµå ¼ö
+	// ï¿½ï¿½ ï¿½ï¿½ï¿½Úµï¿½ ï¿½ï¿½
 	public int totalRecord(PagingDTO pDTO);
 	
-	// ÇÑ°³ÀÇ ·¹ÄÚµå ¼±ÅÃ
+	// ï¿½Ñ°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½
 	public NoticeDTO getNotice(int no);
 		
-	// Á¶È¸¼ö Áõ°¡
+	// ï¿½ï¿½È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public void hitCount(int no);
 		
-	// ±Û¼öÁ¤
+	// ï¿½Û¼ï¿½ï¿½ï¿½
 	public int NoticeEditOk(NoticeDTO dto);
 		
-	// ±Û »èÁ¦
-	public int NoticeDel(int no, String id);
+	// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	public int NoticeDel(int no);
 }

@@ -29,7 +29,7 @@ public class NoticeController {
 	@Autowired
 	NoticeService service;
 	
-	// °Ô½ÃÆÇÀ¸·Î ÀÌµ¿
+	// ê²Œì‹œíŒìœ¼ë¡œ ì´ë™
 		@GetMapping("/noticeList")
 		public ModelAndView noticeList(PagingDTO pDTO) {	
 			pDTO.setTotalRecord(service.totalRecord(pDTO));
@@ -53,8 +53,8 @@ public class NoticeController {
 		}
 		
 		@PostMapping("/noticeWriteOk")
-		public ModelAndView boardWriteOk(NoticeDTO dto, HttpServletRequest req) {
-			dto.setMem_id("kim");
+		public ModelAndView boardWriteOk(NoticeDTO dto, HttpSession session) {
+			dto.setMem_id((String)session.getAttribute("logId"));
 			
 			ModelAndView mav = new ModelAndView();
 			
@@ -63,28 +63,28 @@ public class NoticeController {
 				int insert = service.NoticeWriteOk(dto);
 				mav.setViewName("redirect:noticeList");
 			}catch (Exception e) {
-				System.out.println("¿¡·¯ ¹ß»ý >> "+e.getMessage());
+				System.out.println("ì—ëŸ¬ ë°œìƒ >> "+e.getMessage());
 				mav.setViewName("notice/noticeWriteResult");
 			}
 			
 			return mav;
 		}
 		
-		// ±Û ³»¿ë º¸±â
+		// ê¸€ ë‚´ìš© ë³´ê¸°
 		@GetMapping("/noticeView")
 		public ModelAndView boardView(int no, PagingDTO pDTO) {
 			service.hitCount(no);
 			
 			ModelAndView mav = new ModelAndView();
 			mav.addObject("dto", service.getNotice(no));
-			mav.addObject("pDTO", pDTO);	// ÆäÀÌÁö Á¤º¸¸¦ Ãß°¡
+			mav.addObject("pDTO", pDTO);	// íŽ˜ì´ì§€ ì •ë³´ë¥¼ ì¶”ê°€
 			
 			mav.setViewName("notice/noticeView");
 			
 			return mav;
 		}
 		
-		// ±Û¼öÁ¤À¸·Î ÀÌµ¿
+		// ê¸€ìˆ˜ì •ìœ¼ë¡œ ì´ë™
 		@GetMapping("/noticeEdit")
 		public ModelAndView boardEdit(int no, PagingDTO pDTO) {
 			
@@ -115,18 +115,18 @@ public class NoticeController {
 			return mav;
 		}
 		
-		// ±Û »èÁ¦
+		// ê¸€ ì‚­ì œ
 		@GetMapping("/noticeDel")
 		public ModelAndView boardDel(int no, HttpSession session) {
-//			int result = service.NoticeDel(no,(String)session.getAttribute("logId"));
-			int result = service.NoticeDel(no,"kim");
+			int result = service.NoticeDel(no);
+			
 			ModelAndView mav = new ModelAndView();
 			
 			if(result > 0) {
-				// »èÁ¦ ¼º°ø
+				// ì‚­ì œ ì„±ê³µ
 				mav.setViewName("redirect:noticeList");
 			}else {
-				// »èÁ¦ ½ÇÆÐ
+				// ì‚­ì œ ì‹¤íŒ¨
 				mav.addObject("no",no);
 				mav.setViewName("redirect:noticeView");
 				

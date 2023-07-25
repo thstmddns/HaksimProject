@@ -1,6 +1,7 @@
 package kr.or.smhrd.controller;
 
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,11 +76,13 @@ public class RegisterController {
 			session.setAttribute("logId", dto.getMem_id());
 			session.setAttribute("logType", dto.getMem_type());
 			session.setAttribute("logCa", dto.getMem_ca());
+			session.setAttribute("logAuth", dto.getMem_auth());
 			session.setAttribute("logStatus", "Y");
-			 
+			session.setAttribute("logAuth", dto.getMem_auth());
+			
 			 mav.setViewName("redirect:/");
 		}else {
-			mav.setViewName("redirect:login");
+			mav.setViewName("register/loginResult");
 		}
 		return mav;
 	}
@@ -105,8 +108,8 @@ public class RegisterController {
 		RegisterDTO resultDTO = service.passwordSearch(dto);
 		String resultTxt = "N";
 		if(resultDTO!=null) { //일치하는 정보가 있을때
-	 //이메일 보내기 
-	try {   
+		 //이메일 보내기 
+		try {   
 		String subject = "비밀번호 찾기 결과";
 		String content = "<div style='background:pink; border:1px solid #ddd; padding:50px; text-align:center'>";
 		   
@@ -132,10 +135,47 @@ public class RegisterController {
 	}    
 		return resultTxt;
 	}
-	//아이디 찾기 (폼)
-	@GetMapping("/idSearch")
+	
+	//아이디 찾기
+	@GetMapping("/idSearchForm")
 	public String idSearchForm() {
-		return "register/idSearch";
+		System.out.println(1);
+		return "register/idSearchForm";
+		}
+	
+	@PostMapping("/idSearchResult")
+	public ModelAndView idSearchResult(RegisterDTO dto) { 
+		RegisterDTO resultDTO = service.idSearchResult(dto);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("data", resultDTO);
+		if(resultDTO!=null) { //일치하는 정보가 있을때
+			mav.setViewName("register/idSearchResult");
+		}else {
+			mav.setViewName("register/idS");
+		}
+		return mav;
 	}
 	
+	@GetMapping("/registerEdit")
+	public ModelAndView registerEdit(HttpSession session){
+		RegisterDTO dto = service.registerSelect((String)session.getAttribute("logId"));
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("mem_id", dto);
+		mav.setViewName("register/registerEdit");
+		return mav;
+	}
+	
+	@PostMapping("/registerEditOk")
+	public ModelAndView registerEditOk(RegisterDTO dto, HttpServletRequest request, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		try {
+			int result = service.memberEdit(dto);
+			mav.setViewName("redirect: /smhrd");
+		}catch(Exception e){
+			e.printStackTrace();
+			mav.setViewName("register/registerEditResult");
+		}		
+		return mav;
+	}
 }

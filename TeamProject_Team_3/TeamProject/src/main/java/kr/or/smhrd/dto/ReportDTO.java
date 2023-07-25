@@ -12,4 +12,5 @@ public class ReportDTO {
 	private String mem_id;
 	private String report_content;
 	private String report_wdate;
+	private String report_url;
 }
