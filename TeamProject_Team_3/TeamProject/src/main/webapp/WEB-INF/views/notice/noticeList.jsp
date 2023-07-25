@@ -146,9 +146,9 @@
 	<div class="search">
 		<form action="/smhrd/notice/noticeList">
 			<select name="searchKey">
-				<option value="subject">제목</option>
-				<option value="content">글내용</option>
-				<option value="userid">글쓴이</option>	
+				<option value="notice_title">제목</option>
+				<option value="notice_content">글내용</option>
+				<option value="mem_id">글쓴이</option>	
 			</select>
 			<input type="text" name="searchWord" id="searchWord" class="searchWord"/>
 			<input type="submit" value="Search" class="searchBtn"/>

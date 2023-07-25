@@ -73,18 +73,19 @@ public class AdminBoardController {
 	
 	@PostMapping("/memberEditOk")
 	public ModelAndView memberEditOk(RegisterDTO dto) {
-		int result = mService.memberEditOk(dto);
-
 		ModelAndView mav = new ModelAndView();
 		
-		mav.addObject("dto", dto);
-		
-		if(result > 0) {
-			mav.setViewName("redirect: memberView");			
-		}else {			
-			mav.setViewName("redirect: memberEdit");
+		try {
+			int result = mService.memberEditOk(dto);
+			mav.addObject("dto", dto);
+			
+			mav.setViewName("redirect: memberView?id="+dto.getMem_id());			
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			mav.setViewName("redirect: memberEdit");			
 		}
-					
+							
 		return mav;
 	}
 }

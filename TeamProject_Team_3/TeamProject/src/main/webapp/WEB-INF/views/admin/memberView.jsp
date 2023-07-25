@@ -7,6 +7,7 @@
 	<ul>
 		<li>아이디 : ${member.mem_id }</li>
 		<li>이름 :  ${member.mem_name}</li>
+		
 		<c:if test="${member.mem_type == 0}">
 			<li>분류 : 미인증</li>
 		</c:if>
@@ -19,6 +20,7 @@
 		<c:if test="${member.mem_type >= 4}">
 			<li>분류 : 관리자</li>
 		</c:if>
+		
 		<li>나이 : ${member.mem_age}</li>
 		<li>이메일 : ${member.mem_email}</li>
 		<li>기수번호 : ${member.mem_ca}</li>
