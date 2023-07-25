@@ -32,25 +32,28 @@ $(function(){
 					var tag = "<li><div>";
 					tag += "<b>"+coment.mem_id+"</b>";
 					
+					    if(coment.mem_id=='${logId}'){
 						tag += "<input type='button' value='Edit'/>";
 						tag += "<input type='button' value='Del' title='"+coment.com_review_num+"'/>";
-						tag += "<p>"+coment.com_review_content+"<p></div>";  // 댓글 내용 */ */
-						
+						tag += "<p>"+coment.com_review_content+"<p></div>";  // 댓글 내용 */ */						
 						// -- 수정폼
 						tag += "<div style='display:none'>";
 						tag += "<form>";
-						tag += "<textarea style='width:400px' name='coment'>";
+						tag += "<textarea style='width:400px' name='com_review_content'>";
 						// 글 내용 수정, 댓글번호
 						tag += coment.com_review_content;
 						tag += "</textarea>";
-						tag += "<input type='hidden' name='coment.com_review_num' value='"+coment.com_review_num+"'/>";
+						tag += "<input type='hidden' name='com_review_num' value='"+coment.com_review_num+"'/>";
 						tag += "<input type='button' value='수정하기'/>";
 						tag += "</form>";
 						tag += "</div>";
 						tag += "</li>";
-					
-					$("#communityReplyList").append(tag); 
-			
+		                  }		                  
+					    else{
+		                     tag += "<p>" + coment.coment + "</p></div>";                  
+		                  }
+
+						$("#communityReplyList").append(tag); 			
 				});
 			},
 			error:function(e) {
@@ -58,6 +61,37 @@ $(function(){
 			}
 		});
 	}
+	// 댓글 쓰기
+	$("#communityReplyFrm").submit(function() {
+		
+		event.preventDefault();  
+		
+		if($("#communityComent").val() == "") {
+			alert("댓글을 입력하세요");
+			return false;
+		}
+		
+		var params = $("#communityReplyFrm").serialize();
+		console.log('params', params);
+		
+		$.ajax({
+			url: '/smhrd/communityReply/replyWrite',
+			data: params,
+			type: 'POST',
+			success:function(result) {
+				console.log(result);
+				
+				$("#communityComent").val("");
+				
+				communityReplyList();
+				
+			},
+			error:function(e){
+			console.log(e.responseText);
+			} 
+		});
+			
+	});
 	
 	// 댓글 삭제
 	$(document).on('click', '#communityReplyList input[value=Del]', function() {
@@ -83,8 +117,38 @@ $(function(){
 			}
 		});
 	});
-	communityReplyList();
+
+//댓글 수정폼
+$(document).on('click','#communityReplyList input[value=Edit]',function(){
+	$(this).parent().css('display', 'none');	
+	$(this).parent().next().css('display', 'block');
 });
+
+// 댓글 수정(DB)
+$(document).on('click', '#communityReplyList input[value=수정하기]', function(){
+	var params = $(this).parent().serialize();  
+	
+	$.ajax({
+		url : '/smhrd/communityReply/replyEditOk',
+		data : params,
+		type : 'POST',
+		success:function(result){
+			if(result=='0'){
+				alert('댓글이 수정되지 않았습니다');
+			}else{
+				communityReplyList();
+			}
+		},
+		error:function(e){
+			console.log("댓글 수정 실패", e.responseText);
+		}
+	});
+});
+
+communityReplyList();
+
+});
+
 </script>
 
 <main>
@@ -110,21 +174,21 @@ $(function(){
    	</ul>
      
    	<div>
-   		<a href="/smhrd/community/communityEdit?com_num=${dto.com_num}">수정</a>
-		<a href="javascript:boardDelChk()">삭제</a>
+   		<c:if test="${logId == dto.mem_id}">
+   			<a href="/smhrd/community/communityEdit?com_num=${dto.com_num}">수정</a>
+			<a href="javascript:boardDelChk()">삭제</a>
+   		</c:if>
 	</div>
 	<div id="communityReply">
+			
 			<form method="post" id="communityReplyFrm">
-				<input type="hidden" name="comNum" value="${dto.com_num }">  
-				<textarea name="communityComent" id="communityComent"></textarea>
+				<input type="hidden" name="com_num" value="${dto.com_num }">  
+				<textarea name="com_review_content" id="communityComent"></textarea>
 				<input type="submit" value="댓글 등록하기">
 			</form>
-			<!-- 액션태그 생략하면 기본이 자신 페이지로 이동 -->
+
 		<hr/>
-		<ul id="communityReplyList">
-			
+		<ul id="communityReplyList">			
 		</ul>
-	</div>
-	
-	
+	</div>	
 </main>

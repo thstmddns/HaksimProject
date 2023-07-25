@@ -6,12 +6,15 @@ import java.util.List;
 import kr.or.smhrd.dto.RegisterDTO;
 
 public interface RegisterService {
-	//ȸ������
+
+	// 회원가입
 	public int registerInsert(RegisterDTO dto);
-	// ���̵� �ߺ�üũ
+	// 아이디 중복체크
 	public int idCheck(String mem_id);
-	// �α���
+	// 로그인
 	public RegisterDTO loginOk(String mem_id, String mem_password);
-	// ���̵� ã��
+	// 비밀번호 찾기
 	public RegisterDTO passwordSearch(RegisterDTO dto);
+	// 아이디 찾기
+	public RegisterDTO idSearchResult(RegisterDTO dto);
 }

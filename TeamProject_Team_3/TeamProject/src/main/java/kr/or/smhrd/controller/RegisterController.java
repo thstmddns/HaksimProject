@@ -75,12 +75,13 @@ public class RegisterController {
 			session.setAttribute("logId", dto.getMem_id());
 			session.setAttribute("logType", dto.getMem_type());
 			session.setAttribute("logCa", dto.getMem_ca());
+			session.setAttribute("logAuth", dto.getMem_auth());
 			session.setAttribute("logStatus", "Y");
 			session.setAttribute("logAuth", dto.getMem_auth());
 			
 			 mav.setViewName("redirect:/");
 		}else {
-			mav.setViewName("redirect:login");
+			mav.setViewName("register/loginResult");
 		}
 		return mav;
 	}
@@ -106,8 +107,8 @@ public class RegisterController {
 		RegisterDTO resultDTO = service.passwordSearch(dto);
 		String resultTxt = "N";
 		if(resultDTO!=null) { //일치하는 정보가 있을때
-	 //이메일 보내기 
-	try {   
+		 //이메일 보내기 
+		try {   
 		String subject = "비밀번호 찾기 결과";
 		String content = "<div style='background:pink; border:1px solid #ddd; padding:50px; text-align:center'>";
 		   
@@ -133,10 +134,24 @@ public class RegisterController {
 	}    
 		return resultTxt;
 	}
-	//아이디 찾기 (폼)
-	@GetMapping("/idSearch")
-	public String idSearchForm() {
-		return "register/idSearch";
-	}
 	
+	//아이디 찾기
+	@GetMapping("/idSearchForm")
+	public String idSearchForm() {
+		System.out.println(1);
+		return "register/idSearchForm";
+		}
+	
+	@PostMapping("/idSearchResult")
+	public ModelAndView idSearchResult(RegisterDTO dto) { 
+		RegisterDTO resultDTO = service.idSearchResult(dto);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("data", resultDTO);
+		if(resultDTO!=null) { //일치하는 정보가 있을때
+			mav.setViewName("register/idSearchResult");
+		}else {
+			mav.setViewName("register/idS");
+		}
+		return mav;
+	}
 }
