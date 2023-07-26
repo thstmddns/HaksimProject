@@ -28,9 +28,10 @@ $(function(){
 			success:function(replyResult) {
 				$("#communityReplyList").html("");
 				console.log(replyResult);
+				var len = replyResult.length;
 				$(replyResult).each(function(i, coment){
 					var tag = "<li><div>";
-					tag += "<b>익명의 누군가</b>";
+					tag += "<b>"+(len-i)+"빠</b>";
 					
 					    if(coment.mem_id=='${logId}'){
 						tag += "<input type='button' value='Edit'/>";
