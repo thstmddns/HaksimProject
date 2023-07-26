@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import kr.or.smhrd.dao.DataReplyDAO;
 import kr.or.smhrd.dto.DataReplyDTO;
+import kr.or.smhrd.dto.ReportDTO;
 
 @Service
 public class DataReplyServiceImpl implements DataReplyService {
@@ -36,6 +37,12 @@ public class DataReplyServiceImpl implements DataReplyService {
 	public int dReplyDelete(int data_review_num) {
 		
 		return dao.dReplyDelete(data_review_num);
+	}
+
+	@Override
+	public int dtReportInsert(ReportDTO Rdto) {
+		
+		return dao.dtReportInsert(Rdto);
 	}
 	
 }

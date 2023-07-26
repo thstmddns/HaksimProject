@@ -1,5 +1,7 @@
 package kr.or.smhrd;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -14,7 +16,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		String userid = (String) session.getAttribute("logId");
 		String logStatus = (String) session.getAttribute("logStatus");
 
-
 		if (userid == null || logStatus == null || userid.equals("") || !logStatus.equals("Y")) {
 			response.sendRedirect("/smhrd/register/login");
 			return false;
@@ -22,7 +23,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			int logAuth = (Integer) session.getAttribute("logAuth");
 			
 			if(logAuth != 1) { 
-				response.sendRedirect("/smhrd"); 
+				response.sendRedirect("/smhrd"); 				
 				return false; 
 			}			
 			return true;

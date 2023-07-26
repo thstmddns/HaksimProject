@@ -10,7 +10,7 @@
 	</insert>
 	
 	<select id="aReplySelect" resultType="kr.or.smhrd.dto.AfterReplyDTO">
-	 	select grad_review_num, grad_review_content, mem_id 
+	 	select grad_review_num, grad_review_content, mem_id, grad_num
 	 	from grad_review where grad_num = ${param1}
 	 	order by grad_review_num desc
 	</select>
@@ -22,4 +22,9 @@
 	<delete id="aReplyDelete">
 		delete from grad_review where grad_review_num = ${param1}
 	</delete>
+	
+	<insert id="aReportInsert" parameterType="kr.or.smhrd.dto.ReportDTO">
+		insert into report_board (report_num, mem_id, report_content, report_wdate, report_board, report_board_num, report_url, report_review_num )
+		values(report_no_seq.nextval, #{mem_id}, #{report_content}, sysdate, #{board}, ${grad_num},#{reportReply_url}, ${grad_review_num})
+	</insert> 
 </mapper>

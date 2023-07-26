@@ -46,13 +46,13 @@
 		width: 15%;
 		border-bottom: 1px solid #00468C;
 		line-height: 30px;
+		white-space: nowrap;	/* 줄 바꾸지 않기 */
+		overflow: hidden;	/* 넘치는 값 숨기기 */
+		text-overflow: ellipsis;	/* ... 표시 */
 	}
 	#studentList > li:nth-child(6n+4) {
 		width: 25%;	
 		border-bottom: 1px solid #00468C;
-		white-space: nowrap;	/* 줄 바꾸지 않기 */
-		overflow: hidden;	/* 넘치는 값 숨기기 */
-		text-overflow: ellipsis;	/* ... 표시 */
 	}
 	
 	#reportList{
@@ -68,19 +68,16 @@
 		width: 15%;	
 		border-bottom: 1px solid #00468C;
 		line-height: 30px;
-	}
-	#reportList > li:nth-child(5n+3) {
-		width: 30%;	
 		white-space: nowrap;	/* 줄 바꾸지 않기 */
 		overflow: hidden;	/* 넘치는 값 숨기기 */
 		text-overflow: ellipsis;	/* ... 표시 */
+	}
+	#reportList > li:nth-child(5n+3) {
+		width: 30%;	
 	}
 	
 	#reportList > li:nth-child(5n+4) {
 		width: 25%;	
-		white-space: nowrap;	/* 줄 바꾸지 않기 */
-		overflow: hidden;	/* 넘치는 값 숨기기 */
-		text-overflow: ellipsis;	/* ... 표시 */
 	}
 	
 	
@@ -98,12 +95,12 @@
 		border : 0px solid #00468C;
 		border-bottom: 1px solid #00468C;
 		line-height: 30px;
-	}
-	#noticeList > li:nth-child(4n+3) {
-		width: 40%;	
 		white-space: nowrap;	/* 줄 바꾸지 않기 */
 		overflow: hidden;	/* 넘치는 값 숨기기 */
 		text-overflow: ellipsis;	/* ... 표시 */
+	}
+	#noticeList > li:nth-child(4n+3) {
+		width: 40%;	
 	}
 </style>
 
@@ -157,7 +154,7 @@
 					<li>${rDTO.report_num}</li>
 					<li>${rDTO.mem_id}</li>
 					<li>${rDTO.report_content}</li>
-					<li><a href="${rDTO.report_url}">위치</a></li>
+					<li><a href="${rDTO.report_url}">${rDTO.report_url}</a></li>
 					<li><a href="/smhrd/admin/reportDel?no=${rDTO.report_num}"><input type="button" value="확인"></a></li>
 				</c:forEach>
 			</ul>

@@ -31,7 +31,7 @@ $(function(){
              $(replyResult).each(function(i, coment){
                 var tag = "<li><div>";
                 tag += "<b>"+coment.mem_id+"</b>";
-                
+                if(coment.mem_id=='${logId}') {
                    tag += "<input type='button' value='Edit'/>";
                    tag += "<input type='button' value='Del' title='"+coment.data_review_num+"'/>";
                    tag += "<p>"+coment.data_review_content+"<p></div>";  // 댓글 내용
@@ -47,7 +47,33 @@ $(function(){
                    tag += "<input type='button' value='Edit'/>";
                    tag += "</form>";
                    tag += "</div>";
-                   tag += "</li>";
+                   
+                }else {
+                	tag += "<input type='button' value='신고'/>";
+					tag += "<p>"+coment.data_review_content+"</p></div>";
+					tag += "<div id='dReportReplyFrm' style='display:none'>";
+					tag += "<form id='dReportReply'>";
+					tag +="<input type='hidden' name='data_num' value='"+coment.data_num+"'/>";
+					tag += "<input type='hidden' name='data_review_num' value='"+coment.data_review_num+"'/>";
+					tag +="<input type='hidden' name='data_reportReply_url' id='data_reportReply_url' value='"+window.location.href+"'>";
+					tag +="<input type='hidden' name='board' value='data_review'/>";
+					<!-- 어떤 게시판의 몇번 글인지 보내기 -->
+					tag += "<li>신고사유를 선택해주세요</li>";
+					tag +="<input type='radio' name='report_content' value='홍보/영리 목적' class='reportChk' id='reportChk'>홍보/영리 목적";
+					tag +="<br>";
+					tag +="<input type='radio' name='report_content' value='욕설및비방' class='reportChk' id='reportChk'>욕설 및 비방";
+					tag +="<br>";
+					tag +="<input type='radio' name='report_content' value='부적절한표현' class='reportChk' id='reportChk'>부적절한 표현";
+					tag +="<br>";
+					tag +="<input type='radio' name='report_content' value='거짓/불법정보' class='reportChk' id='reportChk'>거짓/불법정보";
+					tag +="<br>";
+					tag +="<input type='radio' name='report_content' value='기타' class='reportChk' id='reportChk'>기타";
+					tag +="<br>";
+					tag +="<input type='submit' value='신고하기'>";
+					tag += "</form>";
+					tag += "</div>";
+				}
+				tag += "</li>";
                 
                 $("#dataReplyList").append(tag);
           
@@ -134,6 +160,84 @@ $(document).on('click', '#dataReplyList input[value=Del]', function() {
 			$(this).parent().next().css("display", "block");
 	});
 	
+	$(document).on('click','#dataReportBtn',function(){
+		$(this).css('display', 'none');
+	
+		$(this).next().css('display', 'block');
+	});
+	
+	
+	$("#dataReportFrm").submit(function() {
+		event.preventDefault();  
+		
+		if (!confirm("해당 게시글을 신고하시겠습니까?")) {
+			return false;
+		}
+		
+		if($("#dataReportChk").val() == "") {
+			alert("신고사유을 선택해주세요");
+			return false;
+		}
+	
+		$("#data_report_url").val(window.location.href);
+		var params = $("#dataReportFrm").serialize();		
+		
+			$.ajax({
+			url: '/smhrd/data/dataReportOk',
+			data: params,
+			type: 'POST',
+			success:function(result) {
+				console.log(result);
+				alert('신고가 접수되었습니다');
+				$("#dataReportFrm").css('display', 'none');
+			},
+			error:function(e){
+				console.log(e.responseText);
+				alert('신고가 접수되지 않았습니다');
+			} 
+		});
+			
+	});
+	
+	// 댓글 신고 폼
+	$(document).on('click','#dataReplyList input[value=신고]',function(){
+		
+		$("#dReportReplyFrm").css('display', 'block');
+	});
+	
+	// 댓글 신고하기 
+	$(document).on('click', '#dataReplyList input[value=신고하기]', function(){
+		event.preventDefault();  
+
+		if (!confirm("해당 댓글을 신고하시겠습니까?")) {
+			return false;
+		}
+		
+		if($("#reportChk").val() == "") {
+			alert("신고사유을 선택해주세요");
+			return false;
+		}
+		
+		var params = $(this).parent().serialize();  //$("#reportReply").serialize();		
+		console.log(params)
+		
+			$.ajax({
+			url: '/smhrd/dataReply/dataReplyReportOk',
+			data: params,
+			type: 'POST',
+			success:function(result) {
+				console.log(result);
+				alert('신고가 접수되었습니다');
+				dataReplyList();
+			},
+			error:function(e){
+				console.log(e.responseText);
+				alert('신고가 접수되지 않았습니다');
+			} 
+		});
+			
+	});
+	
 	dataReplyList();
 });
 </script>
@@ -161,6 +265,30 @@ $(document).on('click', '#dataReplyList input[value=Del]', function() {
       <a href="javascript:dataDelChk()">삭제</a>
      </c:if>
    </div>
+   <c:if test="${logId != dto.mem_id}">
+	<button id="dataReportBtn">신고</button>
+	</c:if>	
+	<div style="display:none">
+		<form id="dataReportFrm">
+		<input type="hidden" name='data_num' value="${dto.data_num}">
+		<input type="hidden" name='data_report_url' id="data_report_url" value="">
+		<input type="hidden" name="board" value="data"/>
+		<!-- 어떤 게시판의 몇번 글인지 보내기 -->
+		<input type="radio" name="report_content" value="홍보/영리 목적" class="reportChk" id="dataReportChk">홍보/영리 목적
+		<br>
+		<input type="radio" name="report_content" value="욕설및비방" class="reportChk" id="dataReportChk">욕설 및 비방
+		<br>
+		<input type="radio" name="report_content" value="부적절한표현" class="reportChk" id="dataReportChk">부적절한 표현
+		<br>
+		<input type="radio" name="report_content" value="거짓/불법정보" class="reportChk" id="dataReportChk">거짓/불법정보
+		<br>
+		<input type="radio" name="report_content" value="기타" class="reportChk">기타
+		<br>
+		<input type="submit" value="신고하기">
+	</form>
+	</div>
+   
+   
    
    <div id="dataReply">
          <!-- <form method="post" id="dataReplyFrm"> -->

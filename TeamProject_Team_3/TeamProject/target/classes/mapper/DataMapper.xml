@@ -76,4 +76,9 @@
 		update data_board set data_title=#{data_title}, data_content=#{data_content}
 		where data_num=${data_num}
 	</update>
+	
+	<insert id="dReportInsert" parameterType="kr.or.smhrd.dto.ReportDTO">
+		INSERT INTO report_board (report_num, mem_id, report_content, report_wdate, report_board_num, report_board, report_url)
+		VALUES(report_no_seq.nextval, #{mem_id}, #{report_content}, sysdate, ${data_num}, #{board}, #{data_report_url})
+	</insert>
 </mapper>

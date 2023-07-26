@@ -7,8 +7,8 @@ import kr.or.smhrd.dto.PagingDTO;
 
 public interface CommunityDAO {
 	
-	// 글 등록
-	//public int boardWriteOk(CommunityDTO dto); 
+	//글 등록
+	public int boardWriteOk(CommunityDTO dto); 
 	
 	
 	// 글 목록 선택 
@@ -16,8 +16,7 @@ public interface CommunityDAO {
 	
 	// 총 레코드 수
 	public int totalRecord(PagingDTO pDTO);
-	
-	
+		
 	
 	//한개의 레코드 선택
 	public CommunityDTO getBoard(int com_num);
@@ -32,5 +31,6 @@ public interface CommunityDAO {
 	
 	//글 삭제
 	public int boardDel(int com_num);
+
 
 }

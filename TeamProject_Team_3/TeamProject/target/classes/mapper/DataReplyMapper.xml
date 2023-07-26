@@ -22,4 +22,9 @@
 	<delete id="dReplyDelete">
 		delete from data_review where data_review_num = ${param1}
 	</delete>
+	
+	<insert id="dtReportInsert" parameterType="kr.or.smhrd.dto.ReportDTO">
+		insert into report_board (report_num, mem_id, report_content, report_wdate, report_board, report_board_num, report_url, report_review_num )
+		values(report_no_seq.nextval, #{mem_id}, #{report_content}, sysdate, #{board}, ${data_num},#{data_reportReply_url}, ${data_review_num})
+	</insert>
 </mapper>

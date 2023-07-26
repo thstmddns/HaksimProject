@@ -1,21 +1,23 @@
 package kr.or.smhrd.dto;
 
 public class PagingDTO {
-	private int nowPage = 1;			// ÇöÀç ÆäÀÌÁö
-	private int onePageRecord = 15;		// ÇÑÆäÀÌÁö¿¡ Ç¥½ÃÇÒ ·¹ÄÚµå ¼ö
+	private int nowPage = 1;			// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private int onePageRecord = 15;		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Úµï¿½ ï¿½ï¿½
 	
-	private int totalRecord;			// ÃÑ ·¹ÄÚµå ¼ö
-	private int totalPage;				// ÃÑ ·¹ÄÚµå ¼ö
+	private int totalRecord;			// ï¿½ï¿½ ï¿½ï¿½ï¿½Úµï¿½ ï¿½ï¿½
+	private int totalPage;				// ï¿½ï¿½ ï¿½ï¿½ï¿½Úµï¿½ ï¿½ï¿½
 	
-	private int onePageNumCount = 5;	// ÇÑÆäÀÌÁö¿¡ Ç¥½ÃµÇ´Â ÆäÀÌÁö ¼ö
-	private int startPageNum = 1;		// ½ÃÀÛ ÆäÀÌÁö
+	private int onePageNumCount = 5;	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ç¥ï¿½ÃµÇ´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+	private int startPageNum = 1;		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	
-	private int lastPageRecord = 15;		// ¸¶Áö¸· ÆäÀÌÁö¿¡¼­ ³²¾ÆÀÖ´Â ·¹ÄÚµå ¼ö
+	private int lastPageRecord = 15;		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½Úµï¿½ ï¿½ï¿½
 	
-	private String searchKey;			// °Ë»ö ºĞ·ù (Á¦¸ñ, ³»¿ë, ÀÛ¼ºÀÚ)
-	private String searchWord;			// °Ë»ö ´Ü¾î
+	private String searchKey;			// ï¿½Ë»ï¿½ ï¿½Ğ·ï¿½ (ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½Û¼ï¿½ï¿½ï¿½)
+	private String searchWord;			// ï¿½Ë»ï¿½ ï¿½Ü¾ï¿½
 	
-	private int grad_type = 0;			// ÇöÀç ÆäÀÌÁö
+	private int grad_type = 0;			// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	
+	private int com_type = 0;
 	
 	public int getNowPage() {
 		return nowPage;
@@ -24,7 +26,8 @@ public class PagingDTO {
 	public void setNowPage(int nowPage) {
 		this.nowPage = nowPage;
 		
-		// ÆäÀÌÁöÀÇ ½ÃÀÛ¹øÈ£ »ı¼º
+		// í˜ì´ì§€ì˜ ì‹œì‘ë²ˆí˜¸ ìƒì„±í•˜ê¸°
+		// ì‹œì‘ë²ˆí˜¸ = ((í˜„ì¬í˜ì´ì§€-1)/í•œí˜ì´ì§€ì— í‘œì‹œí•  í˜ì´ì§€ìˆ˜)*í•œí˜ì´ì§€ì— í‘œì‹œí•  í˜ì´ì§€ìˆ˜ + 1 
 		startPageNum = ((nowPage-1) / onePageNumCount ) * onePageNumCount + 1;
 	}
 	
@@ -42,11 +45,11 @@ public class PagingDTO {
 
 	public void setTotalRecord(int totalRecord) {
 		this.totalRecord = totalRecord;
-		//ÃÑ ÆäÀÌÁö¼ö °è»ê
-		//ceil(¿Ã¸²), round(¹İ¿Ã¸²), floor(¹ö¸²)
+		// ì´ í˜ì´ì§€ ìˆ˜ ê³„ì‚°í•˜ê¸°
+		// ceil():ì˜¬ë¦¼, round():ë°˜ì˜¬ë¦¼, floor():ë‚´ë¦¼
 		totalPage = (int)Math.ceil((double)totalRecord / onePageRecord);
 		
-		// ¸¶Áö¸· ÆäÀÌÁöÀÇ ³²¾ÆÀÖ´Â ·¹ÄÚµå ¼ö
+		// ë§ˆì§€ë§‰ í˜ì´ì§€ì˜ ë‚¨ì•„ìˆëŠ” ë ˆì½”ë“œ ìˆ˜ 
 		lastPageRecord = onePageRecord;
 		if(totalPage == nowPage) {
 			if(totalRecord % onePageRecord != 0) {
@@ -110,4 +113,13 @@ public class PagingDTO {
 	public void setGrad_type(int grad_type) {
 		this.grad_type = grad_type;
 	}
+
+	public int getCom_type() {
+		return com_type;
+	}
+
+	public void setCom_type(int com_type) {
+		this.com_type = com_type;
+	}
+	
 }
