@@ -3,4 +3,7 @@
 <script>
 	alert("게시글 등록에 실패하였습니다.");
 	history.back();
+	history.back();
+	history.back();
+	history.back();
 </script>
