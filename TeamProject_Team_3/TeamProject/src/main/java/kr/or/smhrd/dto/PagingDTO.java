@@ -1,7 +1,7 @@
 package kr.or.smhrd.dto;
 
 public class PagingDTO {
-<<<<<<< HEAD
+
 	private int nowPage = 1;			// ���� ������
 	private int onePageRecord = 15;		// ���������� ǥ���� ���ڵ� ��
 	
@@ -19,23 +19,6 @@ public class PagingDTO {
 	private int grad_type = 0;			// ���� ������
 	
 	private int com_type = 0;
-=======
-	private int nowPage = 1;			
-	private int onePageRecord = 15;		
-	
-	private int totalRecord;			
-	private int totalPage;				
-	
-	private int onePageNumCount = 5;	
-	private int startPageNum = 1;		
-	
-	private int lastPageRecord = 15;		
-	
-	private String searchKey;			
-	private String searchWord;			
-	
-	private int grad_type = 0;			
->>>>>>> 3ff16e57910324223feecb0a33207f2cc44a01fc
 	
 	public int getNowPage() {
 		return nowPage;
@@ -43,13 +26,6 @@ public class PagingDTO {
 	
 	public void setNowPage(int nowPage) {
 		this.nowPage = nowPage;
-		
-<<<<<<< HEAD
-		// �������� ���۹�ȣ ����
-=======
-		// 페이지의 시작번호 생성하기
-		// 시작번호 = ((현재페이지-1)/한페이지에 표시할 페이지수)*한페이지에 표시할 페이지수 + 1 
->>>>>>> 3ff16e57910324223feecb0a33207f2cc44a01fc
 		startPageNum = ((nowPage-1) / onePageNumCount ) * onePageNumCount + 1;
 	}
 	
@@ -67,19 +43,14 @@ public class PagingDTO {
 
 	public void setTotalRecord(int totalRecord) {
 		this.totalRecord = totalRecord;
-<<<<<<< HEAD
-		//�� �������� ���
-		//ceil(�ø�), round(�ݿø�), floor(����)
+
 		totalPage = (int)Math.ceil((double)totalRecord / onePageRecord);
 		
-		// ������ �������� �����ִ� ���ڵ� ��
-=======
 		// 총 페이지 수 계산하기
 		// ceil():올림, round():반올림, floor():내림
 		totalPage = (int)Math.ceil((double)totalRecord / onePageRecord);
 		
 		// 마지막 페이지의 남아있는 레코드 수 
->>>>>>> 3ff16e57910324223feecb0a33207f2cc44a01fc
 		lastPageRecord = onePageRecord;
 		if(totalPage == nowPage) {
 			if(totalRecord % onePageRecord != 0) {

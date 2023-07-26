@@ -13,19 +13,30 @@ ul, ol {
 	list-style:none;
 }
 a {
-	text-decoration: none;
+  text-decoration: none;
 }
 body{
 	margin: 0;	
 	padding: 0px;	
 	list-style-type: none;
 }
-
+.carousel-inner {
+	margin:10px;
+}
+.carousel-inner > .carousel-item > img {
+     width: 1000px;
+     height: 400px;
+ }
+ 
+.container {
+	width:1000px;
+	margin:0 auto;
+	text-align:center;
+}
 /* 로그인, 회원가입 버튼 */
 .headLine{
-	color: white;
+	color: black;
 	font-size:1.2em;
-	background-color: #00468C;	
 	text-align: right;
 	line-height: 50px;
 	padding-top: 5px;
@@ -60,50 +71,69 @@ body{
 	text-decoration: none;
 	color:black;
 }
-#nav2>a {
-  display: block; /* a태그는 글자성격 = inline */
+nav{
+   display:flex;
+   padding-left: 50px;
+   height: 60px;
+   background-color: #00468C;
+   
+   align-content:center;
+   justify-content:center;
+}
+nav > ul{
+   margin: 0 auto;
+   list-style-type: none;
+}
+nav li{
+   float:left;
+   line-height: 60px;
+   padding: 0 20px;
+   list-style-type: none;
+   font-size: 1.5em;
+   margin:0 20px;
+}
+
+nav a:link, nav a:visited, nav a:hover{
+   text-decoration: none;
+   color: #ffffff;
+}
+/* 
+#nav2 {
+	display:inline-block;
+	text-align: center;
+}
+#nav2 > a {
+  display: block; a태그는 글자성격 = inline
   float: left;
   font-size: 30px;
   font-weight: 900;
   line-height: 80px;
   padding: 0 30px;
+  
 }
+#nav2 a {
+	color: #00468C;
+	text-decoration: none;
+	font-size: 30px;
+	font-weight: 900;
+	line-height: 80px;
+	 padding: 0 30px;
+}
+
 #nav2>ul {
   float: right;
   margin-right: 20px;
 }
 #nav2>ul li {
+  color:#00468C;
+  font-size: 25px;
   float: left;
   padding: 0 30px;
   line-height: 80px;
-}
+} */
 
-/* 네비게이션 바 */
-/*nav{
-	display:flex;
-	padding-left: 50px;
-	height: 40px;
-	background-color: #00468C;
-	
-	align-content:center;
-	justify-content:center;
-}
-nav > ul{
-	margin: 0 auto;
-	list-style-type: none;
-}
-nav li{
-	float:left;
-	line-height: 40px;
-	padding: 0 20px;
-	list-style-type: none;
-}
 
-nav a:link, nav a:visited, nav a:hover{
-	text-decoration: none;
-	color: #ffffff;
-}
- */
+
 /* 메인 */
 .container{
 	text-align: center;
@@ -116,7 +146,7 @@ main {
 
 /* 하단 */
 footer{
-	margin-top:10px;
+	margin-top:30px;
 	background-color: #00468C;
 	text-align: center;
 	line-height: 60px;
