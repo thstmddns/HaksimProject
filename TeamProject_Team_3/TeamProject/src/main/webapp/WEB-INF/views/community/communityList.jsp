@@ -141,7 +141,7 @@
 			</c:if>
 			<!-- 이전 페이지 -->
 			<c:if test="${pDTO.nowPage>1 }">
-				<li><a href='/smhrd/community/communityList?nowPage=${pDTO.nowPage-1 }<c:if test="${pDTO.searchWord!=null}">&searchKey=${pDTO.searchKey}&searchWord=${pDTO.searchWord}</c:if>'>prev</a></li>
+				<li><a href='/smhrd/community/communityList?com_type=${pDTO.com_type}&nowPage=${pDTO.nowPage-1 }<c:if test="${pDTO.searchWord!=null}">&searchKey=${pDTO.searchKey}&searchWord=${pDTO.searchWord}</c:if>'>prev</a></li>
 			</c:if>
 			
 			<!-- forEach : 변수, 시작, 끝, 증가값(생략가능) -->
@@ -150,13 +150,13 @@
 					<!-- 선택한 페이지 번호 표시 -->
 					<c:if test="${p == pDTO.nowPage }">		
 						<li style="background: #004d40; border-radius: 50%; width:25px; height:25px;">
-							<a style="color: white" href='/smhrd/community/communityList?nowPage=${p}<c:if test="${pDTO.searchWord!=null}">&searchKey=${pDTO.searchKey}&searchWord=${pDTO.searchWord}</c:if>'>${p}</a>
+							<a style="color: white" href='/smhrd/community/communityList?com_type=${pDTO.com_type}&nowPage=${p}<c:if test="${pDTO.searchWord!=null}">&searchKey=${pDTO.searchKey}&searchWord=${pDTO.searchWord}</c:if>'>${p}</a>
 						</li>
 					</c:if>
 					
 					<!-- 선택되지 않은 페이지 번호들 표시x -->
 					<c:if test="${p != pDTO.nowPage }">		
-						<li><a href='/smhrd/community/communityList?nowPage=${p}<c:if test="${pDTO.searchWord!=null}">&searchKey=${pDTO.searchKey}&searchWord=${pDTO.searchWord}</c:if>'>${p}</a></li>
+						<li><a href='/smhrd/community/communityList?com_type=${pDTO.com_type}&nowPage=${p}<c:if test="${pDTO.searchWord!=null}">&searchKey=${pDTO.searchKey}&searchWord=${pDTO.searchWord}</c:if>'>${p}</a></li>
 					</c:if>					
 				</c:if>
 			</c:forEach>
@@ -166,7 +166,7 @@
 				<li>next</li>
 			</c:if>
 			<c:if test="${pDTO.nowPage < pDTO.totalPage }">
-				<li><a href='/smhrd/community/communityList?nowPage=${pDTO.nowPage+1 }<c:if test="${pDTO.searchWord!=null}">&searchKey=${pDTO.searchKey}&searchWord=${pDTO.searchWord}</c:if>'>next</a></li>
+				<li><a href='/smhrd/community/communityList?com_type=${pDTO.com_type}&nowPage=${pDTO.nowPage+1 }<c:if test="${pDTO.searchWord!=null}">&searchKey=${pDTO.searchKey}&searchWord=${pDTO.searchWord}</c:if>'>next</a></li>
 			</c:if>
 		</ul>
 	</div>

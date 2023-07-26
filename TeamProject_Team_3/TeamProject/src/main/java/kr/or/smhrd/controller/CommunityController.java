@@ -111,8 +111,10 @@ public class CommunityController {
 	      
 		// 글 삭제
 		@GetMapping("/boardDel")
-		public ModelAndView boardDel(int com_num, HttpSession session) {
+		public ModelAndView boardDel(int com_num, HttpSession session,  PagingDTO dto, RedirectAttributes rttr) {
 			int result = service.boardDel(com_num);
+		
+			rttr.addAttribute("com_type",dto.getCom_type());
 			
 			ModelAndView mav = new ModelAndView();
 			
