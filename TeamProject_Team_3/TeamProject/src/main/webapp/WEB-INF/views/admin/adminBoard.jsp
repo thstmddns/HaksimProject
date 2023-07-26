@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<script>
-	function ReportCheck(){
-		
-	}
-</script>
 
 <style>
 	ul,li{
@@ -79,7 +74,6 @@
 	#reportList > li:nth-child(5n+4) {
 		width: 25%;	
 	}
-	
 	
 	#noticeList{
 		width:800px;
