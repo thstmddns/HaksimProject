@@ -125,21 +125,17 @@
 					<li><a href="/smhrd/admin/memberView?id=${mDTO.mem_id }">${mDTO.mem_id}</a></li>
 					<li>${mDTO.mem_name}</li>
 					<li>${mDTO.mem_email}</li>
-					<c:if test="${mDTO.mem_type == '0' }">
-						<li>미인증</li>
-					</c:if>
+					
 					<c:if test="${mDTO.mem_type == '1' }">
 						<li>학생</li>
 					</c:if>
 					<c:if test="${mDTO.mem_type == '2' }">
-						<li>수료생</li>
+						<li>선생님</li>
 					</c:if>
 					<c:if test="${mDTO.mem_type == '3' }">
-						<li>선생님</li>
+						<li>관리자</li>
 					</c:if>
-					<c:if test="${mDTO.mem_type == '4' }">
-						<li>선생님</li>
-					</c:if>
+					
 					<li>${mDTO.mem_ca}</li>
 					<li>${mDTO.mem_auth}</li>
 				</c:forEach>
@@ -161,7 +157,7 @@
 					<li>${rDTO.report_num}</li>
 					<li>${rDTO.mem_id}</li>
 					<li>${rDTO.report_content}</li>
-					<li><a href="${rDTO.report_url}">위치</a></li>
+					<li><a href="${rDTO.report_url}">${rDTO.report_url}</a></li>
 					<li><a href="/smhrd/admin/reportDel?no=${rDTO.report_num}"><input type="button" value="확인"></a></li>
 				</c:forEach>
 			</ul>

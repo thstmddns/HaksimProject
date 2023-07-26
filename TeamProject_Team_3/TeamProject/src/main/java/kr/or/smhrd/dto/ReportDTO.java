@@ -13,4 +13,6 @@ public class ReportDTO {
 	private String report_content;
 	private String report_wdate;
 	private String report_url;
+	private String report_board;
+	private String report_board_num;
 }
