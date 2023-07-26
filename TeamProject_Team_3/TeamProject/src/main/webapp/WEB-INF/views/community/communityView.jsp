@@ -28,9 +28,10 @@ $(function(){
 			success:function(replyResult) {
 				$("#communityReplyList").html("");
 				console.log(replyResult);
+				var len = replyResult.length;
 				$(replyResult).each(function(i, coment){
 					var tag = "<li><div>";
-					tag += "<b>"+coment.mem_id+"</b>";
+					tag += "<b>"+(len-i)+"빠</b>";
 					
 					    if(coment.mem_id=='${logId}'){
 						tag += "<input type='button' value='Edit'/>";
@@ -163,14 +164,12 @@ communityReplyList();
 		</c:if>
 		<c:if test="${dto.com_type==3}">
 			<li>소통 게시판</li>
-		</c:if>
-				
-      <li>글번호 : ${dto.com_num}</li>
-      <li>제목 : ${dto.com_title}</li>
-      <li>글쓴이 : ${dto.mem_id}</li>
-      <li><br>글내용<br/> ${dto.com_content}</li>
-      <li>등록일 : ${dto.com_wdate}</li>
+		</c:if>				
+      <li>글쓴이 : 익명의 누군가</li>
       <li>조회수 : ${dto.com_hit}</li>
+      <li>등록일 : ${dto.com_wdate}</li>
+      <li>제목 : ${dto.com_title}</li>
+      <li><br>글내용<br/> ${dto.com_content}</li>
    	</ul>
      
    	<div>

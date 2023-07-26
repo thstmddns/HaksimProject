@@ -61,7 +61,6 @@ public class AfterReplyController {
 	public String afterReplyReportOk(ReportDTO dto, HttpSession session, HttpServletRequest request, RedirectAttributes rttr) {
 	  dto.setMem_id((String)session.getAttribute("logId"));
 	
-	  rttr.addAttribute("grad_num",dto.getGrad_num());
 	  
 	  int result = service.aReportInsert(dto);
 	  

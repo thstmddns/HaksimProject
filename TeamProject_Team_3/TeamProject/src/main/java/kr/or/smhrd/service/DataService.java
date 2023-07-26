@@ -10,6 +10,7 @@ import kr.or.smhrd.dto.DataDTO;
 import kr.or.smhrd.dto.DataFileDTO;
 import kr.or.smhrd.dto.DataReplyDTO;
 import kr.or.smhrd.dto.PagingDTO;
+import kr.or.smhrd.dto.ReportDTO;
 
 public interface DataService {
 	public List<DataDTO> dataList(PagingDTO pDTO);
@@ -26,5 +27,6 @@ public interface DataService {
 	// 글등록
 			public int dataInsert(DataDTO dto);
 			public int dataUpdate(DataDTO dto);	
+			public int dReportInsert(ReportDTO Rdto);
 }
 

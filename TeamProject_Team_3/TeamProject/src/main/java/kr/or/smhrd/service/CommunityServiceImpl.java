@@ -48,6 +48,11 @@ public class CommunityServiceImpl implements CommunityService {
 		return dao.communityEditOk(dto);
 	}
 
+	@Override
+	public int boardWriteOk(CommunityDTO dto) {
+		return dao.boardWriteOk(dto);
+	}
+
 	
 
 }

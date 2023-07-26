@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,6 +26,7 @@ import kr.or.smhrd.dto.DataFileDTO;
 import kr.or.smhrd.dto.DataReplyDTO;
 /*import kr.or.smhrd.dto.DataFileDTO;*/
 import kr.or.smhrd.dto.PagingDTO;
+import kr.or.smhrd.dto.ReportDTO;
 import kr.or.smhrd.service.DataService;
 
 @Controller
@@ -312,6 +314,17 @@ public class DataController {
 		        mav.setViewName("redirect:dataEdit?data_num="+dto.getData_num());
 		      	}
 		      	return mav;
+			}
+		   
+		   @PostMapping("/dataReportOk") 
+			@ResponseBody
+			public String dataReportOk(ReportDTO Rdto, HttpSession session, HttpServletRequest request, RedirectAttributes rttr) {
+			  Rdto.setMem_id((String)session.getAttribute("logId"));
+			
+			  
+			  int result = service.dReportInsert(Rdto);
+			  
+			  return result+""; 
 			}
 
 }
