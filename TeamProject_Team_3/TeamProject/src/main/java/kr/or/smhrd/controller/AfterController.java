@@ -149,22 +149,12 @@ public class AfterController {
 			return mav;
 		}
 		
-		@GetMapping("/afterReport")
-		public ModelAndView afterReport() {
-			
-			ModelAndView mav = new ModelAndView();
-			
-			mav.setViewName("after/afterReport");
-			return mav;
-		}
-		
 		
 		@PostMapping("/afterReportOk") 
 		@ResponseBody
 		public String afterReportOk(ReportDTO dto, HttpSession session, HttpServletRequest request, RedirectAttributes rttr) {
 		  dto.setMem_id((String)session.getAttribute("logId"));
 		
-		  rttr.addAttribute("grad_num",dto.getGrad_num());
 		  
 		  int result = service.reportInsert(dto);
 		  

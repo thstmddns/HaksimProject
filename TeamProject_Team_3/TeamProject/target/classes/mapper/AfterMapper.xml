@@ -64,8 +64,8 @@
 	</update>
 	
 	<insert id="reportInsert" parameterType="kr.or.smhrd.dto.ReportDTO">
-		INSERT INTO report_board (report_num, mem_id, report_content, report_wdate, grad_num, board, report_url )
-		VALUES(report_no_seq.nextval, #{mem_id}, #{report_content}, sysdate, ${grad_num}, #{board},#{report_url})
+		INSERT INTO report_board (report_num, mem_id, report_content, report_wdate, report_board_num, report_board, report_url)
+		VALUES(report_no_seq.nextval, #{mem_id}, #{report_content}, sysdate, ${grad_num}, #{board}, #{report_url})
 	</insert>
 	
 </mapper>

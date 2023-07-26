@@ -56,7 +56,7 @@
 							tag += "<form id='reportReply'>";
 							tag +="<input type='hidden' name='grad_num' value='"+coment.grad_num+"'/>";
 							tag += "<input type='hidden' name='grad_review_num' value='"+coment.grad_review_num+"'/>";
-							tag +="<input type='hidden' name='reportReply_url' id='reportReply_url' value='"+window.location.href.substring(0, window.location.href.indexOf('?'))+"'>";
+							tag +="<input type='hidden' name='reportReply_url' id='reportReply_url' value='"+window.location.href+"'>";
 							tag +="<input type='hidden' name='board' value='grad_review'/>";
 							<!-- 어떤 게시판의 몇번 글인지 보내기 -->
 							tag += "<li>신고사유를 선택해주세요</li>";
@@ -218,8 +218,7 @@
 				return false;
 			}
 		
-			var url = window.location.href.substring(0, window.location.href.indexOf('?'));
-			$("#report_url").val(url);
+			$("#report_url").val(window.location.href);
 			var params = $("#reportFrm").serialize();		
 			
 				$.ajax({
@@ -229,6 +228,7 @@
 				success:function(result) {
 					console.log(result);
 					alert('신고가 접수되었습니다');
+					$("#reportFrm").css('display', 'none');
 				},
 				error:function(e){
 					console.log(e.responseText);

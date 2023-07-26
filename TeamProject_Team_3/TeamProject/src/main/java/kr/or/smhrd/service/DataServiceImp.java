@@ -10,6 +10,7 @@ import kr.or.smhrd.dto.DataDTO;
 import kr.or.smhrd.dto.DataFileDTO;
 import kr.or.smhrd.dto.DataReplyDTO;
 import kr.or.smhrd.dto.PagingDTO;
+import kr.or.smhrd.dto.ReportDTO;
 
 @Service
 public class DataServiceImp implements DataService{
@@ -73,6 +74,12 @@ public class DataServiceImp implements DataService{
 	public int dataDelete(int data_num, String mem_id) {
 		
 		return dao.dataDelete(data_num, mem_id);
+	}
+
+	@Override
+	public int dReportInsert(ReportDTO Rdto) {
+		
+		return dao.dReportInsert(Rdto);
 	}
 	
 }

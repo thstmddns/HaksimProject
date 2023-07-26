@@ -6,6 +6,7 @@ import kr.or.smhrd.dto.DataDTO;
 import kr.or.smhrd.dto.DataFileDTO;
 import kr.or.smhrd.dto.DataReplyDTO;
 import kr.or.smhrd.dto.PagingDTO;
+import kr.or.smhrd.dto.ReportDTO;
 
 public interface DataDAO {
 	// 글 등록
@@ -37,5 +38,8 @@ public interface DataDAO {
 		public List<DataFileDTO> dataFileSelect (int data_num);
 		// 글등록
 		public int dataInsert(DataDTO dto);
+		
+		// 게시물 신고
+	public int dReportInsert(ReportDTO Rdto);
 		
 }
