@@ -157,7 +157,7 @@
 					<li>${rDTO.report_num}</li>
 					<li>${rDTO.mem_id}</li>
 					<li>${rDTO.report_content}</li>
-					<li><a href="${rDTO.report_url}">위치</a></li>
+					<li><a href="${rDTO.report_url}">${rDTO.report_url}</a></li>
 					<li><a href="/smhrd/admin/reportDel?no=${rDTO.report_num}"><input type="button" value="확인"></a></li>
 				</c:forEach>
 			</ul>

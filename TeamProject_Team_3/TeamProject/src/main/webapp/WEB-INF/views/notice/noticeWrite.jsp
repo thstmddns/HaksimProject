@@ -29,7 +29,6 @@ ul,li{
 		<li>글내용</li>
 		<li><textarea name="notice_content" id="content"></textarea></li>
 		<li><input type="submit" value="글등록"/></li>
-		
 	</ul>
 	</form>
 </main>
