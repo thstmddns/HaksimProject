@@ -24,8 +24,8 @@ public class DataServiceImp implements DataService{
 	}
 
 	@Override
-	public int totalRecord(PagingDTO pDTO) {
-		return dao.totalRecord(pDTO);
+	public int dTotalRecord(PagingDTO pDTO) {
+		return dao.dTotalRecord(pDTO);
 	}
 
 	@Override

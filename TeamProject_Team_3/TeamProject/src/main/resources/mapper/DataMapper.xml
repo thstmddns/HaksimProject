@@ -31,6 +31,16 @@
       	where data_num=${param1}
    </select>
    
+   <select id="dTotalRecord" resultType="int">
+		select count(data_num) cnt from data_board
+		where 1=1
+		<if test="searchWord != null">
+			and ${searchKey} like '%${searchWord}%'    
+			<!-- #은 ''를 붙여주는 기능을 하고 $는 ''을 붙이지 x -->
+		</if>
+			
+	</select>
+   
 	<update id="hitCount">
 		update data_board set data_hit=data_hit+1 
 		where data_num=${param1}

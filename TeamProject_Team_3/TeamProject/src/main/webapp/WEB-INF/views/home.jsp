@@ -7,13 +7,13 @@
 	  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
 		  <div class="carousel-inner">
 		    <div class="carousel-item active">
-		      <img src="<%= request.getContextPath() %>/img/광고1.png" class="d-block w-100" alt="...">
+		      <img src="<%= request.getContextPath() %>/img/한국자산관리공사.jpg" class="d-block w-100" alt="...">
 		    </div>
 		    <div class="carousel-item">
-		      <img src="<%= request.getContextPath() %>/img/광고3.png" class="d-block w-100" alt="...">
+		      <img src="<%= request.getContextPath() %>/img/게이밍마우스.jpg" class="d-block w-100" alt="...">
 		    </div>
 		    <div class="carousel-item">
-		      <img src="<%= request.getContextPath() %>/img/광고2.png" class="d-block w-100" alt="...">
+		      <img src="<%= request.getContextPath() %>/img/온라인광고.png" class="d-block w-100" alt="...">
 		    </div>
 		  </div>
 		  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -28,4 +28,4 @@
 	  </div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
    
-</main>
+</main>s

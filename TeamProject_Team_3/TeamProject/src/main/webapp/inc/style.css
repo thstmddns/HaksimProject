@@ -12,8 +12,13 @@
 ul, ol {
 	list-style:none;
 }
-a {
-  text-decoration: none;
+.List a {
+  color:black !important; 
+  text-decoration:none !important;
+}
+.List2 a {
+  color:black !important; 
+  text-decoration:none !important;
 }
 body{
 	margin: 0;	
@@ -24,8 +29,9 @@ body{
 	margin:10px;
 }
 .carousel-inner > .carousel-item > img {
+     margin-top:20px;
      width: 1000px;
-     height: 400px;
+     height: 600px;
  }
  
 .container {
@@ -138,14 +144,104 @@ nav a:link, nav a:visited, nav a:hover{
 .container{
 	text-align: center;
 }
+ main {
+ 	width:1000px;
+ 	margin:0 auto;
+ }
+/*목록*/
+.Sub {
+	margin:30px;
+}
+.page>ul {
+ 	overflow:auto;
+ 	list-style-type: none;
+ 	display:flex;
+ 	justify-content:center;
+ 	margin-top:10px;
+ }
+ .page li {
+ 	float:left;
+ 	width:40px;
+ 	height:40px;
+ 	text-align:center;
+ }
+#writeBtn {
+	display:inline-block;
+	float:right;
+}
+.List {
+	margin:40px 0;
+	overflow:auto;
+	list-style-type: none;
+}
+.List>li{
+ 	float:left;
+ 	width:10%;
+ 	height:40px;
+ 	line-height:40px;
+ 	border-bottom:1px solid #ddd;
+ 	text-align:center;
+ }
+ .List>li:nth-child(5n+2) {
+ 	width:60%;
+ 	/*말줄임표시*/
+ 	white-space:nowrap;  /*줄 바꾸지 않기*/
+ 	overflow:hidden;   /*넘친값 숨기기*/
+ 	text-overflow:ellipsis;   /* ... 표시하기 */
+ }
+ .List2 {
+	margin:40px 0;
+	overflow:auto;
+	list-style-type: none;
+}
+.List2>li{
+ 	float:left;
+ 	width:10%;
+ 	height:40px;
+ 	line-height:40px;
+ 	border-bottom:1px solid #ddd;
+ 	text-align:center;
+ }
+ .List2>li:nth-child(6n+3) {
+ 	width:50%;
+ 	/*말줄임표시*/
+ 	white-space:nowrap;  /*줄 바꾸지 않기*/
+ 	overflow:hidden;   /*넘친값 숨기기*/
+ 	text-overflow:ellipsis;   /* ... 표시하기 */
+ }
 
-main {
-	margin-left:100px;
-	margin-right:100px;
+.search {
+	 text-align:center;
+	 height:40px;
+	 margin-top:10px;
+	 margin-bottom:10px;
+} 
+	
+.searchWord {
+	 width: 300px;
+     border-top: none;
+     border-left: none;
+     border-right: none;
+     border-bottom : 2px solid black;
+}
+
+.searchBtn {
+	width: 100px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom : 1px solid black;
+}
+
+/*게시글 상세 보기*/
+.title {
+	margin:30px;
+	text-align:center;
 }
 
 /* 하단 */
 footer{
+	font-weight:bold;
 	margin-top:30px;
 	background-color: #00468C;
 	text-align: center;

@@ -102,7 +102,7 @@
 </style>
 
 <main>
-	<h1 align="center">관리자 페이지</h1>
+	<h1 align="center" style="margin:20px;">관리자 페이지</h1>
 	<div id="adminList">
 		<div id="adminBoard">
 			<h2>학생 리스트</h2>
@@ -137,7 +137,7 @@
 			</form>
 		</div>
 		
-		<div>
+		<div style="margin:20px;">
 			<h2>신고내역 리스트</h2>
 			<form>
 			<ul id="reportList">

@@ -1,59 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<style>
-	.community_list {
-		overflow:auto;
-		list-style-type: none;
-	}
-	.community_list>li{
-	 	float:left;
-	 	width:10%;
-	 	height:40px;
-	 	line-height:40px;
-	 	border-bottom:1px solid #ddd;
-	 	text-align:center;
-	 }
-	 .community_list>li:nth-child(6n+3) {
-	 	width:50%;
-	 	/*말줄임표시*/
-	 	white-space:nowrap;  /*줄 바꾸지 않기*/
-	 	overflow:hidden;   /*넘친값 숨기기*/
-	 	text-overflow:ellipsis;   /* ... 표시하기 */
-	 }
-	 .page>ul {
-	 	overflow:auto;
-	 	list-style-type: none;
-	 	display:flex;
-	 	justify-content:center;
-	 	margin-top:10px;
-	 }
-	 .page li {
-	 	float:left;
-	 	width:40px;
-	 	height:40px;
-	 	text-align:center;
-	 }
-	.search {
-	 	text-align:center;
-	 	height:40px;
-	 	margin-top:10px;
-	 } 
-	 .searchWord {
-	 	width: 300px;
-        border-top: none;
-        border-left: none;
-        border-right: none;
-        border-bottom : 2px solid black;
-    }
-    .searchBtn {
-       width: 100px;
-        border-top: none;
-        border-left: none;
-        border-right: none;
-        border-bottom : 1px solid black;
-    }
-</style>
+
 
 <script>
 	$(function() {
@@ -92,21 +40,21 @@
 
 </script>
 <main>
-	<h1>커뮤니티 게시판</h1>	
+	<h1 class="Sub">소통 게시판</h1>	
 	<div>
-		<li>Category</li>
-		
+		<h5 style="margin:30px;">Category</h5>
+		<div style="margin:30px;">
 		<input type='radio' name='comChk' class='comChk' value='0' id='comChk0'/> 전체
 		<input type='radio' name='comChk' class='comChk' value='1' id='comChk1'/> 고민
 		<input type='radio' name='comChk' class='comChk' value='2' id='comChk2'/> 건의
 		<input type='radio' name='comChk' class='comChk' value='3' id='comChk3'/> 소통
 		<input type='radio' name='comChk' class='comChk' value='4' id='comChk4'/> 맛집공유
-		
 		<br>
-		<a href="${pageContext.request.contextPath}/community/communityWrite"><button>글쓰기</button></a>
+		</div>
+		<a href="${pageContext.request.contextPath}/community/communityWrite"><button type="button" class="btn btn-outline-primary"  id="writeBtn" style="margin:10px;">게시글 작성</button></a>
 	</div>
-	<div>총 레코드 수 : ${pDTO.totalRecord}개</div>
-	<ul class="community_list">
+	<div style="margin:30px;">총 레코드 수 : ${pDTO.totalRecord}개</div>
+	<ul class="List2">
 		<li>no</li>
 		<li>카테고리</li>
 		<li>제목</li>
@@ -132,7 +80,7 @@
 			
 			<li><a href="/smhrd/community/communityView/${dto.com_num}">${dto.com_title }</a></li>
 			
-			<li>익명의 누군가</li>
+			<li>익명</li>
 			
 			<li>${dto.com_wdate }</li>
 			
@@ -156,7 +104,7 @@
 				<c:if test="${p <= pDTO.totalPage}">
 					<!-- 선택한 페이지 번호 표시 -->
 					<c:if test="${p == pDTO.nowPage }">		
-						<li style="background: #004d40; border-radius: 50%; width:25px; height:25px;">
+						<li style="background: #00468C; border-radius: 50%; width:25px; height:25px;">
 							<a style="color: white" href='/smhrd/community/communityList?com_type=${pDTO.com_type}&nowPage=${p}<c:if test="${pDTO.searchWord!=null}">&searchKey=${pDTO.searchKey}&searchWord=${pDTO.searchWord}</c:if>'>${p}</a>
 						</li>
 					</c:if>
@@ -186,8 +134,8 @@
 				<option value="mem_id">글쓴이</option>
 			</select>
 			<input type="hidden" name="com_type" id="com_type" class="com_type" value="${pDTO.com_type}"/>
-			<input type="text" name="searchWord" id="searchWord"/>
-			<input type="submit" value="Search"/>
+			<input type="text" name="searchWord" id="searchWord" class="searchWord"/>
+			<input type="submit" value="Search" class="searchBtn"/>
 		</form>
 	</div>
 	

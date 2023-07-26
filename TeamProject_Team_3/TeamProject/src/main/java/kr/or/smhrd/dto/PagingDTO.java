@@ -2,21 +2,21 @@ package kr.or.smhrd.dto;
 
 public class PagingDTO {
 
-	private int nowPage = 1;			// ���� ������
-	private int onePageRecord = 15;		// ���������� ǥ���� ���ڵ� ��
+	private int nowPage = 1;			
+	private int onePageRecord = 15;		
 	
-	private int totalRecord;			// �� ���ڵ� ��
-	private int totalPage;				// �� ���ڵ� ��
+	private int totalRecord;			
+	private int totalPage;				
 	
-	private int onePageNumCount = 5;	// ���������� ǥ�õǴ� ������ ��
-	private int startPageNum = 1;		// ���� ������
+	private int onePageNumCount = 5;	
+	private int startPageNum = 1;		
 	
-	private int lastPageRecord = 15;		// ������ ���������� �����ִ� ���ڵ� ��
+	private int lastPageRecord = 15;		
 	
-	private String searchKey;			// �˻� �з� (����, ����, �ۼ���)
-	private String searchWord;			// �˻� �ܾ�
+	private String searchKey;			
+	private String searchWord;			
 	
-	private int grad_type = 0;			// ���� ������
+	private int grad_type = 0;			
 	
 	private int com_type = 0;
 	

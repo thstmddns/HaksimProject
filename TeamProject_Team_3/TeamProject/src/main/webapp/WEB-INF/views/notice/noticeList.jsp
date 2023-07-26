@@ -1,94 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<style>
-
-#noticeWriteBtn{
-	margin-left:100px;	
-}
-
-.noticeList {
-	margin-left:50px;
-	margin-right:50px;
-	padding: 0px;
-	overflow:auto;
-	list-style-type: none;
-}
-	
-#noticeList{
-	padding: 0px;
-}
-
-.noticeList > li{
-	 float:left;
-	 height:40px;
-	 line-height:40px;
-	 border-bottom:1px solid #ddd;
-	 width:15%;
-	 text-align:center;
-}
-
-.noticeList > li:nth-child(5n+2) {
-	 width: 40%;
-	 /*말줄임표시*/
-	 white-space:nowrap;  /*줄 바꾸지 않기*/
-	 overflow:hidden;   /*넘친값 숨기기*/
-	 text-overflow:ellipsis;   /* ... 표시하기 */
-}
-
-
-.page{
-	align-content: center;	
-}
-.page > ul{
-	margin:0px;
-	overflow: auto;
-}
-.page li{
-	float: left; 
-	width:40px; 
-	height:40px; 
-	text-align: center;
-	align-items: center;
-	list-style-type: none;
-}
-
-.search {
-	 text-align:center;
-	 height:40px;
-	 margin-top:10px;
-	 margin-bottom:10px;
-} 
-	
-.searchWord {
-	 width: 300px;
-     border-top: none;
-     border-left: none;
-     border-right: none;
-     border-bottom : 2px solid black;
-}
-
-.searchBtn {
-	width: 100px;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom : 1px solid black;
-}
-
-</style>
-
-
 
 <main>
-	<h1>공지 게시판</h1>
+	<h1 class="Sub">공지 게시판</h1>
 	<c:if test="${logType >= 3}">
 		<div id="noticeWriteBtn">
-			<a href="${pageContext.request.contextPath}/notice/noticeWrite"><button>글쓰기</button></a>
+			<a href="${pageContext.request.contextPath}/notice/noticeWrite"><button type="button" id="writeBtn" class="btn btn-outline-primary" style="margin:10px;">게시글 작성</button></a>
 		</div>
 	</c:if>
 
 	<div>
-		<ul class="noticeList">
+	<div style="margin:30px;">총 레코드 수 : ${pDTO.totalRecord}개</div>
+		<ul class="List">
 			<li>no</li>
 			<li>제목</li>
 			<li>글쓴이</li>
