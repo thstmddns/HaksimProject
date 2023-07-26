@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/super-build/ckeditor.js"></script>
-<script src="/home/inc/ckeditor.js"></script>
+<script src="/smhrd/inc/ckeditor.js"></script>
 <style>
 	.ck-editor__editable[role="textbox"] {/* editing area */
 	   min-height: 200px;
@@ -19,39 +19,19 @@
 	}
 	
 </style>
-<script>
-	$(function(){
-		$(document).on('click','#frm input[value="+"]',function(){
-
-			var tag = "<div><input type='file' name='filename'/><input type='button' value='+' /></div>";
-			$("#filelist").append(tag);
-			$(this).val('-');
-		});
-		
-		$(document).on('click','#frm input[value="-"]',function(){
-			$(this).parent().remove();
-		});
-
-		$("#filelist b").click(function() {
-			$(this).parent().css("display", "none");    
-			$(this).parent().next().attr("name", "delFile");
-		
-		});
-	});
-</script>
 
 <main>
 	<h1>글 수정 페이지</h1>
 	
-	<form method="post" id="frm" action="/smrhd/notice/noticeEdit" enctype="multipart/form-data">
-	<input type="hidden" name="no" value="${notice.notice_num }">
-	<ul class="dataEdit">
-		<li>제목</li>
-		<li><input type="text" name="subject" value="${notice.notice_title}" size=135px style="line-height:30px"/></li>
-		<li>글내용</li>
-		<li><textarea name="content" id="content" >${notice.notice_content}</textarea></li>
-		<li><input type="submit" value="글수정"/></li>
-	</ul>
+	<form method="post" id="frm" action="/smhrd/notice/noticeEditOk" enctype="multipart/form-data">
+		<input type="hidden" name="notice_num" value="${dto.notice_num}">
+		<ul class="dataEdit">
+			<li>제목</li>
+			<li><input type="text" name="notice_title" value="${dto.notice_title}" size=135px style="line-height:30px"/></li>
+			<li>글내용</li>
+			<li><textarea name="notice_content" id="content" >${dto.notice_content}</textarea></li>
+			<li><input type="submit" value="글수정" /></li>
+		</ul>
 	</form>
 </main>
 

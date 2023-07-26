@@ -3,7 +3,6 @@ package kr.or.smhrd.service;
 import java.util.List;
 
 import kr.or.smhrd.dto.AfterDTO;
-import kr.or.smhrd.dto.AfterFileDTO;
 import kr.or.smhrd.dto.PagingDTO;
 import kr.or.smhrd.dto.ReportDTO;
 

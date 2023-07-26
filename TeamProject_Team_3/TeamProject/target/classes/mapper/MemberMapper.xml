@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="kr.or.smhrd.dao.MemberDAO">
+	<select id="getMemberList" resultType="kr.or.smhrd.dto.RegisterDTO">
+		SELECT mem_id, mem_type, mem_age, mem_email, mem_name, mem_ca ,mem_auth
+		FROM member
+		WHERE mem_type &lt; 3
+	</select>
+	
+	<select id="getMember" resultType="kr.or.smhrd.dto.RegisterDTO">
+		SELECT mem_id, mem_type, mem_age, mem_email, mem_name, mem_ca, mem_auth
+		FROM member
+		WHERE mem_id=#{mem_id}
+	</select>
+	
+	<update id="memberEditOk">
+		UPDATE member 
+		SET mem_type=${mem_type}, mem_email=#{mem_email}, mem_auth=${mem_auth}
+		WHERE mem_id=#{mem_id}
+	</update>
+</mapper>

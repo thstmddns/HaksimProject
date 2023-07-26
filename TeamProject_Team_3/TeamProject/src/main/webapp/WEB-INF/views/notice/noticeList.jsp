@@ -81,9 +81,11 @@
 
 <main>
 	<h1>공지 게시판</h1>
-	<div id="noticeWriteBtn">
-		<a href="${pageContext.request.contextPath}/notice/noticeWrite"><button>글쓰기</button></a>
-	</div>
+	<c:if test="${logType >= 3}">
+		<div id="noticeWriteBtn">
+			<a href="${pageContext.request.contextPath}/notice/noticeWrite"><button>글쓰기</button></a>
+		</div>
+	</c:if>
 
 	<div>
 		<ul class="noticeList">
@@ -95,7 +97,7 @@
 			
 			<c:forEach var="notice" items="${notice}">
 				<li>${notice.notice_num}</li>
-				<li><a href="/smhrd/notice/noticeView/${notice.notice_num}">${notice.notice_title}</a></li>
+				<li><a href="/smhrd/notice/noticeView?no=${notice.notice_num}">${notice.notice_title}</a></li>
 				<li>${notice.mem_id}</li>
 				<li>${notice.notice_wdate}</li>
 				<li>${notice.notice_hit }</li>
@@ -131,7 +133,6 @@
 				</c:if>
 			</c:forEach>
 			
-			
 			<c:if test="${pDTO.nowPage >= pDTO.totalPage }">
 				<li>next</li>
 			</c:if>
@@ -145,9 +146,9 @@
 	<div class="search">
 		<form action="/smhrd/notice/noticeList">
 			<select name="searchKey">
-				<option value="subject">제목</option>
-				<option value="content">글내용</option>
-				<option value="userid">글쓴이</option>	
+				<option value="notice_title">제목</option>
+				<option value="notice_content">글내용</option>
+				<option value="mem_id">글쓴이</option>	
 			</select>
 			<input type="text" name="searchWord" id="searchWord" class="searchWord"/>
 			<input type="submit" value="Search" class="searchBtn"/>

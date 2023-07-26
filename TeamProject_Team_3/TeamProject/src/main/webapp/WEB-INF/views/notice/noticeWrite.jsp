@@ -20,7 +20,7 @@ ul,li{
 </style>
 
 <main>
-	<h1>수료생 게시판 글쓰기</h1>
+	<h1>공지 게시판 글쓰기</h1>
 	
 	<form method="post" id="frm" action="/smhrd/notice/noticeWriteOk" enctype="multipart/form-data">
 	<ul>
@@ -29,7 +29,6 @@ ul,li{
 		<li>글내용</li>
 		<li><textarea name="notice_content" id="content"></textarea></li>
 		<li><input type="submit" value="글등록"/></li>
-		
 	</ul>
 	</form>
 </main>

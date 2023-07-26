@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="kr.or.smhrd.dao.DataDAO">
+<!-- <select id="dataList" resultType="kr.or.smhrd.dto.DataDTO">		
+		SELECT data_num, mem_id, data_title, data_hit, to_char(data_wdate,'MM-DD HH:MI') data_wdate FROM data_board 
+</select> -->
+
+	<select id="dataList" resultType="kr.or.smhrd.dto.DataDTO">		
+		SELECT * FROM
+		(SELECT * FROM 
+		(SELECT data_num, mem_id, data_title, data_hit, to_char(data_wdate,'MM-DD HH:MI') data_wdate FROM data_board 
+		<if test="searchWord != null">
+			where ${searchKey} like '%${searchWord}%'
+		</if>		
+		ORDER BY data_num desc) 
+		WHERE <![CDATA[rownum<=${nowPage*onePageRecord}]]> order by data_num asc) 
+		WHERE <![CDATA[rownum<=${lastPageRecord}]]> order by data_num desc
+	</select>
+
+	<select id="totalRecord" resultType="int">
+		select count(data_num) cnt from data_board
+		<if test="searchWord != null">
+			where ${searchKey} like '%${searchWord}%'
+		</if>
+	</select>
+	
+	<select id="getBoard" resultType="kr.or.smhrd.dto.DataDTO">
+      	select data_num, mem_id, data_title, data_content, data_hit, data_wdate
+      	from data_board
+      	where data_num=${param1}
+   </select>
+   
+	<update id="hitCount">
+		update data_board set data_hit=data_hit+1 
+		where data_num=${param1}
+	</update>
+	
+	<delete id="dataDelete">
+		delete from data_board where data_num=${param1}
+	</delete>
+	
+	<!--  -->
+	<select id="dataFileSelect" resultType="kr.or.smhrd.dto.DataFileDTO">
+		select data_num, filename from data_file 
+		where data_num=${param1}
+	</select>
+	<update id="dataEditOk">
+		update data_board data_title =#{subject}, data_content=#{data_content}
+		where data_num=${data_num}
+	</update>
+	
+	<insert id="dataFileInsert" parameterType="java.util.List">
+		<foreach item="item" collection="list" open="insert all"
+				 separator=" " close="select * from dual">
+			into data_file(f_no, data_num, filename)
+			values(data_file_seq.nextval, #{item.data_num}, #{item.filename})
+		</foreach>
+	</insert>
+	
+	<delete id="dataFileDelete">
+		delete from data_file
+		where data_num=${param1}
+	</delete>
+	
+	<insert id="dataInsert" parameterType="kr.or.smhrd.dto.DataDTO">
+		insert into data_board(data_num, data_title, data_content, mem_id, data_hit, data_wdate)
+		values(data_no_seq.nextval, #{data_title}, #{data_content}, #{mem_id}, 0, sysdate)
+		<!-- 현재 insert에서 생성된 시퀀스 번호를 dto의 no에 setter 하기 -->
+		<selectKey resultType="int" keyProperty="data_num" order="AFTER">
+			select data_no_seq.currval from dual
+		</selectKey>
+	</insert>
+	
+	<update id="dataUpdate">
+		update data_board set data_title=#{data_title}, data_content=#{data_content}
+		where data_num=${data_num}
+	</update>
+</mapper>

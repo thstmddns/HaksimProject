@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import kr.or.smhrd.dao.AfterDAO;
 import kr.or.smhrd.dto.AfterDTO;
-import kr.or.smhrd.dto.AfterFileDTO;
 import kr.or.smhrd.dto.PagingDTO;
 import kr.or.smhrd.dto.ReportDTO;
 

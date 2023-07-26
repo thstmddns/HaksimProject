@@ -14,38 +14,41 @@
 <body>
 <header>
 
-<div class="headLine">	
-	<!-- 로그아웃 상태 -->
-	<c:if test="${logStatus != 'Y'}">
-		<a href="/smhrd/register/login"><input type="button" value="로그인"></a>
-		<a href="/smhrd/register/regForm"><input type="button" value="회원가입"></a>
-	</c:if>
-	
-	<!-- 로그인 상태 -->
-	<c:if test="${logStatus == 'Y'}">
-		<span style="color: #66CC99">${logName}</span>
-		<a href="/smhrd/register/logout"><input type="button" value="로그아웃"></a>	
-		<a href="/smhrd/#"><input type="button" value="회원정보수정"></a>
-	</c:if> 
+<div class="headLine">   
+   <!-- 로그아웃 상태 -->
+   <c:if test="${logStatus != 'Y'}">
+      <a href="/smhrd/register/login"><input type="button" value="로그인"></a>
+      <a href="/smhrd/register/regForm"><input type="button" value="회원가입"></a>
+   </c:if>
+   
+   <!-- 로그인 상태 -->
+   <c:if test="${logStatus == 'Y'}">
+	   <c:if test="${logType == '1'}"><span>학생</span></c:if>
+	   <c:if test="${logType == '2'}"><span>선생님</span></c:if>
+	   <c:if test="${logType == '3'}"><span>관리자</span></c:if>
+	   <span style="color: #66CC99">${logId} 님</span>      
+	   <a href="/smhrd/register/logout"><input type="button" value="로그아웃"></a>   
+	   <a href="/smhrd/register/registerEdit"><input type="button" value="회원정보수정"></a>
+   </c:if> 
 </div>
 
 <div id="title">
-	<a href="/smhrd" class="title"><img src="/smhrd/img/로고.png" style="height: 200px;"></a>
+   <a href="/smhrd" class="title"><img src="/smhrd/img/로고.png" style="height: 200px;"></a>
 </div>
 <div>
 
-</div>	
-	<nav>
-		<ul>
-			<li><a href="/smhrd/notice/noticeList">공지 게시판</a></li>
-			<li><a href="/smhrd/#">자료 공유 게시판</a></li>
-			<li><a href="/smhrd/community/communityList">커뮤니티 게시판</a></li>
-			<li><a href="/smhrd/#">맛집 공유 게시판</a></li>
-			<li><a href="/smhrd/after/afterList?grad_type=0">수료생 게시판</a></li>
-			<c:if test="${logStatus == 'Y'}">
-				<li><a href="/smhrd/admin/adminList">관리자 페이지</a></li>
-			</c:if>
-		</ul>	
-	</nav>
-	
+</div>   
+   <nav>
+      <ul>
+         <li><a href="/smhrd/notice/noticeList">공지 게시판</a></li>
+         <li><a href="/smhrd/data/dataList">자료 공유 게시판</a></li>
+         <li><a href="/smhrd/community/communityList">커뮤니티 게시판</a></li>
+         <li><a href="/smhrd/#">맛집 공유 게시판</a></li>
+         <li><a href="/smhrd/after/afterList?grad_type=0">수료생 게시판</a></li>
+         <c:if test="${logType >= 2}">
+            <li><a href="/smhrd/admin/adminList">관리자 페이지</a></li>
+         </c:if>
+      </ul>   
+   </nav>
+   
 </header>

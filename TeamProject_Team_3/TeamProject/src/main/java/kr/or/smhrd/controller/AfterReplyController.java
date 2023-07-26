@@ -20,6 +20,7 @@ import kr.or.smhrd.service.AfterReplyService;
 
 @RestController
 public class AfterReplyController {
+<<<<<<< HEAD
 	@Autowired
 	AfterReplyService service;
 	
@@ -67,3 +68,40 @@ public class AfterReplyController {
 	  return result+""; 
 	}
 }
+=======
+   @Autowired
+   AfterReplyService service;
+   
+   
+   @PostMapping("/afterReply/replyWrite")
+   public String replyWrite(AfterReplyDTO dto, HttpSession session) {
+      
+      dto.setMem_id("King");
+      
+      System.out.println(dto.toString());
+      int result = service.aReplyInsert(dto);
+      
+      System.out.println(dto.getMem_id());
+      
+      return result+""; 
+   }
+   
+
+   @GetMapping("/afterReply/replyList")
+   public List<AfterReplyDTO> replyList(int grad_num) {   
+   
+      return service.aReplySelect(grad_num);   
+   }
+   
+   
+   @PostMapping("/afterReply/replyEditOk")
+   public String replyEditOk(AfterReplyDTO dto) {
+      return String.valueOf(service.aReplyUpdate(dto));
+   }
+   
+   @GetMapping("/afterReply/replyDel")
+   public String replyDel(int grad_review_num) {
+      return String.valueOf(service.aReplyDelete(grad_review_num));
+   }
+}
+>>>>>>> 0474079d0e8d3ca7c2461289f2a277041d0dfeee

@@ -26,6 +26,10 @@
 		WHERE com_num=${param1}
 		</select>
 		
+		<update id="communityEditOk">
+		UPDATE community SET com_title=#{com_title}, com_content=#{com_content} WHERE com_num=${com_num} 
+		</update>
+		
 		<delete id="boardDel">
 		delete from community where com_num=${param1}
 		</delete>
