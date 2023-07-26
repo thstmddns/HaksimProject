@@ -2,32 +2,51 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kr.or.smhrd.dao.CommunityDAO">
-		<select id="boardList" resultType="kr.or.smhrd.dto.CommunityDTO">		
+	<select id="boardList" resultType="kr.or.smhrd.dto.CommunityDTO">		
 		SELECT * FROM
-		(SELECT * FROM 
-		(SELECT com_num, com_title, mem_id,com_content, com_hit, to_char(com_wdate,'MM-DD HH:MI') com_wdate FROM community 
-		<if test="searchWord != null">
-			where ${searchKey} like '%${searchWord}%'
-		</if>		
-		ORDER BY com_num desc) 
-		WHERE <![CDATA[rownum<=${nowPage*onePageRecord}]]> order by com_num asc) 
+			(SELECT * FROM 
+				(SELECT com_num, com_type, com_title, mem_id, com_content, com_hit, to_char(com_wdate,'MM-DD HH:MI') com_wdate 
+				FROM community 
+				where 1=1
+				<if test="searchWord != null">
+					and ${searchKey} like '%${searchWord}%'
+				</if>
+				<if test="com_type != 0">
+					and com_type=${com_type}
+				</if>
+				ORDER BY com_num desc) 
+			WHERE <![CDATA[rownum<=${nowPage*onePageRecord}]]> order by com_num asc) 
 		WHERE <![CDATA[rownum<=${lastPageRecord}]]> order by com_num desc
-		</select>
+	</select>
 	
 		<select id="totalRecord" resultType="int">
 		select count(com_num) cnt from community
+		where 1=1
 		<if test="searchWord != null">
-			where ${searchKey} like '%${searchWord}%'
+			and ${searchKey} like '%${searchWord}%'
+		</if>
+		<if test="com_type != 0">
+			and com_type = ${com_type}
 		</if>
 		
 		</select>
+		
+		<insert id="boardWriteOk" parameterType="kr.or.smhrd.dto.CommunityDTO">
+		insert into community(com_num, mem_id, com_title, com_content, com_type, com_wdate) 
+		values(community_no_seq.nextval, #{mem_id}, #{com_title}, #{com_content}, ${com_type}, sysdate)
+		<selectKey resultType="int" keyProperty="com_num" order="AFTER">
+			select community_no_seq.currval from dual
+		</selectKey>
+		</insert>
+				
 		<select id="getBoard" resultType="kr.or.smhrd.dto.CommunityDTO">
 		SELECT com_num, com_title, com_content, com_hit, com_wdate, mem_id FROM community
 		WHERE com_num=${param1}
 		</select>
 		
 		<update id="communityEditOk">
-		UPDATE community SET com_title=#{com_title}, com_content=#{com_content} WHERE com_num=${com_num} 
+		UPDATE community SET com_title=#{com_title}, com_content=#{com_content} 
+		WHERE com_num=${com_num} 
 		</update>
 		
 		<delete id="boardDel">
