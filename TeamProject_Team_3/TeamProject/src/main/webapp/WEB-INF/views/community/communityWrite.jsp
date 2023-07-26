@@ -28,7 +28,8 @@
 		<select name="com_type" id="com_type">
 				<option value="1">고민</option>
 				<option value="2">건의</option>
-				<option value="3">소통</option>	
+				<option value="3">소통</option>
+				<option value="4">맛집공유</option>	
 		</select>
 		<li>제목</li>
 		<li><input type="text" name="com_title" size=130px style="line-height:30px"/></li>

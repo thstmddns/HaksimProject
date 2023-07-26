@@ -30,7 +30,7 @@ $(function(){
 				console.log(replyResult);
 				$(replyResult).each(function(i, coment){
 					var tag = "<li><div>";
-					tag += "<b>"+coment.mem_id+"</b>";
+					tag += "<b>익명의 누군가</b>";
 					
 					    if(coment.mem_id=='${logId}'){
 						tag += "<input type='button' value='Edit'/>";
@@ -164,7 +164,7 @@ communityReplyList();
 		<c:if test="${dto.com_type==3}">
 			<li>소통 게시판</li>
 		</c:if>				
-      <li>글쓴이 : ${dto.mem_id}</li>
+      <li>글쓴이 : 익명의 누군가</li>
       <li>조회수 : ${dto.com_hit}</li>
       <li>등록일 : ${dto.com_wdate}</li>
       <li>제목 : ${dto.com_title}</li>

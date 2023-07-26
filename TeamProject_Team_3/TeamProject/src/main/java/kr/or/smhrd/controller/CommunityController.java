@@ -52,12 +52,13 @@ public class CommunityController {
 	   }
 	// 수료생 게시글 등록
     @PostMapping("/communityWriteOk")
-    public ModelAndView boardWriteOk(CommunityDTO dto, HttpSession session) {
+    public ModelAndView boardWriteOk(CommunityDTO dto, HttpSession session, RedirectAttributes rttr) {
        dto.setMem_id((String)session.getAttribute("logId"));   
        ModelAndView mav = new ModelAndView();
        try {
-          mav.addObject("dto", service.boardWriteOk(dto));
-          mav.setViewName("redirect:communityList?com_type=0");
+    	   rttr.addAttribute("com_type",dto.getCom_type());
+    	   int result = service.boardWriteOk(dto);
+          mav.setViewName("redirect:communityList");
        }catch(Exception e) {
           e.printStackTrace();
           mav.setViewName("community/communityResult");

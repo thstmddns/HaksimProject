@@ -77,6 +77,9 @@
 				} else if(val == 3){
 					$('#comChk3').prop("checked", true);
 				}
+				else if(val == 4){
+					$('#comChk4').prop("checked", true);
+				}
 			}
 		}
 	});
@@ -97,6 +100,7 @@
 		<input type='radio' name='comChk' class='comChk' value='1' id='comChk1'/> 고민
 		<input type='radio' name='comChk' class='comChk' value='2' id='comChk2'/> 건의
 		<input type='radio' name='comChk' class='comChk' value='3' id='comChk3'/> 소통
+		<input type='radio' name='comChk' class='comChk' value='4' id='comChk4'/> 맛집공유
 		
 		<br>
 		<a href="${pageContext.request.contextPath}/community/communityWrite"><button>글쓰기</button></a>
@@ -121,11 +125,14 @@
 			</c:if>
 			<c:if test="${dto.com_type == 3}">
 				<li>소통</li>
+			</c:if>
+			<c:if test="${dto.com_type == 4}">
+				<li>맛집공유</li>
 			</c:if>	
 			
 			<li><a href="/smhrd/community/communityView/${dto.com_num}">${dto.com_title }</a></li>
 			
-			<li>${dto.mem_id }</li>
+			<li>익명의 누군가</li>
 			
 			<li>${dto.com_wdate }</li>
 			

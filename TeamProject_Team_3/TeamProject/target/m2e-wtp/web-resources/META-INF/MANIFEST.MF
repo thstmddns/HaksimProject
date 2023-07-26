@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: SMHRD
-=======
-Built-By: user06
->>>>>>> ba67fdba9f800bcdf8db59991bcc7920f59172b8
 Build-Jdk: 11.0.19
 Created-By: Maven Integration for Eclipse
 
