@@ -11,6 +11,7 @@ import kr.or.smhrd.dao.AfterDAO;
 import kr.or.smhrd.dto.AfterDTO;
 import kr.or.smhrd.dto.AfterFileDTO;
 import kr.or.smhrd.dto.PagingDTO;
+import kr.or.smhrd.dto.ReportDTO;
 
 @Service
 public class AfterServiceImpl implements AfterService {
@@ -43,11 +44,7 @@ public class AfterServiceImpl implements AfterService {
 		return dao.afterEdit(dto);
 	}
 	
-	@Override
-	public int afterDelete(int grad_num) {
-		
-		return dao.afterDelete(grad_num);
-	}
+
 
 	@Override
 	public AfterDTO afterSelect(int grad_num) {
@@ -58,6 +55,18 @@ public class AfterServiceImpl implements AfterService {
 	@Override
 	public void hitCount(int grad_num) {
 		dao.hitCount(grad_num);
+	}
+
+	@Override
+	public int reportInsert(ReportDTO Rdto) {
+		
+		return dao.reportInsert(Rdto);
+	}
+
+	@Override
+	public int afterDelete(int grad_num, String mem_id) {
+		
+		return dao.afterDelete(grad_num, mem_id);
 	}
 
 

@@ -5,28 +5,31 @@ import java.util.List;
 import kr.or.smhrd.dto.AfterDTO;
 import kr.or.smhrd.dto.AfterFileDTO;
 import kr.or.smhrd.dto.PagingDTO;
+import kr.or.smhrd.dto.ReportDTO;
 
 public interface AfterDAO {
-		// ¼ö·á»ı ±Û ¸ñ·Ï
+		// ê¸€ ëª©ë¡ ì„ íƒ(paging, search)
 		public List<AfterDTO> getAfterList(PagingDTO pDTO);
-		// ÃÑ ·¹ÄÚµå ¼ö
+		// ì´ ë ˆì½”ë“œ ìˆ˜
 		public int totalRecord(PagingDTO pDTO);
 		
 		
-		// ¼ö·á»ı ±Û ¼±ÅÃ(1°³)
+		// 1ê°œì˜ ë ˆì½”ë“œ ì„ íƒ(ê²Œì‹œê¸€ ë‚´ìš© ë³´ê¸°)
 		public AfterDTO afterSelect(int grad_num);
-		// Á¶È¸¼ö Áõ°¡
+		// ì¡°íšŒìˆ˜ ì¦ê°€
 		public void hitCount(int grad_num);
 		
-		// ¼ö·á»ı ±Û µî·Ï
+		// ê¸€ ë“±ë¡
 		public int afterInsert(AfterDTO dto);
 		
 		
-		// °Ô½Ã±Û ¼öÁ¤ 
+		// ê²Œì‹œê¸€ ìˆ˜ì • 
 		public int afterEdit(AfterDTO dto);
 		
-		// ±Û »èÁ¦
-		public int afterDelete(int grad_num);
+		// ê²Œì‹œê¸€ ì‚­ì œ
+		public int afterDelete(int grad_num, String mem_id);
 		
+		// ê²Œì‹œë¬¼ ì‹ ê³ 
+		public int reportInsert(ReportDTO Rdto);
 		
 }

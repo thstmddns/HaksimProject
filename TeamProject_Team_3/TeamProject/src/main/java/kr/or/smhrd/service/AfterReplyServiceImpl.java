@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import kr.or.smhrd.dao.AfterReplyDAO;
 import kr.or.smhrd.dto.AfterReplyDTO;
+import kr.or.smhrd.dto.ReportDTO;
 
 @Service
 public class AfterReplyServiceImpl implements AfterReplyService {
@@ -36,6 +37,12 @@ public class AfterReplyServiceImpl implements AfterReplyService {
 	public int aReplyDelete(int grad_review_num) {
 		
 		return dao.aReplyDelete(grad_review_num);
+	}
+
+	@Override
+	public int aReportInsert(ReportDTO Rdto) {
+		
+		return dao.aReportInsert(Rdto);
 	}
 
 	

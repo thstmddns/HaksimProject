@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -31,6 +32,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import kr.or.smhrd.dto.AfterDTO;
 import kr.or.smhrd.dto.AfterFileDTO;
 import kr.or.smhrd.dto.PagingDTO;
+import kr.or.smhrd.dto.ReportDTO;
 import kr.or.smhrd.service.AfterService;
 
 @Controller
@@ -39,7 +41,7 @@ public class AfterController {
 	@Autowired
 	AfterService service;
 	
-	// ÈÄ±â ±Û ¸ñ·Ï
+	// ìˆ˜ë£Œìƒ ê²Œì‹œê¸€ ëª©ë¡ ì¡°íšŒ
 	@GetMapping("/afterList")
 	public ModelAndView afterList(PagingDTO pDTO, @ModelAttribute("grad_type") Integer grad_type) {
 		if(grad_type == null) {
@@ -63,11 +65,11 @@ public class AfterController {
 		return mav;
 	}
 	
-	// ±Û µî·Ï DB±â·Ï
+	// ìˆ˜ë£Œìƒ ê²Œì‹œê¸€ ë“±ë¡
 		@PostMapping("/afterWriteOk")
 		public ModelAndView afterWriteOk(HttpServletRequest request, AfterDTO dto, RedirectAttributes rttr) {
 			
-			dto.setMem_id("King");
+			dto.setMem_id((String)request.getSession().getAttribute("logId"));
 			
 			ModelAndView mav = new ModelAndView();
 			try {
@@ -79,10 +81,11 @@ public class AfterController {
 				e.printStackTrace();
 				mav.setViewName("after/afterResult");
 			}
+		
 			return mav;
 		}	
 	
-	// °Ô½Ã±Û ¼¼ºÎ º¸±â
+	// ìˆ˜ë£Œìƒ ê²Œì‹œê¸€ ìƒì„¸ ë³´ê¸°
 	@GetMapping("/afterView/{grad_num}")
 	public ModelAndView afterView(@PathVariable("grad_num") int grad_num) {
 		
@@ -96,10 +99,11 @@ public class AfterController {
 		return mav;
 	}
 	
-	// °Ô½Ã±Û »èÁ¦(·Î±×ÀÎ ¾øÀÌ)
+	// ìˆ˜ë£Œìƒ ê²Œì‹œê¸€ ì‚­ì œ
 	@GetMapping("/afterDel")
-	public ModelAndView afterDel(int grad_num, PagingDTO dto, RedirectAttributes rttr) {
-		int result = service.afterDelete(grad_num);
+	public ModelAndView afterDel(int grad_num, PagingDTO dto, RedirectAttributes rttr, HttpSession session) {
+		int result = service.afterDelete(grad_num, (String)session.getAttribute("logId"));
+		
 		rttr.addAttribute("grad_type",dto.getGrad_type());
 		
 		ModelAndView mav = new ModelAndView();
@@ -112,7 +116,7 @@ public class AfterController {
 		return mav;
 	}
 	
-	//  °Ô½Ã±Û ¼öÁ¤ Æû
+	//  ìˆ˜ë£Œìƒ ê²Œì‹œê¸€ ìˆ˜ì •í¼
 		@GetMapping("/afterEdit")
 		public ModelAndView afterEdit(int grad_num) {
 			ModelAndView mav = new ModelAndView();
@@ -123,21 +127,49 @@ public class AfterController {
 			return mav;
 		}
 		
-		// ±Û ¼öÁ¤ÇÏ±â
+		// ìˆ˜ë£Œìƒ ê²Œì‹œê¸€ ìˆ˜ì •
 		@PostMapping("/afterEditOk")  
 		public ModelAndView afterEditOk(AfterDTO dto, HttpSession session, HttpServletRequest request) {
+			dto.setMem_id((String)session.getAttribute("logId"));
 			
 			ModelAndView mav = new ModelAndView();
+			String tag = "<script>";
 			try {
 				int result = service.afterEdit(dto);
 				
 				mav.setViewName("redirect:afterView/"+dto.getGrad_num());
 			}catch(Exception e){
 				e.printStackTrace();
+				tag += "alert('ê²Œì‹œê¸€ ìˆ˜ì •ì´ ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.');";
 				mav.setViewName("redirect:afterEdit?grad_num="+dto.getGrad_num());
 			}
+			tag += "</script>";
+			
+			return mav;
+		}
+		
+		@GetMapping("/afterReport")
+		public ModelAndView afterReport() {
+			
+			ModelAndView mav = new ModelAndView();
+			
+			mav.setViewName("after/afterReport");
 			return mav;
 		}
 		
 		
+		@PostMapping("/afterReportOk") 
+		@ResponseBody
+		public String afterReportOk(ReportDTO dto, HttpSession session, HttpServletRequest request, RedirectAttributes rttr) {
+		  dto.setMem_id((String)session.getAttribute("logId"));
+		
+		  rttr.addAttribute("grad_num",dto.getGrad_num());
+		  
+		  int result = service.reportInsert(dto);
+		  
+		  return result+""; 
+		}
+		
+		  	  
+
 }

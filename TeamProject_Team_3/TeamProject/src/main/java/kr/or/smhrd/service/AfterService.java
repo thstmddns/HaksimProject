@@ -5,6 +5,7 @@ import java.util.List;
 import kr.or.smhrd.dto.AfterDTO;
 import kr.or.smhrd.dto.AfterFileDTO;
 import kr.or.smhrd.dto.PagingDTO;
+import kr.or.smhrd.dto.ReportDTO;
 
 public interface AfterService {
 	public List<AfterDTO> getAfterList(PagingDTO pDTO);
@@ -19,6 +20,8 @@ public interface AfterService {
 	
 	public int afterEdit(AfterDTO dto);
 	
-	public int afterDelete(int grad_num);
+	public int afterDelete(int grad_num, String mem_id);
+	
+	public int reportInsert(ReportDTO Rdto);
 
 }
