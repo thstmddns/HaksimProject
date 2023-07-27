@@ -38,7 +38,7 @@
 <main>
 	<h1 class="Sub">수료생 게시판</h1>
 	<div>
-		<h5 style="margin:30px;">Category</h5>
+		<h5 style="margin:30px;"># Category</h5>
 		<div style="margin:30px;">
 		<input type='radio' name='cateChk' class='cateChk' value='0' id='cateChk0'/> 전체
 		<input type='radio' name='cateChk' class='cateChk' value='1' id='cateChk1'/> 멘토링

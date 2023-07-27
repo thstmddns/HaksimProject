@@ -1,12 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<style>
-	 .afterView li {
-	 	margin-top:10px;
-	 	list-style-type: none;
-	 }
-</style>
 
 <script>
 /* 글 삭제 */
@@ -39,7 +33,7 @@ $(function(){
                    // -- 수정폼
                    tag += "<div style='display:none' class='replyFrm'>";
                    tag += "<form>";
-                   tag += "<textarea style='width:400px' name='data_review_content'>";
+                   tag += "<textarea style='width:680px; margin-left:35px;' name='data_review_content'>";
                    // 글 내용 수정, 댓글번호
                    tag += coment.data_review_content;
                    tag += "</textarea>";
@@ -245,31 +239,38 @@ $(document).on('click', '#dataReplyList input[value=Del]', function() {
 </script>
 
 <main>
-   <h1>자료 공유 게시판 글 내용 보기</h1>
-   <ul class="dataOpen">
-      <li>번호 : ${dto.data_num}</li>
-      <li>글쓴이 : ${dto.mem_id}</li>
-      <li>제목 : ${dto.data_title}</li>
-      <li>조회수 : ${dto.data_hit}</li>
-      <li>등록일 : ${dto.data_wdate}</li>
-      <li><br>글내용<br/> ${dto.data_content}</li>
-      <li>첨부파일 : 
-				<c:forEach var="fDTO" items="${fileList}">
-            		<a href="<%=request.getContextPath()%>/upload/${fDTO.filename}" download>
-            		${fDTO.filename}</a>
-         		</c:forEach>
-		</li>
-   </ul>   
-   
-   <div>
+	<div id="all">
+   <ul class="dataOpen" id="view">
+	<div align="right" class="onlyLog">
    	<c:if test="${logId == dto.mem_id}">
       <a href="/smhrd/data/dataEdit?data_num=${dto.data_num }">수정</a>
       <a href="javascript:dataDelChk()">삭제</a>
      </c:if>
    </div>
+   
+   	  <li>자료 공유 ></li>
+      <h3 class="title">${dto.data_title}</h3>
+      <li>by ${dto.mem_id}💡</li>
+      <li>조회수 : ${dto.data_hit}</li>
+      <li>등록일 : ${dto.data_wdate}</li>
+      <div class="content">
+		<li><br># 내용<br/></li>
+		<li style="color:#bebebe">------------------------------------------------------------------------------------------------------------------------</li>
+		<li><br> ${dto.data_content}</li>
+	  </div>
+      <div><li><br><br>
+				<c:forEach var="fDTO" items="${fileList}">
+            		<a href="<%=request.getContextPath()%>/upload/${fDTO.filename}" download  class="file">
+            		📂&nbsp;${fDTO.filename}</a>
+         		</c:forEach>
+		</li>
+		</div>
+   </ul>   
+   	
    <c:if test="${logId != dto.mem_id}">
-	<button id="dataReportBtn">신고</button>
-	</c:if>	
+		<button id="dataReportBtn" class="reportBTN">신고🚨</button>
+	</c:if>
+	
 	<div style="display:none">
 		<form id="dataReportFrm">
 		<input type="hidden" name='data_num' value="${dto.data_num}">
@@ -293,16 +294,21 @@ $(document).on('click', '#dataReplyList input[value=Del]', function() {
    
    
    <div id="dataReply" class="reply">
+   
+   		<c:if test="${logStatus=='Y'}">
          <!-- <form method="post" id="dataReplyFrm"> -->
          <form method="post"   id="dataReplyFrm" class='replyFrm'>
             <input type="hidden" name="data_num" value="${dto.data_num }">  
-            <textarea style="margin-left:30px; width:380px;" name="data_review_content" id="dataComent"></textarea>
+            <textarea style="margin-left:35px; width:650px;" name="data_review_content" id="dataComent"></textarea>
             <input type="submit" value="댓글 등록하기">
          </form>
+         </c:if>
       <hr/>
       <ul id="dataReplyList">
          
       </ul>
       
    </div>
+   </div>
+   <a href='/smhrd/data/dataList'><button class="backList">목록</button></a>
 </main>

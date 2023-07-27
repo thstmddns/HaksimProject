@@ -317,13 +317,36 @@ nav li:hover {
     text-align:center;
 }
 /*게시글 상세 보기*/
+#all {
+	padding:20px;
+	border:1.5px solid #bebebe;
+	border-radius:10px;
+	margin-top:40px;
+}
+#all a{
+	text-decoration:none;
+	color:black;
+}
+.file {
+	border:1.5px solid #bebebe;
+	padding:15px;
+	border-radius:5px;
+	width:1000px;
+}
 .title {
+	margin:10px 0;
+	font-size:2.3em;
+}
+#view {
 	margin:30px;
-	text-align:center;
+	list-style-type:none;
+}
+.reply {
+	margin-top:200px;
 }
 .replyFrm {
-	width:600px;
-	border:2px dotted #00468C;
+	width:900px;
+	border:2px dotted #bebebe;
 	border-radius:30px;
     padding: 30px;
     box-sizing: border-box;
@@ -346,22 +369,42 @@ nav li:hover {
     border:1px solid white;
     border-radius:5px;
 }
+
 .reportFrm {
-	width:600px;
-	border:2px dotted #00468C;
+	width:300px;
+	border:2px dotted #bebebe;
 	border-radius:30px;
-    padding: 30px;
+    padding: 20px;
     box-sizing: border-box;
     margin:auto;
     margin-top: 20px;
-    margin-bottom: 20px;	
+    margin-bottom: 20px;
+    text-align:center;	
 }
 .reportFrm input{
 	margin:10px;
 	color: #fff;
-    background-color: #00468C;
+    background-color: #FF5050;
     border:1px solid white;
     border-radius:5px;
+}
+.onlyLog a {
+	padding:5px;
+	text-decoration:none;
+	color:black;
+}
+.reportBTN {
+	background-color:white;
+	border:1px solid black;
+	border-radius:5px;
+	align:right;
+}
+.backList {
+	margin:15px;
+	background-color:white;
+	border:1px solid black;
+	border-radius:5px;
+	align:right;
 }
 /* 하단 */
 footer{
