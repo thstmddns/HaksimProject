@@ -21,7 +21,7 @@
 </style>
 
 <main>
-	<h1>글 수정 페이지</h1>
+	<h2 class="board">글 수정 페이지</h2>
 	
 	<form method="post" id="frm" action="/smhrd/notice/noticeEditOk" enctype="multipart/form-data">
 		<input type="hidden" name="notice_num" value="${dto.notice_num}">

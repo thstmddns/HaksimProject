@@ -48,7 +48,7 @@
 </script>
 
 <main>
-	<h1>자료실 글수정</h1>
+	<h2 class="board">자료실 글수정</h2>
 	<!-- 파일첨부가 있을 경우  form 태그에 enctype속성을 반드시 기술해야됨 -->
 	<form method="post" id="frm" action="/smhrd/data/dataEditOk" enctype="multipart/form-data">
 	<!-- 현재 수정하는 글의 글 번호를 폼에 보관 (나중에 수정 기준이 되는 레코드 번호를 사용) -->

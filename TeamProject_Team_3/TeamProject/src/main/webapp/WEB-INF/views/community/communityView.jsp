@@ -6,6 +6,10 @@
 	 margin-top:10px;
 	 list-style-type: none;
 }
+
+	.reportFrm {
+	margin:auto;
+	}
 	
 </style>
 
@@ -180,7 +184,7 @@ communityReplyList();
 	</div>
 	<div id="communityReply">
 			
-			<form method="post" id="communityReplyFrm">
+			<form method="post" id="communityReplyFrm" class="reportFrm">
 				<input type="hidden" name="com_num" value="${dto.com_num }">  
 				<textarea name="com_review_content" id="communityComent"></textarea>
 				<input type="submit" value="댓글 등록하기">

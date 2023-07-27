@@ -22,25 +22,25 @@
 
 
 <main>
-	<h1>회원정보 수정</h1>
+	<div class="wrapper">
+	<h2>회원정보 수정</h2>
 	
-	<form method="post" id="frm" action="/smhrd/register/registerEditOk" enctype="multipart/form-data">
+	<form method="post" id="frm" action="/smhrd/register/registerEditOk" enctype="multipart/form-data" class="Form" style="padding:10px;">
 	
 	<input type="hidden" name="mem_id" value="${mem_id.mem_id }">
 		<ul class="memberEdit">
 			<li>비밀번호</li>
 			<li><input type="text" name="mem_password" value="${mem_id.mem_password}" /></li>
-			<li>멤버등급</li>
-			<li><input type="text" name="mem_type" value="${mem_id.mem_type}" /></li>
 			<li>이메일</li>
 			<li><input type="text" name="mem_email" value="${mem_id.mem_email}" /></li>
 			<li>이름</li>
 			<li><input type="text" name="mem_name" value="${mem_id.mem_name}" /></li>
-			<li>멤버기수</li>
+			<li>멤버 기수</li>
 			<li><input type="text" name="mem_ca" value="${mem_id.mem_ca}" /></li>
 			<li><input type="submit" value="회원정보 수정"/></li>
 		</ul>
 	</form>
+	</div>
 </main>
 
 <script>

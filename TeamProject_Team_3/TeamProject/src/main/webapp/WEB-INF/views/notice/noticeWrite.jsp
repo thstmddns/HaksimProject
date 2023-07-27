@@ -20,12 +20,12 @@ ul,li{
 </style>
 
 <main>
-	<h1>공지 게시판 글쓰기</h1>
+	<h2 class="board">글쓰기/공지</h2>
 	
-	<form method="post" id="frm" action="/smhrd/notice/noticeWriteOk" enctype="multipart/form-data">
+	<form method="post" id="frm" action="/smhrd/notice/noticeWriteOk" enctype="multipart/form-data" class="writeFrm">
 	<ul>
 		<li>제목</li>
-		<li><input type="text" name="notice_title" size=130px style="line-height:30px"/></li>
+		<li><input type="text" name="notice_title" size=116px style="line-height:30px; border:1px solid #D2D2D2;"/></li>
 		<li>글내용</li>
 		<li><textarea name="notice_content" id="content"></textarea></li>
 		<li><input type="submit" value="글등록"/></li>

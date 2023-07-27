@@ -32,11 +32,11 @@
 </script>
 
 <main>
-	<h1>자료 공유 게시판 글쓰기</h1>
-	<form method="post" id="frm" action="/smhrd/data/dataWriteOk" enctype="multipart/form-data">
+	<h2 class="board">글쓰기/자료공유</h2>
+	<form method="post" id="frm" action="/smhrd/data/dataWriteOk" enctype="multipart/form-data" class="writeFrm">
 	<ul>
 		<li>제목</li>
-		<li><input type="text" name="data_title"/></li>
+		<li><input type="text" name="data_title"  size=112px style="line-height:30px; border:1px solid #D2D2D2;"/></li>
 		<li>글내용</li>
 		<li><textarea name="data_content" id="data_content"></textarea></li>
 		<li>첨부파일</li>

@@ -3,13 +3,19 @@
    
    <style>
 		.id_ok{
-		color:#008000;
+		color:#00468C;
 		display: none;
+		margin-bottom:10px;
 		}
 		
 		.id_already{
 		color:#6A82FB; 
 		display: none;
+		}
+		*{
+	    padding: 0;
+	    margin: 0;
+	    border: none;
 		}
 	</style>
     <script>
@@ -37,23 +43,31 @@
        };
        </script>
 <main>
-	<h1>회원가입폼</h1>
+	<div class="wrapper">
+	<h2 style="text-align:center;">Join</h2>
 	
-	<form method="post" action="/smhrd/register/registerOk">
+	<form method="post" action="/smhrd/register/registerOk" class="Form">
 		<ul>
+			<li style="margin-bottom:15px;">
 			<select name="mem_type" id="mem_type">
 				<option value='1'>학생</option>
 				<option value='2'>선생님</option>	
 				<option value='3'>관리자</option>	
 			</select>
-			<li>아이디 : <input type="text" name="mem_id" id="mem_id" oninput="checkId()"/></li><span class="id_ok">사용 가능한 아이디 입니다</span><span class="id_already">누군가 이 아이디를 사용하고 있어요.</span>
-			<li>비밀번호 : <input type="password" name="mem_password" id="mem_password" /></li>
-			<li>비밀번호 확인 : <input type="password" name="mem_password2" id="mem_password2" /></li>
-			<li>나이 : <input type="text" name="mem_age" id="mem_age" /></li>
-			<li>이메일 : <input type="email" name="mem_email" id="mem_email" /></li>
-			<li>이름 : <input type="text" name="mem_name" id="mem_name" /></li>
-  			<li>기수 입력 : <input type="text" name="mem_ca" id="mem_ca" /></li>
-			<li><button>회원가입하기</button></li>
+			</li>
+			<li>
+			<input type="text" name="mem_id" id="mem_id" oninput="checkId()" placeholder="아이디(영어 소문자 5자 이상 16자 미만)"/>
+			<span class="id_ok">사용 가능한 아이디 입니다</span>
+			<span class="id_already">누군가 이 아이디를 사용하고 있어요.</span>
+			</li>
+			<li><input type="password" name="mem_password" id="mem_password"  placeholder="비밀번호(영어 소문자/숫자/특수문자 조합 8자 이상 16자 미만)"/></li>
+			<li><input type="password" name="mem_password2" id="mem_password2" placeholder="비밀번호 확인"/></li>
+			<li><input type="text" name="mem_age" id="mem_age"  placeholder="나이(만 나이)"/></li>
+			<li><input type="email" name="mem_email" id="mem_email"  placeholder="이메일"/></li>
+			<li><input type="text" name="mem_name" id="mem_name"  placeholder="이름"/></li>
+  			<li><input type="text" name="mem_ca" id="mem_ca"  placeholder="기수"/></li>
+			<li><input type="submit" value="회원가입" /></li>
 		</ul>
 	</form>
+	</div>
 </main>

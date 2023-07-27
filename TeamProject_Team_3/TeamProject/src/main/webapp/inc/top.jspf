@@ -17,8 +17,8 @@
 		<div class="headLine">
 			<!-- 로그아웃 상태 -->
 			<c:if test="${logStatus != 'Y'}">
-				<a href="/smhrd/register/login"><button type="button" class="btn btn-outline-primary" style="margin-right: 10px; margin-left: 10px;">로그인</button></a>
-				<a href="/smhrd/register/regForm"><button type="button" class="btn btn-outline-primary" style="margin-right: 10px; margin-left: 10px;">회원가입</button></a>
+				<a href="/smhrd/register/login"><button type="button" class="btn btn-outline-primary" style="margin-right: 3px; margin-left: 10px;">LogIn</button></a>
+				<a href="/smhrd/register/regForm"><button type="button" class="btn btn-outline-primary" style="margin-right: 10px; margin-left: 10px;">Join</button></a>
 			</c:if>
 			
 			<!-- 로그인 상태 -->
@@ -28,8 +28,8 @@
 				<c:if test="${logType == '2'}"><span>선생님</span></c:if>
 				<c:if test="${logType == '3'}"><span>관리자</span></c:if>
 					<span>${logId}님</span>
-					<a href="/smhrd/register/logout"><button type="button" class="btn btn-outline-primary" style="margin-right: 10px; margin-left: 10px;">로그아웃</button></a>
-					<a href="/smhrd/register/registerEdit"><button type="button" class="btn btn-outline-primary" style="margin-right: 10px; margin-left: 10px;">회원정보수정</button></a>
+					<a href="/smhrd/register/logout"><button type="button" class="btn btn-outline-primary" style="margin-right: 3px; margin-left: 10px;">LogOut</button></a>
+					<a href="/smhrd/register/registerEdit"><button type="button" class="btn btn-outline-primary" style="margin-right: 10px; margin-left: 10px;">Edit Information</button></a>
 				</div>
 			</c:if> 
 		</div>

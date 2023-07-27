@@ -40,7 +40,7 @@
 
 </script>
 <main>
-	<h1 class="Sub">소통 게시판</h1>	
+	<h1 class="Sub">커뮤니티 게시판</h1>	
 	<div>
 		<h5 style="margin:30px;">Category</h5>
 		<div style="margin:30px;">

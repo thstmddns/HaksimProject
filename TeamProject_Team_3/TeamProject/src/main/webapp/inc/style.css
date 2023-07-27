@@ -82,7 +82,6 @@ nav{
    padding-left: 50px;
    height: 60px;
    background-color: #00468C;
-   
    align-content:center;
    justify-content:center;
 }
@@ -98,47 +97,15 @@ nav li{
    font-size: 1.5em;
    margin:0 20px;
 }
-
-nav a:link, nav a:visited, nav a:hover{
+nav a{
    text-decoration: none;
    color: #ffffff;
 }
-/* 
-#nav2 {
-	display:inline-block;
-	text-align: center;
+nav li:hover {
+	background-color:#000069;
+	border-radius:10px;
+	opacity:50%;
 }
-#nav2 > a {
-  display: block; a태그는 글자성격 = inline
-  float: left;
-  font-size: 30px;
-  font-weight: 900;
-  line-height: 80px;
-  padding: 0 30px;
-  
-}
-#nav2 a {
-	color: #00468C;
-	text-decoration: none;
-	font-size: 30px;
-	font-weight: 900;
-	line-height: 80px;
-	 padding: 0 30px;
-}
-
-#nav2>ul {
-  float: right;
-  margin-right: 20px;
-}
-#nav2>ul li {
-  color:#00468C;
-  font-size: 25px;
-  float: left;
-  padding: 0 30px;
-  line-height: 80px;
-} */
-
-
 
 /* 메인 */
 .container{
@@ -147,6 +114,7 @@ nav a:link, nav a:visited, nav a:hover{
  main {
  	width:1000px;
  	margin:0 auto;
+ 	
  }
 /*목록*/
 .Sub {
@@ -224,13 +192,84 @@ nav a:link, nav a:visited, nav a:hover{
      border-right: none;
      border-bottom : 2px solid black;
 }
-
 .searchBtn {
 	width: 100px;
     border-top: none;
     border-left: none;
     border-right: none;
     border-bottom : 1px solid black;
+}
+/*회원가입, 로그인, 아이디찾기, 비밀번호찾기*/
+.wrapper{
+	border:1px solid #D2D2D2;
+	border-radius:30px;
+    width: 400px;
+    padding: 30px;
+    box-sizing: border-box;
+    margin:auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.wrapper > h2{
+	text-align:center;
+    font-size: 30px;
+    color: #00468C;
+    margin-bottom: 20px;
+}
+.Form {
+	margin-right:23px;
+}
+.Form input{
+    width: 100%;
+    height: 35px;
+    padding: 0 3px;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+    border-radius: 6px;
+    background-color: #F8F8F8;
+    border:1px solid #F8F8F8;
+}
+.Form  input::placeholder{
+    color: #D2D2D2;
+}
+.Form  input[type="submit"]{
+    color: #fff;
+    font-size: 16px;
+    background-color: #00468C;
+    margin-top: 20px;
+}
+.find_wrap {
+	text-align:center;
+	}
+.find_wrap li {
+	position:relative;
+	display:inline-block;
+}
+.find_wrap li+li{
+	padding-left:20px;
+}
+.find_wrap li+li::before {
+	content:'';
+	position:absolute;
+	top:3px;
+	left:10px;
+	width:1px;
+	height:12px;
+	border-radius:.5px;
+	background-color:#dadada;
+}.find_wrap .en_find_text{
+	display:inline-block;
+	font-size:14px;
+	line-height:20px;
+	text-decoration:none;
+	color:#888;
+}
+/*게시글 작성*/
+.board{
+	margin:30px;
+}
+.writeFrm li{
+	padding-bottom:10px;
 }
 
 /*게시글 상세 보기*/

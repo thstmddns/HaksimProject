@@ -24,7 +24,7 @@
 </style>
 
 <main>
-	<h1>커뮤니티 게시판 글 수정</h1>
+	<h2 class="board">커뮤니티 게시판 글 수정</h2>
 	<form method="post" id="frm" action="/smhrd/community/communityEditOk" enctype="multipart/form-data">	
 	<input type="hidden" name="com_num" value="${dto.com_num }">
 	<ul class="communityEdit">

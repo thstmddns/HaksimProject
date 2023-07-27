@@ -22,9 +22,9 @@
 </style>
 
 <main>
-	<h1>수료생 게시판 글쓰기</h1>
+	<h2 class="board">글쓰기/수료생</h2>
 	<!-- 파일첨부가 있을 경우  form 태그에 enctype속성을 반드시 기술해야됨 -->
-	<form method="post" id="frm" action="/smhrd/after/afterWriteOk" enctype="multipart/form-data">
+	<form method="post" id="frm" action="/smhrd/after/afterWriteOk" enctype="multipart/form-data" class="writeFrm">
 	<ul class="afterWrite">
 		<select name="grad_type" id="grad_type">
 				<option value="1">멘토링</option>
@@ -32,7 +32,7 @@
 				<option value="3">기타</option>	
 		</select>
 		<li>제목</li>
-		<li><input type="text" name="grad_title" size=130px style="line-height:30px"/></li>
+		<li><input type="text" name="grad_title"  size=112px style="line-height:30px; border:1px solid #D2D2D2;"/></li>
 		<li>글내용</li>
 		<li><textarea name="grad_content" id="grad_content"></textarea></li>
 		<li><input type="submit" value="글등록"/></li>
