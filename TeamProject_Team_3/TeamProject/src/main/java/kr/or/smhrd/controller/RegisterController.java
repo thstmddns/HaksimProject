@@ -183,7 +183,6 @@ public class RegisterController {
 		try {  
 		String subject = "간식요청이 왔어요";
 		String content = "<div style='background:pink; border:1px solid #ddd; padding:50px; text-align:center'>";
-		   
 		content += "간식요청이 왔습니다.";
 		content += "</div>";
 		MimeMessage message = mailSender.createMimeMessage();
