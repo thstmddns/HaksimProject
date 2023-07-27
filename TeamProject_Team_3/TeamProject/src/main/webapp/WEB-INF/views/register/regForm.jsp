@@ -16,12 +16,17 @@
 		display: none;
 		}
 	</style>
+	
     <script>
 	    function checkId(){
+	       console.log(1)
 	       var mem_id = $('#mem_id').val(); //id값이 "id"인 입력란의 값을 저장
 	       var reg_id = /^[a-z]+$/;
 	       $.ajax({
-8
+	           url:'./idCheck', //Controller에서 요청 받을 주소
+	           type:'post', //POST 방식으로 전달
+	           data:{mem_id:mem_id},
+	           success:function(cnt){
 	        	   if (!reg_id.test(mem_id)){
 	        		   $('.id_reg').css("display","inline-block"); 
 	        		   $('.id_ok').css("display","none"); 
@@ -69,14 +74,14 @@
 				<option value='2'>선생님</option>	
 				<option value='3'>관리자</option>	
 			</select>
-			<li>아이디 : <input type="text" name="mem_id" id="mem_id" oninput="checkId()" minlength="5" maxlength="16" placeholder="아이디는 영어 소문자 5자 이상 16자 미만" size="30px"/></li><span class="id_ok">사용 가능한 아이디 입니다</span><span class="id_already">누군가 이 아이디를 사용하고 있어요.</span><span class ="id_reg">아이디는 영어 소문자만 사용할 수 있어요.</span>
+			<li>아이디 : <input type="text" name="mem_id" id="mem_id" oninput="checkId()" minlength="5" maxlength="16" placeholder="아이디는 영어 소문자 5자 이상 16자 미만" size="30px"/><span class="id_ok">사용 가능한 아이디 입니다</span><span class="id_already">누군가 이 아이디를 사용하고 있어요.</span><span class ="id_reg">아이디는 영어 소문자만 사용할 수 있어요.</span></li>
 			<li>비밀번호 : <input type="password" name="mem_password" id="mem_password" oninput="checkPassword()" minlength="8" maxlength="16" placeholder="비밀번호는 영어 소문자, 숫자, 특수문자 조합 8자 이상 16자 미만" size="40px"/></li><span class="password_ok">사용 가능한 비밀번호입니다.</span><span class="password_reg">비밀번호는 영어 소문자, 숫자, 특수문자 조합만 사용할 수 있어요.</span>
 			<li>비밀번호 확인 : <input type="password" name="mem_password2" minlength="5" maxlength="16" id="mem_password2" placeholder="비밀번호는 영어 소문자, 숫자, 특수문자 조합 8자 이상 16자 미만" size="40px"/></li>
 			<li>나이 : <input type="text" name="mem_age" id="mem_age" /></li>
 			<li>이메일 : <input type="email" name="mem_email" id="mem_email" /></li>
 			<li>이름 : <input type="text" name="mem_name" id="mem_name" /></li>
   			<li>기수 입력 : <input type="text" name="mem_ca" id="mem_ca" /></li>
-			<li><button>회원가입하기</button></li>
+			<li><input type="submit" value="회원가입" /></li>
 		</ul>
 	</form>
 </main>
