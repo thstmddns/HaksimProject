@@ -1,7 +1,116 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<style>
+.footer {
+	padding-bottom: 20px;
+}
+.contents {
+	overflow: hidden;
+	margin: 0 auto;
+}
+
+/* 하단 좌측 */
+.footerLeft {
+	width: 50%;
+	float: left;
+	padding:0px;
+}
+#InfoNumber > h3{
+	margin: 0px
+}
+#number1 > ul, li{
+	display: flex;
+	flex-direction: row;
+	padding-left: 10px;
+}
+
+/* 하단 우측 */
+.footerRight {
+	width: 50%;
+	padding: 0px;
+	display: flex;
+	flex-direction: column;
+}
+
+#InfoMenu > ul, li{
+	display: flex;
+	flex-direction: row;
+	margin:0px;
+	line-height:30px;
+}
+
+#InfoMenu > ul > li{
+	padding:0px;
+	padding-right: 10px;
+	margin:0px;
+	margin-top:10px;
+}
+
+#comInfo li{
+	margin: 0px;
+}
+#comInfo > ul{
+	margin:0px;
+}
+</style>
 
 <footer>
-	copyright
+<div class="contents">
+	<!-- 좌측 -->
+	<div class="footerLeft">
+		<div id="InfoNumber">
+			<h3>고객행복센터</h3>
+			<div id="number1">
+				<ul>
+					<li>02-2023-0726</li>
+					<li>365고객센터</li> 
+					<li><strong>24시상시운영</strong></li>
+				</ul>
+			</div>
+			<div id="number1">
+				<ul>
+					<li>카카오톡문의</li>
+					<li>365고객센터</li> 
+					<li><strong>24시상시운영</strong></li>
+				</ul>
+			</div>
+			<div id="number1">
+				<ul>
+					<li>1:1문의</li> 
+					<li><strong>24시상시운영</strong></li>
+					<li>고객센터 운영시간에 순차적으로 답변해드리겠습니다.</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 우측 -->
+	<div class="footerRight">
+		<div id="InfoMenu">
+			<ul>
+				<li>소개</li>
+				<li>소개영상</li>
+				<li>인재채용</li>
+				<li>이용약관</li>
+				<li>이용안내</li>
+			</ul>
+		</div>
+		
+		<div id="comInfo">
+			<ul>
+				<li>법인명 (상호) : 주식회사 스타 I 사업자등록번호 : 2023-07-27</li>
+				<li>통신판매업 : 제 2018-서울강남-01646 호</li>
+				<li>개인정보보호책임자 : 스마티</li>
+				<li>주소 : 서울특별시 서초구 방배동 1751 (동작대로 132), 안석빌딩 B2, 9F</li>
+				<li>대표이사 : 마동석</li>
+				<li>제휴문의 : business@smhrd.com</li>
+				<li>채용문의 : recruit@corp.smhrdcom</li>
+				<li>팩스: 070-2023-0727</li>
+				<li>이메일 : help@smhrd.com</li>
+				<li>© smhrd CORP. ALL RIGHTS RESERVED</li>
+			</ul>
+		</div>
+	</div>
+</div>
 </footer>
 </body>
 </html>
