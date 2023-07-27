@@ -1,13 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<style>
-
-	.communityView li {
-	 margin-top:10px;
-	 list-style-type: none;
-}
-	
-</style>
 
 <script>
 function boardDelChk () {
@@ -40,7 +32,7 @@ $(function(){
 						// -- 수정폼
 						tag += "<div style='display:none' class='replyFrm'>";
 						tag += "<form>";
-						tag += "<textarea style='width:420px; margin-left:25px;' name='com_review_content'>";
+						tag += "<textarea style='width:680px; margin-left:35px;' name='com_review_content'>";
 						// 글 내용 수정, 댓글번호
 						tag += coment.com_review_content;
 						tag += "</textarea>";
@@ -255,35 +247,40 @@ $(document).on('click', '#communityReplyList input[value=신고하기]', functio
 </script>
 
 <main>
-   <h1>커뮤니티 글 게시판 내용 보기</h1>
-   <ul class="communityView">
-   	<li>번호 : ${dto.com_num}</li>
-		<c:if test="${dto.com_type==1}">
-			<li>고민 게시판</li>	
-		</c:if>
-		<c:if test="${dto.com_type==2}">
-			<li>건의 게시판</li>
-		</c:if>
-		<c:if test="${dto.com_type==3}">
-			<li>소통 게시판</li>
-		</c:if>
-	  <li>글쓴이 : 익명의 누군가</li>				
-      <li>조회수 : ${dto.com_hit}</li>
-      <li>등록일 : ${dto.com_wdate}</li>
-      <li>제목 : ${dto.com_title}</li>
-      <li><br>글내용<br/> ${dto.com_content}</li>
-   	</ul>
-     
-   	<div>
+   <div id="all">
+   <ul class="communityView" id="view">
+   	<div align="right" class="onlyLog">
    		<c:if test="${logId == dto.mem_id}">
    			<a href="/smhrd/community/communityEdit?com_num=${dto.com_num}">수정</a>
 			<a href="javascript:boardDelChk()">삭제</a>
    		</c:if>
 	</div>
+	
+		<c:if test="${dto.com_type==1}">
+			<li>커뮤니티 > 고민 ></li>	
+		</c:if>
+		<c:if test="${dto.com_type==2}">
+			<li>커뮤니티 > 건의 ></li>
+		</c:if>
+		<c:if test="${dto.com_type==3}">
+			<li>커뮤니티 > 소통 ></li>
+		</c:if>
+	  <h3 class="title">${dto.com_title}</h3>
+	  <li>by 익명👤</li>				
+      <li>조회수 : ${dto.com_hit}</li>
+      <li>등록일 : ${dto.com_wdate}</li>
+      <div class="content">
+      <li><br># 내용<br/></li>
+      <li style="color:#bebebe">------------------------------------------------------------------------------------------------------------------------</li>
+      <li><br> ${dto.com_content}</li>
+      </div>
+   	</ul>
+    
 	<!-- 신고 -->
 	<c:if test="${logId != dto.mem_id}">
-		<button id="comReportBtn">신고</button>
-	</c:if>	
+		<button id="comReportBtn" class="reportBTN">신고🚨</button>
+	</c:if>
+	
 	<div style="display:none;">
 		<form id="comReportFrm">
 		<input type="hidden" name='com_num' value="${dto.com_num}">
@@ -305,18 +302,20 @@ $(document).on('click', '#communityReplyList input[value=신고하기]', functio
 	</div>
 	
 	<!-- 댓글 -->
-	<div id="communityReply">
+	<div id="communityReply" class="reply">
 
 			<c:if test="${logStatus=='Y'}">
 				<form method="post" id="communityReplyFrm" class='replyFrm'>
 
 				<input type="hidden" name="com_num" value="${dto.com_num }">  
-				<textarea style="margin-left:30px; width:380px;" name="com_review_content" id="communityComent"></textarea>
+				<textarea style="margin-left:35px; width:650px;" name="com_review_content" id="communityComent"></textarea>
 				<input type="submit" value="댓글 등록하기">
 			</form>
 			</c:if>
 		<hr/>
 		<ul id="communityReplyList">			
 		</ul>
-	</div>	
+	</div>
+	</div>
+	<a href='/smhrd/community/communityList?com_type=0'><button class="backList" align="right";>목록</button></a>	
 </main>

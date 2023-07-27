@@ -2,14 +2,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <style>
-	ul,li{
+	/* ul,li{
 		margin: 0px;	
 		padding: 0px;	
 		list-style-type: none;
-	}
+	} */
 	
 	.adminBoard{
-		border:1px solid #00468C;
+		border:1px solid #bebebe;
 		margin-bottom: 40px;
 		background-color: #bbddff;
 		text-align: center;
@@ -17,10 +17,10 @@
 		color: #ffffff;
 	}
 	
-	a:link, a:visited, a:hover{
+	/* a:link, a:visited, a:hover{
    		text-decoration: none;
    		color: #000000;
-	}
+	} */
 	
 	#adminList{
 		display: flex;
@@ -34,7 +34,7 @@
 		width:800px;
 		text-align: center;
 		background-color: #ffffff;
-		border:1px solid #00468C;
+		border:1px solid #bebebe;
 		overflow: auto;
 		margin-bottom: 5px;
 	}
@@ -56,7 +56,7 @@
 		width:800px;
 		text-align: center;
 		background-color: #ffffff;
-		border:1px solid #00468C;
+		border:1px solid #bebebe;
 		overflow: auto;
 		margin-bottom: 5px;
 	}
@@ -82,7 +82,7 @@
 		width:800px;
 		text-align: center;
 		background-color: #ffffff;
-		border:1px solid #00468C;
+		border:1px solid #bebebe;
 		overflow: auto;
 		margin-bottom: 5px;
 	}
@@ -99,6 +99,7 @@
 	#noticeList > li:nth-child(4n+3) {
 		width: 40%;	
 	}
+
 </style>
 
 <main>
