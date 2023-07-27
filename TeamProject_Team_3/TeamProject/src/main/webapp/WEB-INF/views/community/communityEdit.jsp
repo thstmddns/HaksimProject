@@ -24,15 +24,15 @@
 </style>
 
 <main>
-	<h2 class="board">커뮤니티 게시판 글 수정</h2>
-	<form method="post" id="frm" action="/smhrd/community/communityEditOk" enctype="multipart/form-data">	
+	<h2 class="board">게시글 수정/커뮤니티</h2>
+	<form method="post" id="frm" action="/smhrd/community/communityEditOk" enctype="multipart/form-data" class="editFrm">	
 	<input type="hidden" name="com_num" value="${dto.com_num }">
 	<ul class="communityEdit">
-		<li>제목</li>
-		<li><input type="text" name="com_title" value="${dto.com_title}" size=135px style="line-height:30px"/></li>
-		<li>글내용</li>
+		<li class="text"># 제목</li>
+		<li><input type="text" name="com_title" value="${dto.com_title}" size=112px style="line-height:30px; border:1px solid #D2D2D2;"/></li>
+		<li class="text"># 내용</li>
 		<li><textarea name="com_content" id="com_content" >${dto.com_content}</textarea></li>
-		<li><input type="submit" value="글수정"/></li>
+		<li><input type="submit" value="게시글 수정"/></li>
 	</ul>
 	</form>
 </main>

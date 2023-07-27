@@ -6,14 +6,14 @@
    <div class="container">
 	  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
 		  <div class="carousel-inner">
+		  	<div class="carousel-item active">
+		      <img src="<%= request.getContextPath() %>/img/여름방학.png" class="d-block w-100" alt="...">
+		    </div>
 		    <div class="carousel-item active">
 		      <img src="<%= request.getContextPath() %>/img/게이밍마우스.jpg" class="d-block w-100" alt="...">
 		    </div>
 		    <div class="carousel-item">
 		      <img src="<%= request.getContextPath() %>/img/온라인광고.png" class="d-block w-100" alt="...">
-		    </div>
-		    <div class="carousel-item">
-		      <img src="<%= request.getContextPath() %>/img/한국자산관리공사.jpg" class="d-block w-100" alt="...">
 		    </div>
 		  </div>
 		  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">

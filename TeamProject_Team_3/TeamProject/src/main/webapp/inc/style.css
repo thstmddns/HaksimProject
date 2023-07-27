@@ -133,6 +133,10 @@ nav li:hover {
  	height:40px;
  	text-align:center;
  }
+.page a {
+	text-decoration:none;
+	color:black;
+}
 #writeBtn {
 	display:inline-block;
 	float:right;
@@ -169,13 +173,12 @@ nav li:hover {
  	line-height:40px;
  	border-bottom:1px solid #ddd;
  	text-align:center;
- }
- .List2>li:nth-child(6n+3) {
- 	width:50%;
- 	/*말줄임표시*/
  	white-space:nowrap;  /*줄 바꾸지 않기*/
  	overflow:hidden;   /*넘친값 숨기기*/
  	text-overflow:ellipsis;   /* ... 표시하기 */
+ }
+ .List2>li:nth-child(6n+3) {
+ 	width:50%;
  }
 
 .search {
@@ -271,13 +274,95 @@ nav li:hover {
 .writeFrm li{
 	padding-bottom:10px;
 }
-
+.ck-editor__editable[role="textbox"] {/* editing area */
+	  min-height: 400px;
+}
+.ck-content .image {/* block images */
+	max-width: 80%;
+	margin: 20px auto;
+}
+#cate select {
+	width: 100px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid black;
+    margin-bottom:15px;
+}
+.text {
+	font-size:1.1em;
+}
+.writeFrm input[type="submit"]{
+    width:60px;
+    color: #fff;
+    font-size: 16px;
+    background-color: #00468C;
+    margin-top: 20px;
+    border-radius:5px;
+    border:1px solid #F8F8F8;
+    text-align:center;
+}
+/*게시글 수정*/
+.editFrm li{
+	padding-bottom:10px;
+}
+.editFrm input[type="submit"]{
+    width:100px;
+    color: #fff;
+    font-size: 16px;
+    background-color: #00468C;
+    margin-top: 20px;
+    border-radius:5px;
+    border:1px solid #F8F8F8;
+    text-align:center;
+}
 /*게시글 상세 보기*/
 .title {
 	margin:30px;
 	text-align:center;
 }
-
+.replyFrm {
+	width:600px;
+	border:2px dotted #00468C;
+	border-radius:30px;
+    padding: 30px;
+    box-sizing: border-box;
+    margin:auto;
+    margin-top: 20px;
+    margin-bottom: 20px;	
+}
+.replyFrm textarea{
+	border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid black;
+    margin-bottom:15px;	
+    resize:none;
+}
+.replyFrm input{
+	margin:10px;
+	color: #fff;
+    background-color: #00468C;
+    border:1px solid white;
+    border-radius:5px;
+}
+.reportFrm {
+	width:600px;
+	border:2px dotted #00468C;
+	border-radius:30px;
+    padding: 30px;
+    box-sizing: border-box;
+    margin:auto;
+    margin-top: 20px;
+    margin-bottom: 20px;	
+}
+.reportFrm input{
+	margin:10px;
+	color: #fff;
+    background-color: #00468C;
+    border:1px solid white;
+    border-radius:5px;
+}
 /* 하단 */
 footer{
 	font-weight:bold;

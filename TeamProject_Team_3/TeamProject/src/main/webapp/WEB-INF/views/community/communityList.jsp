@@ -77,13 +77,14 @@
 			<c:if test="${dto.com_type == 4}">
 				<li>맛집공유</li>
 			</c:if>
-			<button class="">맛집추천</button>
+			
+			<!--<button class="">맛집추천</button>-->
 			
 			<li><a href="/smhrd/community/communityView/${dto.com_num}">${dto.com_title }</a></li>
 			
 			<li>익명</li>
 			
-			<li>${dto.com_wdate }</li>
+			<li>${dto.com_wdate}</li>
 			
 			<li>${dto.com_hit}</li>	
 		</c:forEach>
