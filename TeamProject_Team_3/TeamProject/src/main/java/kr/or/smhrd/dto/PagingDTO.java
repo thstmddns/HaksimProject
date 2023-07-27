@@ -1,7 +1,6 @@
 package kr.or.smhrd.dto;
 
 public class PagingDTO {
-
 	private int nowPage = 1;			
 	private int onePageRecord = 15;		
 	
@@ -14,6 +13,7 @@ public class PagingDTO {
 	private int lastPageRecord = 15;		
 	
 	private String searchKey;			
+
 	private String searchWord;			
 	
 	private int grad_type = 0;			
@@ -23,12 +23,11 @@ public class PagingDTO {
 	public int getNowPage() {
 		return nowPage;
 	}
-	
 	public void setNowPage(int nowPage) {
 		this.nowPage = nowPage;
+
 		startPageNum = ((nowPage-1) / onePageNumCount ) * onePageNumCount + 1;
 	}
-	
 	public int getOnePageRecord() {
 		return onePageRecord;
 	}
@@ -43,9 +42,7 @@ public class PagingDTO {
 
 	public void setTotalRecord(int totalRecord) {
 		this.totalRecord = totalRecord;
-
-		totalPage = (int)Math.ceil((double)totalRecord / onePageRecord);
-		
+	
 		// 총 페이지 수 계산하기
 		// ceil():올림, round():반올림, floor():내림
 		totalPage = (int)Math.ceil((double)totalRecord / onePageRecord);

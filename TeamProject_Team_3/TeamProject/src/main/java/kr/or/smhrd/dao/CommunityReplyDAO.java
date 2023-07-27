@@ -3,6 +3,7 @@ package kr.or.smhrd.dao;
 import java.util.List;
 
 import kr.or.smhrd.dto.CommunityReplyDTO;
+import kr.or.smhrd.dto.ReportDTO;
 
 public interface CommunityReplyDAO {
 	
@@ -17,4 +18,6 @@ public interface CommunityReplyDAO {
 	
 	// 리플 삭제 
 	public int replyDelete(int com_num);
+
+	public int sReportInsert(ReportDTO dto);
 }

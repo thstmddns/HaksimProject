@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import kr.or.smhrd.dao.CommunityReplyDAO;
 import kr.or.smhrd.dto.CommunityReplyDTO;
+import kr.or.smhrd.dto.ReportDTO;
 
 @Service
 public class CommunityReplyServiceImpl implements CommunityReplyService {
@@ -32,6 +33,11 @@ public class CommunityReplyServiceImpl implements CommunityReplyService {
 	@Override
 	public int replyInsert(CommunityReplyDTO dto) {
 		return dao.replyInsert(dto);
+	}
+
+	@Override
+	public int sReportInsert(ReportDTO dto) {
+		return dao.sReportInsert(dto);
 	}
 
 

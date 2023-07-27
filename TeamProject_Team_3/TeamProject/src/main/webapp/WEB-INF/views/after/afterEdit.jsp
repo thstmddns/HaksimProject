@@ -23,7 +23,6 @@
 
 <main>
 	<h2 class="board">수료생 글 수정</h2>
-	
 	<form method="post" id="frm" action="/smhrd/after/afterEditOk" enctype="multipart/form-data">
 	
 	<input type="hidden" name="grad_num" value="${dto.grad_num }">
