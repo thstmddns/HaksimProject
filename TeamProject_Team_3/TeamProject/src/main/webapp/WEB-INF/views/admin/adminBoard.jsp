@@ -77,7 +77,6 @@
 		width: 25%;	
 	}
 	
-	
 	#noticeList{
 		width:800px;
 		text-align: center;
