@@ -48,12 +48,34 @@ $(function(){
 						tag += "<input type='button' value='수정하기'/>";
 						tag += "</form>";
 						tag += "</div>";
-						tag += "</li>";
-		                  }		                  
-					    else{
-		                     tag += "<p>" + coment.coment + "</p></div>";                  
-		                  }
-
+						
+					    }else {
+							tag += "<input type='button' value='신고'/>";
+							tag += "<p>"+coment.com_review_content+"</p></div>";
+							tag += "<div id='cReportReplyFrm' style='display:none'>";
+							tag += "<form id='cReportReply'>";
+							tag +="<input type='hidden' name='com_num' value='"+coment.com_num+"'/>";
+							tag += "<input type='hidden' name='com_review_num' value='"+coment.com_review_num+"'/>";
+							tag +="<input type='hidden' name='com_reportReply_url' id='com_reportReply_url' value='"+window.location.href+"'>";
+							tag +="<input type='hidden' name='board' value='com_review'/>";
+							<!-- 어떤 게시판의 몇번 글인지 보내기 -->
+							tag += "<li>신고사유를 선택해주세요</li>";
+							tag +="<input type='radio' name='report_content' value='홍보/영리 목적' class='reportChk' id='reportChk'>홍보/영리 목적";
+							tag +="<br>";
+							tag +="<input type='radio' name='report_content' value='욕설및비방' class='reportChk' id='reportChk'>욕설 및 비방";
+							tag +="<br>";
+							tag +="<input type='radio' name='report_content' value='부적절한표현' class='reportChk' id='reportChk'>부적절한 표현";
+							tag +="<br>";
+							tag +="<input type='radio' name='report_content' value='거짓/불법정보' class='reportChk' id='reportChk'>거짓/불법정보";
+							tag +="<br>";
+							tag +="<input type='radio' name='report_content' value='기타' class='reportChk' id='reportChk'>기타";
+							tag +="<br>";
+							tag +="<input type='submit' value='신고하기'>";
+							tag += "</form>";
+							tag += "</div>";
+						}
+						
+					    tag += "</li>";
 						$("#communityReplyList").append(tag); 			
 				});
 			},
@@ -146,8 +168,88 @@ $(document).on('click', '#communityReplyList input[value=수정하기]', functio
 	});
 });
 
-communityReplyList();
+$(document).on("click", "#communityReplyList input[value=Edit]", function() {
+	$(this).parent().css("display", "none");
+	$(this).parent().next().css("display", "block");
+});
 
+$(document).on('click','#comReportBtn',function(){
+	$(this).css('display', 'none');
+	
+	$(this).next().css('display', 'block');
+});
+
+
+$("#comReportFrm").submit(function() {
+	event.preventDefault();  
+	
+	if (!confirm("해당 게시글을 신고하시겠습니까?")) {
+		return false;
+	}
+	
+	if($("#comReportChk").val() == "") {
+		alert("신고사유을 선택해주세요");
+		return false;
+	}
+
+	$("#com_report_url").val(window.location.href);
+	var params = $("#comReportFrm").serialize();		
+	
+		$.ajax({
+		url: '/smhrd/community/communityReportOk',
+		data: params,
+		type: 'POST',
+		success:function(result) {
+			console.log(result);
+			alert('신고가 접수되었습니다');
+			$("#comReportFrm").css('display', 'none');
+		},
+		error:function(e){
+			console.log(e.responseText);
+			alert('신고가 접수되지 않았습니다');
+		} 
+	});		
+});
+
+// 댓글 신고 폼
+$(document).on('click','#communityReplyList input[value=신고]',function(){
+	
+	$("#cReportReplyFrm").css('display', 'block');
+});
+
+// 댓글 신고하기 
+$(document).on('click', '#communityReplyList input[value=신고하기]', function(){
+	event.preventDefault();  
+
+	if (!confirm("해당 댓글을 신고하시겠습니까?")) {
+		return false;
+	}
+	
+	if($("#reportChk").val() == "") {
+		alert("신고사유을 선택해주세요");
+		return false;
+	}
+	
+	var params = $(this).parent().serialize();  //$("#reportReply").serialize();		
+	console.log(params)
+	
+		$.ajax({
+		url: '/smhrd/communityReply/communityReplyReportOk',
+		data: params,
+		type: 'POST',
+		success:function(result) {
+			console.log(result);
+			alert('신고가 접수되었습니다');
+			communityReplyList();
+		},
+		error:function(e){
+			console.log(e.responseText);
+			alert('신고가 접수되지 않았습니다');
+		} 
+	});
+	
+	});
+	communityReplyList();	
 });
 
 </script>
@@ -164,8 +266,8 @@ communityReplyList();
 		</c:if>
 		<c:if test="${dto.com_type==3}">
 			<li>소통 게시판</li>
-		</c:if>				
-      <li>글쓴이 : 익명의 누군가</li>
+		</c:if>
+	  <li>글쓴이 : 익명의 누군가</li>				
       <li>조회수 : ${dto.com_hit}</li>
       <li>등록일 : ${dto.com_wdate}</li>
       <li>제목 : ${dto.com_title}</li>
@@ -178,14 +280,39 @@ communityReplyList();
 			<a href="javascript:boardDelChk()">삭제</a>
    		</c:if>
 	</div>
+	<!-- 신고 -->
+	<c:if test="${logId != dto.mem_id}">
+		<button id="comReportBtn">신고</button>
+	</c:if>	
+	<div style="display:none;">
+		<form id="comReportFrm">
+		<input type="hidden" name='com_num' value="${dto.com_num}">
+		<input type="hidden" name='com_report_url' id="com_report_url" value="">
+		<input type="hidden" name="board" value="community"/>
+		<!-- 어떤 게시판의 몇번 글인지 보내기 -->
+		<input type="radio" name="report_content" value="홍보/영리 목적" class="reportChk" id="comReportChk">홍보/영리 목적
+		<br>
+		<input type="radio" name="report_content" value="욕설및비방" class="reportChk" id="comReportChk">욕설 및 비방
+		<br>
+		<input type="radio" name="report_content" value="부적절한표현" class="reportChk" id="comReportChk">부적절한 표현
+		<br>
+		<input type="radio" name="report_content" value="거짓/불법정보" class="reportChk" id="comReportChk">거짓/불법정보
+		<br>
+		<input type="radio" name="report_content" value="기타" class="comReportChk">기타
+		<br>
+		<input type="submit" value="신고하기">
+	</form>
+	</div>
+	
+	<!-- 댓글 -->
 	<div id="communityReply">
-			
+			<c:if test="${logStatus=='Y'}">
 			<form method="post" id="communityReplyFrm">
 				<input type="hidden" name="com_num" value="${dto.com_num }">  
 				<textarea name="com_review_content" id="communityComent"></textarea>
 				<input type="submit" value="댓글 등록하기">
 			</form>
-
+			</c:if>
 		<hr/>
 		<ul id="communityReplyList">			
 		</ul>

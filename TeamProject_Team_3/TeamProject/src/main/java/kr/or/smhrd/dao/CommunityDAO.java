@@ -4,6 +4,7 @@ import java.util.List;
 
 import kr.or.smhrd.dto.CommunityDTO;
 import kr.or.smhrd.dto.PagingDTO;
+import kr.or.smhrd.dto.ReportDTO;
 
 public interface CommunityDAO {
 	
@@ -31,6 +32,10 @@ public interface CommunityDAO {
 	
 	//글 삭제
 	public int boardDel(int com_num);
+	
+
+	// 게시물 신고
+	public int communityReportInsert(ReportDTO Rdto);
 	
 	// 맛집 리스트 Topten추출
 	public List<CommunityDTO> boardListTen(PagingDTO pDTO);

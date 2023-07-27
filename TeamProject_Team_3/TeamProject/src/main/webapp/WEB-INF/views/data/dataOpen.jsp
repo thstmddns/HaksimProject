@@ -155,6 +155,8 @@ $(document).on('click', '#dataReplyList input[value=Del]', function() {
 				}
 		});
 });
+
+
 	$(document).on("click", "#dataReplyList input[value=Edit]", function() {
 			$(this).parent().css("display", "none");
 			$(this).parent().next().css("display", "block");
@@ -282,7 +284,7 @@ $(document).on('click', '#dataReplyList input[value=Del]', function() {
 		<br>
 		<input type="radio" name="report_content" value="거짓/불법정보" class="reportChk" id="dataReportChk">거짓/불법정보
 		<br>
-		<input type="radio" name="report_content" value="기타" class="reportChk">기타
+		<input type="radio" name="report_content" value="기타" class="dataReportChk">기타
 		<br>
 		<input type="submit" value="신고하기">
 	</form>

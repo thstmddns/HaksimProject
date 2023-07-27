@@ -10,7 +10,7 @@
 		</insert>	
 	
 	<select id="replySelect" resultType="kr.or.smhrd.dto.CommunityReplyDTO">
-		select com_review_num, com_review_content, mem_id
+		select com_review_num, com_review_content, mem_id, com_num
 		FROM community_review WHERE com_num=${param1} 
 		ORDER BY com_review_num desc
 	</select>
@@ -24,4 +24,8 @@
 	<delete id="replyDelete">
 		delete from community_review where com_review_num = ${param1}
 	</delete>
+	<insert id="sReportInsert" parameterType="kr.or.smhrd.dto.ReportDTO">
+		insert into report_board (report_num, mem_id, report_content, report_wdate, report_board, report_board_num, report_url, report_review_num )
+		values(report_no_seq.nextval, #{mem_id}, #{report_content}, sysdate, #{board}, ${com_num},#{com_reportReply_url}, ${com_review_num})
+	</insert>
 </mapper>
