@@ -57,9 +57,10 @@ public class CommunityServiceImpl implements CommunityService {
 	@Override
 	public int communityReportInsert(ReportDTO Rdto) {
 		return dao.communityReportInsert(Rdto);
+
+	public List<CommunityDTO> boardListTen(PagingDTO pDTO) {
+		return dao.boardListTen(pDTO);
+
 	}
-
-	
-
 }
 

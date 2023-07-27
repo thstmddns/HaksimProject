@@ -62,5 +62,17 @@
 		VALUES(report_no_seq.nextval, #{mem_id}, #{report_content}, sysdate, ${com_num}, #{board}, #{com_report_url})
 	
 	</insert>
-		
+		<select id="boardListTen" resultType="kr.or.smhrd.dto.CommunityDTO">		
+		SELECT * FROM (
+		SELECT * FROM COMMUNITY
+		where 1=1
+		<if test="searchWord != null">
+			and ${searchKey} like '%${searchWord}%'
+		</if>
+		<if test="com_type != 0">
+			and com_type=${com_type}
+		</if>
+		ORDER BY com_hit DESC)
+		WHERE ROWNUM &lt; 11
+		</select>
 </mapper>

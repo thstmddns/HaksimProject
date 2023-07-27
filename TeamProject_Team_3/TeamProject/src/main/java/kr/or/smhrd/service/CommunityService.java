@@ -14,5 +14,8 @@ public interface CommunityService {
 	public int boardDel(int com_num);
 	public int communityEditOk(CommunityDTO dto);
 	public int boardWriteOk(CommunityDTO dto);
+
 	public int communityReportInsert(ReportDTO Rdto);
+	public List<CommunityDTO> boardListTen(PagingDTO pDTO);
+
 }

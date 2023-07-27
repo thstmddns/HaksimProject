@@ -36,7 +36,7 @@ public class CommunityController {
 		}
 		pDTO.setCom_type(com_type);
 		pDTO.setTotalRecord(service.totalRecord(pDTO));
-		List <CommunityDTO> list = service.boardList(pDTO);
+		List <CommunityDTO> list = service.boardListTen(pDTO);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", list);		
@@ -133,7 +133,7 @@ public class CommunityController {
 			
 			return mav;
 		}
-		
+
 		@PostMapping("/communityReportOk") 
 		@ResponseBody
 		public String communityReportOk(ReportDTO dto, HttpSession session, HttpServletRequest request, RedirectAttributes rttr) {
@@ -142,5 +142,22 @@ public class CommunityController {
 		  int result = service.communityReportInsert(dto);		  
 		 
 		  return result+""; 
+
+		// 맛집 추천
+		@GetMapping("/communityListChucheon")
+		public ModelAndView communityListChucheon(PagingDTO pDTO, @ModelAttribute("com_type") Integer com_type) {	
+			if(com_type == null) {
+				com_type = 0;
+			}
+			pDTO.setCom_type(com_type);
+			pDTO.setTotalRecord(service.totalRecord(pDTO));
+			List <CommunityDTO> list = service.boardList(pDTO);
+			
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("list", list);		
+			mav.addObject("pDTO", pDTO);
+			mav.setViewName("community/communityList");
+			
+			return mav;
 		}
 }
