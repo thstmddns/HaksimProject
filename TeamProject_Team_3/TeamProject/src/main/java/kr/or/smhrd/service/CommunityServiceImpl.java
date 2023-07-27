@@ -53,6 +53,11 @@ public class CommunityServiceImpl implements CommunityService {
 		return dao.boardWriteOk(dto);
 	}
 
+	@Override
+	public List<CommunityDTO> boardListTen(PagingDTO pDTO) {
+		return dao.boardListTen(pDTO);
+	}
+
 	
 
 }
