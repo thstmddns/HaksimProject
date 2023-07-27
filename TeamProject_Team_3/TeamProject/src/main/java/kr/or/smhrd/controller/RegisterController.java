@@ -1,10 +1,12 @@
 package kr.or.smhrd.controller;
 
+import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
@@ -178,23 +180,29 @@ public class RegisterController {
 		}		
 		return mav;
 	}
-	@PostMapping("/ddiling")
-	public void ddilink() {
-		try {  
-		String subject = "간식요청이 왔어요";
-		String content = "<div style='background:pink; border:1px solid #ddd; padding:50px; text-align:center'>";
-		content += "간식요청이 왔습니다.";
-		content += "</div>";
-		MimeMessage message = mailSender.createMimeMessage();
-		MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
-		messageHelper.setFrom("smshrd@naver.com");
-		messageHelper.setTo("smshrd@naver.com");
-		messageHelper.setSubject(subject);
-		messageHelper.setText("text/html; charset=UTF-8", content);
-		
-		mailSender.send(message);
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+
+    @PostMapping("/sendSnackRequestEmail")
+    @ResponseBody
+    public String sendSnackRequestEmail() {
+    	System.out.println(1);
+        String recipientEmail = "smshrd@naver.com"; // 실제 수신자 이메일 주소로 바꿔주세요.
+
+        try {
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
+            helper.setFrom("smshrd@naver.com"); // 본인의 이메일 주소로 바꿔주세요
+            helper.setTo(recipientEmail);
+            helper.setSubject("간식 요청");
+            helper.setText("<div style='background:pink;  border:1px solid #ddd; padding:50px; text-align:center'>"
+                    + "간식 요청이 도착했습니다!"
+                    + "</div>", true);
+
+            mailSender.send(message);
+            return "이메일이 성공적으로 전송되었습니다!";
+        } catch (MessagingException e) {
+            e.printStackTrace();
+            return "이메일 보내기 중 오류가 발생했습니다. 나중에 다시 시도해주세요.";
+        }
+    }
 }
+
