@@ -2,18 +2,23 @@ package kr.or.smhrd.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.or.smhrd.dto.CommunityReplyDTO;
+import kr.or.smhrd.dto.ReportDTO;
 import kr.or.smhrd.service.CommunityReplyService;
 
 @RestController
 public class CommunityReplyController {
+	
 	@Autowired
 	CommunityReplyService service;
 	
@@ -45,5 +50,16 @@ public class CommunityReplyController {
 	@PostMapping("/communityReply/replyEditOk")
 	public String replyEditOk(CommunityReplyDTO dto) {
 		return String.valueOf(service.replyUpdate(dto));
+	}
+	
+	@PostMapping("/communityReply/communityReplyReportOk") 
+	@ResponseBody
+	public String communityReplyReportOk(ReportDTO dto, HttpSession session, HttpServletRequest request, RedirectAttributes rttr) {
+	  dto.setMem_id((String)session.getAttribute("logId"));
+	
+	  
+	  int result = service.sReportInsert(dto);
+	  
+	  return result+""; 
 	}
 }

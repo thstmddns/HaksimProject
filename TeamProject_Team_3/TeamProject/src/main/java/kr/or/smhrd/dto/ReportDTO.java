@@ -18,6 +18,8 @@ public class ReportDTO {
 	private String reportReply_url;
 	private String data_report_url;
 	private String data_reportReply_url;
+	private String com_report_url;
+	private String com_reportReply_url;
 	private int grad_num;
 	private String board;
 	private int data_num;

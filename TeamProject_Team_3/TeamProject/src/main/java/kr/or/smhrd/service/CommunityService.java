@@ -4,6 +4,7 @@ import java.util.List;
 
 import kr.or.smhrd.dto.CommunityDTO;
 import kr.or.smhrd.dto.PagingDTO;
+import kr.or.smhrd.dto.ReportDTO;
 
 public interface CommunityService {
 	public List<CommunityDTO> boardList(PagingDTO pDTO);
@@ -13,4 +14,5 @@ public interface CommunityService {
 	public int boardDel(int com_num);
 	public int communityEditOk(CommunityDTO dto);
 	public int boardWriteOk(CommunityDTO dto);
+	public int communityReportInsert(ReportDTO Rdto);
 }
