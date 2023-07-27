@@ -1,59 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<style>
-	.after_List {
-		overflow:auto;
-		list-style-type: none;
-	}
-	.after_List>li{
-	 	float:left;
-	 	width:10%;
-	 	height:40px;
-	 	line-height:40px;
-	 	border-bottom:1px solid #ddd;
-	 	text-align:center;
-	 }
-	 .after_List>li:nth-child(6n+3) {
-	 	width:50%;
-	 	/*말줄임표시*/
-	 	white-space:nowrap;  /*줄 바꾸지 않기*/
-	 	overflow:hidden;   /*넘친값 숨기기*/
-	 	text-overflow:ellipsis;   /* ... 표시하기 */
-	 }
-	 .page>ul {
-	 	overflow:auto;
-	 	list-style-type: none;
-	 	display:flex;
-	 	justify-content:center;
-	 	margin-top:10px;
-	 }
-	 .page li {
-	 	float:left;
-	 	width:40px;
-	 	height:40px;
-	 	text-align:center;
-	 }
-	.search {
-	 	text-align:center;
-	 	height:40px;
-	 	margin-top:10px;
-	 } 
-	 .searchWord {
-	 	width: 300px;
-        border-top: none;
-        border-left: none;
-        border-right: none;
-        border-bottom : 2px solid black;
-    }
-    .searchBtn {
-       width: 100px;
-        border-top: none;
-        border-left: none;
-        border-right: none;
-        border-bottom : 1px solid black;
-    }
 
-</style>
 <script>
 	$(function() {
 		
@@ -89,18 +36,20 @@
 
 </script>
 <main>
-	<h1>수료생 게시판 목록</h1>
+	<h1 class="Sub">수료생 게시판</h1>
 	<div>
-		<li>Category</li>
+		<h5 style="margin:30px;">Category</h5>
+		<div style="margin:30px;">
 		<input type='radio' name='cateChk' class='cateChk' value='0' id='cateChk0'/> 전체
 		<input type='radio' name='cateChk' class='cateChk' value='1' id='cateChk1'/> 멘토링
 		<input type='radio' name='cateChk' class='cateChk' value='2' id='cateChk2'/> 채용공고
 		<input type='radio' name='cateChk' class='cateChk' value='3' id='cateChk3'/> 기타
-		</br>
-		<a href="${pageContext.request.contextPath}/after/afterWrite"><button>글쓰기</button></a>
+		<br>
+		</div>
+		<a href="${pageContext.request.contextPath}/after/afterWrite"><button type="button" class="btn btn-outline-primary" id="writeBtn" style="margin:10px;">게시글 작성</button></a>
 	</div>
-	<div>총 레코드 수 : ${pDTO.totalRecord}개</div>
-	<ul class="after_List">
+	<div style="margin:30px;">총 레코드 수 : ${pDTO.totalRecord}개</div>
+	<ul class="List2">
 		<li>no</li>
 		<li>카테고리</li>
 		<li>제목</li>
@@ -146,7 +95,7 @@
 			<c:forEach var="p" begin="${pDTO.startPageNum}" end="${pDTO.startPageNum+pDTO.onePageNumCount-1}" step="1">
 				<c:if test="${p<=pDTO.totalPage}">
 					<c:if test="${p==pDTO.nowPage}">
-						<li style="background:#FFDCE1"><a href='/smhrd/after/afterList?grad_type=${pDTO.grad_type}&nowPage=${p}<c:if test="${pDTO.searchWord!=null}">&searchKey=${pDTO.searchKey}&searchWord=${pDTO.searchWord}</c:if>'>${p}</a></li>
+						<li style="background: #00468C; border-radius: 50%; width:25px; height:25px;"><a href='/smhrd/after/afterList?grad_type=${pDTO.grad_type}&nowPage=${p}<c:if test="${pDTO.searchWord!=null}">&searchKey=${pDTO.searchKey}&searchWord=${pDTO.searchWord}</c:if>' style="color: white">${p}</a></li>
 					</c:if>
 					<c:if test="${p!=pDTO.nowPage}">
 						<li><a href='/smhrd/after/afterList?grad_type=${pDTO.grad_type}&nowPage=${p}<c:if test="${pDTO.searchWord!=null}">&searchKey=${pDTO.searchKey}&searchWord=${pDTO.searchWord}</c:if>'>${p}</a></li>

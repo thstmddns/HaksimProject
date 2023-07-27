@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -19,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import kr.or.smhrd.dto.AfterDTO;
 import kr.or.smhrd.dto.CommunityDTO;
 import kr.or.smhrd.dto.PagingDTO;
+import kr.or.smhrd.dto.ReportDTO;
 import kr.or.smhrd.service.CommunityService;
 
 @Controller
@@ -34,7 +36,7 @@ public class CommunityController {
 		}
 		pDTO.setCom_type(com_type);
 		pDTO.setTotalRecord(service.totalRecord(pDTO));
-		List <CommunityDTO> list = service.boardList(pDTO);
+		List <CommunityDTO> list = service.boardListTen(pDTO);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", list);		
@@ -128,6 +130,34 @@ public class CommunityController {
 				mav.setViewName("redirect:communityView");
 				
 			}
+			
+			return mav;
+		}
+
+		@PostMapping("/communityReportOk") 
+		@ResponseBody
+		public String communityReportOk(ReportDTO dto, HttpSession session, HttpServletRequest request, RedirectAttributes rttr) {
+		  dto.setMem_id((String)session.getAttribute("logId"));
+				  
+		  int result = service.communityReportInsert(dto);		  
+		 
+		  return result+""; 
+		}
+
+		// 맛집 추천
+		@GetMapping("/communityListChucheon")
+		public ModelAndView communityListChucheon(PagingDTO pDTO, @ModelAttribute("com_type") Integer com_type) {	
+			if(com_type == null) {
+				com_type = 0;
+			}
+			pDTO.setCom_type(com_type);
+			pDTO.setTotalRecord(service.totalRecord(pDTO));
+			List <CommunityDTO> list = service.boardList(pDTO);
+			
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("list", list);		
+			mav.addObject("pDTO", pDTO);
+			mav.setViewName("community/communityList");
 			
 			return mav;
 		}

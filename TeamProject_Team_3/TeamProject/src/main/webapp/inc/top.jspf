@@ -8,56 +8,48 @@
 <title>Home</title>
 <link rel="stylesheet" href="/smhrd/inc/style.css" type="text/css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 
 <body>
 <header>
 
-<div class="headLine">   
-   <!-- 로그아웃 상태 -->
-   <c:if test="${logStatus != 'Y'}">
-      <a href="/smhrd/register/login"><input type="button" value="로그인"></a>
-      <a href="/smhrd/register/regForm"><input type="button" value="회원가입"></a>
-   </c:if>
-   
-   <!-- 로그인 상태 -->
-   <c:if test="${logStatus == 'Y'}">
-	   <c:if test="${logType == '1'}"><span>학생</span></c:if>
-	   <c:if test="${logType == '2'}"><span>선생님</span></c:if>
-	   <c:if test="${logType == '3'}"><span>관리자</span></c:if>
-	   <span>${logId} 님</span>      
-	   <a href="/smhrd/register/logout"><input type="button" value="로그아웃"></a>   
-	   <a href="/smhrd/register/registerEdit"><input type="button" value="회원정보수정"></a>
-   </c:if> 
-</div>
+	<div>
+		<div class="headLine">
+			<!-- 로그아웃 상태 -->
+			<c:if test="${logStatus != 'Y'}">
+				<a href="/smhrd/register/login"><button type="button" class="btn btn-outline-primary" style="margin-right: 3px; margin-left: 10px;">LogIn</button></a>
+				<a href="/smhrd/register/regForm"><button type="button" class="btn btn-outline-primary" style="margin-right: 10px; margin-left: 10px;">Join</button></a>
+			</c:if>
+			
+			<!-- 로그인 상태 -->
+			<c:if test="${logStatus == 'Y'}">
+				<div>
+				<c:if test="${logType == '1'}"><span>학생</span></c:if>
+				<c:if test="${logType == '2'}"><span>선생님</span></c:if>
+				<c:if test="${logType == '3'}"><span>관리자</span></c:if>
+					<span>${logId}님</span>
+					<a href="/smhrd/register/logout"><button type="button" class="btn btn-outline-primary" style="margin-right: 3px; margin-left: 10px;">LogOut</button></a>
+					<a href="/smhrd/register/registerEdit"><button type="button" class="btn btn-outline-primary" style="margin-right: 10px; margin-left: 10px;">Edit Information</button></a>
+				</div>
+			</c:if> 
+		</div>
+		
+	    <div id="title"> 
+	    	<a href="/smhrd" class="title"><img src="/smhrd/img/로고.png" style="width:600px; height:170px;"></a>
+	    </div>
+	    
+	  		<nav>
+			    <ul>
+			      <li><a href="/smhrd/notice/noticeList">Notice</a></li>
+			      <li><a href="/smhrd/data/dataList">Share</a></li>
+			      <li><a href="/smhrd/community/communityList?com_type=0">Community</a></li>
+			      <li><a href="/smhrd/after/afterList?grad_type=0">Graduated</a></li>
+			      <c:if test="${logType >= 2}">
+			      <li><a href="/smhrd/admin/adminList">Master</a></li>
+			      </c:if>
+			    </ul>
+		  	</nav>
+	</div>
 
-
-	<nav id="nav2">
-    <a href="/smhrd" class="title"><img src="/smhrd/img/로고.png" style="width:500px; height:200px;"></a>
-    <ul>
-      <li><a href="#">공지</a></li>
-      <li><a href="#">자료공유</a></li>
-      <li><a href="#">커뮤니티</a></li>
-      <li><a href="#">수료생</a></li>
-      <c:if test="${logType >= 2}">
-      <li><a href="#">관리자페이지</a></li>
-      </c:if>
-    </ul>
-  	</nav>
-  
- <%--   
- <nav>
-      <ul>
-         <li><a href="/smhrd/notice/noticeList">공지 게시판</a></li>
-         <li><a href="/smhrd/data/dataList">자료 공유 게시판</a></li>
-         <li><a href="/smhrd/community/communityList?com_type=0">커뮤니티 게시판</a></li>
-         <li><a href="/smhrd/#">맛집 공유 게시판</a></li>
-         <li><a href="/smhrd/after/afterList?grad_type=0">수료생 게시판</a></li>
-         <c:if test="${logType >= 2}">
-            <li><a href="/smhrd/admin/adminList">관리자 페이지</a></li>
-         </c:if>
-      </ul>   
-   </nav>  --%>
-   
 </header>

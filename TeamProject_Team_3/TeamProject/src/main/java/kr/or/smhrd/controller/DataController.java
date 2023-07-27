@@ -39,7 +39,7 @@ public class DataController {
 	   @GetMapping("/dataList")
 	   public ModelAndView dataList(PagingDTO pDTO) {
 	      
-	      pDTO.setTotalRecord(service.totalRecord(pDTO));
+	      pDTO.setTotalRecord(service.dTotalRecord(pDTO));
 	      List<DataDTO> list = service.dataList(pDTO);
 	      
 	      ModelAndView mav = new ModelAndView();

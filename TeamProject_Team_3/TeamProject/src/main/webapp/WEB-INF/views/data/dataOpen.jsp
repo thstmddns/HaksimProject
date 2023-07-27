@@ -29,7 +29,7 @@ $(function(){
              $("#dataReplyList").html("");
              console.log(replyResult);
              $(replyResult).each(function(i, coment){
-                var tag = "<li><div>";
+                var tag = "<li><div class='replyFrm'>";
                 tag += "<b>"+coment.mem_id+"</b>";
                 if(coment.mem_id=='${logId}') {
                    tag += "<input type='button' value='Edit'/>";
@@ -37,7 +37,7 @@ $(function(){
                    tag += "<p>"+coment.data_review_content+"<p></div>";  // 댓글 내용
                    
                    // -- 수정폼
-                   tag += "<div style='display:none'>";
+                   tag += "<div style='display:none' class='replyFrm'>";
                    tag += "<form>";
                    tag += "<textarea style='width:400px' name='data_review_content'>";
                    // 글 내용 수정, 댓글번호
@@ -51,14 +51,14 @@ $(function(){
                 }else {
                 	tag += "<input type='button' value='신고'/>";
 					tag += "<p>"+coment.data_review_content+"</p></div>";
-					tag += "<div id='dReportReplyFrm' style='display:none'>";
+					tag += "<div id='dReportReplyFrm' style='display:none' class='reportFrm'>";
 					tag += "<form id='dReportReply'>";
 					tag +="<input type='hidden' name='data_num' value='"+coment.data_num+"'/>";
 					tag += "<input type='hidden' name='data_review_num' value='"+coment.data_review_num+"'/>";
 					tag +="<input type='hidden' name='data_reportReply_url' id='data_reportReply_url' value='"+window.location.href+"'>";
 					tag +="<input type='hidden' name='board' value='data_review'/>";
 					<!-- 어떤 게시판의 몇번 글인지 보내기 -->
-					tag += "<li>신고사유를 선택해주세요</li>";
+					tag += "<li><b>신고사유를 선택해주세요</b></li>";
 					tag +="<input type='radio' name='report_content' value='홍보/영리 목적' class='reportChk' id='reportChk'>홍보/영리 목적";
 					tag +="<br>";
 					tag +="<input type='radio' name='report_content' value='욕설및비방' class='reportChk' id='reportChk'>욕설 및 비방";
@@ -155,6 +155,8 @@ $(document).on('click', '#dataReplyList input[value=Del]', function() {
 				}
 		});
 });
+
+
 	$(document).on("click", "#dataReplyList input[value=Edit]", function() {
 			$(this).parent().css("display", "none");
 			$(this).parent().next().css("display", "block");
@@ -282,7 +284,7 @@ $(document).on('click', '#dataReplyList input[value=Del]', function() {
 		<br>
 		<input type="radio" name="report_content" value="거짓/불법정보" class="reportChk" id="dataReportChk">거짓/불법정보
 		<br>
-		<input type="radio" name="report_content" value="기타" class="reportChk">기타
+		<input type="radio" name="report_content" value="기타" class="dataReportChk">기타
 		<br>
 		<input type="submit" value="신고하기">
 	</form>
@@ -290,11 +292,11 @@ $(document).on('click', '#dataReplyList input[value=Del]', function() {
    
    
    
-   <div id="dataReply">
+   <div id="dataReply" class="reply">
          <!-- <form method="post" id="dataReplyFrm"> -->
-         <form method="post"   id="dataReplyFrm">
+         <form method="post"   id="dataReplyFrm" class='replyFrm'>
             <input type="hidden" name="data_num" value="${dto.data_num }">  
-            <textarea name="data_review_content" id="dataComent"></textarea>
+            <textarea style="margin-left:30px; width:380px;" name="data_review_content" id="dataComent"></textarea>
             <input type="submit" value="댓글 등록하기">
          </form>
       <hr/>

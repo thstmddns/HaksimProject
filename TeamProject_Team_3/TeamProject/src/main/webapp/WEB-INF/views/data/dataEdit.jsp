@@ -48,17 +48,17 @@
 </script>
 
 <main>
-	<h1>자료실 글수정</h1>
+	<h2 class="board">게시글 수정/자료공유</h2>
 	<!-- 파일첨부가 있을 경우  form 태그에 enctype속성을 반드시 기술해야됨 -->
-	<form method="post" id="frm" action="/smhrd/data/dataEditOk" enctype="multipart/form-data">
+	<form method="post" id="frm" action="/smhrd/data/dataEditOk" enctype="multipart/form-data" class="editFrm">
 	<!-- 현재 수정하는 글의 글 번호를 폼에 보관 (나중에 수정 기준이 되는 레코드 번호를 사용) -->
 	<input type="hidden" name="data_num" value="${dto.data_num }">
 	<ul>
-		<li>제목</li>
-		<li><input type="text" name="data_title" value="${dto.data_title }"/></li>
-		<li>글내용</li>
+		<li class="text"># 제목</li>
+		<li><input type="text" name="data_title" value="${dto.data_title }" size=112px style="line-height:30px; border:1px solid #D2D2D2;"/></li>
+		<li class="text"># 내용</li>
 		<li><textarea name="data_content" id="data_content">${dto.data_content }</textarea></li>
-		<li>첨부파일</li>
+		<li class="text"># 첨부파일</li>
 		<li id='filelist'>
 			<!-- 이미 첨부된 파일을 다시 수정할 수 있도록 하는 -->
 			<c:forEach var="fileDTO" items="${fileList }">
@@ -72,7 +72,7 @@
 				<input type="button" value="+"/>	
 			</div>
 		</li>
-		<li><input type="submit" value="자료실 수정하기"/></li>
+		<li><input type="submit" value="게시글 수정"/></li>
 	</ul>
 	</form>
 </main>
