@@ -178,4 +178,24 @@ public class RegisterController {
 		}		
 		return mav;
 	}
+	@PostMapping("/ddiling")
+	public void ddilink() {
+		try {  
+		String subject = "간식요청이 왔어요";
+		String content = "<div style='background:pink; border:1px solid #ddd; padding:50px; text-align:center'>";
+		   
+		content += "간식요청이 왔습니다.";
+		content += "</div>";
+		MimeMessage message = mailSender.createMimeMessage();
+		MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
+		messageHelper.setFrom("smshrd@naver.com");
+		messageHelper.setTo("smshrd@naver.com");
+		messageHelper.setSubject(subject);
+		messageHelper.setText("text/html; charset=UTF-8", content);
+		
+		mailSender.send(message);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

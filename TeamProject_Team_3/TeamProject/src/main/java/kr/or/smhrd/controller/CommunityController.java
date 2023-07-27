@@ -157,7 +157,7 @@ public class CommunityController {
 			ModelAndView mav = new ModelAndView();
 			mav.addObject("list", list);		
 			mav.addObject("pDTO", pDTO);
-			mav.setViewName("community/communityList");
+			mav.setViewName("community/communityListChuCheon");
 			
 			return mav;
 		}
