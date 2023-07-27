@@ -14,7 +14,7 @@ import kr.or.smhrd.dto.ReportDTO;
 
 public interface DataService {
 	public List<DataDTO> dataList(PagingDTO pDTO);
-	public int totalRecord(PagingDTO pDTO);
+	public int dTotalRecord(PagingDTO pDTO);
 	public void hitCount(int data_num);
 	public DataDTO getBoard(int data_num);
 	public int dataDelete(int data_num, String mem_id);

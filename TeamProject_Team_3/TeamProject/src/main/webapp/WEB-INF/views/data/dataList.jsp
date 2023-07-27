@@ -1,36 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<style>
-.data_List {
-      overflow:auto;
-      list-style-type: none;
-	}
-.data_List>li{
-       float:left;
-       width:10%;
-       height:40px;
-       line-height:40px;
-       border-bottom:1px solid #ddd;
-       text-align:center;
-    }
-.data_List>li:nth-child(5n+2) {
-       width:60%;
-       /*말줄임표시*/
-       white-space:nowrap;  /*줄 바꾸지 않기*/
-       overflow:hidden;   /*넘친값 숨기기*/
-       text-overflow:ellipsis;   /* ... 표시하기 */
-    }
-</style>
-
 <main>
-	<h1>자료 공유 게시판 목록</h1>
-   <div>
-      <a href="${pageContext.request.contextPath}/data/dataWrite"><button>글쓰기</button></a>
+	<h1 class="Sub">자료 공유 게시판</h1>
+   <div class="WriteBtn">
+      <a href="${pageContext.request.contextPath}/data/dataWrite"><button type="button" class="btn btn-outline-primary" id="writeBtn" style="margin:10px;">게시글 작성</button></a>
    </div>
-   <!-- <div>총 레코드 수 : ${pDTO.totalRecord}개</div> -->
+   <div style="margin:30px;">총 레코드 수 : ${pDTO.totalRecord}개</div>
 	
-		<ul class="data_List">
+		<ul class="List">
 			<li>no</li>
 			<li>제목</li>
 			<li>글쓴이</li>
@@ -64,7 +42,7 @@
          <c:forEach var="p" begin="${pDTO.startPageNum}" end="${pDTO.startPageNum+pDTO.onePageNumCount-1}" step="1">
             <c:if test="${p<=pDTO.totalPage}">
                <c:if test="${p==pDTO.nowPage}">
-                  <li style="background:#FFDCE1"><a href='/smhrd/data/dataList?nowPage=${p}<c:if test="${pDTO.searchWord!=null}">&searchKey=${pDTO.searchKey}&searchWord=${pDTO.searchWord}</c:if>'>${p}</a></li>
+                  <li style="background: #00468C; border-radius: 50%; width:25px; height:25px;"><a href='/smhrd/data/dataList?nowPage=${p}<c:if test="${pDTO.searchWord!=null}">&searchKey=${pDTO.searchKey}&searchWord=${pDTO.searchWord}</c:if>' style="color: white">${p}</a></li>
                </c:if>
                <c:if test="${p!=pDTO.nowPage}">
                   <li><a href='/smhrd/data/dataList?nowPage=${p}<c:if test="${pDTO.searchWord!=null}">&searchKey=${pDTO.searchKey}&searchWord=${pDTO.searchWord}</c:if>'>${p}</a></li>

@@ -16,7 +16,7 @@ public interface DataDAO {
 	public List<DataDTO> dataList(PagingDTO pDTO);
 	
 	// 총 레코드 수
-	public int totalRecord(PagingDTO pDTO);
+	public int dTotalRecord(PagingDTO pDTO);
 	
 	// 한개의 레코드 선택
 	public DataDTO getBoard(int data_num);

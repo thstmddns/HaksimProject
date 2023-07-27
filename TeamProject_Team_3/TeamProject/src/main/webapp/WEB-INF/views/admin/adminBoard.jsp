@@ -1,12 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<script>
-	function ReportCheck(){
-		
-	}
-</script>
-
 <style>
 	ul,li{
 		margin: 0px;	
@@ -14,17 +8,20 @@
 		list-style-type: none;
 	}
 	
-	div > div{
+	.adminBoard{
 		border:1px solid #00468C;
 		margin-bottom: 40px;
 		background-color: #bbddff;
-	}
-	
-	h2{
 		text-align: center;
 		margin: 10px;
 		color: #ffffff;
 	}
+	
+	a:link, a:visited, a:hover{
+   		text-decoration: none;
+   		color: #000000;
+	}
+	
 	#adminList{
 		display: flex;
 		flex-direction: column;
@@ -105,9 +102,9 @@
 </style>
 
 <main>
-	<h1 align="center">관리자 페이지</h1>
+	<h1 align="center" style="margin:20px;">관리자 페이지</h1>
 	<div id="adminList">
-		<div>
+		<div id="adminBoard">
 			<h2>학생 리스트</h2>
 			<form>
 			<ul id="studentList">
@@ -140,7 +137,7 @@
 			</form>
 		</div>
 		
-		<div>
+		<div style="margin:20px;">
 			<h2>신고내역 리스트</h2>
 			<form>
 			<ul id="reportList">
@@ -155,7 +152,7 @@
 					<li>${rDTO.mem_id}</li>
 					<li>${rDTO.report_content}</li>
 					<li><a href="${rDTO.report_url}">${rDTO.report_url}</a></li>
-					<li><a href="/smhrd/admin/reportDel?no=${rDTO.report_num}"><input type="button" value="확인"></a></li>
+					<li><a href="/smhrd/admin/reportDel?no=${rDTO.report_num}"><input type="button" value="확인" style="height:auto;"></a></li>
 				</c:forEach>
 			</ul>
 			</form>

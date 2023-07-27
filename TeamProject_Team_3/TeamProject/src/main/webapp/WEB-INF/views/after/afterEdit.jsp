@@ -22,17 +22,16 @@
 
 
 <main>
-	<h1>수료생 글 수정</h1>
-	
-	<form method="post" id="frm" action="/smhrd/after/afterEditOk" enctype="multipart/form-data">
+	<h2 class="board">게시글 수정/수료생</h2>
+	<form method="post" id="frm" action="/smhrd/after/afterEditOk" enctype="multipart/form-data" class="editFrm">
 	
 	<input type="hidden" name="grad_num" value="${dto.grad_num }">
 	<ul class="afterEdit">
-		<li>제목</li>
-		<li><input type="text" name="grad_title" value="${dto.grad_title}" size=135px style="line-height:30px"/></li>
-		<li>글내용</li>
+		<li class="text"># 제목</li>
+		<li><input type="text" name="grad_title" value="${dto.grad_title}" size=112px style="line-height:30px; border:1px solid #D2D2D2;"/></li>
+		<li class="text"># 내용</li>
 		<li><textarea name="grad_content" id="grad_content" >${dto.grad_content}</textarea></li>
-		<li><input type="submit" value="글수정"/></li>
+		<li><input type="submit" value="게시글 수정"/></li>
 	</ul>
 	</form>
 </main>

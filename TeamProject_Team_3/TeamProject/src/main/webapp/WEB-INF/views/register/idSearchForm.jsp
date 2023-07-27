@@ -33,12 +33,14 @@ $(function(){
 });
 </script> -->
 <main>
-	<h1>아이디 찾기</h1>
-	<form action="/smhrd/register/idSearchResult" method="post">
+	<div class="wrapper">
+	<h2>Search ID</h2>
+	<form action="/smhrd/register/idSearchResult" method="post" class="Form">
 		<ul>		
-			<li>이름 : <input type="text" name="mem_name" id="mem_name"/></li>
-			<li>이메일 : <input type="text" name="mem_email" id="mem_email" placeholder="예)sm7@smhrd.or.kr" /></li>
-			<li><input type="submit" value="아이디찾기" /></li>
+			<li><input type="text" name="mem_name" id="mem_name" placeholder="이름"/></li>
+			<li><input type="text" name="mem_email" id="mem_email" placeholder="아이디 예)sm7@smhrd.or.kr" /></li>
+			<li><input type="submit" value="아이디 찾기" /></li>
 		</ul>
 	</form>
+	</div>
 </main>

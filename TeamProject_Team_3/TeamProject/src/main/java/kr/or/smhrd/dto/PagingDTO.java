@@ -13,17 +13,19 @@ public class PagingDTO {
 	private int lastPageRecord = 15;		
 	
 	private String searchKey;			
-	private String searchWord;
-	private int grad_type = 0;
+
+	private String searchWord;			
+	
+	private int grad_type = 0;			
+	
 	private int com_type = 0;
+	
 	public int getNowPage() {
 		return nowPage;
 	}
 	public void setNowPage(int nowPage) {
 		this.nowPage = nowPage;
 
-		// 페이지의 시작번호 생성하기
-		// 시작번호 = ((현재페이지-1)/한페이지에 표시할 페이지수)*한페이지에 표시할 페이지수 + 1 
 		startPageNum = ((nowPage-1) / onePageNumCount ) * onePageNumCount + 1;
 	}
 	public int getOnePageRecord() {
@@ -40,6 +42,7 @@ public class PagingDTO {
 
 	public void setTotalRecord(int totalRecord) {
 		this.totalRecord = totalRecord;
+	
 		// 총 페이지 수 계산하기
 		// ceil():올림, round():반올림, floor():내림
 		totalPage = (int)Math.ceil((double)totalRecord / onePageRecord);

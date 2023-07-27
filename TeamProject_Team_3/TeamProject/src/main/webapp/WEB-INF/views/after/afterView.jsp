@@ -30,7 +30,7 @@
 					console.log(replyResult);
 					$(replyResult).each(function(i, coment){
 						console.log(i, coment);
-						var tag = "<li><div>";
+						var tag = "<li><div class='replyFrm'>";
 						tag += "<b>"+coment.mem_id+"</b>";
 						if(coment.mem_id=='${logId}') {
 							tag += "<input type='button' value='Edit'/>";
@@ -38,7 +38,7 @@
 							tag += "<p>"+coment.grad_review_content+"<p></div>";  // 댓글 내용
 							
 							// -- 수정폼
-							tag += "<div style='display:none'>";
+							tag += "<div style='display:none' class='replyFrm'>";
 							tag += "<form>";
 							tag += "<textarea style='width:400px' name='grad_review_content'>";
 							// 글 내용 수정, 댓글번호
@@ -52,14 +52,14 @@
 						}else {
 							tag += "<input type='button' value='신고'/>";
 							tag += "<p>"+coment.grad_review_content+"</p></div>";
-							tag += "<div id='reportReplyFrm' style='display:none'>";
+							tag += "<div id='reportReplyFrm' style='display:none' class='reportFrm'>";
 							tag += "<form id='reportReply'>";
 							tag +="<input type='hidden' name='grad_num' value='"+coment.grad_num+"'/>";
 							tag += "<input type='hidden' name='grad_review_num' value='"+coment.grad_review_num+"'/>";
 							tag +="<input type='hidden' name='reportReply_url' id='reportReply_url' value='"+window.location.href+"'>";
 							tag +="<input type='hidden' name='board' value='grad_review'/>";
 							<!-- 어떤 게시판의 몇번 글인지 보내기 -->
-							tag += "<li>신고사유를 선택해주세요</li>";
+							tag += "<li><b>신고사유를 선택해주세요</b></li>";
 							tag +="<input type='radio' name='report_content' value='홍보/영리 목적' class='reportChk' id='reportChk'>홍보/영리 목적";
 							tag +="<br>";
 							tag +="<input type='radio' name='report_content' value='욕설및비방' class='reportChk' id='reportChk'>욕설 및 비방";
@@ -282,7 +282,7 @@
 </script>
 
 <main>
-	<h1>수료생 게시판 글 내용 보기</h1>
+	<h1 class="title">${dto.grad_title}</h1>
 	<ul class="afterView">
 		<li>번호 : ${dto.grad_num}</li>
 		<c:if test="${dto.grad_type==1}">
@@ -297,7 +297,6 @@
 		<li>글쓴이 : ${dto.mem_id}</li>
 		<li>조회수 : ${dto.grad_hit}</li>
 		<li>등록일 : ${dto.grad_wdate}</li>
-		<li>제목 : ${dto.grad_title}</li>
 		<li><br>글내용<br/> ${dto.grad_content}</li>
 	</ul>	
 	
@@ -332,11 +331,11 @@
 	
 	
 		<!-- 댓글 달기 -->
-	<div id="afterReply">
+	<div id="afterReply" class="reply">
 		<c:if test="${logStatus=='Y'}">
-			<form method="post" id="afterReplyFrm">
+			<form method="post" id="afterReplyFrm" class='replyFrm'>
 				<input type="hidden" name="grad_num" value="${dto.grad_num }">  
-				<textarea name="grad_review_content" id="gradComent"></textarea>
+				<textarea style="margin-left:30px; width:380px;" name="grad_review_content" id="gradComent"></textarea>
 				<input type="submit" value="댓글 등록하기">
 			</form>
 		</c:if>

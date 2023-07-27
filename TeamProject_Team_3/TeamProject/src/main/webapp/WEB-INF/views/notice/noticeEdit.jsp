@@ -21,16 +21,16 @@
 </style>
 
 <main>
-	<h1>글 수정 페이지</h1>
+	<h2 class="board">게시글 수정/공지</h2>
 	
-	<form method="post" id="frm" action="/smhrd/notice/noticeEditOk" enctype="multipart/form-data">
+	<form method="post" id="frm" action="/smhrd/notice/noticeEditOk" enctype="multipart/form-data" class="editFrm">
 		<input type="hidden" name="notice_num" value="${dto.notice_num}">
 		<ul class="dataEdit">
-			<li>제목</li>
-			<li><input type="text" name="notice_title" value="${dto.notice_title}" size=135px style="line-height:30px"/></li>
-			<li>글내용</li>
+			<li class="text"># 제목</li>
+			<li><input type="text" name="notice_title" value="${dto.notice_title}" size=112px style="line-height:30px; border:1px solid #D2D2D2;"/></li>
+			<li class="text"># 내용</li>
 			<li><textarea name="notice_content" id="content" >${dto.notice_content}</textarea></li>
-			<li><input type="submit" value="글수정" /></li>
+			<li><input type="submit" value="게시글 수정" /></li>
 		</ul>
 	</form>
 </main>

@@ -30,7 +30,7 @@ $(function(){
 				console.log(replyResult);
 				var len = replyResult.length;
 				$(replyResult).each(function(i, coment){
-					var tag = "<li><div>";
+					var tag = "<li><div class='replyFrm'>";
 					tag += "<b>"+(len-i)+"빠</b>";
 					
 					    if(coment.mem_id=='${logId}'){
@@ -38,9 +38,9 @@ $(function(){
 						tag += "<input type='button' value='Del' title='"+coment.com_review_num+"'/>";
 						tag += "<p>"+coment.com_review_content+"<p></div>";  // 댓글 내용 */ */						
 						// -- 수정폼
-						tag += "<div style='display:none'>";
+						tag += "<div style='display:none' class='replyFrm'>";
 						tag += "<form>";
-						tag += "<textarea style='width:400px' name='com_review_content'>";
+						tag += "<textarea style='width:420px; margin-left:25px;' name='com_review_content'>";
 						// 글 내용 수정, 댓글번호
 						tag += coment.com_review_content;
 						tag += "</textarea>";
@@ -52,14 +52,14 @@ $(function(){
 					    }else {
 							tag += "<input type='button' value='신고'/>";
 							tag += "<p>"+coment.com_review_content+"</p></div>";
-							tag += "<div id='cReportReplyFrm' style='display:none'>";
+							tag += "<div id='cReportReplyFrm' style='display:none' class='reportFrm'>";
 							tag += "<form id='cReportReply'>";
 							tag +="<input type='hidden' name='com_num' value='"+coment.com_num+"'/>";
 							tag += "<input type='hidden' name='com_review_num' value='"+coment.com_review_num+"'/>";
 							tag +="<input type='hidden' name='com_reportReply_url' id='com_reportReply_url' value='"+window.location.href+"'>";
 							tag +="<input type='hidden' name='board' value='com_review'/>";
 							<!-- 어떤 게시판의 몇번 글인지 보내기 -->
-							tag += "<li>신고사유를 선택해주세요</li>";
+							tag += "<li><b>신고사유를 선택해주세요</b></li>";
 							tag +="<input type='radio' name='report_content' value='홍보/영리 목적' class='reportChk' id='reportChk'>홍보/영리 목적";
 							tag +="<br>";
 							tag +="<input type='radio' name='report_content' value='욕설및비방' class='reportChk' id='reportChk'>욕설 및 비방";
@@ -306,10 +306,12 @@ $(document).on('click', '#communityReplyList input[value=신고하기]', functio
 	
 	<!-- 댓글 -->
 	<div id="communityReply">
+
 			<c:if test="${logStatus=='Y'}">
-			<form method="post" id="communityReplyFrm">
+				<form method="post" id="communityReplyFrm" class='replyFrm'>
+
 				<input type="hidden" name="com_num" value="${dto.com_num }">  
-				<textarea name="com_review_content" id="communityComent"></textarea>
+				<textarea style="margin-left:30px; width:380px;" name="com_review_content" id="communityComent"></textarea>
 				<input type="submit" value="댓글 등록하기">
 			</form>
 			</c:if>
