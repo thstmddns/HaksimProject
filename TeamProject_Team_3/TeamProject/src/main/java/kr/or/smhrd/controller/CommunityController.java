@@ -142,6 +142,7 @@ public class CommunityController {
 		  int result = service.communityReportInsert(dto);		  
 		 
 		  return result+""; 
+		}
 
 		// 맛집 추천
 		@GetMapping("/communityListChucheon")

@@ -1,7 +1,6 @@
 package kr.or.smhrd.dto;
 
 public class PagingDTO {
-<<<<<<< HEAD
 	private int nowPage = 1;			
 	private int onePageRecord = 15;		
 	
