@@ -1,9 +1,11 @@
 package kr.or.smhrd.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import kr.or.smhrd.dao.RegisterDAO;
@@ -45,6 +47,23 @@ public class RegisterServiceImpl implements RegisterService {
 	public int memberEdit(RegisterDTO dto) {
 		return dao.memberEdit(dto);
 	}
-
 	
-}
+	@Override
+    public List<String> getAbsenteesEmail() {
+        List<String> absenteesEmail = new ArrayList<String>();
+        List<RegisterDTO> attendRegisterList = dao.attendRegister();
+
+        for (RegisterDTO dto : attendRegisterList) {
+            if (dto.getMem_attend() == 0) {
+                absenteesEmail.add(dto.getMem_email());
+            }
+        }
+
+        return absenteesEmail;
+    }
+	
+	@Override
+	public List<RegisterDTO> attendRegister() {
+		return dao.attendRegister();
+	}}
+
