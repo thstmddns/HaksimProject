@@ -55,7 +55,7 @@
 	<input type="hidden" name="data_num" value="${dto.data_num }">
 	<ul>
 		<li class="text"># 제목</li>
-		<li><input type="text" name="data_title" value="${dto.data_title }" size=112px style="line-height:30px; border:1px solid #D2D2D2;"/></li>
+		<li><input type="text" name="data_title" value="${dto.data_title }" size=111px style="line-height:30px; border:1px solid #D2D2D2;"/></li>
 		<li class="text"># 내용</li>
 		<li><textarea name="data_content" id="data_content">${dto.data_content }</textarea></li>
 		<li class="text"># 첨부파일</li>

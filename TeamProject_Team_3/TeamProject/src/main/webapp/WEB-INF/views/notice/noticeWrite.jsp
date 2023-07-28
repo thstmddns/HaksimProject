@@ -11,10 +11,10 @@
 	<form method="post" id="frm" action="/smhrd/notice/noticeWriteOk" enctype="multipart/form-data" class="writeFrm">
 	<ul>
 		<li class="text"># 제목</li>
-		<li><input type="text" name="notice_title" size=116px style="line-height:30px; border:1px solid #D2D2D2;"/></li>
+		<li><input type="text" name="notice_title" size=111px style="line-height:30px; border:1px solid #D2D2D2;"/></li>
 		<li class="text"># 내용</li>
 		<li><textarea name="notice_content" id="content"></textarea></li>
-		<div style="display: inline-block; margin: 0.5px;  float: right;">
+		<div>
 		<li><input type="submit" value="등록"/></li>
 		</div>
 	</ul>

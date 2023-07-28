@@ -28,7 +28,7 @@
 	<form method="post" id="frm" action="/smhrd/data/dataWriteOk" enctype="multipart/form-data" class="writeFrm">
 	<ul>
 		<li class="text"># 제목</li>
-		<li><input type="text" name="data_title"  size=112px style="line-height:30px; border:1px solid #D2D2D2;"/></li>
+		<li><input type="text" name="data_title"  size=111px style="line-height:30px; border:1px solid #D2D2D2;"/></li>
 		<li class="text"># 내용</li>
 		<li><textarea name="data_content" id="data_content"></textarea></li>
 		<li class="text"># 첨부파일</li>

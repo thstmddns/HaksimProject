@@ -250,7 +250,7 @@ $(document).on('click', '#communityReplyList input[value=신고하기]', functio
    <div id="all">
    <ul class="communityView" id="view">
    	<div align="right" class="onlyLog">
-   		<c:if test="${logId == dto.mem_id}">
+   		<c:if test="${logId == dto.mem_id || logType >= 2 }">
    			<a href="/smhrd/community/communityEdit?com_num=${dto.com_num}">수정</a>
 			<a href="javascript:boardDelChk()">삭제</a>
    		</c:if>

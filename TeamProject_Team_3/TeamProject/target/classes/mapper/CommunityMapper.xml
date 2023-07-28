@@ -5,7 +5,7 @@
 	<select id="boardList" resultType="kr.or.smhrd.dto.CommunityDTO">		
 		SELECT * FROM
 			(SELECT * FROM 
-				(SELECT com_num, com_type, com_title, mem_id, com_content, com_hit, to_char(com_wdate,'MM-DD HH:MI') com_wdate,  
+				(SELECT com_num, com_type, com_title, mem_id, com_content, com_hit, to_char(com_wdate,'MM-DD HH:MI') com_wdate  
 				FROM community 
 				where 1=1
 				<if test="searchWord != null">
@@ -61,8 +61,8 @@
 		INSERT INTO report_board (report_num, mem_id, report_content, report_wdate, report_board_num, report_board, report_url)
 		VALUES(report_no_seq.nextval, #{mem_id}, #{report_content}, sysdate, ${com_num}, #{board}, #{com_report_url})
 	
-	</insert>
-		<select id="boardListTen" resultType="kr.or.smhrd.dto.CommunityDTO">		
+		</insert>
+<!-- 		<select id="boardListTen" resultType="kr.or.smhrd.dto.CommunityDTO">		
 		SELECT * FROM (
 		SELECT * FROM COMMUNITY
 		where 1=1
@@ -74,5 +74,5 @@
 		</if>
 		ORDER BY com_hit DESC)
 		WHERE ROWNUM &lt; 11
-		</select>
+		</select> -->
 </mapper>

@@ -278,7 +278,7 @@
 	<div id="all">
 	<ul class="afterView" id="view">
 	<div align="right" class="onlyLog">
-		<c:if test="${logId == dto.mem_id}">
+		<c:if test="${logId == dto.mem_id || logType >= 2 }">
 		<a href="/smhrd/after/afterEdit?grad_num=${dto.grad_num}">수정</a>
 		<a href="javascript:afterDelChk()">삭제</a>
 		</c:if>

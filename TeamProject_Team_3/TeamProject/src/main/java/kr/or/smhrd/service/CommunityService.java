@@ -16,6 +16,6 @@ public interface CommunityService {
 	public int boardWriteOk(CommunityDTO dto);
 
 	public int communityReportInsert(ReportDTO Rdto);
-	public List<CommunityDTO> boardListTen(PagingDTO pDTO);
+//	public List<CommunityDTO> boardListTen(PagingDTO pDTO);
 
 }

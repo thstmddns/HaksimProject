@@ -28,7 +28,7 @@
 	<input type="hidden" name="grad_num" value="${dto.grad_num }">
 	<ul class="afterEdit">
 		<li class="text"># 제목</li>
-		<li><input type="text" name="grad_title" value="${dto.grad_title}" size=112px style="line-height:30px; border:1px solid #D2D2D2;"/></li>
+		<li><input type="text" name="grad_title" value="${dto.grad_title}" size=111px style="line-height:30px; border:1px solid #D2D2D2;"/></li>
 		<li class="text"># 내용</li>
 		<li><textarea name="grad_content" id="grad_content" >${dto.grad_content}</textarea></li>
 		<li><input type="submit" value="게시글 수정"/></li>

@@ -242,7 +242,7 @@ $(document).on('click', '#dataReplyList input[value=Del]', function() {
 	<div id="all">
    <ul class="dataOpen" id="view">
 	<div align="right" class="onlyLog">
-   	<c:if test="${logId == dto.mem_id}">
+   	<c:if test="${logId == dto.mem_id || logType >= 2 }">
       <a href="/smhrd/data/dataEdit?data_num=${dto.data_num }">수정</a>
       <a href="javascript:dataDelChk()">삭제</a>
      </c:if>

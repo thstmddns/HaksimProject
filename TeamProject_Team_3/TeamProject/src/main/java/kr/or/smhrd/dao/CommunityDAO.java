@@ -37,7 +37,7 @@ public interface CommunityDAO {
 	// 게시물 신고
 	public int communityReportInsert(ReportDTO Rdto);
 	
-	// 맛집 리스트 Topten추출
-	public List<CommunityDTO> boardListTen(PagingDTO pDTO);
+//	// 맛집 리스트 Topten추출
+//	public List<CommunityDTO> boardListTen(PagingDTO pDTO);
 
 }

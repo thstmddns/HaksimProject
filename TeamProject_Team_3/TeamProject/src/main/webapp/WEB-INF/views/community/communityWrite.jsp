@@ -16,7 +16,7 @@
 				<option value="4">맛집공유</option>	
 		</select>
 		<li class="text"># 제목</li>
-		<li><input type="text" name="com_title"  size=112px style="line-height:30px; border:1px solid #D2D2D2;"/></li>
+		<li><input type="text" name="com_title"  size=111px style="line-height:30px; border:1px solid #D2D2D2;"/></li>
 		<li class="text"># 내용</li>
 		<li><textarea name="com_content" id="com_content"></textarea></li>
 		<li><input type="submit" value="등록"/></li>

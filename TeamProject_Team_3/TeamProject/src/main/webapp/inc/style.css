@@ -31,11 +31,11 @@ body{
 .carousel-inner > .carousel-item > img {
      margin-top:20px;
      width: 1000px;
-     height: 600px;
+     height: 400px;
  }
  
 .container {
-	width:1000px;
+	width:800px !important;
 	margin:0 auto;
 	text-align:center;
 }
@@ -133,6 +133,7 @@ nav li:hover {
  	line-height:40px;
  	border-bottom:1px solid #ddd;
  	text-align:center !important;
+ 	justify-content:center;
  }
  .List>li:nth-child(5n+2) {
  	width:50%;
@@ -160,6 +161,7 @@ nav li:hover {
  	white-space:nowrap;  /*줄 바꾸지 않기*/
  	overflow:hidden;   /*넘친값 숨기기*/
  	text-overflow:ellipsis;   /* ... 표시하기 */
+ 	justify-content:center;
  }
  .List2>li:nth-child(6n+3) {
  	width:45%;
