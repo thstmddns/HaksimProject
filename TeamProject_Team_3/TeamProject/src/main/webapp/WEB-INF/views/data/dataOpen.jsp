@@ -198,7 +198,7 @@ $(document).on('click', '#dataReplyList input[value=Del]', function() {
 	// 댓글 신고 폼
 	$(document).on('click','#dataReplyList input[value=신고]',function(){
 		
-		$("#dReportReplyFrm").css('display', 'block');
+		$(this).parent().next().css('display', 'block');
 	});
 	
 	// 댓글 신고하기 
@@ -242,7 +242,7 @@ $(document).on('click', '#dataReplyList input[value=Del]', function() {
 	<div id="all">
    <ul class="dataOpen" id="view">
 	<div align="right" class="onlyLog">
-   	<c:if test="${logId == dto.mem_id}">
+   	<c:if test="${logId == dto.mem_id || logType >= 2 }">
       <a href="/smhrd/data/dataEdit?data_num=${dto.data_num }">수정</a>
       <a href="javascript:dataDelChk()">삭제</a>
      </c:if>
@@ -267,12 +267,12 @@ $(document).on('click', '#dataReplyList input[value=Del]', function() {
 		</div>
    </ul>   
    	
-   <c:if test="${logId != dto.mem_id}">
-		<button id="dataReportBtn" class="reportBTN">신고🚨</button>
+   <c:if test="${logId != dto.mem_id  && logStatus=='Y'}">
+		<button id="dataReportBtn" class="reportBTN" style="float:right;">신고🚨</button>
 	</c:if>
 	
 	<div style="display:none">
-		<form id="dataReportFrm">
+		<form id="dataReportFrm" class="reportFrm">
 		<input type="hidden" name='data_num' value="${dto.data_num}">
 		<input type="hidden" name='data_report_url' id="data_report_url" value="">
 		<input type="hidden" name="board" value="data"/>

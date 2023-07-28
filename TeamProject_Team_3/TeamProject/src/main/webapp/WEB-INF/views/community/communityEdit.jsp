@@ -29,7 +29,7 @@
 	<input type="hidden" name="com_num" value="${dto.com_num }">
 	<ul class="communityEdit">
 		<li class="text"># 제목</li>
-		<li><input type="text" name="com_title" value="${dto.com_title}" size=112px style="line-height:30px; border:1px solid #D2D2D2;"/></li>
+		<li><input type="text" name="com_title" value="${dto.com_title}" size=111px style="line-height:30px; border:1px solid #D2D2D2;"/></li>
 		<li class="text"># 내용</li>
 		<li><textarea name="com_content" id="com_content" >${dto.com_content}</textarea></li>
 		<li><input type="submit" value="게시글 수정"/></li>

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -84,6 +85,7 @@ public class RegisterController {
 			session.setAttribute("logAuth", dto.getMem_auth());
 			session.setAttribute("logStatus", "Y");
 			session.setAttribute("logAuth", dto.getMem_auth());
+			session.setAttribute("logAttend", dto.getMem_attend());
 			
 			 mav.setViewName("redirect:/");
 		}else {
@@ -207,7 +209,7 @@ public class RegisterController {
         }
     }
     
-    
+    @Scheduled(cron="* 55 8 * * *")
     public void attendRegister() {
         System.out.println(1);
         List<String> absenteesEmail = service.getAbsenteesEmail();
@@ -216,7 +218,7 @@ public class RegisterController {
             sendAbsenteeEmail(email);
         }
     }
-
+    
     // 미출석자에게 메일 보내는 메서드
     private void sendAbsenteeEmail(String email) {
     	System.out.println(1);

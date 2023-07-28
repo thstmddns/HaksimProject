@@ -27,7 +27,7 @@
 		<input type="hidden" name="notice_num" value="${dto.notice_num}">
 		<ul class="dataEdit">
 			<li class="text"># 제목</li>
-			<li><input type="text" name="notice_title" value="${dto.notice_title}" size=112px style="line-height:30px; border:1px solid #D2D2D2;"/></li>
+			<li><input type="text" name="notice_title" value="${dto.notice_title}" size=111px style="line-height:30px; border:1px solid #D2D2D2;"/></li>
 			<li class="text"># 내용</li>
 			<li><textarea name="notice_content" id="content" >${dto.notice_content}</textarea></li>
 			<li><input type="submit" value="게시글 수정" /></li>

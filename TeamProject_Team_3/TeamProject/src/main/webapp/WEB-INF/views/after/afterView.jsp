@@ -234,7 +234,7 @@
 		// 댓글 신고 폼
 		$(document).on('click','#afterReplyList input[value=신고]',function(){
 			
-			$("#reportReplyFrm").css('display', 'block');
+			$(this).parent().next().css('display', 'block');
 		});
 		
 		// 댓글 신고하기 
@@ -278,7 +278,7 @@
 	<div id="all">
 	<ul class="afterView" id="view">
 	<div align="right" class="onlyLog">
-		<c:if test="${logId == dto.mem_id}">
+		<c:if test="${logId == dto.mem_id || logType >= 2 }">
 		<a href="/smhrd/after/afterEdit?grad_num=${dto.grad_num}">수정</a>
 		<a href="javascript:afterDelChk()">삭제</a>
 		</c:if>
@@ -303,12 +303,12 @@
 		<li><br> ${dto.grad_content}</li>
 		</div>
 	</ul>	
-	<c:if test="${logId != dto.mem_id}">
-	<button id="reportBtn" class="reportBTN">신고🚨</button>
+	<c:if test="${logId != dto.mem_id && logStatus=='Y'}">
+	<button id="reportBtn" class="reportBTN" style="float:right;">신고🚨</button>
 	</c:if>
 	
 	<div style="display:none">
-		<form id="reportFrm">
+		<form id="reportFrm" class="reportFrm">
 		<input type="hidden" name='grad_num' value="${dto.grad_num}">
 		<input type="hidden" name='report_url' id="report_url" value="">
 		<input type="hidden" name="board" value="grad"/>

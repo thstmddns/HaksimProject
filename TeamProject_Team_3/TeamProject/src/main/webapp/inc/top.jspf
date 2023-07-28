@@ -33,11 +33,11 @@
 <header>
 	<div>
 		<div class="headLine">
-		<button id="sendSnackRequestBtn" type="button" class="btn btn-outline-primary" style="margin-right: 10px; margin-left: 10px;">간식 요청하기</button>
+		
 			<!-- 로그아웃 상태 -->
 			<c:if test="${logStatus != 'Y'}">
 				<a href="/smhrd/register/login"><button type="button" class="btn btn-outline-primary" style="margin-right: 3px; margin-left: 10px;">LogIn</button></a>
-				<a href="/smhrd/register/regForm"><button type="button" class="btn btn-outline-primary" style="margin-right: 10px; margin-left: 10px;">Join</button></a>
+				<a href="/smhrd/register/regForm"><button type="button" class="btn btn-outline-primary" style="margin-right: 10px; margin-left: 5px;">Join</button></a>
 			</c:if>
 			
 			<!-- 로그인 상태 -->
@@ -47,10 +47,13 @@
 				<c:if test="${logType == '2'}"><span>선생님</span></c:if>
 				<c:if test="${logType == '3'}"><span>관리자</span></c:if>
 					<span>${logId}님</span>
+				<c:if test="${logAttend == '0'}"><span style="color:red;">미출석</span></c:if>
+				<c:if test="${logAttend == '1'}"><span style="color:red;">출석</span></c:if>
 					<a href="/smhrd/register/logout"><button type="button" class="btn btn-outline-primary" style="margin-right: 3px; margin-left: 10px;">LogOut</button></a>
-					<a href="/smhrd/register/registerEdit"><button type="button" class="btn btn-outline-primary" style="margin-right: 10px; margin-left: 10px;">Edit Information</button></a>
+					<a href="/smhrd/register/registerEdit"><button type="button" class="btn btn-outline-primary" style="margin-right: 10px; margin-left: 5px;">Edit Information</button></a>
 				</div>
 			</c:if> 
+			<button id="sendSnackRequestBtn" type="button" class="btn btn-outline-primary" style="margin-right: 10px; margin-left: 10px;">간식 요청하기</button>
 		</div>
 		
 	    <div id="title"> 

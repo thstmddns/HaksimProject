@@ -206,7 +206,7 @@ $("#comReportFrm").submit(function() {
 // 댓글 신고 폼
 $(document).on('click','#communityReplyList input[value=신고]',function(){
 	
-	$("#cReportReplyFrm").css('display', 'block');
+	$(this).parent().next().css('display', 'block');
 });
 
 // 댓글 신고하기 
@@ -250,7 +250,7 @@ $(document).on('click', '#communityReplyList input[value=신고하기]', functio
    <div id="all">
    <ul class="communityView" id="view">
    	<div align="right" class="onlyLog">
-   		<c:if test="${logId == dto.mem_id}">
+   		<c:if test="${logId == dto.mem_id || logType >= 2 }">
    			<a href="/smhrd/community/communityEdit?com_num=${dto.com_num}">수정</a>
 			<a href="javascript:boardDelChk()">삭제</a>
    		</c:if>
@@ -277,12 +277,12 @@ $(document).on('click', '#communityReplyList input[value=신고하기]', functio
    	</ul>
     
 	<!-- 신고 -->
-	<c:if test="${logId != dto.mem_id}">
-		<button id="comReportBtn" class="reportBTN">신고🚨</button>
+	<c:if test="${logId != dto.mem_id  && logStatus=='Y'}">
+		<button id="comReportBtn" class="reportBTN" style="float:right;">신고🚨</button>
 	</c:if>
 	
 	<div style="display:none;">
-		<form id="comReportFrm">
+		<form id="comReportFrm" class="reportFrm">
 		<input type="hidden" name='com_num' value="${dto.com_num}">
 		<input type="hidden" name='com_report_url' id="com_report_url" value="">
 		<input type="hidden" name="board" value="community"/>

@@ -41,9 +41,15 @@
 	</update>
 	
 	<!-- 출석 회원 조회 -->
+
+	<select id="attendRegister" resultType="kr.or.smhrd.dto.RegisterDTO">
+    SELECT mem_email, mem_attend
+    FROM member
+    WHERE mem_attend = 0
+	</select>
 	<select id="getAbsenteesEmail" resultType="kr.or.smhrd.dto.RegisterDTO">
-    select mem_email, mem_attend
-    from member
-    where mem_attend = 0
-</select>
+    SELECT mem_email, mem_attend
+    FROM member
+    WHERE mem_attend = 0 
+	</select>
 </mapper>

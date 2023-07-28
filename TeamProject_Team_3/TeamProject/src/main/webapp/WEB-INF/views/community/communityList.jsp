@@ -89,7 +89,6 @@
 			<li>${dto.com_hit}</li>	
 		</c:forEach>
 	</ul>
-	
 	<div class="page">
 		<ul>
 			<!-- 가장 첫 페이지시 이전페이지 버튼 비활성화 -->	

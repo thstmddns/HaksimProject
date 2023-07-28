@@ -58,9 +58,9 @@ public class CommunityServiceImpl implements CommunityService {
 	public int communityReportInsert(ReportDTO Rdto) {
 		return dao.communityReportInsert(Rdto);
 	}
-	public List<CommunityDTO> boardListTen(PagingDTO pDTO) {
-		return dao.boardListTen(pDTO);
-
-	}
+//	public List<CommunityDTO> boardListTen(PagingDTO pDTO) {
+//		return dao.boardListTen(pDTO);
+//
+//	}
 }
 
