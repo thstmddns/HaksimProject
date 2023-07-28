@@ -10,12 +10,30 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#sendSnackRequestBtn").click(function() {
+            // Spring Controller로 AJAX 요청 보내기
+            $.ajax({
+                type: "POST",
+                url: "/smhrd/register/sendSnackRequestEmail",
+                success: function(response) {
+                    alert("간식 요청 이메일이 성공적으로 전송되었습니다!");
+                },
+                error: function(error) {
+                    console.error("간식 요청 이메일 보내기 오류:", error);
+                    alert("간식 요청 이메일 전송 중 오류가 발생했습니다. 나중에 다시 시도해주세요.");
+                }
+            });
+        });
+    });
+</script>
 <body>
 <header>
-
 	<div>
 		<div class="headLine">
+		<button id="sendSnackRequestBtn" type="button" class="btn btn-outline-primary" style="margin-right: 10px; margin-left: 10px;">간식 요청하기</button>
 			<!-- 로그아웃 상태 -->
 			<c:if test="${logStatus != 'Y'}">
 				<a href="/smhrd/register/login"><button type="button" class="btn btn-outline-primary" style="margin-right: 3px; margin-left: 10px;">LogIn</button></a>

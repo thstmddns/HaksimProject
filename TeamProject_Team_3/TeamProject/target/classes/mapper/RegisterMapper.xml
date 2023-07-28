@@ -39,4 +39,11 @@
 		update member set mem_password=#{mem_password}, mem_type=#{mem_type}, mem_email=#{mem_email}, mem_name=#{mem_name}, mem_ca=#{mem_ca}
 		where mem_id=#{mem_id}
 	</update>
+	
+	<!-- 출석 회원 조회 -->
+	<select id="getAbsenteesEmail" resultType="kr.or.smhrd.dto.RegisterDTO">
+    select mem_email, mem_attend
+    from member
+    where mem_attend = 0
+</select>
 </mapper>

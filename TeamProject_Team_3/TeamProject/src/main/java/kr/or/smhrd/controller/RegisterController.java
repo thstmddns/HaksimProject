@@ -1,5 +1,8 @@
 package kr.or.smhrd.controller;
 
+import java.util.List;
+
+import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -7,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.or.smhrd.dto.RegisterDTO;
 import kr.or.smhrd.service.RegisterService;
 
+@EnableScheduling
 @Controller
 @RequestMapping("/register")
 public class RegisterController {
@@ -178,4 +183,58 @@ public class RegisterController {
 		}		
 		return mav;
 	}
+	// 간식 요청
+    @PostMapping("/sendSnackRequestEmail")
+    @ResponseBody
+    public String sendSnackRequestEmail() {
+        String recipientEmail = "smshrd@naver.com"; // 실제 수신자 이메일 주소로 바꿔주세요.
+
+        try {
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
+            helper.setFrom("smshrd@naver.com"); // 본인의 이메일 주소로 바꿔주세요
+            helper.setTo(recipientEmail);
+            helper.setSubject("간식 요청");
+            helper.setText("<div style='background:pink;  border:1px solid #ddd; padding:50px; text-align:center'>"
+                    + "간식 요청이 도착했습니다!"
+                    + "</div>", true);
+
+            mailSender.send(message);
+            return "이메일이 성공적으로 전송되었습니다!";
+        } catch (MessagingException e) {
+            e.printStackTrace();
+            return "이메일 보내기 중 오류가 발생했습니다. 나중에 다시 시도해주세요.";
+        }
+    }
+    
+    
+    public void attendRegister() {
+        System.out.println(1);
+        List<String> absenteesEmail = service.getAbsenteesEmail();
+
+        for (String email : absenteesEmail) {
+            sendAbsenteeEmail(email);
+        }
+    }
+
+    // 미출석자에게 메일 보내는 메서드
+    private void sendAbsenteeEmail(String email) {
+    	System.out.println(1);
+        try {
+        	MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
+            helper.setFrom("smshrd@naver.com"); // 본인의 이메일 주소로 바꿔주세요
+            helper.setTo(email);
+            helper.setSubject("출석 요청");
+            helper.setText("<div style='background:pink;  border:1px solid #ddd; padding:50px; text-align:center'>"
+                    + "귀하는 미출석자입니다. 지금 바로 지문을 찍어주시기 바랍니다."
+                    + "</div>", true);
+
+            mailSender.send(message);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
 }
+

@@ -1,12 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<style>
-	 .afterView li {
-	 	margin-top:10px;
-	 	list-style-type: none;
-	 }
-</style>
-
 
 <script>
 	function afterDelChk () {
@@ -40,7 +33,7 @@
 							// -- 수정폼
 							tag += "<div style='display:none' class='replyFrm'>";
 							tag += "<form>";
-							tag += "<textarea style='width:400px' name='grad_review_content'>";
+							tag += "<textarea style='width:680px; margin-left:35px;' name='grad_review_content'>";
 							// 글 내용 수정, 댓글번호
 							tag += coment.grad_review_content;
 							tag += "</textarea>";
@@ -282,33 +275,38 @@
 </script>
 
 <main>
-	<h1 class="title">${dto.grad_title}</h1>
-	<ul class="afterView">
-		<li>번호 : ${dto.grad_num}</li>
-		<c:if test="${dto.grad_type==1}">
-			<li>멘토링</li>	
-		</c:if>
-		<c:if test="${dto.grad_type==2}">
-			<li>채용 공고</li>
-		</c:if>
-		<c:if test="${dto.grad_type==3}">
-			<li>기타</li>
-		</c:if>	
-		<li>글쓴이 : ${dto.mem_id}</li>
-		<li>조회수 : ${dto.grad_hit}</li>
-		<li>등록일 : ${dto.grad_wdate}</li>
-		<li><br>글내용<br/> ${dto.grad_content}</li>
-	</ul>	
-	
-	<div>
+	<div id="all">
+	<ul class="afterView" id="view">
+	<div align="right" class="onlyLog">
 		<c:if test="${logId == dto.mem_id}">
 		<a href="/smhrd/after/afterEdit?grad_num=${dto.grad_num}">수정</a>
 		<a href="javascript:afterDelChk()">삭제</a>
 		</c:if>
 	</div>
+	
+		<c:if test="${dto.grad_type==1}">
+			<li>수료생 > 멘토링 ></li>	
+		</c:if>
+		<c:if test="${dto.grad_type==2}">
+			<li>수료생 > 채용 공고 ></li>
+		</c:if>
+		<c:if test="${dto.grad_type==3}">
+			<li>수료생 > 기타 ></li>
+		</c:if>	
+		<h3 class="title">${dto.grad_title}</h3>
+		<li>by ${dto.mem_id}👩🏻‍🎓👨🏻‍🎓</li>
+		<li>조회수 : ${dto.grad_hit}</li>
+		<li>등록일 : ${dto.grad_wdate}</li>
+		<div class="content">
+		<li><br># 내용<br/></li>
+		<li style="color:#bebebe">------------------------------------------------------------------------------------------------------------------------</li>
+		<li><br> ${dto.grad_content}</li>
+		</div>
+	</ul>	
 	<c:if test="${logId != dto.mem_id}">
-	<button id="reportBtn">신고</button>
-	</c:if>	
+	<button id="reportBtn" class="reportBTN">신고🚨</button>
+	</c:if>
+	
 	<div style="display:none">
 		<form id="reportFrm">
 		<input type="hidden" name='grad_num' value="${dto.grad_num}">
@@ -335,7 +333,7 @@
 		<c:if test="${logStatus=='Y'}">
 			<form method="post" id="afterReplyFrm" class='replyFrm'>
 				<input type="hidden" name="grad_num" value="${dto.grad_num }">  
-				<textarea style="margin-left:30px; width:380px;" name="grad_review_content" id="gradComent"></textarea>
+				<textarea style="margin-left:35px; width:650px;" name="grad_review_content" id="gradComent"></textarea>
 				<input type="submit" value="댓글 등록하기">
 			</form>
 		</c:if>
@@ -344,4 +342,6 @@
 			
 		</ul>
 	</div>
+	</div>
+	<a href='/smhrd/after/afterList?grad_type=0'><button class="backList">목록</button></a>
 </main>

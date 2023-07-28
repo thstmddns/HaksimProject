@@ -19,4 +19,8 @@ public interface RegisterService {
 	public RegisterDTO registerSelect(String mem_id);
 	// 회원정보 수정
 	public int memberEdit(RegisterDTO dto);
+	// 출석 회원 조회
+	public List<RegisterDTO> attendRegister();
+	// 미출석 회원 이메일 보내기
+	public List<String> getAbsenteesEmail();
 }

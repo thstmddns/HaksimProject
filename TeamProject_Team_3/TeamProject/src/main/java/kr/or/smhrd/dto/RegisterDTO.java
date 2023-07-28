@@ -11,6 +11,7 @@ public class RegisterDTO {
 	private String mem_update;
 	private int mem_ca;
 	private int mem_auth;
+	private int mem_attend;
 	public String getMem_id() {
 		return mem_id;
 	}
@@ -70,6 +71,12 @@ public class RegisterDTO {
 	}
 	public void setMem_auth(int mem_auth) {
 		this.mem_auth = mem_auth;
+	}
+	public int getMem_attend() {
+		return mem_attend;
+	}
+	public void setMem_attend(int mem_attend) {
+		this.mem_attend = mem_attend;
 	}
 }	
 
