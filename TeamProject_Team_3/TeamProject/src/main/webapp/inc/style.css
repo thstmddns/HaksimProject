@@ -423,6 +423,11 @@ nav li:hover {
 	border-radius:5px;
 	align:right;
 }
+/*학생 상세 조회*/
+.memberD {
+	margin:40px 200px;
+	overflow:auto;
+}
 /* 하단 */
 footer{
 	font-weight:bold;

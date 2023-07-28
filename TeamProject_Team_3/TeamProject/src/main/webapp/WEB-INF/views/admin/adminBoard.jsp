@@ -17,11 +17,6 @@
 		color: #ffffff;
 	}
 	
-	/* a:link, a:visited, a:hover{
-   		text-decoration: none;
-   		color: #000000;
-	} */
-	
 	#adminList{
 		display: flex;
 		flex-direction: column;
@@ -51,7 +46,10 @@
 		width: 25%;	
 		border-bottom: 1px solid #00468C;
 	}
-	
+	#studentList a {
+		text-decoration:none;
+		color:black;
+	}
 	#reportList{
 		width:800px;
 		text-align: center;
@@ -97,6 +95,10 @@
 	}
 	#noticeList > li:nth-child(4n+3) {
 		width: 40%;	
+	}
+	#noticeList a {
+		text-decoration:none;
+		color:black;
 	}
 
 </style>
@@ -175,7 +177,7 @@
 				</c:forEach>
 			</ul>
 			<div align="right" style="margin: 5px;">
-				<a href="/smhrd/notice/noticeList"><input type="button" value="게시판이동"></a>
+				<a href="/smhrd/notice/noticeList"><input type="button" value="게시판 이동" style=" background-color:white; border:1px solid black; border-radius:5px;'"></a>
 			</div>
 			</form>	
 		</div>
