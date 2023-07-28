@@ -47,7 +47,7 @@ public class RegisterServiceImpl implements RegisterService {
 	public int memberEdit(RegisterDTO dto) {
 		return dao.memberEdit(dto);
 	}
-	@Scheduled(cron="* * * * * *")
+	
 	@Override
     public List<String> getAbsenteesEmail() {
         List<String> absenteesEmail = new ArrayList<String>();
@@ -61,6 +61,7 @@ public class RegisterServiceImpl implements RegisterService {
 
         return absenteesEmail;
     }
+	
 	@Override
 	public List<RegisterDTO> attendRegister() {
 		return dao.attendRegister();
