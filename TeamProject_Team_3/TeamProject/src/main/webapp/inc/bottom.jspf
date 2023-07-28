@@ -6,6 +6,7 @@
 .contents {
 	overflow: hidden;
 	margin: 0 auto;
+	margin-top:20px;
 }
 
 /* 하단 좌측 */
@@ -58,7 +59,7 @@
 	<!-- 좌측 -->
 	<div class="footerLeft">
 		<div id="InfoNumber">
-			<h3>고객행복센터</h3>
+			<h3 style="margin:10px 0 10px 10px; text-align:left;">고객행복센터</h3>
 			<div id="number1">
 				<ul>
 					<li>02-2023-0726</li>

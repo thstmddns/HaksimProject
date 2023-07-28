@@ -120,7 +120,62 @@ nav li:hover {
 .Sub {
 	margin:30px;
 }
-.page>ul {
+
+.List {
+	margin:40px 0;
+	overflow:auto;
+	list-style-type: none;
+}
+.List>li{
+ 	float:left;
+ 	width:10%;
+ 	height:40px;
+ 	line-height:40px;
+ 	border-bottom:1px solid #ddd;
+ 	text-align:center !important;
+ }
+ .List>li:nth-child(5n+2) {
+ 	width:50%;
+ 	/*말줄임표시*/
+ 	white-space:nowrap;  /*줄 바꾸지 않기*/
+ 	overflow:hidden;   /*넘친값 숨기기*/
+ 	text-overflow:ellipsis;   /* ... 표시하기 */
+ }
+ .List>li:nth-child(5n+4) {
+ 	width:20%;
+ }
+ .List2 {
+	margin:40px 0;
+	overflow:auto;
+	list-style-type: none;
+	text-decoration:none;
+}
+.List2>li{
+ 	float:left;
+ 	width:10%;
+ 	height:40px;
+ 	line-height:40px;
+ 	border-bottom:1px solid #ddd;
+ 	text-align:center !important;
+ 	white-space:nowrap;  /*줄 바꾸지 않기*/
+ 	overflow:hidden;   /*넘친값 숨기기*/
+ 	text-overflow:ellipsis;   /* ... 표시하기 */
+ }
+ .List2>li:nth-child(6n+3) {
+ 	width:45%;
+ 	/*말줄임표시*/
+ 	white-space:nowrap;  /*줄 바꾸지 않기*/
+ 	overflow:hidden;   /*넘친값 숨기기*/
+ 	text-overflow:ellipsis;   /* ... 표시하기 */
+ }
+ .List2>li:nth-child(6n+5) {
+ 	width:15%;
+ 	/*말줄임표시*/
+ 	white-space:nowrap;  /*줄 바꾸지 않기*/
+ 	overflow:hidden;   /*넘친값 숨기기*/
+ 	text-overflow:ellipsis;   /* ... 표시하기 */
+ }
+ .page>ul {
  	overflow:auto;
  	list-style-type: none;
  	display:flex;
@@ -141,46 +196,6 @@ nav li:hover {
 	display:inline-block;
 	float:right;
 }
-.List {
-	margin:40px 0;
-	overflow:auto;
-	list-style-type: none;
-}
-.List>li{
- 	float:left;
- 	width:10%;
- 	height:40px;
- 	line-height:40px;
- 	border-bottom:1px solid #ddd;
- 	text-align:center;
- }
- .List>li:nth-child(5n+2) {
- 	width:60%;
- 	/*말줄임표시*/
- 	white-space:nowrap;  /*줄 바꾸지 않기*/
- 	overflow:hidden;   /*넘친값 숨기기*/
- 	text-overflow:ellipsis;   /* ... 표시하기 */
- }
- .List2 {
-	margin:40px 0;
-	overflow:auto;
-	list-style-type: none;
-}
-.List2>li{
- 	float:left;
- 	width:10%;
- 	height:40px;
- 	line-height:40px;
- 	border-bottom:1px solid #ddd;
- 	text-align:center;
- 	white-space:nowrap;  /*줄 바꾸지 않기*/
- 	overflow:hidden;   /*넘친값 숨기기*/
- 	text-overflow:ellipsis;   /* ... 표시하기 */
- }
- .List2>li:nth-child(6n+3) {
- 	width:50%;
- }
-
 .search {
 	 text-align:center;
 	 height:40px;
