@@ -11,4 +11,17 @@
 	<delete id="ReportDel">
 		DELETE FROM report_board WHERE report_num=${param1}
 	</delete>
+	
+	<!-- 바로 글 삭제 버튼 -->
+	<delete id="ReportBoardDel">
+		DELETE FROM ${} 
+		WHERE 
+		<if test="">
+			
+		</if>
+		<if test="">
+		
+		</if> 
+	</delete>
+	
 </mapper>
